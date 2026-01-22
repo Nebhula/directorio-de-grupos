@@ -25,7 +25,93 @@
             padding: 20px;
         }
         
-        header {
+        /* NAVEGACIÓN */
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 15px 30px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .nav-brand h1 {
+            font-size: 1.8rem;
+            color: #333;
+            background: linear-gradient(135deg, #25D366 0%, #0088cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            background: #f5f5f5;
+            padding: 5px;
+            border-radius: 50px;
+        }
+        
+        .nav-link {
+            padding: 12px 25px;
+            border: none;
+            background: transparent;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+        }
+        
+        .nav-link:hover {
+            color: #25D366;
+            background: rgba(37, 211, 102, 0.1);
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .nav-link.add-group.active {
+            background: linear-gradient(135deg, #ff9f43 0%, #ff7f00 100%);
+            box-shadow: 0 5px 15px rgba(255, 159, 67, 0.3);
+        }
+        
+        /* PÁGINAS */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* HEADER DE PÁGINA */
+        .page-header {
             text-align: center;
             padding: 40px 0;
             background: linear-gradient(135deg, #25D366 0%, #0088cc 100%);
@@ -37,7 +123,11 @@
             overflow: hidden;
         }
         
-        header::before {
+        .page-header.add-page {
+            background: linear-gradient(135deg, #ff9f43 0%, #ff7f00 100%);
+        }
+        
+        .page-header::before {
             content: '';
             position: absolute;
             top: 0;
@@ -48,14 +138,14 @@
             background-size: cover;
         }
         
-        header h1 {
-            font-size: 3rem;
+        .page-header h1 {
+            font-size: 2.8rem;
             margin-bottom: 15px;
             position: relative;
             text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
-        header p {
+        .page-header p {
             font-size: 1.2rem;
             opacity: 0.95;
             max-width: 700px;
@@ -63,7 +153,7 @@
             position: relative;
         }
         
-        /* BOTONES DE PLATAFORMA MEJORADOS */
+        /* PÁGINA 1: VER GRUPOS */
         .platform-selector {
             display: flex;
             justify-content: center;
@@ -186,7 +276,7 @@
             opacity: 0.95;
         }
         
-        /* SECCIÓN DE DESTACADOS - SCROLL HORIZONTAL MANUAL */
+        /* SECCIÓN DE DESTACADOS - TRES BLOQUES FIJOS */
         .featured-section {
             margin-bottom: 60px;
         }
@@ -236,130 +326,12 @@
             box-shadow: 0 5px 15px rgba(255, 159, 67, 0.3);
         }
         
-        /* CONTENEDOR DE SCROLL HORIZONTAL */
-        .scroll-container {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-        
-        .scroll-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-        }
-        
-        .scroll-content {
-            display: flex;
-            gap: 25px;
-            padding: 25px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scroll-behavior: smooth;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
-            cursor: grab;
-            user-select: none;
-            min-height: 420px;
-        }
-        
-        .scroll-content::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-        
-        .scroll-content:active {
-            cursor: grabbing;
-        }
-        
-        .scroll-content.dragging {
-            scroll-behavior: auto;
-            cursor: grabbing;
-        }
-        
-        /* BARRA DE SCROLL PERSONALIZADA */
-        .scrollbar-track {
-            height: 8px;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 4px;
-            margin: 15px 25px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .scrollbar-thumb {
-            height: 100%;
-            width: 30%;
-            background: linear-gradient(90deg, #25D366, #0088cc);
-            border-radius: 4px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: width 0.3s ease, background 0.3s ease;
-            cursor: grab;
-        }
-        
-        .scrollbar-thumb:hover {
-            background: linear-gradient(90deg, #128C7E, #005c8a);
-        }
-        
-        .scrollbar-thumb:active {
-            cursor: grabbing;
-        }
-        
-        /* CONTROLES DE SCROLL */
-        .scroll-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 25px;
-        }
-        
-        .scroll-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            background: white;
-            color: #25D366;
-            font-size: 1.3rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .scroll-btn:hover {
-            background: #25D366;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        }
-        
-        .scroll-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .scroll-btn:disabled:hover {
-            background: white;
-            color: #25D366;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .scroll-info {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 600;
-            padding: 8px 15px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        /* GRID DE DESTACADOS - 3 BLOQUES FIJOS */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
         }
         
         /* TARJETA DESTACADA */
@@ -371,10 +343,9 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             border: 1px solid rgba(0,0,0,0.05);
-            min-width: 350px;
-            max-width: 350px;
-            flex-shrink: 0;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .featured-card:hover {
@@ -489,6 +460,9 @@
         
         .featured-content {
             padding: 0 25px 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .featured-description {
@@ -496,10 +470,7 @@
             line-height: 1.7;
             margin-bottom: 20px;
             font-size: 1rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            flex-grow: 1;
         }
         
         .featured-highlights {
@@ -538,6 +509,7 @@
             border: none;
             cursor: pointer;
             letter-spacing: 0.5px;
+            margin-top: auto;
         }
         
         .featured-card.telegram .featured-link {
@@ -850,7 +822,224 @@
             box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3);
         }
         
-        /* PIE DE PÁGINA */
+        /* PÁGINA 2: AÑADIR GRUPO */
+        .add-group-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .form-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff9f43, #ff7f00);
+            border-radius: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        
+        .form-label .required {
+            color: #ff4757;
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #25D366;
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .platform-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .platform-option {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .platform-option:hover {
+            border-color: #25D366;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .platform-option.active {
+            border-color: #25D366;
+            background: rgba(37, 211, 102, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
+        }
+        
+        .platform-option.telegram.active {
+            border-color: #0088cc;
+            background: rgba(0, 136, 204, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.2);
+        }
+        
+        .platform-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .platform-option.whatsapp .platform-icon {
+            color: #25D366;
+        }
+        
+        .platform-option.telegram .platform-icon {
+            color: #0088cc;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .submit-btn {
+            flex: 2;
+            padding: 18px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+        
+        .reset-btn {
+            flex: 1;
+            padding: 18px;
+            background: #f5f5f5;
+            color: #666;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: #eaeaea;
+        }
+        
+        /* MENSAJES */
+        .message {
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        /* INFORMACIÓN */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            color: #25D366;
+            margin-bottom: 20px;
+        }
+        
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* FOOTER */
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -863,34 +1052,31 @@
             box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.05);
         }
         
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 25px 0;
-        }
-        
-        .footer-link {
-            color: #25D366;
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.3s ease;
-            padding: 8px 15px;
-            border-radius: 8px;
-        }
-        
-        .footer-link:hover {
-            color: #128C7E;
-            background: rgba(37, 211, 102, 0.1);
-        }
-        
         /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+            .main-nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
             }
             
-            header h1 {
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .page-header h1 {
                 font-size: 2.2rem;
             }
             
@@ -898,85 +1084,38 @@
                 max-width: 90%;
             }
             
-            .platform-btn {
-                padding: 15px 10px;
+            .featured-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
-            .platform-icon {
-                font-size: 1.8rem;
+            .form-container {
+                padding: 25px;
             }
             
-            .section-header {
+            .platform-options {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
             }
             
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .featured-card {
-                min-width: 300px;
-                max-width: 300px;
-            }
-            
-            .groups-counter {
+            .form-actions {
                 flex-direction: column;
-                gap: 20px;
-                max-width: 90%;
-            }
-            
-            .counter-item {
-                padding: 20px;
-            }
-            
-            .categories {
-                padding: 20px;
-            }
-            
-            .category-btn {
-                padding: 12px 22px;
-                font-size: 0.95rem;
             }
             
             .groups-container {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
-            
-            .featured-avatar {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .featured-info h3 {
-                font-size: 1.4rem;
-            }
         }
         
         @media (max-width: 480px) {
-            .platform-selector {
+            .nav-links {
                 flex-direction: column;
-                gap: 10px;
-                padding: 15px;
+                border-radius: 12px;
             }
             
-            .platform-btn {
-                padding: 18px;
-            }
-            
-            .section-title h2 {
-                font-size: 1.6rem;
-            }
-            
-            .featured-badge {
-                padding: 6px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .featured-card {
-                min-width: 280px;
-                max-width: 280px;
+            .page-header h1 {
+                font-size: 1.8rem;
             }
             
             .featured-profile {
@@ -989,162 +1128,308 @@
                 justify-content: center;
             }
             
-            .scroll-controls {
-                flex-direction: column;
-                gap: 15px;
+            .form-container {
+                padding: 20px;
             }
             
-            .categories {
-                padding: 15px;
-            }
-            
-            .category-btn {
-                padding: 10px 18px;
-                font-size: 0.9rem;
+            .form-title {
+                font-size: 1.6rem;
             }
             
             .groups-container {
                 grid-template-columns: 1fr;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1><i class="fas fa-users"></i> Directorio de Grupos</h1>
-            <p>Descubre los mejores grupos de WhatsApp y Telegram según tus intereses</p>
-        </header>
-        
-        <!-- SELECTOR DE PLATAFORMA MEJORADO -->
-        <div class="platform-selector">
-            <button class="platform-btn whatsapp active" id="whatsapp-btn">
-                <span class="badge">¡Popular!</span>
-                <i class="fab fa-whatsapp platform-icon"></i>
-                <span class="btn-text">WhatsApp</span>
-                <span class="btn-subtext">Grupos instantáneos</span>
-            </button>
+        <!-- NAVEGACIÓN PRINCIPAL -->
+        <nav class="main-nav">
+            <a href="#" class="nav-brand">
+                <i class="fas fa-users" style="font-size: 2rem; color: #25D366;"></i>
+                <h1>Directorio de Grupos</h1>
+            </a>
             
-            <button class="platform-btn telegram" id="telegram-btn">
-                <i class="fab fa-telegram platform-icon"></i>
-                <span class="btn-text">Telegram</span>
-                <span class="btn-subtext">Comunidades grandes</span>
-            </button>
-        </div>
-        
-        <!-- SECCIÓN DE GRUPOS DESTACADOS - SCROLL HORIZONTAL -->
-        <section class="featured-section">
-            <div class="section-header">
-                <div class="section-title">
-                    <i class="fas fa-crown" style="font-size: 2.5rem; color: #ff9f43;"></i>
-                    <h2>Grupos Destacados</h2>
-                </div>
-                <div class="featured-badge">
-                    <i class="fas fa-fire"></i>
-                    Arrastra para explorar
-                </div>
+            <div class="nav-links">
+                <button class="nav-link active" id="view-groups-btn">
+                    <i class="fas fa-search"></i>
+                    Ver Grupos
+                </button>
+                <button class="nav-link add-group" id="add-group-btn">
+                    <i class="fas fa-plus-circle"></i>
+                    Añadir Grupo
+                </button>
+            </div>
+        </nav>
+
+        <!-- PÁGINA 1: VER GRUPOS -->
+        <div id="view-groups-page" class="page active">
+            <header class="page-header">
+                <h1><i class="fas fa-users"></i> Directorio de Grupos</h1>
+                <p>Descubre los mejores grupos de WhatsApp y Telegram según tus intereses</p>
+            </header>
+            
+            <!-- SELECTOR DE PLATAFORMA -->
+            <div class="platform-selector">
+                <button class="platform-btn whatsapp active" id="whatsapp-btn">
+                    <span class="badge">¡Popular!</span>
+                    <i class="fab fa-whatsapp platform-icon"></i>
+                    <span class="btn-text">WhatsApp</span>
+                    <span class="btn-subtext">Grupos instantáneos</span>
+                </button>
+                
+                <button class="platform-btn telegram" id="telegram-btn">
+                    <i class="fab fa-telegram platform-icon"></i>
+                    <span class="btn-text">Telegram</span>
+                    <span class="btn-subtext">Comunidades grandes</span>
+                </button>
             </div>
             
-            <!-- CONTENEDOR DE SCROLL HORIZONTAL -->
-            <div class="scroll-container">
-                <div class="scroll-wrapper">
-                    <div class="scroll-content" id="scroll-content">
-                        <!-- Los grupos destacados se cargarán aquí dinámicamente -->
+            <!-- SECCIÓN DE GRUPOS DESTACADOS - 3 BLOQUES FIJOS -->
+            <section class="featured-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-crown" style="font-size: 2.5rem; color: #ff9f43;"></i>
+                        <h2>Grupos Destacados</h2>
+                    </div>
+                    <div class="featured-badge">
+                        <i class="fas fa-fire"></i>
+                        Recomendados por la comunidad
                     </div>
                 </div>
                 
-                <!-- BARRA DE SCROLL PERSONALIZADA -->
-                <div class="scrollbar-track">
-                    <div class="scrollbar-thumb" id="scrollbar-thumb"></div>
+                <!-- GRID DE 3 BLOQUES FIJOS -->
+                <div class="featured-grid" id="featured-grid">
+                    <!-- Los grupos destacados se cargarán aquí -->
+                </div>
+            </section>
+            
+            <!-- CONTADOR DE GRUPOS -->
+            <div class="groups-counter">
+                <div class="counter-item whatsapp">
+                    <div class="counter-number" id="whatsapp-count">0</div>
+                    <div class="counter-label">Grupos de WhatsApp</div>
+                </div>
+                
+                <div class="counter-item telegram">
+                    <div class="counter-number" id="telegram-count">0</div>
+                    <div class="counter-label">Grupos de Telegram</div>
                 </div>
             </div>
             
-            <!-- CONTROLES DE SCROLL -->
-            <div class="scroll-controls">
-                <button class="scroll-btn" id="scroll-left-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+            <!-- SECCIÓN DE CATEGORÍAS -->
+            <section class="categories-section">
+                <h2 class="categories-title">Explora por Categorías</h2>
                 
-                <div class="scroll-info" id="scroll-info">
-                    Desplázate para ver más
+                <div class="categories">
+                    <button class="category-btn active" data-category="all">
+                        <i class="fas fa-globe category-icon"></i> Todos los Grupos
+                    </button>
+                    <button class="category-btn" data-category="mascotas">
+                        <i class="fas fa-paw category-icon"></i> Mascotas
+                    </button>
+                    <button class="category-btn" data-category="comunicacion">
+                        <i class="fas fa-comments category-icon"></i> Comunicación
+                    </button>
+                    <button class="category-btn" data-category="deportes">
+                        <i class="fas fa-futbol category-icon"></i> Deportes
+                    </button>
+                    <button class="category-btn" data-category="tecnologia">
+                        <i class="fas fa-laptop-code category-icon"></i> Tecnología
+                    </button>
+                    <button class="category-btn" data-category="ocio">
+                        <i class="fas fa-gamepad category-icon"></i> Ocio
+                    </button>
+                    <button class="category-btn" data-category="educacion">
+                        <i class="fas fa-graduation-cap category-icon"></i> Educación
+                    </button>
                 </div>
                 
-                <button class="scroll-btn" id="scroll-right-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </section>
-        
-        <!-- CONTADOR DE GRUPOS -->
-        <div class="groups-counter">
-            <div class="counter-item whatsapp">
-                <div class="counter-number" id="whatsapp-count">0</div>
-                <div class="counter-label">Grupos de WhatsApp</div>
-            </div>
+                <!-- GRUPOS NORMALES -->
+                <div class="groups-container" id="groups-container">
+                    <!-- Los grupos se cargarán aquí -->
+                </div>
+            </section>
+        </div>
+
+        <!-- PÁGINA 2: AÑADIR GRUPO -->
+        <div id="add-group-page" class="page">
+            <header class="page-header add-page">
+                <h1><i class="fas fa-plus-circle"></i> Añadir Nuevo Grupo</h1>
+                <p>Comparte tu grupo con la comunidad para que más personas puedan unirse</p>
+            </header>
             
-            <div class="counter-item telegram">
-                <div class="counter-number" id="telegram-count">0</div>
-                <div class="counter-label">Grupos de Telegram</div>
+            <div class="add-group-container">
+                <!-- FORMULARIO PARA AÑADIR GRUPO -->
+                <div class="form-container">
+                    <h2 class="form-title">Información del Grupo</h2>
+                    
+                    <form id="group-form">
+                        <!-- PLATAFORMA -->
+                        <div class="form-group">
+                            <label class="form-label">Plataforma <span class="required">*</span></label>
+                            <div class="platform-options">
+                                <div class="platform-option whatsapp active" data-platform="whatsapp">
+                                    <i class="fab fa-whatsapp platform-icon"></i>
+                                    <div style="font-weight: 600;">WhatsApp</div>
+                                </div>
+                                <div class="platform-option telegram" data-platform="telegram">
+                                    <i class="fab fa-telegram platform-icon"></i>
+                                    <div style="font-weight: 600;">Telegram</div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="platform" name="platform" value="whatsapp" required>
+                        </div>
+                        
+                        <!-- NOMBRE DEL GRUPO -->
+                        <div class="form-group">
+                            <label for="group-name" class="form-label">Nombre del Grupo <span class="required">*</span></label>
+                            <input type="text" id="group-name" class="form-input" name="group-name" 
+                                   placeholder="Ej: Amantes de los Perros" required>
+                        </div>
+                        
+                        <!-- DESCRIPCIÓN -->
+                        <div class="form-group">
+                            <label for="description" class="form-label">Descripción <span class="required">*</span></label>
+                            <textarea id="description" class="form-textarea" name="description" 
+                                      placeholder="Describe el propósito, temas de conversación y reglas del grupo (mínimo 50 caracteres)" 
+                                      required></textarea>
+                        </div>
+                        
+                        <!-- CATEGORÍA -->
+                        <div class="form-group">
+                            <label for="category" class="form-label">Categoría <span class="required">*</span></label>
+                            <select id="category" class="form-select" name="category" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="mascotas">🐾 Mascotas</option>
+                                <option value="comunicacion">🗣️ Comunicación</option>
+                                <option value="deportes">⚽ Deportes</option>
+                                <option value="tecnologia">💻 Tecnología</option>
+                                <option value="ocio">🎮 Ocio</option>
+                                <option value="educacion">📚 Educación</option>
+                                <option value="negocios">💼 Negocios</option>
+                                <option value="salud">🏥 Salud</option>
+                                <option value="musica">🎵 Música</option>
+                                <option value="viajes">✈️ Viajes</option>
+                                <option value="otros">🔗 Otros</option>
+                            </select>
+                        </div>
+                        
+                        <!-- ENLACE DE INVITACIÓN -->
+                        <div class="form-group">
+                            <label for="invite-link" class="form-label">Enlace de Invitación <span class="required">*</span></label>
+                            <input type="url" id="invite-link" class="form-input" name="invite-link" 
+                                   placeholder="https://chat.whatsapp.com/... o https://t.me/..." required>
+                            <small style="color: #666; display: block; margin-top: 8px;">
+                                Asegúrate de que el enlace sea público y no expire. Para WhatsApp: Ve al grupo → Invitar → Copiar enlace
+                            </small>
+                        </div>
+                        
+                        <!-- IMAGEN (OPCIONAL) -->
+                        <div class="form-group">
+                            <label for="image-url" class="form-label">Imagen del Grupo (opcional)</label>
+                            <input type="url" id="image-url" class="form-input" name="image-url" 
+                                   placeholder="https://ejemplo.com/imagen-grupo.jpg">
+                            <small style="color: #666; display: block; margin-top: 8px;">
+                                Puedes subir la imagen a <a href="https://imgbb.com/" target="_blank">ImgBB</a> o similar y pegar el enlace
+                            </small>
+                        </div>
+                        
+                        <!-- EMAIL DEL ADMIN (OPCIONAL) -->
+                        <div class="form-group">
+                            <label for="admin-email" class="form-label">Tu Email (opcional)</label>
+                            <input type="email" id="admin-email" class="form-input" name="admin-email" 
+                                   placeholder="tu@email.com">
+                            <small style="color: #666; display: block; margin-top: 8px;">
+                                Solo para notificarte cuando tu grupo sea aprobado (no se mostrará públicamente)
+                            </small>
+                        </div>
+                        
+                        <!-- REGLAS (OPCIONAL) -->
+                        <div class="form-group">
+                            <label for="rules" class="form-label">Reglas del Grupo (opcional)</label>
+                            <textarea id="rules" class="form-textarea" name="rules" 
+                                      placeholder="Reglas importantes del grupo, si las tiene"></textarea>
+                        </div>
+                        
+                        <!-- BOTONES -->
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Enviar Grupo para Revisión
+                            </button>
+                            <button type="reset" class="reset-btn" id="reset-form">
+                                <i class="fas fa-redo"></i>
+                                Limpiar Formulario
+                            </button>
+                        </div>
+                        
+                        <!-- MENSAJES -->
+                        <div id="success-message" class="message success" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <strong>¡Grupo enviado con éxito!</strong> Tu grupo ha sido enviado para revisión. Será añadido al directorio en 24-48 horas.
+                        </div>
+                        
+                        <div id="error-message" class="message error" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <strong>Error:</strong> Por favor, completa todos los campos obligatorios correctamente.
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- INFORMACIÓN -->
+                <div class="info-cards">
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Revisión Rápida</h3>
+                        <p>Revisamos todos los grupos en 24-48 horas para asegurar calidad y seguridad.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Grupos Seguros</3>
+                        <p>Solo aceptamos grupos públicos que cumplan con nuestras normas de comunidad.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>¿Dudas?</h3>
+                        <p>Contacta con nosotros si tienes preguntas sobre el proceso de envío.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <!-- SECCIÓN DE CATEGORÍAS -->
-        <section class="categories-section">
-            <h2 class="categories-title">Explora por Categorías</h2>
-            
-            <div class="categories">
-                <button class="category-btn active" data-category="all">
-                    <i class="fas fa-globe category-icon"></i> Todos los Grupos
-                </button>
-                <button class="category-btn" data-category="mascotas">
-                    <i class="fas fa-paw category-icon"></i> Mascotas
-                </button>
-                <button class="category-btn" data-category="comunicacion">
-                    <i class="fas fa-comments category-icon"></i> Comunicación
-                </button>
-                <button class="category-btn" data-category="deportes">
-                    <i class="fas fa-futbol category-icon"></i> Deportes
-                </button>
-                <button class="category-btn" data-category="tecnologia">
-                    <i class="fas fa-laptop-code category-icon"></i> Tecnología
-                </button>
-                <button class="category-btn" data-category="ocio">
-                    <i class="fas fa-gamepad category-icon"></i> Ocio
-                </button>
-                <button class="category-btn" data-category="educacion">
-                    <i class="fas fa-graduation-cap category-icon"></i> Educación
-                </button>
-            </div>
-            
-            <div class="groups-container" id="groups-container">
-                <!-- Los grupos se cargarán aquí dinámicamente -->
-            </div>
-        </section>
-        
+
+        <!-- FOOTER -->
         <footer>
             <p><strong>Directorio de Grupos Sociales</strong> - Conectando personas a través de intereses comunes</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Cómo añadir tu grupo</a>
-                <a href="#" class="footer-link">Normas de la comunidad</a>
-                <a href="#" class="footer-link">Sugerencias</a>
-                <a href="#" class="footer-link">Contacto</a>
+            <div style="margin: 25px 0;">
+                <button class="nav-link" onclick="switchPage('view-groups')" style="margin: 0 10px;">
+                    <i class="fas fa-search"></i> Ver Grupos
+                </button>
+                <button class="nav-link add-group" onclick="switchPage('add-group')" style="margin: 0 10px;">
+                    <i class="fas fa-plus-circle"></i> Añadir Grupo
+                </button>
             </div>
             <p>© 2023 - Todos los grupos son públicos y verificados</p>
         </footer>
     </div>
 
     <script>
-        // Datos de ejemplo para grupos
+        // ==============================================
+        // CONFIGURACIÓN DEL SISTEMA DE ENVÍO
+        // ==============================================
+        const USE_LOCAL_STORAGE = true; // Guarda en localStorage del navegador
+        
+        // ==============================================
+        // DATOS DE EJEMPLO
+        // ==============================================
         const groupsData = {
             whatsapp: [
                 { 
                     id: 1, 
-                    title: "Amantes de los Perros 🐕", 
+                    title: "Amantes de los Perros", 
                     description: "Comparte fotos, consejos y experiencias sobre el cuidado de perros. Grupo activo 24/7 con dueños responsables.", 
                     category: "mascotas", 
                     members: 245, 
@@ -1155,16 +1440,17 @@
                 },
                 { 
                     id: 2, 
-                    title: "Fútbol Local ⚽", 
+                    title: "Fútbol Local", 
                     description: "Organizamos partidos los fines de semana y seguimos los torneos locales. ¡Todos los niveles son bienvenidos!", 
                     category: "deportes", 
                     members: 89, 
                     link: "https://chat.whatsapp.com/ejemplo2",
-                    imageUrl: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    imageUrl: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    featured: false
                 },
                 { 
                     id: 3, 
-                    title: "Programadores Beginners 💻", 
+                    title: "Programadores Beginners", 
                     description: "Aprende programación desde cero con apoyo de la comunidad. Compartimos recursos, proyectos y resolvemos dudas.", 
                     category: "tecnologia", 
                     members: 156, 
@@ -1175,38 +1461,39 @@
                 },
                 { 
                     id: 4, 
-                    title: "Comunicación Efectiva 🗣️", 
+                    title: "Comunicación Efectiva", 
                     description: "Técnicas y ejercicios para mejorar tu comunicación interpersonal y profesional. Incluye talleres semanales.", 
                     category: "comunicacion", 
                     members: 120, 
                     link: "https://chat.whatsapp.com/ejemplo4",
-                    imageUrl: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    imageUrl: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    featured: false
                 },
                 { 
                     id: 5, 
-                    title: "Gatos y Más Gatos 😺", 
+                    title: "Gatos y Más Gatos", 
                     description: "Para los amantes de los felinos. Compartimos fotos, videos y consejos sobre el cuidado de gatos domésticos.", 
                     category: "mascotas", 
                     members: 178, 
                     link: "https://chat.whatsapp.com/ejemplo5",
-                    imageUrl: "https://images.unsplash.com/photo-1514888286974-6d03bde4ba48?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    imageUrl: "https://images.unsplash.com/photo-1514888286974-6d03bde4ba48?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    featured: false
                 },
                 { 
                     id: 6, 
-                    title: "Senderismo 🥾", 
+                    title: "Senderismo", 
                     description: "Organizamos excursiones de senderismo los fines de semana. Rutas para todos los niveles de dificultad.", 
                     category: "deportes", 
                     members: 95, 
                     link: "https://chat.whatsapp.com/ejemplo6",
                     imageUrl: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    featured: true,
-                    highlights: ["Excursiones semanales", "Guías expertos", "Fotografía naturaleza"]
+                    featured: false
                 }
             ],
             telegram: [
                 { 
                     id: 7, 
-                    title: "Gatos del Mundo 🌍", 
+                    title: "Gatos del Mundo", 
                     description: "Comparte fotos de tus gatos y conoce razas felinas de todo el mundo. Comunidad internacional de amantes de gatos.", 
                     category: "mascotas", 
                     members: 1250, 
@@ -1217,16 +1504,17 @@
                 },
                 { 
                     id: 8, 
-                    title: "Noticias Tecnológicas 📱", 
+                    title: "Noticias Tecnológicas", 
                     description: "Las últimas novedades en tecnología, gadgets, inteligencia artificial y startups. Actualizaciones diarias.", 
                     category: "tecnologia", 
                     members: 890, 
                     link: "https://t.me/ejemplo2",
-                    imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    featured: false
                 },
                 { 
                     id: 9, 
-                    title: "Running y Maratones 🏃‍♂️", 
+                    title: "Running y Maratones", 
                     description: "Compartimos planes de entrenamiento, consejos nutricionales y organizamos carreras virtuales. ¡Corre con nosotros!", 
                     category: "deportes", 
                     members: 645, 
@@ -1237,95 +1525,108 @@
                 },
                 { 
                     id: 10, 
-                    title: "Aprender Inglés 🗽", 
+                    title: "Aprender Inglés", 
                     description: "Práctica inglés con nativos y otros estudiantes. Intercambios lingüísticos, ejercicios diarios y conversaciones.", 
                     category: "educacion", 
                     members: 1100, 
                     link: "https://t.me/ejemplo4",
-                    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    featured: false
                 },
                 { 
                     id: 11, 
-                    title: "Debates Políticos 🗳️", 
+                    title: "Debates Políticos", 
                     description: "Discusiones respetuosas sobre política nacional e internacional. Análisis de noticias y eventos actuales.", 
                     category: "comunicacion", 
                     members: 780, 
                     link: "https://t.me/ejemplo5",
-                    imageUrl: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    imageUrl: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                    featured: false
                 },
                 { 
                     id: 12, 
-                    title: "Fotografía Digital 📸", 
+                    title: "Fotografía Digital", 
                     description: "Comparte tus fotos y recibe consejos de expertos. Retos fotográficos semanales y tutoriales de edición.", 
                     category: "ocio", 
                     members: 2100, 
                     link: "https://t.me/ejemplo6",
                     imageUrl: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    featured: true,
-                    highlights: ["Críticas de expertos", "Retos semanales", "Tutoriales exclusivos"]
+                    featured: false
                 }
             ]
         };
 
-        // Variables para el scroll
+        // ==============================================
+        // VARIABLES GLOBALES
+        // ==============================================
         let currentMode = 'whatsapp';
         let currentCategory = 'all';
-        let isDragging = false;
-        let startX = 0;
-        let scrollLeft = 0;
         
-        // Elementos del DOM
-        const whatsappBtn = document.getElementById('whatsapp-btn');
-        const telegramBtn = document.getElementById('telegram-btn');
-        const whatsappCount = document.getElementById('whatsapp-count');
-        const telegramCount = document.getElementById('telegram-count');
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        const groupsContainer = document.getElementById('groups-container');
-        const scrollContent = document.getElementById('scroll-content');
-        const scrollbarThumb = document.getElementById('scrollbar-thumb');
-        const scrollLeftBtn = document.getElementById('scroll-left-btn');
-        const scrollRightBtn = document.getElementById('scroll-right-btn');
-        const scrollInfo = document.getElementById('scroll-info');
-        const scrollbarTrack = document.querySelector('.scrollbar-track');
-        
-        // Inicializar contadores
-        function updateCounters() {
-            whatsappCount.textContent = groupsData.whatsapp.length;
-            telegramCount.textContent = groupsData.telegram.length;
-        }
-        
-        // Función para actualizar la barra de scroll
-        function updateScrollbar() {
-            const scrollWidth = scrollContent.scrollWidth;
-            const clientWidth = scrollContent.clientWidth;
-            const scrollLeft = scrollContent.scrollLeft;
+        // ==============================================
+        // FUNCIONES DE NAVEGACIÓN
+        // ==============================================
+        function switchPage(page) {
+            // Ocultar todas las páginas
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active'));
             
-            if (scrollWidth > clientWidth) {
-                // Calcular tamaño y posición del thumb
-                const thumbWidth = (clientWidth / scrollWidth) * 100;
-                const thumbPosition = (scrollLeft / (scrollWidth - clientWidth)) * (100 - thumbWidth);
-                
-                scrollbarThumb.style.width = `${thumbWidth}%`;
-                scrollbarThumb.style.left = `${thumbPosition}%`;
-                scrollbarThumb.style.display = 'block';
-                
-                // Actualizar información
-                const currentCard = Math.round((scrollLeft / (scrollContent.scrollWidth - clientWidth)) * (scrollContent.children.length - 1)) + 1;
-                const totalCards = scrollContent.children.length;
-                scrollInfo.textContent = `${currentCard} de ${totalCards}`;
-            } else {
-                scrollbarThumb.style.display = 'none';
-                scrollInfo.textContent = 'Todos visibles';
+            // Mostrar página seleccionada
+            document.getElementById(`${page}-page`).classList.add('active');
+            document.getElementById(`${page}-btn`).classList.add('active');
+            
+            // Si es la página de ver grupos, cargar datos
+            if (page === 'view-groups') {
+                loadFeaturedGroups();
+                displayGroups();
+                updateCounters();
             }
             
-            // Actualizar estado de los botones
-            scrollLeftBtn.disabled = scrollLeft === 0;
-            scrollRightBtn.disabled = scrollLeft >= scrollWidth - clientWidth - 10;
+            // Scroll al inicio
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // Función para cargar grupos destacados
+        // ==============================================
+        // FUNCIONES PARA PÁGINA DE VER GRUPOS
+        // ==============================================
+        function updateCounters() {
+            document.getElementById('whatsapp-count').textContent = groupsData.whatsapp.length;
+            document.getElementById('telegram-count').textContent = groupsData.telegram.length;
+        }
+        
+        function switchMode(mode) {
+            currentMode = mode;
+            
+            // Actualizar botones
+            document.getElementById('whatsapp-btn').classList.remove('active');
+            document.getElementById('telegram-btn').classList.remove('active');
+            document.getElementById(`${mode}-btn`).classList.add('active');
+            
+            // Actualizar categorías
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.classList.contains('active')) {
+                    btn.classList.add(mode);
+                }
+            });
+            
+            displayGroups();
+        }
+        
+        function switchCategory(category) {
+            currentCategory = category;
+            
+            // Actualizar botones
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active', 'whatsapp', 'telegram');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active', currentMode);
+                }
+            });
+            
+            displayGroups();
+        }
+        
         function loadFeaturedGroups() {
-            scrollContent.innerHTML = '';
+            const container = document.getElementById('featured-grid');
             
             // Obtener todos los grupos destacados
             const allFeaturedGroups = [
@@ -1335,18 +1636,24 @@
             
             // Si no hay grupos destacados
             if (allFeaturedGroups.length === 0) {
-                scrollContent.innerHTML = `
-                    <div style="min-width: 100%; text-align: center; padding: 50px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 50px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                         <i class="fas fa-star" style="font-size: 4rem; color: #ffd700; margin-bottom: 20px;"></i>
                         <h3 style="color: #666; margin-bottom: 15px;">Próximamente más grupos destacados</h3>
                         <p style="color: #888; margin-bottom: 25px;">Estamos seleccionando los mejores grupos para mostrarte</p>
+                        <button onclick="switchPage('add-group')" style="padding: 12px 25px; background: linear-gradient(135deg, #ff9f43, #ff7f00); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                            <i class="fas fa-plus-circle"></i> Añadir Grupo Destacado
+                        </button>
                     </div>
                 `;
                 return;
             }
             
+            // Mostrar solo los primeros 3 grupos destacados
+            const featuredToShow = allFeaturedGroups.slice(0, 3);
+            
             // Crear tarjetas para cada grupo destacado
-            allFeaturedGroups.forEach((group, index) => {
+            container.innerHTML = featuredToShow.map(group => {
                 const platform = groupsData.whatsapp.some(g => g.id === group.id) ? 'whatsapp' : 'telegram';
                 const platformName = platform === 'whatsapp' ? 'WhatsApp' : 'Telegram';
                 
@@ -1362,96 +1669,60 @@
                     `;
                 }
                 
-                const card = document.createElement('div');
-                card.className = 'featured-card';
-                card.classList.add(platform);
-                card.innerHTML = `
-                    <div class="featured-header">
-                        <span class="featured-tag">
-                            <i class="fas fa-fire"></i> Destacado
-                        </span>
-                        <div class="featured-profile">
-                            <div class="featured-avatar">
-                                <img src="${group.imageUrl}" alt="${group.title}" loading="lazy">
-                            </div>
-                            <div class="featured-info">
-                                <h3>${group.title}</h3>
-                                <span class="featured-platform">${platformName}</span>
-                                <div class="featured-stats">
-                                    <div class="stat-item">
-                                        <i class="fas fa-users"></i>
-                                        <span>${group.members.toLocaleString()} miembros</span>
-                                    </div>
-                                    <div class="stat-item">
-                                        <i class="fas fa-tag"></i>
-                                        <span>${capitalizeFirstLetter(group.category)}</span>
+                return `
+                    <div class="featured-card ${platform}">
+                        <div class="featured-header">
+                            <span class="featured-tag">
+                                <i class="fas fa-fire"></i> Destacado
+                            </span>
+                            <div class="featured-profile">
+                                <div class="featured-avatar">
+                                    <img src="${group.imageUrl}" alt="${group.title}" loading="lazy">
+                                </div>
+                                <div class="featured-info">
+                                    <h3>${group.title}</h3>
+                                    <span class="featured-platform">${platformName}</span>
+                                    <div class="featured-stats">
+                                        <div class="stat-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>${group.members.toLocaleString()} miembros</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <i class="fas fa-tag"></i>
+                                            <span>${capitalizeFirstLetter(group.category)}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="featured-content">
-                        <p class="featured-description">${group.description}</p>
-                        ${highlightsHTML}
-                        <a href="${group.link}" target="_blank" class="featured-link">
-                            <i class="fas fa-rocket"></i> Unirse al grupo destacado
-                        </a>
+                        <div class="featured-content">
+                            <p class="featured-description">${group.description}</p>
+                            ${highlightsHTML}
+                            <a href="${group.link}" target="_blank" class="featured-link">
+                                <i class="fas fa-rocket"></i> Unirse al grupo destacado
+                            </a>
+                        </div>
                     </div>
                 `;
-                
-                scrollContent.appendChild(card);
-            });
+            }).join('');
             
-            // Actualizar barra de scroll después de cargar
-            setTimeout(updateScrollbar, 100);
-        }
-        
-        // Función para cambiar entre WhatsApp y Telegram
-        function switchMode(mode) {
-            currentMode = mode;
-            
-            // Actualizar botones de plataforma
-            whatsappBtn.classList.remove('active');
-            telegramBtn.classList.remove('active');
-            
-            // Actualizar botones de categoría
-            categoryButtons.forEach(btn => {
-                btn.classList.remove('whatsapp', 'telegram');
-                if (btn.classList.contains('active')) {
-                    btn.classList.add(mode);
+            // Si hay menos de 3 destacados, mostrar mensaje
+            if (allFeaturedGroups.length < 3) {
+                const emptySlots = 3 - allFeaturedGroups.length;
+                for (let i = 0; i < emptySlots; i++) {
+                    container.innerHTML += `
+                        <div style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; border: 2px dashed #ddd;">
+                            <i class="fas fa-star" style="font-size: 3rem; color: #ddd; margin-bottom: 20px;"></i>
+                            <h3 style="color: #999; margin-bottom: 10px;">Espacio disponible</h3>
+                            <p style="color: #bbb;">Próximamente más grupos destacados</p>
+                        </div>
+                    `;
                 }
-            });
-            
-            if (mode === 'whatsapp') {
-                whatsappBtn.classList.add('active');
-            } else {
-                telegramBtn.classList.add('active');
             }
-            
-            // Mostrar los grupos según el modo y categoría seleccionados
-            displayGroups();
         }
         
-        // Función para cambiar la categoría
-        function switchCategory(category) {
-            currentCategory = category;
-            
-            // Actualizar botones de categoría
-            categoryButtons.forEach(btn => {
-                btn.classList.remove('active', 'whatsapp', 'telegram');
-                if (btn.getAttribute('data-category') === category) {
-                    btn.classList.add('active', currentMode);
-                }
-            });
-            
-            // Mostrar los grupos según el modo y categoría seleccionados
-            displayGroups();
-        }
-        
-        // Función para mostrar los grupos normales
         function displayGroups() {
-            // Limpiar contenedor
-            groupsContainer.innerHTML = '';
+            const container = document.getElementById('groups-container');
             
             // Filtrar grupos según modo y categoría
             let filteredGroups = groupsData[currentMode];
@@ -1460,32 +1731,31 @@
                 filteredGroups = filteredGroups.filter(group => group.category === currentCategory);
             }
             
-            // Excluir los grupos destacados (ya se muestran en el scroll)
+            // Excluir los grupos destacados (ya se muestran en su sección)
             filteredGroups = filteredGroups.filter(group => !group.featured);
             
             // Si no hay grupos en la categoría seleccionada
             if (filteredGroups.length === 0) {
-                groupsContainer.innerHTML = `
+                container.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 50px; background: white; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
                         <i class="fas fa-users" style="font-size: 4rem; color: #ddd; margin-bottom: 20px;"></i>
                         <h3 style="color: #666; margin-bottom: 15px;">No hay más grupos en esta categoría</h3>
                         <p style="color: #888; margin-bottom: 25px;">Prueba con otra categoría o cambia a ${currentMode === 'whatsapp' ? 'Telegram' : 'WhatsApp'}</p>
-                        <button style="padding: 12px 25px; background: #25D366; color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; margin: 5px;" onclick="switchMode('${currentMode === 'whatsapp' ? 'telegram' : 'whatsapp'}')">
-                            Ver grupos de ${currentMode === 'whatsapp' ? 'Telegram' : 'WhatsApp'}
-                        </button>
-                        <button style="padding: 12px 25px; background: #0088cc; color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; margin: 5px;" onclick="switchCategory('all')">
-                            Ver todos los grupos
-                        </button>
+                        <div style="display: flex; gap: 15px; justify-content: center;">
+                            <button onclick="switchMode('${currentMode === 'whatsapp' ? 'telegram' : 'whatsapp'}')" style="padding: 12px 25px; background: #25D366; color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                                Ver grupos de ${currentMode === 'whatsapp' ? 'Telegram' : 'WhatsApp'}
+                            </button>
+                            <button onclick="switchCategory('all')" style="padding: 12px 25px; background: #0088cc; color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                                Ver todos los grupos
+                            </button>
+                        </div>
                     </div>
                 `;
                 return;
             }
             
             // Crear tarjetas para cada grupo
-            filteredGroups.forEach(group => {
-                const groupCard = document.createElement('div');
-                groupCard.className = `group-card ${currentMode}`;
-                
+            container.innerHTML = filteredGroups.map(group => {
                 const platform = currentMode === 'whatsapp' ? 'WhatsApp' : 'Telegram';
                 const iconClass = currentMode === 'whatsapp' ? 'fab fa-whatsapp' : 'fab fa-telegram';
                 
@@ -1497,30 +1767,30 @@
                     profileContent = `<i class="${iconClass} default-icon"></i>`;
                 }
                 
-                groupCard.innerHTML = `
-                    <div class="group-header">
-                        <div class="profile-circle">
-                            ${profileContent}
+                return `
+                    <div class="group-card ${currentMode}">
+                        <div class="group-header">
+                            <div class="profile-circle">
+                                ${profileContent}
+                            </div>
+                            <div class="group-title-container">
+                                <h3>${group.title}</h3>
+                                <span class="platform-badge">${platform}</span>
+                            </div>
                         </div>
-                        <div class="group-title-container">
-                            <h3>${group.title}</h3>
-                            <span class="platform-badge">${platform}</span>
+                        <div class="group-content">
+                            <p class="group-description">${group.description}</p>
+                            <div class="group-meta">
+                                <span><i class="fas fa-users"></i> ${group.members.toLocaleString()} miembros</span>
+                                <span><i class="fas fa-tag"></i> ${capitalizeFirstLetter(group.category)}</span>
+                            </div>
+                            <a href="${group.link}" target="_blank" class="group-link">
+                                <i class="fas fa-sign-in-alt"></i> Unirse al grupo
+                            </a>
                         </div>
-                    </div>
-                    <div class="group-content">
-                        <p class="group-description">${group.description}</p>
-                        <div class="group-meta">
-                            <span><i class="fas fa-users"></i> ${group.members.toLocaleString()} miembros</span>
-                            <span><i class="fas fa-tag"></i> ${capitalizeFirstLetter(group.category)}</span>
-                        </div>
-                        <a href="${group.link}" target="_blank" class="group-link">
-                            <i class="fas fa-sign-in-alt"></i> Unirse al grupo
-                        </a>
                     </div>
                 `;
-                
-                groupsContainer.appendChild(groupCard);
-            });
+            }).join('');
         }
         
         // Función auxiliar para capitalizar
@@ -1528,170 +1798,212 @@
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
         
-        // Función para desplazar a la izquierda
-        function scrollLeftAction() {
-            const cardWidth = scrollContent.querySelector('.featured-card')?.offsetWidth || 350;
-            const gap = 25;
-            scrollContent.scrollBy({
-                left: -(cardWidth + gap),
-                behavior: 'smooth'
-            });
-        }
-        
-        // Función para desplazar a la derecha
-        function scrollRightAction() {
-            const cardWidth = scrollContent.querySelector('.featured-card')?.offsetWidth || 350;
-            const gap = 25;
-            scrollContent.scrollBy({
-                left: cardWidth + gap,
-                behavior: 'smooth'
-            });
-        }
-        
-        // Event Listeners para el scroll horizontal
-        scrollContent.addEventListener('scroll', updateScrollbar);
-        
-        // Event Listeners para arrastrar
-        scrollContent.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            scrollContent.classList.add('dragging');
-            startX = e.pageX - scrollContent.offsetLeft;
-            scrollLeft = scrollContent.scrollLeft;
-        });
-        
-        scrollContent.addEventListener('mouseleave', () => {
-            isDragging = false;
-            scrollContent.classList.remove('dragging');
-        });
-        
-        scrollContent.addEventListener('mouseup', () => {
-            isDragging = false;
-            scrollContent.classList.remove('dragging');
-        });
-        
-        scrollContent.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - scrollContent.offsetLeft;
-            const walk = (x - startX) * 2; // Velocidad del scroll
-            scrollContent.scrollLeft = scrollLeft - walk;
-        });
-        
-        // Event Listeners para touch (móviles)
-        scrollContent.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            scrollContent.classList.add('dragging');
-            startX = e.touches[0].pageX - scrollContent.offsetLeft;
-            scrollLeft = scrollContent.scrollLeft;
-        });
-        
-        scrollContent.addEventListener('touchend', () => {
-            isDragging = false;
-            scrollContent.classList.remove('dragging');
-        });
-        
-        scrollContent.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.touches[0].pageX - scrollContent.offsetLeft;
-            const walk = (x - startX) * 2;
-            scrollContent.scrollLeft = scrollLeft - walk;
-        });
-        
-        // Event Listeners para la barra de scroll personalizada
-        scrollbarThumb.addEventListener('mousedown', (e) => {
-            const trackRect = scrollbarTrack.getBoundingClientRect();
-            const thumbRect = scrollbarThumb.getBoundingClientRect();
-            const startX = e.clientX;
-            const startLeft = thumbRect.left - trackRect.left;
-            
-            function onMouseMove(e) {
-                const x = e.clientX - trackRect.left;
-                const newLeft = Math.max(0, Math.min(x - startX + startLeft, trackRect.width - thumbRect.width));
-                const percentage = newLeft / (trackRect.width - thumbRect.width);
-                
-                const scrollWidth = scrollContent.scrollWidth - scrollContent.clientWidth;
-                scrollContent.scrollLeft = percentage * scrollWidth;
-            }
-            
-            function onMouseUp() {
-                document.removeEventListener('mousemove', onMouseMove);
-                document.removeEventListener('mouseup', onMouseUp);
-            }
-            
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-        });
-        
-        // Event Listeners para botones de scroll
-        scrollLeftBtn.addEventListener('click', scrollLeftAction);
-        scrollRightBtn.addEventListener('click', scrollRightAction);
-        
-        // Event Listeners para cambio de plataforma
-        whatsappBtn.addEventListener('click', () => switchMode('whatsapp'));
-        telegramBtn.addEventListener('click', () => switchMode('telegram'));
-        
-        // Event Listeners para categorías
-        categoryButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const category = btn.getAttribute('data-category');
-                switchCategory(category);
-                
-                // Efecto de scroll suave
-                groupsContainer.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
+        // ==============================================
+        // FUNCIONES PARA PÁGINA DE AÑADIR GRUPO
+        // ==============================================
+        function initAddGroupPage() {
+            // Selección de plataforma
+            document.querySelectorAll('.platform-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.platform-option').forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('platform').value = this.dataset.platform;
                 });
             });
-        });
-        
-        // Efectos interactivos para botones de plataforma
-        [whatsappBtn, telegramBtn].forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                if (!this.classList.contains('active')) {
-                    this.style.transform = 'translateY(-2px)';
+            
+            // Validación del formulario
+            document.getElementById('group-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Validar campos
+                const formData = new FormData(this);
+                const groupName = formData.get('group-name');
+                const description = formData.get('description');
+                const category = formData.get('category');
+                const inviteLink = formData.get('invite-link');
+                const platform = formData.get('platform');
+                
+                if (!groupName || !description || !category || !inviteLink || !platform) {
+                    showError('Por favor, completa todos los campos obligatorios.');
+                    return;
+                }
+                
+                if (description.length < 50) {
+                    showError('La descripción debe tener al menos 50 caracteres.');
+                    return;
+                }
+                
+                if (!inviteLink.includes('http')) {
+                    showError('El enlace debe ser una URL válida (comienza con http:// o https://).');
+                    return;
+                }
+                
+                try {
+                    if (USE_LOCAL_STORAGE) {
+                        await submitToLocalStorage(formData);
+                    } else {
+                        // Simulación
+                        await simulateSubmission(formData);
+                    }
+                    
+                    showSuccess();
+                    this.reset();
+                    
+                    // Resetear plataforma a WhatsApp
+                    document.querySelectorAll('.platform-option').forEach(opt => opt.classList.remove('active'));
+                    document.querySelector('.platform-option.whatsapp').classList.add('active');
+                    document.getElementById('platform').value = 'whatsapp';
+                    
+                } catch (error) {
+                    showError('Error al enviar el formulario: ' + error.message);
                 }
             });
             
-            btn.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('active')) {
-                    this.style.transform = 'translateY(0)';
-                }
+            // Botón reset
+            document.getElementById('reset-form').addEventListener('click', function() {
+                document.querySelectorAll('.platform-option').forEach(opt => opt.classList.remove('active'));
+                document.querySelector('.platform-option.whatsapp').classList.add('active');
+                document.getElementById('platform').value = 'whatsapp';
             });
+        }
+        
+        // ==============================================
+        // MÉTODOS DE ENVÍO
+        // ==============================================
+        
+        // Local Storage (para pruebas)
+        async function submitToLocalStorage(formData) {
+            const submission = {
+                id: Date.now(),
+                platform: formData.get('platform'),
+                groupName: formData.get('group-name'),
+                description: formData.get('description'),
+                category: formData.get('category'),
+                inviteLink: formData.get('invite-link'),
+                imageUrl: formData.get('image-url') || '',
+                adminEmail: formData.get('admin-email') || '',
+                rules: formData.get('rules') || '',
+                timestamp: new Date().toISOString(),
+                status: 'pending',
+                featured: false // Por defecto no es destacado
+            };
+            
+            // Obtener envíos existentes
+            const existing = JSON.parse(localStorage.getItem('groupSubmissions') || '[]');
+            existing.push(submission);
+            
+            // Guardar
+            localStorage.setItem('groupSubmissions', JSON.stringify(existing));
+            
+            console.log('📥 NUEVO GRUPO ENVIADO (guardado en localStorage):');
+            console.log('📱 Plataforma:', submission.platform);
+            console.log('🏷️ Nombre:', submission.groupName);
+            console.log('📝 Descripción:', submission.description);
+            console.log('🏷️ Categoría:', submission.category);
+            console.log('🔗 Enlace:', submission.inviteLink);
+            console.log('🖼️ Imagen:', submission.imageUrl || 'No');
+            console.log('📧 Email:', submission.adminEmail || 'No');
+            console.log('📋 Reglas:', submission.rules || 'No');
+            console.log('⏰ Fecha:', new Date(submission.timestamp).toLocaleString());
+            
+            // Mensaje para el administrador
+            alert('✅ Grupo guardado en localStorage. Revisa la consola (F12) para ver los datos.\n\nComo administrador, debes:\n1. Revisar la consola\n2. Verificar el grupo\n3. Añadirlo manualmente al array groupsData en el código\n4. Recargar la página para ver los cambios');
+            
+            return true;
+        }
+        
+        // Simulación (por defecto)
+        async function simulateSubmission(formData) {
+            // Simular envío
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            console.log('📥 SIMULACIÓN - NUEVO GRUPO ENVIADO:');
+            console.log('Plataforma:', formData.get('platform'));
+            console.log('Nombre:', formData.get('group-name'));
+            console.log('Descripción:', formData.get('description'));
+            console.log('Categoría:', formData.get('category'));
+            console.log('Enlace:', formData.get('invite-link'));
+            console.log('Imagen:', formData.get('image-url'));
+            console.log('Email:', formData.get('admin-email'));
+            console.log('Reglas:', formData.get('rules'));
+            
+            return true;
+        }
+        
+        // ==============================================
+        // FUNCIONES DE UI
+        // ==============================================
+        function showSuccess() {
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+            
+            // Ocultar después de 5 segundos
+            setTimeout(() => {
+                document.getElementById('success-message').style.display = 'none';
+            }, 5000);
+        }
+        
+        function showError(message) {
+            const errorEl = document.getElementById('error-message');
+            errorEl.querySelector('strong').nextSibling.textContent = ` ${message}`;
+            errorEl.style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+            
+            // Ocultar después de 5 segundos
+            setTimeout(() => {
+                errorEl.style.display = 'none';
+            }, 5000);
+        }
+        
+        // ==============================================
+        // INICIALIZACIÓN
+        // ==============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navegación
+            document.getElementById('view-groups-btn').addEventListener('click', () => switchPage('view-groups'));
+            document.getElementById('add-group-btn').addEventListener('click', () => switchPage('add-group'));
+            
+            // Página de ver grupos
+            document.getElementById('whatsapp-btn').addEventListener('click', () => switchMode('whatsapp'));
+            document.getElementById('telegram-btn').addEventListener('click', () => switchMode('telegram'));
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', () => switchCategory(btn.dataset.category));
+            });
+            
+            // Página de añadir grupo
+            initAddGroupPage();
+            
+            // Cargar datos iniciales
+            updateCounters();
+            loadFeaturedGroups();
+            displayGroups();
+            
+            // Efecto de aparición para las tarjetas
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Aplicar animaciones después de que se carguen las tarjetas
+            setTimeout(() => {
+                document.querySelectorAll('.featured-card, .group-card').forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    observer.observe(card);
+                });
+            }, 100);
         });
-        
-        // Redimensionar ventana
-        window.addEventListener('resize', updateScrollbar);
-        
-        // Inicializar la página
-        updateCounters();
-        loadFeaturedGroups();
-        displayGroups();
-        
-        // Efecto de aparición para las tarjetas
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Aplicar animaciones después de que se carguen las tarjetas
-        setTimeout(() => {
-            document.querySelectorAll('.featured-card, .group-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
-            });
-        }, 100);
     </script>
 </body>
 </html>
