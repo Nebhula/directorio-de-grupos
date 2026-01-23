@@ -1,14 +1,3 @@
-Tienes toda la razón. La función `scrollToGroup` actual **asume que el grupo está visible**, pero si el usuario ha aplicado filtros (por categoría, país o plataforma), es posible que el grupo no esté en el DOM o no sea visible, por lo que el scroll falla o no tiene sentido.
-
-La solución correcta es:
-
-1. **Quitar todos los filtros activos** (volver a "Todos" en categoría, país y ambas plataformas).
-2. **Volver a renderizar la lista completa de grupos**.
-3. **Hacer scroll suave al grupo deseado** una vez que esté garantizado que está en el DOM y visible.
-
-Aquí está el código HTML **actualizado con la lógica corregida** para el carrusel y la navegación:
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
