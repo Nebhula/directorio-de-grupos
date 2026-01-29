@@ -591,7 +591,7 @@ body {
     color: #5d4037;
 }
 
-/* MODAL DE CONTACTO */
+/* ========== MODAL DE CONTACTO - MEJORADO ========== */
 .modal {
     display: none;
     position: fixed;
@@ -599,79 +599,195 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.95);
     z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    overflow-y: auto;
 }
 
 .modal-content {
     background: var(--white);
-    border-radius: var(--border-radius-lg);
     width: 100%;
-    max-width: 500px;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    min-height: 100vh;
     position: relative;
     animation: modalOpen 0.3s ease-out;
 }
 
 @keyframes modalOpen {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
+/* GALERÍA SUPERIOR */
+.modal-gallery {
+    width: 100%;
+    height: 45vh;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.gallery-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+.gallery-nav-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-nav-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.gallery-dots {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 2;
+}
+
+.gallery-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-dot.active {
+    background: var(--primary-orange);
+    transform: scale(1.2);
+}
+
+/* CONTENIDO DEL MODAL */
 .modal-header {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: white;
-    padding: 20px;
+    padding: 25px;
     text-align: center;
-    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
 }
 
 .modal-title {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 800;
 }
 
 .modal-breed-info {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 8px;
-    font-size: 0.95rem;
+    gap: 20px;
+    margin-top: 15px;
+    font-size: 1.1rem;
     flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: inline-flex;
+}
+
+.modal-breed-info span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
 }
 
 .modal-body {
-    padding: 20px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .contact-form .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .contact-form label {
     display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
+    margin-bottom: 8px;
+    font-weight: 700;
     color: var(--dark-gray);
-    font-size: 0.9rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-form label::after {
+    content: '*';
+    color: var(--primary-orange);
+    margin-left: 4px;
+    font-weight: bold;
 }
 
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
     width: 100%;
-    padding: 10px 12px;
+    padding: 14px 18px;
     border: 2px solid #e0e0e0;
     border-radius: var(--border-radius-sm);
-    font-size: 0.95rem;
+    font-size: 1rem;
     transition: var(--transition);
+    font-weight: 500;
 }
 
 .contact-form input:focus,
@@ -679,87 +795,141 @@ body {
 .contact-form select:focus {
     outline: none;
     border-color: var(--primary-green);
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.15);
+    background: rgba(232, 245, 233, 0.3);
 }
 
 .contact-form textarea {
-    min-height: 100px;
+    min-height: 120px;
     resize: vertical;
+    padding: 16px 18px;
 }
 
 .product-selection {
-    background: var(--light-brown);
-    padding: 15px;
-    border-radius: var(--border-radius-sm);
-    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--light-brown) 0%, #e8e0d6 100%);
+    padding: 25px;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 30px;
+    border: 2px solid #d7ccc8;
 }
 
 .product-selection-title {
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-weight: 800;
+    margin-bottom: 20px;
     color: var(--secondary-brown);
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 1rem;
+    gap: 12px;
+    font-size: 1.3rem;
+    justify-content: center;
 }
 
 .product-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
 }
 
 .product-option {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 18px;
     background: white;
     border-radius: var(--border-radius-sm);
-    border: 2px solid #e0e0e0;
+    border: 3px solid #e0e0e0;
     cursor: pointer;
     transition: var(--transition);
-    gap: 10px;
+    gap: 15px;
+    position: relative;
+}
+
+.product-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(255, 152, 0, 0.1) 100%);
+    opacity: 0;
+    transition: var(--transition);
+    border-radius: var(--border-radius-sm);
+    z-index: -1;
+}
+
+.product-option:hover {
+    border-color: var(--primary-green);
+    background: var(--light-green);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.product-option:hover::before {
+    opacity: 1;
 }
 
 .product-option.active {
     border-color: var(--primary-green);
-    background: rgba(40, 167, 69, 0.1);
+    background: rgba(40, 167, 69, 0.15);
+    box-shadow: 0 0 0 3px var(--primary-green);
 }
 
 .product-option input {
-    width: 16px;
-    height: 16px;
+    width: auto;
     margin: 0;
+    flex-shrink: 0;
+    height: 22px;
+    width: 22px;
 }
 
 .product-option-label {
     flex-grow: 1;
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 700;
+    font-size: 1.1rem;
     color: var(--dark-gray);
+}
+
+.product-option-description {
+    font-size: 0.95rem;
+    color: var(--gray);
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+.product-icon {
+    font-size: 2.2rem;
+}
+
+.product-icon.egg {
+    color: #ffc107;
+}
+
+.product-icon.chick {
+    color: #ff9800;
 }
 
 .modal-actions {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 20px;
+    margin-top: 35px;
     flex-wrap: wrap;
 }
 
 .contact-btn {
     flex: 1;
-    min-width: 140px;
-    padding: 10px 15px;
+    min-width: 180px;
+    padding: 16px 25px;
     border: none;
     border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .whatsapp-btn {
@@ -767,27 +937,47 @@ body {
     color: white;
 }
 
+.whatsapp-btn:hover {
+    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
 .cancel-btn {
-    background: var(--light-gray);
+    background: linear-gradient(135deg, #f5f5f5 0%, #e9ecef 100%);
     color: #666;
     border: 2px solid #e0e0e0;
 }
 
+.cancel-btn:hover {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    transform: translateY(-3px);
+    border-color: #ccc;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
 .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.2rem;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
     color: white;
-    background: rgba(0,0,0,0.3);
-    width: 30px;
-    height: 30px;
+    background: rgba(0,0,0,0.6);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: none;
     cursor: pointer;
+    transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2001;
+}
+
+.close-modal:hover {
+    background: rgba(0,0,0,0.9);
+    transform: rotate(90deg) scale(1.1);
 }
 
 /* FOOTER */
@@ -928,9 +1118,33 @@ footer {
         min-width: auto;
     }
     
-    .modal-content {
-        width: 95%;
-        margin: 10px auto;
+    /* MODAL RESPONSIVE */
+    .modal-gallery {
+        height: 35vh;
+    }
+    
+    .gallery-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .modal-breed-info {
+        font-size: 0.95rem;
+        padding: 10px 15px;
+        gap: 10px;
+    }
+    
+    .modal-body {
+        padding: 20px 15px;
+    }
+    
+    .product-selection {
+        padding: 20px;
     }
     
     .product-options {
@@ -939,11 +1153,21 @@ footer {
     
     .modal-actions {
         flex-direction: column;
+        gap: 15px;
     }
     
     .contact-btn {
         width: 100%;
         min-width: auto;
+        padding: 14px 20px;
+    }
+    
+    .close-modal {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
     }
 }
 
@@ -980,6 +1204,38 @@ footer {
         max-width: 250px;
         text-align: center;
     }
+    
+    /* MODAL MOBILE */
+    .modal-gallery {
+        height: 30vh;
+    }
+    
+    .gallery-caption {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .gallery-nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .modal-title {
+        font-size: 1.3rem;
+    }
+    
+    .modal-breed-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
 }
 
 /* Para pantallas muy grandes */
@@ -994,6 +1250,10 @@ footer {
     .breeders-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+    }
+    
+    .modal-gallery {
+        height: 40vh;
     }
 }
 </style>
@@ -1038,2567 +1298,4 @@ footer {
     <h2 class="filters-title">
         <i class="fas fa-feather"></i> Filtrar por Tipo de Ave
     </h2>
-    <div class="filter-container" id="bird-type-filter-container">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="gallinas">Gallinas</button>
-        <button class="filter-btn" data-filter="patos">Patos</button>
-        <button class="filter-btn" data-filter="pavos">Pavos</button>
-        <button class="filter-btn" data-filter="faisanes">Faisanes</button>
-        <button class="filter-btn" data-filter="codornices">Codornices</button>
-        <button class="filter-btn" data-filter="ocas">Ocas/Gansos</button>
-        <button class="filter-btn" data-filter="perdices">Perdices</button>
-    </div>
-</section>
-
-<!-- FILTROS POR COMUNIDAD AUTÓNOMA - TODAS LAS COMUNIDADES -->
-<section class="community-filters">
-    <h2 class="community-title">
-        <i class="fas fa-map-marked-alt"></i> Filtrar por Comunidad Autónoma
-    </h2>
-    <div class="community-filter-container" id="community-filter-container">
-        <button class="community-btn active" data-community="all">
-            <span class="flag-icon">🇪🇸</span> Todas
-        </button>
-        <button class="community-btn" data-community="andalucia">
-            <span class="flag-icon">🇪🇸</span> Andalucía
-        </button>
-        <button class="community-btn" data-community="cataluna">
-            <span class="flag-icon">🇪🇸</span> Cataluña
-        </button>
-        <button class="community-btn" data-community="madrid">
-            <span class="flag-icon">🇪🇸</span> Madrid
-        </button>
-        <button class="community-btn" data-community="valencia">
-            <span class="flag-icon">🇪🇸</span> Comunidad Valenciana
-        </button>
-        <button class="community-btn" data-community="galicia">
-            <span class="flag-icon">🇪🇸</span> Galicia
-        </button>
-        <button class="community-btn" data-community="castilla_leon">
-            <span class="flag-icon">🇪🇸</span> Castilla y León
-        </button>
-        <button class="community-btn" data-community="castilla_mancha">
-            <span class="flag-icon">🇪🇸</span> Castilla-La Mancha
-        </button>
-        <button class="community-btn" data-community="pais_vasco">
-            <span class="flag-icon">🇪🇸</span> País Vasco
-        </button>
-        <button class="community-btn" data-community="aragon">
-            <span class="flag-icon">🇪🇸</span> Aragón
-        </button>
-        <button class="community-btn" data-community="murcia">
-            <span class="flag-icon">🇪🇸</span> Región de Murcia
-        </button>
-        <button class="community-btn" data-community="extremadura">
-            <span class="flag-icon">🇪🇸</span> Extremadura
-        </button>
-        <button class="community-btn" data-community="navarra">
-            <span class="flag-icon">🇪🇸</span> Navarra
-        </button>
-        <button class="community-btn" data-community="asturias">
-            <span class="flag-icon">🇪🇸</span> Asturias
-        </button>
-        <button class="community-btn" data-community="cantabria">
-            <span class="flag-icon">🇪🇸</span> Cantabria
-        </button>
-        <button class="community-btn" data-community="rioja">
-            <span class="flag-icon">🇪🇸</span> La Rioja
-        </button>
-        <button class="community-btn" data-community="islas_baleares">
-            <span class="flag-icon">🇪🇸</span> Islas Baleares
-        </button>
-        <button class="community-btn" data-community="islas_canarias">
-            <span class="flag-icon">🇪🇸</span> Islas Canarias
-        </button>
-        <button class="community-btn" data-community="ceuta">
-            <span class="flag-icon">🇪🇸</span> Ceuta
-        </button>
-        <button class="community-btn" data-community="melilla">
-            <span class="flag-icon">🇪🇸</span> Melilla
-        </button>
-    </div>
-</section>
-
-<!-- CRIADORES - 3 POR CATEGORÍA PRINCIPAL -->
-<section class="breeders-section">
-    <h2 class="section-title">Nuestros Criadores Destacados</h2>
-    <div class="breeders-grid">
-        
-        <!-- ========== GALLINAS ========== -->
-        <!-- Criador 1 - Gallinas Felices (Madrid) -->
-        <div class="breeder-card" data-breeder="Gallinas Felices" data-whatsapp="34612345678" data-province="madrid" data-birds="gallinas" data-products="both">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Criadero Gallinas Felices</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Madrid, Comunidad de Madrid
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles y crías
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Especialistas en gallinas de raza pura con más de 15 años de experiencia. Todos nuestros ejemplares cuentan con certificado genealógico y garantía de fertilidad superior al 90%.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 912 345 678
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> info@gallinasfelices.es
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos a toda España
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                    <div class="product-badge chicks">
-                        <i class="fas fa-baby"></i> Crías
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas Disponibles</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-1">
-                        <button class="breed-tab active" data-target="breed-1-1">
-                            <i class="fas fa-egg"></i> Leghorn Blanca
-                        </button>
-                        <button class="breed-tab" data-target="breed-1-2">
-                            <i class="fas fa-baby"></i> Rhode Island
-                        </button>
-                        <button class="breed-tab" data-target="breed-1-3">
-                            <i class="fas fa-feather"></i> Sussex
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-1-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Leghorn Blanca</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Leghorn"
-                                     class="breed-image"
-                                     data-breed="Leghorn Blanca"
-                                     data-breeder="Criadero Gallinas Felices"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza italiana de alta producción de huevos blancos. Excelente conversión alimenticia y temperamento activo.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>280-320 huevos/año | Peso adulto: 2-3 kg | Madurez sexual: 5-6 meses</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 2.50€/unidad | Pollitos: 8-12€ según edad</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Leghorn Blanca" data-breeder="Criadero Gallinas Felices" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Leghorn Blanca" data-breeder="Criadero Gallinas Felices" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-1-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Rhode Island Red</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1563281577-a7a47b9d3a71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Rhode Island"
-                                     class="breed-image"
-                                     data-breed="Rhode Island Red"
-                                     data-breeder="Criadero Gallinas Felices"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza americana de doble propósito. Robusta, resistente y excelente ponedora de huevos marrones.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>250-300 huevos/año | Peso adulto: 3-4 kg | Madurez sexual: 6-7 meses</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 3€/unidad | Pollitos: 10-15€ según edad</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Rhode Island Red" data-breeder="Criadero Gallinas Felices" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Rhode Island Red" data-breeder="Criadero Gallinas Felices" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-1-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Sussex</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Solo Huevos
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Sussex"
-                                     class="breed-image"
-                                     data-breed="Sussex"
-                                     data-breeder="Criadero Gallinas Felices"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza inglesa tranquila y dócil. Excelente para principiantes y producción familiar de huevos.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>200-250 huevos/año | Peso adulto: 3-3.5 kg | Madurez sexual: 6-7 meses</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 2.80€/unidad | Mínimo compra: 12 unidades</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Sussex" data-breeder="Criadero Gallinas Felices" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Sussex" data-breeder="Criadero Gallinas Felices" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Criador 2 - Granja Avícola Levante (Valencia) -->
-        <div class="breeder-card" data-breeder="Granja Avícola Levante" data-whatsapp="34623456789" data-province="valencia" data-birds="gallinas" data-products="both">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Granja Avícola Levante</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Valencia, Comunidad Valenciana
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles y crías
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero familiar con 3 generaciones de experiencia. Especializados en razas mediterráneas y gallinas camperas. Control sanitario exhaustivo.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 963 456 789
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> ventas@avicolalevante.es
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos peninsulares
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                    <div class="product-badge chicks">
-                        <i class="fas fa-baby"></i> Crías
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas Disponibles</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-2">
-                        <button class="breed-tab active" data-target="breed-2-1">
-                            <i class="fas fa-egg"></i> Castellana Negra
-                        </button>
-                        <button class="breed-tab" data-target="breed-2-2">
-                            <i class="fas fa-baby"></i> Pardo Sosa
-                        </button>
-                        <button class="breed-tab" data-target="breed-2-3">
-                            <i class="fas fa-feather"></i> Utrerana
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-2-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Castellana Negra</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Castellana Negra"
-                                     class="breed-image"
-                                     data-breed="Castellana Negra"
-                                     data-breeder="Granja Avícola Levante"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza española autóctona. Muy rústica y adaptada al clima mediterráneo. Excelente ponedora.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>220-260 huevos/año | Peso: 2.5-3 kg | Huevos: grandes y blancos</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 2.80€ | Pollitos: 9-13€ | Descuentos por cantidad</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Castellana Negra" data-breeder="Granja Avícola Levante" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Castellana Negra" data-breeder="Granja Avícola Levante" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-2-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pardo Sosa</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Pardo Sosa"
-                                     class="breed-image"
-                                     data-breed="Pardo Sosa"
-                                     data-breeder="Granja Avícola Levante"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Híbrido comercial de alta producción. Temperamento tranquilo, ideal para granjas familiares.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>300-320 huevos/año | Conversión alimenticia: 2.2:1 | Madurez: 18 semanas</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 2.20€ | Pollitas: 7-10€ | Precios por lotes</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pardo Sosa" data-breeder="Granja Avícola Levante" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pardo Sosa" data-breeder="Granja Avícola Levante" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-2-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Utrerana</h3>
-                                <span class="breed-product-tag chicks">
-                                    <i class="fas fa-baby"></i> Solo Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Utrerana"
-                                     class="breed-image"
-                                     data-breed="Utrerana"
-                                     data-breeder="Granja Avícola Levante"
-                                     data-products="chicks">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza andaluza en peligro de extinción. Conservamos línea pura con fines de recuperación.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>180-220 huevos/año | Peso: 2.8-3.2 kg | Carne de excelente calidad</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Pollitos: 12-18€ | Solo para conservación | Certificado genealógico incluido</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Utrerana" data-breeder="Granja Avícola Levante" data-products="chicks">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Utrerana" data-breeder="Granja Avícola Levante" data-products="chicks">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Criador 3 - Avícola Pirenaica (Aragón) -->
-        <div class="breeder-card" data-breeder="Avícola Pirenaica" data-whatsapp="34634567890" data-province="aragon" data-birds="gallinas" data-products="eggs">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Avícola Pirenaica</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Huesca, Aragón
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero especializado en razas de montaña y climas fríos. Nuestras instalaciones están adaptadas para garantizar el bienestar animal en condiciones extremas.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 974 567 890
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> info@avicolapirenaica.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos refrigerados
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas de Montaña</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-3">
-                        <button class="breed-tab active" data-target="breed-3-1">
-                            <i class="fas fa-egg"></i> Pita Pinta
-                        </button>
-                        <button class="breed-tab" data-target="breed-3-2">
-                            <i class="fas fa-egg"></i> Euskal Oiloa
-                        </button>
-                        <button class="breed-tab" data-target="breed-3-3">
-                            <i class="fas fa-egg"></i> Penedesenca
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-3-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pita Pinta</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Pita Pinta"
-                                     class="breed-image"
-                                     data-breed="Pita Pinta"
-                                     data-breeder="Avícola Pirenaica"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza asturiana autóctona. Plumaje moteado característico. Muy resistente a enfermedades.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>200-240 huevos/año | Huevos: crema oscuro | Peso: 2.7-3.3 kg</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 3.20€/unidad | Mínimo: 6 unidades | Fertilidad >85%</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pita Pinta" data-breeder="Avícola Pirenaica" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pita Pinta" data-breeder="Avícola Pirenaica" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-3-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Euskal Oiloa</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Euskal Oiloa"
-                                     class="breed-image"
-                                     data-breed="Euskal Oiloa"
-                                     data-breeder="Avícola Pirenaica"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza vasca de doble aptitud. Excelente para producción de huevos y carne. Muy rústica.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>180-220 huevos/año | Peso: 3-4 kg | Adaptación: climas húmedos</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 3.50€/unidad | Descuento docena: 38€ | Envío incluido</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Euskal Oiloa" data-breeder="Avícola Pirenaica" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Euskal Oiloa" data-breeder="Avícola Pirenaica" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-3-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Penedesenca</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Gallina Penedesenca"
-                                     class="breed-image"
-                                     data-breed="Penedesenca"
-                                     data-breeder="Avícola Pirenaica"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza catalana autóctona. Huevos de color chocolate intenso. Muy apreciada en gastronomía.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>160-200 huevos/año | Huevos: color chocolate | Peso: 2.5-3 kg</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 3.80€/unidad | Edad: 1-7 días | Garantía fertilidad</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Penedesenca" data-breeder="Avícola Pirenaica" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Penedesenca" data-breeder="Avícola Pirenaica" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== PATOS ========== -->
-        <!-- Criador 4 - Aves del Sur (Andalucía) -->
-        <div class="breeder-card" data-breeder="Aves del Sur" data-whatsapp="34645678901" data-province="andalucia" data-birds="patos" data-products="both">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Aves del Sur</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Sevilla, Andalucía
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles y crías
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero especializado en aves acuáticas con más de 20 años de experiencia. Contamos con lagunas naturales y sistema de cría extensivo.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 954 123 456
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> contacto@avesdelsur.es
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos 24-48h peninsulares
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                    <div class="product-badge chicks">
-                        <i class="fas fa-baby"></i> Crías
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas de Patos</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-4">
-                        <button class="breed-tab active" data-target="breed-4-1">
-                            <i class="fas fa-feather"></i> Pato Pekín
-                        </button>
-                        <button class="breed-tab" data-target="breed-4-2">
-                            <i class="fas fa-feather"></i> Pato Real
-                        </button>
-                        <button class="breed-tab" data-target="breed-4-3">
-                            <i class="fas fa-feather"></i> Corredor Indio
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-4-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pato Pekín</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Pekín"
-                                     class="breed-image"
-                                     data-breed="Pato Pekín"
-                                     data-breeder="Aves del Sur"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza de rápido crecimiento, excelente para producción de carne. Muy resistente y fácil de criar.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>140-180 huevos/año | Peso adulto: 4-5 kg | Incubación: 28 días</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 3.50€ | Patitos: 15-25€ | Descuentos por lotes</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pato Pekín" data-breeder="Aves del Sur" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pato Pekín" data-breeder="Aves del Sur" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-4-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pato Real</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1551361415-2b5a4a2c5fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Real"
-                                     class="breed-image"
-                                     data-breed="Pato Real"
-                                     data-breeder="Aves del Sur"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza ornamental y para producción. Plumaje espectacular, carne de excelente calidad.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>100-140 huevos/año | Peso: 3-4 kg | Periodo de puesta: primavera</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 4€ | Patitos: 20-30€ | Mínimo 6 unidades</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pato Real" data-breeder="Aves del Sur" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pato Real" data-breeder="Aves del Sur" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-4-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Corredor Indio</h3>
-                                <span class="breed-product-tag chicks">
-                                    <i class="fas fa-baby"></i> Solo Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Corredor Indio"
-                                     class="breed-image"
-                                     data-breed="Corredor Indio"
-                                     data-breeder="Aves del Sur"
-                                     data-products="chicks">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza erguida, excelente ponedora. No necesitan estanque. Temperamento activo y curioso.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>200-250 huevos/año | Peso: 1.5-2 kg | Postura: todo el año</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Patitos: 12-18€ | Edad: 1 día a 8 semanas | Vacunados</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Corredor Indio" data-breeder="Aves del Sur" data-products="chicks">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Corredor Indio" data-breeder="Aves del Sur" data-products="chicks">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Criador 5 - Patos del Ebro (Cataluña) -->
-        <div class="breeder-card" data-breeder="Patos del Ebro" data-whatsapp="34656789012" data-province="cataluna" data-birds="patos" data-products="eggs">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Patos del Ebro</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Lleida, Cataluña
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero situado en el delta del Ebro, especializado en patos para foie gras y producción gourmet. Sistema de alimentación natural.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 973 456 789
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> info@patosebro.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos refrigerados gourmet
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas para Foie Gras</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-5">
-                        <button class="breed-tab active" data-target="breed-5-1">
-                            <i class="fas fa-egg"></i> Mulard
-                        </button>
-                        <button class="breed-tab" data-target="breed-5-2">
-                            <i class="fas fa-egg"></i> Barbarie
-                        </button>
-                        <button class="breed-tab" data-target="breed-5-3">
-                            <i class="fas fa-egg"></i> Rouen
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-5-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pato Mulard</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Mulard"
-                                     class="breed-image"
-                                     data-breed="Pato Mulard"
-                                     data-breeder="Patos del Ebro"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Híbrido para producción de foie gras. Excelente conversión alimenticia y calidad de hígado.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>No pone huevos (híbrido) | Peso: 4-6 kg | Cebo: 12-14 semanas</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 5.50€ | Fertilidad: 75-80% | Envío especializado</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pato Mulard" data-breeder="Patos del Ebro" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pato Mulard" data-breeder="Patos del Ebro" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-5-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pato Barbarie</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1551361415-2b5a4a2c5fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Barbarie"
-                                     class="breed-image"
-                                     data-breed="Pato Barbarie"
-                                     data-breeder="Patos del Ebro"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza sudamericana. Carne magra y sabrosa. Menos grasa que otras razas.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>80-100 huevos/año | Peso: 3-4 kg | Incubación: 35 días</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 4.80€ | Mínimo: 10 unidades | Garantía calidad</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pato Barbarie" data-breeder="Patos del Ebro" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pato Barbarie" data-breeder="Patos del Ebro" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-5-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pato Rouen</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Rouen"
-                                     class="breed-image"
-                                     data-breed="Pato Rouen"
-                                     data-breeder="Patos del Ebro"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza francesa para producción de carne. Crecimiento rápido y buena conversión.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>120-150 huevos/año | Peso: 4-5 kg | Madurez: 8-10 semanas</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 4.20€ | Docena: 48€ | Envío prioritario</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pato Rouen" data-breeder="Patos del Ebro" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pato Rouen" data-breeder="Patos del Ebro" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Criador 6 - Acuáticas Gallegas (Galicia) -->
-        <div class="breeder-card" data-breeder="Acuáticas Gallegas" data-whatsapp="34667890123" data-province="galicia" data-birds="patos" data-products="both">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Acuáticas Gallegas</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Pontevedra, Galicia
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles y crías
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero especializado en aves acuáticas para rías gallegas. Sistema de cría semi-extensivo con acceso a aguas naturales.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 986 567 890
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> info@acuaticasgallegas.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos NW peninsular
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                    <div class="product-badge chicks">
-                        <i class="fas fa-baby"></i> Crías
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas de Agua Fría</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-6">
-                        <button class="breed-tab active" data-target="breed-6-1">
-                            <i class="fas fa-feather"></i> Cayuga
-                        </button>
-                        <button class="breed-tab" data-target="breed-6-2">
-                            <i class="fas fa-feather"></i> Sueco Azul
-                        </button>
-                        <button class="breed-tab" data-target="breed-6-3">
-                            <i class="fas fa-feather"></i> Appleyard
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-6-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pato Cayuga</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Cayuga"
-                                     class="breed-image"
-                                     data-breed="Pato Cayuga"
-                                     data-breeder="Acuáticas Gallegas"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza americana con plumaje verde iridiscente. Muy resistente al frío y enfermedades.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>100-150 huevos/año | Huevos: negros al inicio | Peso: 3-4 kg</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 4.50€ | Patitos: 18-25€ | Resistentes a bajas temperaturas</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pato Cayuga" data-breeder="Acuáticas Gallegas" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pato Cayuga" data-breeder="Acuáticas Gallegas" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-6-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pato Sueco Azul</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1551361415-2b5a4a2c5fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Sueco Azul"
-                                     class="breed-image"
-                                     data-breed="Pato Sueco Azul"
-                                     data-breeder="Acuáticas Gallegas"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza sueca de doble propósito. Excelente para carne y huevos. Muy tranquilo.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>120-180 huevos/año | Peso: 3.5-4.5 kg | Adaptación: climas fríos</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 4.20€ | Patitos: 16-22€ | Ideal para climas atlánticos</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pato Sueco Azul" data-breeder="Acuáticas Gallegas" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pato Sueco Azul" data-breeder="Acuáticas Gallegas" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-6-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pato Appleyard</h3>
-                                <span class="breed-product-tag chicks">
-                                    <i class="fas fa-baby"></i> Solo Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pato Appleyard"
-                                     class="breed-image"
-                                     data-breed="Pato Appleyard"
-                                     data-breeder="Acuáticas Gallegas"
-                                     data-products="chicks">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza inglesa ornamental y productiva. Plumaje llamativo, temperamento dócil.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>150-220 huevos/año | Peso: 3-3.5 kg | Excelente madre</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Patitos: 20-28€ | Edad: 1-4 semanas | Vacunados y desparasitados</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pato Appleyard" data-breeder="Acuáticas Gallegas" data-products="chicks">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pato Appleyard" data-breeder="Acuáticas Gallegas" data-products="chicks">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== PAVOS ========== -->
-        <!-- Criador 7 - Pavos de Castilla (Castilla y León) -->
-        <div class="breeder-card" data-breeder="Pavos de Castilla" data-whatsapp="34678901234" data-province="castilla_leon" data-birds="pavos" data-products="both">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Pavos de Castilla</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Valladolid, Castilla y León
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles y crías
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero tradicional especializado en pavos para festividades. Sistema de cría extensivo con alimentación natural a base de cereales.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 983 456 789
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> info@pavoscastilla.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos nacionales
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                    <div class="product-badge chicks">
-                        <i class="fas fa-baby"></i> Crías
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas de Pavos</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-7">
-                        <button class="breed-tab active" data-target="breed-7-1">
-                            <i class="fas fa-drumstick-bite"></i> Bronce
-                        </button>
-                        <button class="breed-tab" data-target="breed-7-2">
-                            <i class="fas fa-drumstick-bite"></i> Blanco de Beltsville
-                        </button>
-                        <button class="breed-tab" data-target="breed-7-3">
-                            <i class="fas fa-drumstick-bite"></i> Negro de Sologne
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-7-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pavo Bronce</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1549317601-8f5d42fd4c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Bronce"
-                                     class="breed-image"
-                                     data-breed="Pavo Bronce"
-                                     data-breeder="Pavos de Castilla"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza tradicional para festividades. Carne jugosa y de excelente sabor. Tamaño grande.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>80-120 huevos/año | Peso: 8-12 kg (macho) | Incubación: 28 días</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 6€ | Pavitos: 25-40€ | Ideal para Navidad</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Pavo Bronce" data-breeder="Pavos de Castilla" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Pavo Bronce" data-breeder="Pavos de Castilla" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-7-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Blanco de Beltsville</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Blanco de Beltsville"
-                                     class="breed-image"
-                                     data-breed="Blanco de Beltsville"
-                                     data-breeder="Pavos de Castilla"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza de tamaño medio. Carne tierna y baja en grasa. Piel blanca, ideal para presentación.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>100-140 huevos/año | Peso: 6-9 kg (macho) | Madurez: 16-20 semanas</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 5.50€ | Pavitos: 22-35€ | Tamaño familiar</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Blanco de Beltsville" data-breeder="Pavos de Castilla" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Blanco de Beltsville" data-breeder="Pavos de Castilla" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-7-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Negro de Sologne</h3>
-                                <span class="breed-product-tag chicks">
-                                    <i class="fas fa-baby"></i> Solo Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Negro de Sologne"
-                                     class="breed-image"
-                                     data-breed="Negro de Sologne"
-                                     data-breeder="Pavos de Castilla"
-                                     data-products="chicks">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza francesa rústica. Muy resistente a enfermedades. Carne de sabor intenso.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>60-100 huevos/año | Peso: 7-10 kg (macho) | Crecimiento lento</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Pavitos: 30-45€ | Edad: 1-8 semanas | Cría ecológica</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Negro de Sologne" data-breeder="Pavos de Castilla" data-products="chicks">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Negro de Sologne" data-breeder="Pavos de Castilla" data-products="chicks">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Criador 8 - Pavos Extremeños (Extremadura) -->
-        <div class="breeder-card" data-breeder="Pavos Extremeños" data-whatsapp="34689012345" data-province="extremadura" data-birds="pavos" data-products="eggs">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Pavos Extremeños</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Cáceres, Extremadura
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero ecológico certificado. Nuestros pavos se crían en dehesas extremeñas con alimentación 100% natural y certificación ecológica.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 927 567 890
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> ecológico@pavosextremenos.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos ecológicos certificados
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas Ecológicas</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-8">
-                        <button class="breed-tab active" data-target="breed-8-1">
-                            <i class="fas fa-leaf"></i> Rojo de Bourbon
-                        </button>
-                        <button class="breed-tab" data-target="breed-8-2">
-                            <i class="fas fa-leaf"></i> Mudo o Criollo
-                        </button>
-                        <button class="breed-tab" data-target="breed-8-3">
-                            <i class="fas fa-leaf"></i> Narragansett
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-8-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pavo Rojo de Bourbon</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1549317601-8f5d42fd4c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Rojo de Bourbon"
-                                     class="breed-image"
-                                     data-breed="Rojo de Bourbon"
-                                     data-breeder="Pavos Extremeños"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza americana de plumaje rojizo. Excelente para cría ecológica, muy resistente.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>90-130 huevos/año | Peso: 7-10 kg | Certificación ecológica EU</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 7€ | Certificado ecológico incluido | Envío especial</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Rojo de Bourbon" data-breeder="Pavos Extremeños" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Rojo de Bourbon" data-breeder="Pavos Extremeños" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-8-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pavo Mudo o Criollo</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Mudo"
-                                     class="breed-image"
-                                     data-breed="Mudo o Criollo"
-                                     data-breeder="Pavos Extremeños"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza silenciosa, ideal para zonas residenciales. Carne de excelente calidad.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>70-110 huevos/año | Peso: 5-8 kg | No emite sonidos fuertes</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 6.50€ | Fertilidad: 80-85% | Envío refrigerado</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Mudo o Criollo" data-breeder="Pavos Extremeños" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Mudo o Criollo" data-breeder="Pavos Extremeños" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-8-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pavo Narragansett</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Narragansett"
-                                     class="breed-image"
-                                     data-breed="Narragansett"
-                                     data-breeder="Pavos Extremeños"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza histórica americana. Muy buena madre, excelente para cría natural.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>80-120 huevos/año | Peso: 8-11 kg | Instinto maternal muy desarrollado</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 6.80€ | Producción ecológica | Trazabilidad completa</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Narragansett" data-breeder="Pavos Extremeños" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Narragansett" data-breeder="Pavos Extremeños" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Criador 9 - Pavos del Norte (País Vasco) -->
-        <div class="breeder-card" data-breeder="Pavos del Norte" data-whatsapp="34690123456" data-province="pais_vasco" data-birds="pavos" data-products="both">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Pavos del Norte</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Álava, País Vasco
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles y crías
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero especializado en razas adaptadas al clima atlántico. Sistema intensivo con control de calidad exhaustivo y trazabilidad.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 945 678 901
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> comercial@pavosnorte.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Logística refrigerada
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                    <div class="product-badge chicks">
-                        <i class="fas fa-baby"></i> Crías
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas del Norte</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-9">
-                        <button class="breed-tab active" data-target="breed-9-1">
-                            <i class="fas fa-drumstick-bite"></i> Blanco Gigante
-                        </button>
-                        <button class="breed-tab" data-target="breed-9-2">
-                            <i class="fas fa-drumstick-bite"></i> Norfolk Negro
-                        </button>
-                        <button class="breed-tab" data-target="breed-9-3">
-                            <i class="fas fa-drumstick-bite"></i> Royal Palm
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-9-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pavo Blanco Gigante</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1549317601-8f5d42fd4c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Blanco Gigante"
-                                     class="breed-image"
-                                     data-breed="Blanco Gigante"
-                                     data-breeder="Pavos del Norte"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza comercial de gran tamaño. Alta conversión alimenticia y rendimiento en canal.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>100-150 huevos/año | Peso: 10-15 kg (macho) | Crecimiento: 14-18 semanas</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 5.80€ | Pavitos: 28-42€ | Para producción intensiva</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Blanco Gigante" data-breeder="Pavos del Norte" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Blanco Gigante" data-breeder="Pavos del Norte" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-9-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pavo Norfolk Negro</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Norfolk Negro"
-                                     class="breed-image"
-                                     data-breed="Norfolk Negro"
-                                     data-breeder="Pavos del Norte"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza inglesa de plumaje negro brillante. Carne de sabor intenso, muy apreciada.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>70-110 huevos/año | Peso: 7-10 kg | Resistente a climas húmedos</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 6.20€ | Pavitos: 32-46€ | Calidad gourmet</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Norfolk Negro" data-breeder="Pavos del Norte" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Norfolk Negro" data-breeder="Pavos del Norte" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-9-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Pavo Royal Palm</h3>
-                                <span class="breed-product-tag chicks">
-                                    <i class="fas fa-baby"></i> Solo Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Pavo Royal Palm"
-                                     class="breed-image"
-                                     data-breed="Royal Palm"
-                                     data-breeder="Pavos del Norte"
-                                     data-products="chicks">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Raza ornamental de gran belleza. Plumaje blanco y negro. Tamaño medio, temperamento tranquilo.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>60-100 huevos/año | Peso: 5-7 kg | Para exposición y ornamental</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Pavitos: 35-50€ | Edad: 1-6 semanas | Vacunados y anillados</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Royal Palm" data-breeder="Pavos del Norte" data-products="chicks">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Royal Palm" data-breeder="Pavos del Norte" data-products="chicks">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== FAISANES ========== -->
-        <!-- Criador 10 - Faisanes de La Mancha (Castilla-La Mancha) -->
-        <div class="breeder-card" data-breeder="Faisanes de La Mancha" data-whatsapp="34701234567" data-province="castilla_mancha" data-birds="faisanes" data-products="both">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Faisanes de La Mancha</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Toledo, Castilla-La Mancha
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles y crías
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Mayor criadero de faisanes de España. Especializados en repoblación cinegética y producción ornamental. Más de 30 años de experiencia.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 925 678 901
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> faisanes@lamancha.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Transporte especializado
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                    <div class="product-badge chicks">
-                        <i class="fas fa-baby"></i> Crías
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas de Faisanes</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-10">
-                        <button class="breed-tab active" data-target="breed-10-1">
-                            <i class="fas fa-feather-alt"></i> Faisán Vulgar
-                        </button>
-                        <button class="breed-tab" data-target="breed-10-2">
-                            <i class="fas fa-feather-alt"></i> Faisán Dorado
-                        </button>
-                        <button class="breed-tab" data-target="breed-10-3">
-                            <i class="fas fa-feather-alt"></i> Faisán Plateado
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-10-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Vulgar</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Vulgar"
-                                     class="breed-image"
-                                     data-breed="Faisán Vulgar"
-                                     data-breeder="Faisanes de La Mancha"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Faisán común para repoblación cinegética. Muy resistente y adaptado a la península.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>40-60 huevos/año | Peso: 1.2-1.8 kg | Madurez: 6-8 meses</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 2.50€ | Pollitos: 8-15€ | Para cotos de caza</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Faisán Vulgar" data-breeder="Faisanes de La Mancha" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Faisán Vulgar" data-breeder="Faisanes de La Mancha" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-10-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Dorado</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1551361415-2b5a4a2c5fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Dorado"
-                                     class="breed-image"
-                                     data-breed="Faisán Dorado"
-                                     data-breeder="Faisanes de La Mancha"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Faisán ornamental de gran belleza. Plumaje dorado espectacular. Para parques y jardines.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>30-50 huevos/año | Peso: 0.8-1.2 kg | Incubación: 24-25 días</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 3.50€ | Pollitos: 12-20€ | Ornamental</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Faisán Dorado" data-breeder="Faisanes de La Mancha" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Faisán Dorado" data-breeder="Faisanes de La Mancha" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-10-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Plateado</h3>
-                                <span class="breed-product-tag chicks">
-                                    <i class="fas fa-baby"></i> Solo Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Plateado"
-                                     class="breed-image"
-                                     data-breed="Faisán Plateado"
-                                     data-breeder="Faisanes de La Mancha"
-                                     data-products="chicks">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Faisán ornamental plateado. Muy resistente al frío. Carne de calidad gourmet.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>35-55 huevos/año | Peso: 1.5-2 kg | Para climas fríos</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Pollitos: 15-25€ | Edad: 1-4 semanas | Para restauración</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Faisán Plateado" data-breeder="Faisanes de La Mancha" data-products="chicks">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Faisán Plateado" data-breeder="Faisanes de La Mancha" data-products="chicks">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Criador 11 - Faisanera Catalana (Cataluña) -->
-        <div class="breeder-card" data-breeder="Faisanera Catalana" data-whatsapp="34712345678" data-province="cataluna" data-birds="faisanes" data-products="eggs">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Faisanera Catalana</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Barcelona, Cataluña
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero especializado en faisanes para alta restauración. Producción controlada con certificación de calidad y trazabilidad.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 933 456 789
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> gourmet@faisaneracatalana.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos gourmet
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas Gourmet</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-11">
-                        <button class="breed-tab active" data-target="breed-11-1">
-                            <i class="fas fa-utensils"></i> Lady Amherst
-                        </button>
-                        <button class="breed-tab" data-target="breed-11-2">
-                            <i class="fas fa-utensils"></i> Reeves
-                        </button>
-                        <button class="breed-tab" data-target="breed-11-3">
-                            <i class="fas fa-utensils"></i> Swinhoe
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-11-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Lady Amherst</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Lady Amherst"
-                                     class="breed-image"
-                                     data-breed="Lady Amherst"
-                                     data-breeder="Faisanera Catalana"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Faisán ornamental de extraordinaria belleza. Plumaje blanco y negro con colores metálicos.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>25-40 huevos/año | Peso: 0.7-1 kg | Para coleccionistas</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 4.50€ | Rareza | Certificado de pureza</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Lady Amherst" data-breeder="Faisanera Catalana" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Lady Amherst" data-breeder="Faisanera Catalana" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-11-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Reeves</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1551361415-2b5a4a2c5fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Reeves"
-                                     class="breed-image"
-                                     data-breed="Reeves"
-                                     data-breeder="Faisanera Catalana"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Faisán de gran tamaño con cola muy larga. Carne excelente para restaurantes de alta cocina.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>20-35 huevos/año | Peso: 1.5-2 kg | Cola hasta 2 metros</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 5€ | Para alta restauración | Calidad superior</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Reeves" data-breeder="Faisanera Catalana" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Reeves" data-breeder="Faisanera Catalana" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-11-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Swinhoe</h3>
-                                <span class="breed-product-tag eggs">
-                                    <i class="fas fa-egg"></i> Huevos Fértiles
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Swinhoe"
-                                     class="breed-image"
-                                     data-breed="Swinhoe"
-                                     data-breeder="Faisanera Catalana"
-                                     data-products="eggs">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Faisán azul endémico de Taiwán. En peligro de extinción. Para proyectos de conservación.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>15-30 huevos/año | Peso: 0.8-1.2 kg | Protegido CITES</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos fértiles: 6€ | Solo para conservación | Permisos necesarios</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Swinhoe" data-breeder="Faisanera Catalana" data-products="eggs">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Swinhoe" data-breeder="Faisanera Catalana" data-products="eggs">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Criador 12 - Faisanes del Norte (Asturias) -->
-        <div class="breeder-card" data-breeder="Faisanes del Norte" data-whatsapp="34723456789" data-province="asturias" data-birds="faisanes" data-products="both">
-            <div class="breeder-header">
-                <h3 class="breeder-name">Faisanes del Norte</h3>
-                <div class="breeder-location">
-                    <i class="fas fa-map-marker-alt"></i> Oviedo, Asturias
-                </div>
-                <div class="products-available">
-                    <i class="fas fa-shopping-basket"></i> Huevos fértiles y crías
-                </div>
-            </div>
-            <div class="breeder-description">
-                <p class="description-text">Criadero especializado en faisanes para climas atlánticos. Sistema de cría en semilibertad adaptado a la humedad y frío del norte.</p>
-                <div class="breeder-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i> +34 985 678 901
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i> info@faisanesnorte.com
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-truck"></i> Envíos norte peninsular
-                    </div>
-                </div>
-                <div class="product-badges">
-                    <div class="product-badge eggs">
-                        <i class="fas fa-egg"></i> Huevos Fértiles
-                    </div>
-                    <div class="product-badge chicks">
-                        <i class="fas fa-baby"></i> Crías
-                    </div>
-                </div>
-            </div>
-            
-            <div class="breeds-section">
-                <h3 class="breeds-title">Razas del Norte</h3>
-                <div class="breeds-tabs-container">
-                    <div class="breeds-tabs" id="tabs-12">
-                        <button class="breed-tab active" data-target="breed-12-1">
-                            <i class="fas fa-feather-alt"></i> Melanístico Mutante
-                        </button>
-                        <button class="breed-tab" data-target="breed-12-2">
-                            <i class="fas fa-feather-alt"></i> Tenebroso
-                        </button>
-                        <button class="breed-tab" data-target="breed-12-3">
-                            <i class="fas fa-feather-alt"></i> Mongolian
-                        </button>
-                    </div>
-                    
-                    <div class="breeds-tab-content active" id="breed-12-1">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Melanístico Mutante</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Melanístico"
-                                     class="breed-image"
-                                     data-breed="Melanístico Mutante"
-                                     data-breeder="Faisanes del Norte"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Variedad negra del faisán común. Muy resistente a enfermedades. Para cotos norteños.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>45-65 huevos/año | Peso: 1.3-1.9 kg | Adaptado a humedad</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 2.80€ | Pollitos: 10-18€ | Resistencia comprobada</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Melanístico Mutante" data-breeder="Faisanes del Norte" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Melanístico Mutante" data-breeder="Faisanes del Norte" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-12-2">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Tenebroso</h3>
-                                <span class="breed-product-tag both">
-                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1551361415-2b5a4a2c5fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Tenebroso"
-                                     class="breed-image"
-                                     data-breed="Tenebroso"
-                                     data-breeder="Faisanes del Norte"
-                                     data-products="both">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Variedad oscura muy apreciada en cinegética. Mayor peso que el faisán común.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>40-60 huevos/año | Peso: 1.5-2.2 kg | Carne de calidad</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Huevos: 3€ | Pollitos: 12-20€ | Para repoblación premium</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Tenebroso" data-breeder="Faisanes del Norte" data-products="both">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Tenebroso" data-breeder="Faisanes del Norte" data-products="both">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="breeds-tab-content" id="breed-12-3">
-                        <div class="breed-detail">
-                            <div class="breed-title-container">
-                                <h3 class="breed-title">Faisán Mongolian</h3>
-                                <span class="breed-product-tag chicks">
-                                    <i class="fas fa-baby"></i> Solo Crías
-                                </span>
-                            </div>
-                            <div class="breed-image-container">
-                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
-                                     alt="Faisán Mongolian"
-                                     class="breed-image"
-                                     data-breed="Mongolian"
-                                     data-breeder="Faisanes del Norte"
-                                     data-products="chicks">
-                            </div>
-                            <div class="breed-info">
-                                <div class="info-item">
-                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
-                                    <p>Faisán de climas extremos. Muy resistente al frío. Ideal para cotos de montaña.</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
-                                    <p>35-55 huevos/año | Peso: 1.4-2 kg | Soporta -15°C</p>
-                                </div>
-                                <div class="info-item">
-                                    <h4><i class="fas fa-tag"></i> Precios</h4>
-                                    <p>Pollitos: 15-25€ | Edad: 1-6 semanas | Para alta montaña</p>
-                                </div>
-                            </div>
-                            <div class="breed-actions">
-                                <button class="breed-btn info-btn" data-breed="Mongolian" data-breeder="Faisanes del Norte" data-products="chicks">
-                                    <i class="fas fa-info-circle"></i> Más info
-                                </button>
-                                <button class="breed-btn buy-btn" data-breed="Mongolian" data-breeder="Faisanes del Norte" data-products="chicks">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- MODAL DE CONTACTO -->
-<div class="modal" id="contactModal">
-    <div class="modal-content">
-        <button class="close-modal" id="closeModal">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="modal-header">
-            <h3 class="modal-title">Solicitar Información</h3>
-            <div class="modal-breed-info">
-                <i class="fas fa-egg"></i>
-                <span>Raza: <span id="modalBreedName">Nombre de la raza</span></span>
-            </div>
-            <div class="modal-breed-info">
-                <i class="fas fa-user"></i>
-                <span>Criador: <span id="modalBreederName">Nombre del criador</span></span>
-            </div>
-        </div>
-        <div class="modal-body">
-            <form class="contact-form" id="breedContactForm">
-                <div class="form-group">
-                    <label for="contactName">Nombre Completo</label>
-                    <input type="text" id="contactName" required>
-                </div>
-                <div class="form-group">
-                    <label for="contactEmail">Email</label>
-                    <input type="email" id="contactEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="contactPhone">Teléfono</label>
-                    <input type="tel" id="contactPhone" required>
-                </div>
-                <div class="form-group">
-                    <label for="contactProvince">Provincia</label>
-                    <select id="contactProvince" required>
-                        <option value="">Selecciona tu provincia</option>
-                        <option value="madrid">Madrid</option>
-                        <option value="barcelona">Barcelona</option>
-                        <option value="valencia">Valencia</option>
-                        <option value="sevilla">Sevilla</option>
-                        <option value="zaragoza">Zaragoza</option>
-                        <option value="malaga">Málaga</option>
-                        <option value="murcia">Murcia</option>
-                        <option value="palma">Palma de Mallorca</option>
-                        <option value="las_palmas">Las Palmas</option>
-                        <option value="bilbao">Bilbao</option>
-                        <option value="alicante">Alicante</option>
-                        <option value="cordoba">Córdoba</option>
-                        <option value="valladolid">Valladolid</option>
-                        <option value="vigo">Vigo</option>
-                        <option value="gijon">Gijón</option>
-                        <option value="hospitalet">L'Hospitalet</option>
-                        <option value="la_coruna">A Coruña</option>
-                        <option value="granada">Granada</option>
-                        <option value="elche">Elche</option>
-                        <option value="oviedo">Oviedo</option>
-                        <option value="santa_cruz">Santa Cruz de Tenerife</option>
-                        <option value="badajoz">Badajoz</option>
-                        <option value="cartagena">Cartagena</option>
-                        <option value="salamanca">Salamanca</option>
-                        <option value="logrono">Logroño</option>
-                        <option value="san_sebastian">San Sebastián</option>
-                        <option value="lerida">Lleida</option>
-                        <option value="melilla">Melilla</option>
-                        <option value="ceuta">Ceuta</option>
-                    </select>
-                </div>
-                
-                <div class="product-selection">
-                    <div class="product-selection-title">
-                        <i class="fas fa-shopping-basket"></i> ¿Qué producto te interesa?
-                    </div>
-                    <div class="product-options" id="productOptions">
-                        <!-- Options inserted by JavaScript -->
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="contactMessage">Mensaje</label>
-                    <textarea id="contactMessage" required placeholder="Especifica cantidad de huevos o ejemplares que necesitas"></textarea>
-                </div>
-                
-                <div class="modal-actions">
-                    <button type="button" class="contact-btn whatsapp-btn" id="whatsappContact">
-                        <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
-                    </button>
-                    <button type="button" class="contact-btn cancel-btn" id="cancelContact">
-                        <i class="fas fa-times"></i> Cancelar
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-    <span class="footer-logo"><i class="fas fa-egg"></i> CriadoresAves.es</span>
-    <p class="footer-about">Directorio COMPLETO de criadores de aves en España. Conectamos a criadores profesionales con aficionados y empresas en TODAS las comunidades autónomas.</p>
-    <div class="footer-contact">
-        <div class="contact-info">
-            <i class="fas fa-envelope"></i> info@criadoresaves.es
-        </div>
-        <div class="contact-info">
-            <i class="fas fa-phone"></i> +34 912 345 678
-        </div>
-        <div class="contact-info">
-            <i class="fas fa-map-marker-alt"></i> Madrid, España
-        </div>
-    </div>
-    <div class="footer-nav">
-        <a href="#"><i class="fas fa-home"></i> Inicio</a>
-        <a href="#"><i class="fas fa-search"></i> Buscar</a>
-        <a href="#"><i class="fas fa-egg"></i> Tipos de Aves</a>
-        <a href="#"><i class="fas fa-info-circle"></i> Sobre Nosotros</a>
-        <a href="#"><i class="fas fa-phone"></i> Contacto</a>
-    </div>
-    <p class="copyright">© 2026 CriadoresAves.es - Directorio nacional de criadores verificados. Especialistas en huevos fértiles y aves por raza.</p>
-</footer>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // SISTEMA DE PESTAÑAS
-    document.querySelectorAll('.breeds-tabs-container').forEach(container => {
-        const tabs = container.querySelectorAll('.breed-tab');
-        const tabContents = container.querySelectorAll('.breeds-tab-content');
-        
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetId = tab.getAttribute('data-target');
-                
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                tab.classList.add('active');
-                document.getElementById(targetId).classList.add('active');
-            });
-        });
-    });
-    
-    // Modal de contacto
-    const modal = document.getElementById('contactModal');
-    const closeModal = document.getElementById('closeModal');
-    const cancelContact = document.getElementById('cancelContact');
-    const modalBreedName = document.getElementById('modalBreedName');
-    const modalBreederName = document.getElementById('modalBreederName');
-    const whatsappContact = document.getElementById('whatsappContact');
-    const productOptionsContainer = document.getElementById('productOptions');
-    
-    let selectedBreed = '';
-    let selectedBreeder = '';
-    let breederWhatsApp = '';
-    let availableProducts = '';
-    
-    // Abrir modal
-    function openModal(breed, breeder, whatsapp, products) {
-        selectedBreed = breed;
-        selectedBreeder = breeder;
-        breederWhatsApp = whatsapp;
-        availableProducts = products;
-        
-        modalBreedName.textContent = selectedBreed;
-        modalBreederName.textContent = selectedBreeder;
-        
-        generateProductOptions(availableProducts);
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-    
-    // Event listeners para abrir modal
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('buy-btn') || e.target.classList.contains('info-btn') ||
-            e.target.closest('.buy-btn') || e.target.closest('.info-btn')) {
-            const btn = e.target.classList.contains('buy-btn') || e.target.classList.contains('info-btn')
-                ? e.target
-                : e.target.closest('.buy-btn') || e.target.closest('.info-btn');
-            
-            const breed = btn.dataset.breed;
-            const breeder = btn.dataset.breeder;
-            const products = btn.dataset.products;
-            
-            const breederCard = document.querySelector(`.breeder-card[data-breeder="${breeder}"]`);
-            if (breederCard) {
-                const breederWhatsApp = breederCard.dataset.whatsapp;
-                openModal(breed, breeder, breederWhatsApp, products);
-            }
-        }
-        
-        if (e.target.classList.contains('breed-image') || e.target.closest('.breed-image')) {
-            const img = e.target.classList.contains('breed-image')
-                ? e.target
-                : e.target.closest('.breed-image');
-            
-            if (img) {
-                const breed = img.dataset.breed;
-                const breeder = img.dataset.breeder;
-                const products = img.dataset.products;
-                
-                const breederCard = img.closest('.breeder-card');
-                if (breederCard) {
-                    const breederWhatsApp = breederCard.dataset.whatsapp;
-                    openModal(breed, breeder, breederWhatsApp, products);
-                }
-            }
-        }
-    });
-    
-    // Generar opciones de producto
-    function generateProductOptions(products) {
-        productOptionsContainer.innerHTML = '';
-        const options = [];
-        
-        if (products === 'eggs' || products === 'both') {
-            options.push({
-                id: 'product-eggs',
-                value: 'eggs',
-                label: 'Huevos Fértiles',
-                description: 'Huevos fértiles listos para incubar',
-                icon: 'egg'
-            });
-        }
-        
-        if (products === 'chicks' || products === 'both') {
-            options.push({
-                id: 'product-chicks',
-                value: 'chicks',
-                label: 'Crías',
-                description: 'Pollitos/crías recién nacidas',
-                icon: 'chick'
-            });
-        }
-        
-        options.forEach((option, index) => {
-            const optionDiv = document.createElement('div');
-            optionDiv.className = 'product-option' + (index === 0 ? ' active' : '');
-            optionDiv.innerHTML = `
-                <input type="radio" id="${option.id}" name="productType" value="${option.value}" ${index === 0 ? 'checked' : ''}>
-                ${option.icon === 'egg' ? '<i class="fas fa-egg"></i>' : '<i class="fas fa-baby"></i>'}
-                <div class="product-option-label">${option.label}</div>
-            `;
-            
-            optionDiv.addEventListener('click', () => {
-                const radio = optionDiv.querySelector('input[type="radio"]');
-                radio.checked = true;
-                document.querySelectorAll('.product-option').forEach(opt => {
-                    opt.classList.remove('active');
-                });
-                optionDiv.classList.add('active');
-            });
-            
-            productOptionsContainer.appendChild(optionDiv);
-        });
-    }
-    
-    // Cerrar modal
-    function closeModalFunc() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        document.getElementById('breedContactForm').reset();
-    }
-    
-    closeModal.addEventListener('click', closeModalFunc);
-    cancelContact.addEventListener('click', closeModalFunc);
-    
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModalFunc();
-        }
-    });
-    
-    // WhatsApp
-    whatsappContact.addEventListener('click', () => {
-        const name = document.getElementById('contactName').value;
-        const province = document.getElementById('contactProvince').value;
-        const message = document.getElementById('contactMessage').value;
-        const selectedProduct = document.querySelector('input[name="productType"]:checked');
-        
-        if (!name || !province || !message || !selectedProduct) {
-            alert('Por favor, completa todos los campos obligatorios.');
-            return;
-        }
-        
-        let productName = '';
-        if (selectedProduct.value === 'eggs') {
-            productName = 'huevos fértiles';
-        } else if (selectedProduct.value === 'chicks') {
-            productName = 'crías';
-        }
-        
-        const whatsappMessage = `Hola, estoy interesado en ${selectedBreed} de ${selectedBreeder}.
-Quisiera comprar ${productName}.
-Mi nombre es ${name}, soy de ${province} y necesito: ${message}`;
-        
-        const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappUrl = `https://wa.me/${breederWhatsApp}?text=${encodedMessage}`;
-        window.open(whatsappUrl, '_blank');
-    });
-    
-    // Filtros
-    const birdTypeButtons = document.querySelectorAll('#bird-type-filter-container .filter-btn');
-    const communityButtons = document.querySelectorAll('#community-filter-container .community-btn');
-    const breederCards = document.querySelectorAll('.breeder-card');
-    
-    let currentBirdType = 'all';
-    let currentCommunity = 'all';
-    
-    birdTypeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            birdTypeButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            currentBirdType = button.dataset.filter;
-            applyFilters();
-        });
-    });
-    
-    communityButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            communityButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            currentCommunity = button.dataset.community;
-            applyFilters();
-        });
-    });
-    
-    function applyFilters() {
-        breederCards.forEach(card => {
-            const birdTypes = card.dataset.birds.split(',');
-            const province = card.dataset.province;
-            let showCard = true;
-            
-            if (currentBirdType !== 'all' && !birdTypes.includes(currentBirdType)) {
-                showCard = false;
-            }
-            
-            if (currentCommunity !== 'all' && province !== currentCommunity) {
-                showCard = false;
-            }
-            
-            card.style.display = showCard ? 'flex' : 'none';
-        });
-    }
-    
-    // Búsqueda
-    const searchBtn = document.querySelector('.search-btn');
-    const searchInput = document.querySelector('.search-input');
-    
-    searchBtn.addEventListener('click', performSearch);
-    searchInput.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') performSearch();
-    });
-    
-    function performSearch() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        breederCards.forEach(card => {
-            const breederName = card.querySelector('.breeder-name').textContent.toLowerCase();
-            const location = card.querySelector('.breeder-location').textContent.toLowerCase();
-            const description = card.querySelector('.description-text').textContent.toLowerCase();
-            const breeds = Array.from(card.querySelectorAll('.breed-title'))
-                .map(el => el.textContent.toLowerCase()).join(' ');
-            
-            if (breederName.includes(searchTerm) ||
-                location.includes(searchTerm) ||
-                description.includes(searchTerm) ||
-                breeds.includes(searchTerm)) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-    
-    // Navegación
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-        });
-    });
-});
-</script>
-</body>
-</html>
+    <div class="
