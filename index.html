@@ -203,7 +203,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* FILTROS */
+/* FILTROS - CARRUSEL HORIZONTAL */
 .bird-type-filters, .community-filters {
     background: var(--white);
     border-radius: var(--border-radius-md);
@@ -225,16 +225,32 @@ body {
     flex-wrap: wrap;
 }
 
-.filter-container, .community-filter-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
+/* CONTENEDOR DE CARRUSEL PARA FILTROS */
+.filter-carousel-container, .community-carousel-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 5px 0;
 }
 
+.filter-carousel-track, .community-carousel-track {
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.filter-carousel-track::-webkit-scrollbar,
+.community-carousel-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+}
+
+/* BOTONES DE FILTRO EN CARRUSEL */
 .filter-btn, .community-btn {
-    padding: 8px 16px;
+    padding: 10px 18px;
     background: var(--light-gray);
     border: 2px solid #eaeaea;
     border-radius: 50px;
@@ -244,20 +260,59 @@ body {
     transition: var(--transition);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .filter-btn.active {
-    background: var(--primary-green);
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: white;
     border-color: var(--primary-green);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
 
 .community-btn.active {
-    background: var(--primary-orange);
+    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--dark-orange) 100%);
     color: white;
     border-color: var(--primary-orange);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+/* BOTONES DE NAVEGACIÓN DEL CARRUSEL */
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: var(--gray);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: var(--shadow-sm);
+}
+
+.carousel-nav-btn:hover {
+    background: var(--light-gray);
+    color: var(--dark-green);
+    border-color: var(--primary-green);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-btn.prev {
+    left: -20px;
+}
+
+.carousel-nav-btn.next {
+    right: -20px;
 }
 
 /* CRIADORES SECTION */
@@ -364,7 +419,7 @@ body {
     width: 16px;
 }
 
-/* SISTEMA DE RAZAS */
+/* SISTEMA DE RAZAS - CARRUSEL DE PESTAÑAS */
 .breeds-section {
     margin-top: 20px;
     padding-top: 20px;
@@ -381,6 +436,7 @@ body {
 
 .breeds-tabs-container {
     width: 100%;
+    position: relative;
 }
 
 .breeds-tabs {
@@ -413,9 +469,10 @@ body {
 }
 
 .breed-tab.active {
-    background: var(--primary-brown);
+    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
     color: white;
     border-color: var(--primary-brown);
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
 }
 
 .breeds-tab-content {
@@ -591,7 +648,7 @@ body {
     color: #5d4037;
 }
 
-/* ========== MODAL DE CONTACTO - PANTALLA COMPLETA ========== */
+/* ========== MODAL DE CONTACTO ========== */
 .modal {
     display: none;
     position: fixed;
@@ -610,22 +667,20 @@ body {
     min-height: 100vh;
     position: relative;
     animation: modalOpen 0.3s ease-out;
-    overflow-y: auto;
 }
 
 @keyframes modalOpen {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* GALERÍA SUPERIOR - OCUPA 45% DE ALTURA */
+/* GALERÍA SUPERIOR */
 .modal-gallery {
     width: 100%;
     height: 45vh;
-    min-height: 300px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
 }
 
 .gallery-container {
@@ -645,7 +700,6 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
 }
 
 .gallery-caption {
@@ -653,12 +707,11 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 20px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-align: center;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .gallery-nav {
@@ -673,111 +726,106 @@ body {
 }
 
 .gallery-nav-btn {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .gallery-nav-btn:hover {
-    background: rgba(0,0,0,0.9);
+    background: rgba(0, 0, 0, 0.8);
     transform: scale(1.1);
 }
 
 .gallery-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 60px;
     left: 0;
     right: 0;
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     z-index: 2;
 }
 
 .gallery-dot {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: none;
     cursor: pointer;
     transition: var(--transition);
 }
 
 .gallery-dot.active {
     background: var(--primary-orange);
-    border-color: white;
     transform: scale(1.2);
 }
 
-/* CONTENIDO DEL MODAL - OCUPA EL 55% RESTANTE */
+/* CONTENIDO DEL MODAL */
 .modal-header {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: white;
-    padding: 25px 20px;
+    padding: 25px;
     text-align: center;
-    position: relative;
 }
 
 .modal-title {
     font-size: 1.8rem;
     margin-bottom: 15px;
     font-weight: 800;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .modal-breed-info {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: 20px;
     margin-top: 15px;
     font-size: 1.1rem;
     flex-wrap: wrap;
     background: rgba(255, 255, 255, 0.15);
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 50px;
     display: inline-flex;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .modal-breed-info span {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-weight: 700;
+    gap: 8px;
+    font-weight: 600;
 }
 
 .modal-body {
-    padding: 35px 20px;
-    max-width: 900px;
+    padding: 30px;
+    max-width: 800px;
     margin: 0 auto;
     width: 100%;
 }
 
 .contact-form .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .contact-form label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-weight: 700;
     color: var(--dark-gray);
-    font-size: 1.1rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .contact-form label::after {
@@ -785,20 +833,18 @@ body {
     color: var(--primary-orange);
     margin-left: 4px;
     font-weight: bold;
-    font-size: 1.2rem;
 }
 
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
     width: 100%;
-    padding: 16px 20px;
+    padding: 14px 18px;
     border: 2px solid #e0e0e0;
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-sm);
     font-size: 1rem;
     transition: var(--transition);
     font-weight: 500;
-    background: var(--light-gray);
 }
 
 .contact-form input:focus,
@@ -807,55 +853,51 @@ body {
     outline: none;
     border-color: var(--primary-green);
     box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.15);
-    background: white;
+    background: rgba(232, 245, 233, 0.3);
 }
 
 .contact-form textarea {
-    min-height: 140px;
+    min-height: 120px;
     resize: vertical;
-    padding: 18px 20px;
-    line-height: 1.5;
+    padding: 16px 18px;
 }
 
 .product-selection {
     background: linear-gradient(135deg, var(--light-brown) 0%, #e8e0d6 100%);
-    padding: 30px;
-    border-radius: var(--border-radius-lg);
-    margin-bottom: 35px;
-    border: 3px solid #d7ccc8;
-    box-shadow: var(--shadow-sm);
+    padding: 25px;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 30px;
+    border: 2px solid #d7ccc8;
 }
 
 .product-selection-title {
     font-weight: 800;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: var(--secondary-brown);
     display: flex;
     align-items: center;
-    gap: 15px;
-    font-size: 1.4rem;
+    gap: 12px;
+    font-size: 1.3rem;
     justify-content: center;
-    text-align: center;
 }
 
 .product-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
 }
 
 .product-option {
     display: flex;
     align-items: center;
-    padding: 22px;
+    padding: 18px;
     background: white;
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-sm);
     border: 3px solid #e0e0e0;
     cursor: pointer;
     transition: var(--transition);
-    gap: 20px;
+    gap: 15px;
     position: relative;
-    overflow: hidden;
 }
 
 .product-option::before {
@@ -868,15 +910,15 @@ body {
     background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(255, 152, 0, 0.1) 100%);
     opacity: 0;
     transition: var(--transition);
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-sm);
     z-index: -1;
 }
 
 .product-option:hover {
     border-color: var(--primary-green);
     background: var(--light-green);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .product-option:hover::before {
@@ -886,37 +928,33 @@ body {
 .product-option.active {
     border-color: var(--primary-green);
     background: rgba(40, 167, 69, 0.15);
-    box-shadow: 0 0 0 4px var(--primary-green), 0 8px 25px rgba(0,0,0,0.15);
-    transform: translateY(-3px);
+    box-shadow: 0 0 0 3px var(--primary-green);
 }
 
 .product-option input {
     width: auto;
     margin: 0;
     flex-shrink: 0;
-    height: 25px;
-    width: 25px;
-    accent-color: var(--primary-green);
+    height: 22px;
+    width: 22px;
 }
 
 .product-option-label {
     flex-grow: 1;
-    font-weight: 800;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
     color: var(--dark-gray);
-    margin-bottom: 5px;
 }
 
 .product-option-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--gray);
-    margin-top: 8px;
+    margin-top: 6px;
     line-height: 1.5;
 }
 
 .product-icon {
-    font-size: 2.5rem;
-    flex-shrink: 0;
+    font-size: 2.2rem;
 }
 
 .product-icon.egg {
@@ -929,29 +967,26 @@ body {
 
 .modal-actions {
     display: flex;
-    gap: 25px;
-    margin-top: 40px;
+    gap: 20px;
+    margin-top: 35px;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 .contact-btn {
     flex: 1;
-    min-width: 220px;
-    padding: 18px 30px;
+    min-width: 180px;
+    padding: 16px 25px;
     border: none;
     border-radius: 50px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .whatsapp-btn {
@@ -961,48 +996,45 @@ body {
 
 .whatsapp-btn:hover {
     background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
 }
 
 .cancel-btn {
     background: linear-gradient(135deg, #f5f5f5 0%, #e9ecef 100%);
     color: #666;
-    border: 3px solid #e0e0e0;
+    border: 2px solid #e0e0e0;
 }
 
 .cancel-btn:hover {
     background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-    transform: translateY(-4px);
+    transform: translateY(-3px);
     border-color: #ccc;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    color: #333;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
 .close-modal {
     position: fixed;
-    top: 25px;
-    right: 25px;
-    font-size: 2rem;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
     color: white;
-    background: rgba(0,0,0,0.7);
-    width: 60px;
-    height: 60px;
+    background: rgba(0,0,0,0.6);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.3);
+    border: none;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2001;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .close-modal:hover {
     background: rgba(0,0,0,0.9);
     transform: rotate(90deg) scale(1.1);
-    border-color: var(--primary-orange);
 }
 
 /* FOOTER */
@@ -1125,6 +1157,21 @@ footer {
         border-radius: var(--border-radius-sm) !important;
     }
     
+    /* FILTROS RESPONSIVE */
+    .carousel-nav-btn {
+        display: none; /* Ocultar flechas en móviles */
+    }
+    
+    .filter-carousel-track,
+    .community-carousel-track {
+        padding: 5px;
+    }
+    
+    .filter-btn, .community-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+    
     .breeders-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1145,34 +1192,27 @@ footer {
     
     /* MODAL RESPONSIVE */
     .modal-gallery {
-        height: 40vh;
-        min-height: 250px;
+        height: 35vh;
     }
     
     .gallery-nav-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-    
-    .gallery-caption {
+        width: 40px;
+        height: 40px;
         font-size: 1rem;
-        padding: 15px;
     }
     
     .modal-title {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
     
     .modal-breed-info {
-        font-size: 1rem;
-        padding: 12px 20px;
-        gap: 15px;
-        flex-direction: column;
+        font-size: 0.95rem;
+        padding: 10px 15px;
+        gap: 10px;
     }
     
     .modal-body {
-        padding: 25px 15px;
+        padding: 20px 15px;
     }
     
     .product-selection {
@@ -1183,10 +1223,6 @@ footer {
         grid-template-columns: 1fr;
     }
     
-    .product-option {
-        padding: 18px;
-    }
-    
     .modal-actions {
         flex-direction: column;
         gap: 15px;
@@ -1195,14 +1231,14 @@ footer {
     .contact-btn {
         width: 100%;
         min-width: auto;
-        padding: 16px 25px;
+        padding: 14px 20px;
     }
     
     .close-modal {
         top: 15px;
         right: 15px;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         font-size: 1.5rem;
     }
 }
@@ -1243,55 +1279,34 @@ footer {
     
     /* MODAL MOBILE */
     .modal-gallery {
-        height: 35vh;
-        min-height: 200px;
+        height: 30vh;
     }
     
     .gallery-caption {
-        padding: 12px;
+        padding: 10px 15px;
         font-size: 0.9rem;
     }
     
     .gallery-nav-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
-        padding: 0 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
     }
     
     .modal-title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
     
     .modal-breed-info {
-        font-size: 0.9rem;
-        padding: 10px 15px;
-        gap: 8px;
         flex-direction: column;
+        gap: 8px;
     }
     
     .contact-form input,
     .contact-form textarea,
     .contact-form select {
-        padding: 14px 16px;
+        padding: 12px 15px;
         font-size: 0.95rem;
-    }
-    
-    .product-selection-title {
-        font-size: 1.2rem;
-    }
-    
-    .contact-btn {
-        padding: 14px 20px;
-        font-size: 1rem;
-    }
-    
-    .close-modal {
-        top: 10px;
-        right: 10px;
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
     }
 }
 
@@ -1301,8 +1316,17 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    .modal-body {
-        max-width: 1000px;
+    /* Mostrar flechas de navegación en pantallas grandes */
+    .carousel-nav-btn {
+        display: flex;
+    }
+    
+    .carousel-nav-btn.prev {
+        left: -25px;
+    }
+    
+    .carousel-nav-btn.next {
+        right: -25px;
     }
 }
 
@@ -1316,21 +1340,12 @@ footer {
     .modal-gallery {
         height: 40vh;
     }
-    
-    .modal-body {
-        padding: 30px 25px;
-    }
 }
 
-/* Pantallas grandes - Modal más ancho */
-@media (min-width: 1200px) {
-    .modal-body {
-        padding: 40px 30px;
-    }
-    
-    .product-options {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* Ocultar flechas cuando no hay scroll */
+.filter-carousel-track:not(.scrollable) ~ .carousel-nav-btn,
+.community-carousel-track:not(.scrollable) ~ .carousel-nav-btn {
+    display: none;
 }
 </style>
 </head>
@@ -1369,88 +1384,126 @@ footer {
     </div>
 </section>
 
-<!-- FILTROS POR TIPO DE AVE -->
+<!-- FILTROS POR TIPO DE AVE - CARRUSEL -->
 <section class="bird-type-filters">
     <h2 class="filters-title">
         <i class="fas fa-feather"></i> Filtrar por Tipo de Ave
     </h2>
-    <div class="filter-container" id="bird-type-filter-container">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="gallinas">Gallinas</button>
-        <button class="filter-btn" data-filter="patos">Patos</button>
-        <button class="filter-btn" data-filter="pavos">Pavos</button>
-        <button class="filter-btn" data-filter="faisanes">Faisanes</button>
-        <button class="filter-btn" data-filter="codornices">Codornices</button>
-        <button class="filter-btn" data-filter="ocas">Ocas/Gansos</button>
-        <button class="filter-btn" data-filter="perdices">Perdices</button>
+    <div class="filter-carousel-container">
+        <button class="carousel-nav-btn prev" data-carousel="bird-type">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="filter-carousel-track" id="bird-type-carousel">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-layer-group"></i> Todos
+            </button>
+            <button class="filter-btn" data-filter="gallinas">
+                <i class="fas fa-egg"></i> Gallinas
+            </button>
+            <button class="filter-btn" data-filter="patos">
+                <i class="fas fa-water"></i> Patos
+            </button>
+            <button class="filter-btn" data-filter="pavos">
+                <i class="fas fa-feather-alt"></i> Pavos
+            </button>
+            <button class="filter-btn" data-filter="faisanes">
+                <i class="fas fa-crow"></i> Faisanes
+            </button>
+            <button class="filter-btn" data-filter="codornices">
+                <i class="fas fa-dove"></i> Codornices
+            </button>
+            <button class="filter-btn" data-filter="ocas">
+                <i class="fas fa-kiwi-bird"></i> Ocas/Gansos
+            </button>
+            <button class="filter-btn" data-filter="perdices">
+                <i class="fas fa-bird"></i> Perdices
+            </button>
+            <button class="filter-btn" data-filter="gallinas_ornamentales">
+                <i class="fas fa-crown"></i> Ornamentales
+            </button>
+            <button class="filter-btn" data-filter="avestruces">
+                <i class="fas fa-otter"></i> Avestruces
+            </button>
+        </div>
+        <button class="carousel-nav-btn next" data-carousel="bird-type">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 </section>
 
-<!-- FILTROS POR COMUNIDAD AUTÓNOMA - TODAS LAS COMUNIDADES -->
+<!-- FILTROS POR COMUNIDAD AUTÓNOMA - CARRUSEL -->
 <section class="community-filters">
     <h2 class="community-title">
         <i class="fas fa-map-marked-alt"></i> Filtrar por Comunidad Autónoma
     </h2>
-    <div class="community-filter-container" id="community-filter-container">
-        <button class="community-btn active" data-community="all">
-            <span class="flag-icon">🇪🇸</span> Todas
+    <div class="community-carousel-container">
+        <button class="carousel-nav-btn prev" data-carousel="community">
+            <i class="fas fa-chevron-left"></i>
         </button>
-        <button class="community-btn" data-community="andalucia">
-            <span class="flag-icon">🇪🇸</span> Andalucía
-        </button>
-        <button class="community-btn" data-community="cataluna">
-            <span class="flag-icon">🇪🇸</span> Cataluña
-        </button>
-        <button class="community-btn" data-community="madrid">
-            <span class="flag-icon">🇪🇸</span> Madrid
-        </button>
-        <button class="community-btn" data-community="valencia">
-            <span class="flag-icon">🇪🇸</span> Comunidad Valenciana
-        </button>
-        <button class="community-btn" data-community="galicia">
-            <span class="flag-icon">🇪🇸</span> Galicia
-        </button>
-        <button class="community-btn" data-community="castilla_leon">
-            <span class="flag-icon">🇪🇸</span> Castilla y León
-        </button>
-        <button class="community-btn" data-community="castilla_mancha">
-            <span class="flag-icon">🇪🇸</span> Castilla-La Mancha
-        </button>
-        <button class="community-btn" data-community="pais_vasco">
-            <span class="flag-icon">🇪🇸</span> País Vasco
-        </button>
-        <button class="community-btn" data-community="aragon">
-            <span class="flag-icon">🇪🇸</span> Aragón
-        </button>
-        <button class="community-btn" data-community="murcia">
-            <span class="flag-icon">🇪🇸</span> Región de Murcia
-        </button>
-        <button class="community-btn" data-community="extremadura">
-            <span class="flag-icon">🇪🇸</span> Extremadura
-        </button>
-        <button class="community-btn" data-community="navarra">
-            <span class="flag-icon">🇪🇸</span> Navarra
-        </button>
-        <button class="community-btn" data-community="asturias">
-            <span class="flag-icon">🇪🇸</span> Asturias
-        </button>
-        <button class="community-btn" data-community="cantabria">
-            <span class="flag-icon">🇪🇸</span> Cantabria
-        </button>
-        <button class="community-btn" data-community="rioja">
-            <span class="flag-icon">🇪🇸</span> La Rioja
-        </button>
-        <button class="community-btn" data-community="islas_baleares">
-            <span class="flag-icon">🇪🇸</span> Islas Baleares
-        </button>
-        <button class="community-btn" data-community="islas_canarias">
-            <span class="flag-icon">🇪🇸</span> Islas Canarias
-        </button>
-        <button class="community-btn" data-community="ceuta">
-            <span class="flag-icon">🇪🇸</span> Ceuta
-        </button>
-        <button class="community-btn" data-community="melilla">
-            <span class="flag-icon">🇪🇸</span> Melilla
+        <div class="community-carousel-track" id="community-carousel">
+            <button class="community-btn active" data-community="all">
+                <span class="flag-icon">🇪🇸</span> Todas España
+            </button>
+            <button class="community-btn" data-community="andalucia">
+                <span class="flag-icon">🏖️</span> Andalucía
+            </button>
+            <button class="community-btn" data-community="cataluna">
+                <span class="flag-icon">🏰</span> Cataluña
+            </button>
+            <button class="community-btn" data-community="madrid">
+                <span class="flag-icon">👑</span> Madrid
+            </button>
+            <button class="community-btn" data-community="valencia">
+                <span class="flag-icon">🍊</span> Valencia
+            </button>
+            <button class="community-btn" data-community="galicia">
+                <span class="flag-icon">🌊</span> Galicia
+            </button>
+            <button class="community-btn" data-community="castilla_leon">
+                <span class="flag-icon">🏞️</span> Castilla y León
+            </button>
+            <button class="community-btn" data-community="castilla_mancha">
+                <span class="flag-icon">🌾</span> Castilla-La Mancha
+            </button>
+            <button class="community-btn" data-community="pais_vasco">
+                <span class="flag-icon">⛰️</span> País Vasco
+            </button>
+            <button class="community-btn" data-community="aragon">
+                <span class="flag-icon">🏔️</span> Aragón
+            </button>
+            <button class="community-btn" data-community="murcia">
+                <span class="flag-icon">☀️</span> Murcia
+            </button>
+            <button class="community-btn" data-community="extremadura">
+                <span class="flag-icon">🐗</span> Extremadura
+            </button>
+            <button class="community-btn" data-community="navarra">
+                <span class="flag-icon">🏰</span> Navarra
+            </button>
+            <button class="community-btn" data-community="asturias">
+                <span class="flag-icon">🌲</span> Asturias
+            </button>
+            <button class="community-btn" data-community="cantabria">
+                <span class="flag-icon">⛵</span> Cantabria
+            </button>
+            <button class="community-btn" data-community="rioja">
+                <span class="flag-icon">🍷</span> La Rioja
+            </button>
+            <button class="community-btn" data-community="islas_baleares">
+                <span class="flag-icon">🏝️</span> Baleares
+            </button>
+            <button class="community-btn" data-community="islas_canarias">
+                <span class="flag-icon">🌴</span> Canarias
+            </button>
+            <button class="community-btn" data-community="ceuta">
+                <span class="flag-icon">🧱</span> Ceuta
+            </button>
+            <button class="community-btn" data-community="melilla">
+                <span class="flag-icon">🧱</span> Melilla
+            </button>
+        </div>
+        <button class="carousel-nav-btn next" data-carousel="community">
+            <i class="fas fa-chevron-right"></i>
         </button>
     </div>
 </section>
@@ -1986,14 +2039,14 @@ footer {
     </div>
 </section>
 
-<!-- ========== MODAL DE CONTACTO - PANTALLA COMPLETA CON GALERÍA ========== -->
+<!-- ========== MODAL DE CONTACTO ========== -->
 <div class="modal" id="contactModal">
     <div class="modal-content">
         <button class="close-modal" id="closeModal">
             <i class="fas fa-times"></i>
         </button>
         
-        <!-- GALERÍA SUPERIOR - 45% DE LA PANTALLA -->
+        <!-- GALERÍA SUPERIOR -->
         <div class="modal-gallery">
             <div class="gallery-container" id="galleryContainer">
                 <!-- Las imágenes se insertarán dinámicamente aquí -->
@@ -2013,7 +2066,7 @@ footer {
             </div>
         </div>
         
-        <!-- CONTENIDO DEL MODAL - 55% RESTANTE -->
+        <!-- CONTENIDO DEL MODAL -->
         <div class="modal-header">
             <h3 class="modal-title">Solicitar Información y Compra</h3>
             <div class="modal-breed-info">
@@ -2109,7 +2162,7 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-    <span class="footer-logo"><i class="fas fa-egg"></i> CriadoresAves.com</span>
+    <span class="footer-logo"><i class="fas fa-egg"></i> CriadoresAves.es</span>
     <p class="footer-about">Directorio COMPLETO de criadores de aves en España. Conectamos a criadores profesionales con aficionados y empresas en TODAS las comunidades autónomas.</p>
     <div class="footer-contact">
         <div class="contact-info">
@@ -2135,7 +2188,57 @@ footer {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // SISTEMA DE PESTAÑAS
+    // SISTEMA DE CARRUSELES PARA FILTROS
+    function setupCarousel(carouselId, prevBtnSelector, nextBtnSelector) {
+        const track = document.getElementById(carouselId);
+        const prevBtn = document.querySelector(prevBtnSelector);
+        const nextBtn = document.querySelector(nextBtnSelector);
+        
+        if (!track || !prevBtn || !nextBtn) return;
+        
+        // Función para verificar si hay scroll disponible
+        function updateNavButtons() {
+            const isScrollable = track.scrollWidth > track.clientWidth;
+            
+            if (isScrollable) {
+                track.classList.add('scrollable');
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+                
+                // Verificar posición del scroll
+                prevBtn.style.opacity = track.scrollLeft <= 10 ? '0.5' : '1';
+                nextBtn.style.opacity = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10 ? '0.5' : '1';
+            } else {
+                track.classList.remove('scrollable');
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+        }
+        
+        // Navegación
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+        
+        // Actualizar botones al hacer scroll
+        track.addEventListener('scroll', () => {
+            updateNavButtons();
+        });
+        
+        // Actualizar al cargar y al redimensionar
+        window.addEventListener('resize', updateNavButtons);
+        updateNavButtons();
+    }
+    
+    // Inicializar carruseles
+    setupCarousel('bird-type-carousel', '[data-carousel="bird-type"].prev', '[data-carousel="bird-type"].next');
+    setupCarousel('community-carousel', '[data-carousel="community"].prev', '[data-carousel="community"].next');
+    
+    // SISTEMA DE PESTAÑAS PARA RAZAS
     document.querySelectorAll('.breeds-tabs-container').forEach(container => {
         const tabs = container.querySelectorAll('.breed-tab');
         const tabContents = container.querySelectorAll('.breeds-tab-content');
@@ -2179,108 +2282,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const breedGalleries = {
         'Leghorn Blanca': [
             {
-                image: 'https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Leghorn Blanca - Raza italiana de alta producción'
+                image: 'https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Gallina Leghorn Blanca - Adulta'
             },
             {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Huevos fértiles de Leghorn - Color blanco puro, fertilidad >90%'
+                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Huevos fértiles de Leghorn - Color blanco puro'
             },
             {
-                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Pollitos Leghorn de 1 semana - Vacunados y saludables'
+                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Pollitos Leghorn de 1 semana'
             },
             {
-                image: 'https://images.unsplash.com/photo-1563281577-a7a47b9d3a71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Instalaciones de cría - Ambiente natural certificado'
+                image: 'https://images.unsplash.com/photo-1563281577-a7a47b9d3a71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Instalaciones de cría - Ambiente natural'
             }
         ],
         'Rhode Island Red': [
             {
-                image: 'https://images.unsplash.com/photo-1563281577-a7a47b9d3a71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Rhode Island Red - Plumaje rojo intenso característico'
+                image: 'https://images.unsplash.com/photo-1563281577-a7a47b9d3a71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Gallina Rhode Island Red - Plumaje rojo intenso'
             },
             {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Huevos fértiles color marrón - Tamaño XL, calidad premium'
+                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Huevos fértiles color marrón'
             },
             {
-                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Crías Rhode Island - 2 semanas, desparasitadas'
+                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Crías Rhode Island - 2 semanas'
             }
         ],
         'Sussex': [
             {
-                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Sussex - Variedad blanca, temperamento dócil'
+                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Gallina Sussex - Variedad blanca'
             },
             {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Huevos fértiles tamaño grande - Ideal para incubación'
-            }
-        ],
-        'Castellana Negra': [
-            {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Castellana Negra - Raza autóctona española'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Huevos fértiles blancos - Alta tasa de eclosión'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Pollitos Castellana Negra - Rusticidad garantizada'
-            }
-        ],
-        'Pardo Sosa': [
-            {
-                image: 'https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Pardo Sosa - Híbrido de alta producción'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Huevos fértiles - Consistencia en tamaño y calidad'
-            }
-        ],
-        'Utrerana': [
-            {
-                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Utrerana - Raza andaluza en recuperación'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Crías Utrerana - Con certificado genealógico'
-            }
-        ],
-        'Pita Pinta': [
-            {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Pita Pinta - Plumaje moteado característico'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Huevos fértiles color crema - Fertilidad >85%'
-            }
-        ],
-        'Euskal Oiloa': [
-            {
-                image: 'https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Euskal Oiloa - Raza vasca de doble aptitud'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Huevos fértiles - Adaptados a climas húmedos'
-            }
-        ],
-        'Penedesenca': [
-            {
-                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Gallina Penedesenca - Raza catalana autóctona'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Huevos de chocolate - Color intenso, apreciado en gastronomía'
+                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Huevos fértiles tamaño grande'
             }
         ]
     };
@@ -2294,16 +2333,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Obtener imágenes para esta raza o usar default
         const galleryData = breedGalleries[breed] || [
             {
-                image: 'https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Imágenes de la raza ' + breed
+                image: 'https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Imágenes de ' + breed
             },
             {
-                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Productos disponibles - Calidad garantizada'
+                image: 'https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Productos disponibles'
             },
             {
-                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
-                caption: 'Criaderos certificados - Bienestar animal'
+                image: 'https://images.unsplash.com/photo-1591872203535-8a7d5c7b9e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80',
+                caption: 'Calidad garantizada'
             }
         ];
         
@@ -2390,10 +2429,45 @@ document.addEventListener('DOMContentLoaded', function() {
         
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
-        
-        // Scroll al inicio del modal
-        modal.scrollTop = 0;
     }
+    
+    // Event listeners para abrir modal
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('buy-btn') || e.target.classList.contains('info-btn') ||
+            e.target.closest('.buy-btn') || e.target.closest('.info-btn')) {
+            const btn = e.target.classList.contains('buy-btn') || e.target.classList.contains('info-btn')
+                ? e.target
+                : e.target.closest('.buy-btn') || e.target.closest('.info-btn');
+            
+            const breed = btn.dataset.breed;
+            const breeder = btn.dataset.breeder;
+            const products = btn.dataset.products;
+            
+            const breederCard = document.querySelector(`.breeder-card[data-breeder="${breeder}"]`);
+            if (breederCard) {
+                const breederWhatsApp = breederCard.dataset.whatsapp;
+                openModal(breed, breeder, breederWhatsApp, products);
+            }
+        }
+        
+        if (e.target.classList.contains('breed-image') || e.target.closest('.breed-image')) {
+            const img = e.target.classList.contains('breed-image')
+                ? e.target
+                : e.target.closest('.breed-image');
+            
+            if (img) {
+                const breed = img.dataset.breed;
+                const breeder = img.dataset.breeder;
+                const products = img.dataset.products;
+                
+                const breederCard = img.closest('.breeder-card');
+                if (breederCard) {
+                    const breederWhatsApp = breederCard.dataset.whatsapp;
+                    openModal(breed, breeder, breederWhatsApp, products);
+                }
+            }
+        }
+    });
     
     // Generar opciones de producto
     function generateProductOptions(products) {
@@ -2405,7 +2479,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: 'product-eggs',
                 value: 'eggs',
                 label: 'Huevos Fértiles',
-                description: 'Huevos fértiles listos para incubar. Fertilidad garantizada >85%. Envío especializado en cajas de incubación.',
+                description: 'Huevos fértiles listos para incubar. Fertilidad garantizada >85%. Envío especializado.',
                 icon: 'egg'
             });
         }
@@ -2415,7 +2489,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: 'product-chicks',
                 value: 'chicks',
                 label: 'Crías / Pollitos',
-                description: 'Pollitos/crías recién nacidas. Vacunados y desparasitados. Edad: 1 día a 8 semanas. Envío con calefacción.',
+                description: 'Pollitos/crías recién nacidas. Vacunados y desparasitados. Edad: 1 día a 8 semanas.',
                 icon: 'chick'
             });
         }
@@ -2467,14 +2541,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // WhatsApp
     whatsappContact.addEventListener('click', () => {
         const name = document.getElementById('contactName').value;
-        const email = document.getElementById('contactEmail').value;
-        const phone = document.getElementById('contactPhone').value;
         const province = document.getElementById('contactProvince').value;
         const message = document.getElementById('contactMessage').value;
         const selectedProduct = document.querySelector('input[name="productType"]:checked');
         
-        if (!name || !email || !phone || !province || !message || !selectedProduct) {
-            alert('Por favor, completa todos los campos obligatorios (*).');
+        if (!name || !province || !message || !selectedProduct) {
+            alert('Por favor, completa todos los campos obligatorios.');
             return;
         }
         
@@ -2491,8 +2563,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 👤 MIS DATOS:
 • Nombre: ${name}
-• Email: ${email}
-• Teléfono: ${phone}
 • Provincia: ${province}
 
 📝 MIS NECESIDADES:
@@ -2516,47 +2586,9 @@ ${name}`;
         window.open(whatsappUrl, '_blank');
     });
     
-    // Event listeners para abrir modal
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('buy-btn') || e.target.classList.contains('info-btn') ||
-            e.target.closest('.buy-btn') || e.target.closest('.info-btn')) {
-            const btn = e.target.classList.contains('buy-btn') || e.target.classList.contains('info-btn')
-                ? e.target
-                : e.target.closest('.buy-btn') || e.target.closest('.info-btn');
-            
-            const breed = btn.dataset.breed;
-            const breeder = btn.dataset.breeder;
-            const products = btn.dataset.products;
-            
-            const breederCard = document.querySelector(`.breeder-card[data-breeder="${breeder}"]`);
-            if (breederCard) {
-                const breederWhatsApp = breederCard.dataset.whatsapp;
-                openModal(breed, breeder, breederWhatsApp, products);
-            }
-        }
-        
-        if (e.target.classList.contains('breed-image') || e.target.closest('.breed-image')) {
-            const img = e.target.classList.contains('breed-image')
-                ? e.target
-                : e.target.closest('.breed-image');
-            
-            if (img) {
-                const breed = img.dataset.breed;
-                const breeder = img.dataset.breeder;
-                const products = img.dataset.products;
-                
-                const breederCard = img.closest('.breeder-card');
-                if (breederCard) {
-                    const breederWhatsApp = breederCard.dataset.whatsapp;
-                    openModal(breed, breeder, breederWhatsApp, products);
-                }
-            }
-        }
-    });
-    
-    // Filtros
-    const birdTypeButtons = document.querySelectorAll('#bird-type-filter-container .filter-btn');
-    const communityButtons = document.querySelectorAll('#community-filter-container .community-btn');
+    // FILTROS - SISTEMA DE FILTRADO
+    const birdTypeButtons = document.querySelectorAll('#bird-type-carousel .filter-btn');
+    const communityButtons = document.querySelectorAll('#community-carousel .community-btn');
     const breederCards = document.querySelectorAll('.breeder-card');
     
     let currentBirdType = 'all';
@@ -2598,7 +2630,7 @@ ${name}`;
         });
     }
     
-    // Búsqueda
+    // BÚSQUEDA
     const searchBtn = document.querySelector('.search-btn');
     const searchInput = document.querySelector('.search-input');
     
@@ -2627,7 +2659,7 @@ ${name}`;
         });
     }
     
-    // Navegación
+    // NAVEGACIÓN
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
