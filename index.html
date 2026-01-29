@@ -23,21 +23,21 @@
     --extra-pastel: #CAFFBF;     /* Verde menta pastel */
     
     /* COLORES PARA TEXTO (CONTRASTANTES) */
-    --text-dark: #2D3748;        /* Gris oscuro para textos */
-    --text-darker: #1A202C;      /* Gris más oscuro */
+    --text-dark: #4A5568;        /* Gris oscuro para textos */
+    --text-darker: #2D3748;      /* Gris más oscuro */
     --text-light: #718096;       /* Gris medio */
     --text-white: #FFFFFF;       /* Blanco para fondos oscuros */
     
     /* COLORES PARA BORDES Y SOMBRAS */
     --border-light: #E2E8F0;     /* Borde claro */
     --border-medium: #CBD5E0;    /* Borde medio */
-    --shadow-color: rgba(0, 0, 0, 0.05); /* Sombra muy suave */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra muy suave */
     
     /* VARIABLES DE DISEÑO */
     --shadow-sm: 0 2px 8px var(--shadow-color);
-    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.04);
-    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.06);
-    --shadow-xl: 0 12px 35px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 12px 35px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
     --border-radius-sm: 12px;
     --border-radius-md: 16px;
@@ -60,19 +60,22 @@ body {
     padding: 0 20px;
 }
 
-/* NAVEGACIÓN - NO FIJO, SOLO EN SU POSICIÓN */
+/* NAVEGACIÓN - COLOR PASTEL SUAVE */
 .main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
+    background: linear-gradient(135deg, var(--primary-pastel) 0%, #7DB8A8 100%);
     padding: 15px 25px;
     border-radius: var(--border-radius-lg);
-    margin: 20px auto 30px;
+    margin: 15px auto;
     box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 10px;
+    z-index: 1000;
     flex-wrap: wrap;
     gap: 15px;
-    border: 1px solid var(--border-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .nav-brand {
@@ -85,19 +88,19 @@ body {
 }
 
 .nav-brand i {
-    font-size: 2.2rem;
-    color: #FF9800;
-    background: linear-gradient(135deg, #FFF3E0 0%, #FFECB3 100%);
-    padding: 12px;
+    font-size: 2rem;
+    color: var(--text-white);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
     border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
 }
 
 .nav-brand h1 {
-    font-size: 1.6rem;
-    color: var(--text-darker);
-    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    font-weight: 700;
     white-space: nowrap;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
@@ -109,33 +112,32 @@ body {
 
 .nav-link {
     padding: 10px 20px;
-    background: white;
-    border: 2px solid var(--border-light);
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--border-radius-md);
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--text-darker);
+    color: var(--text-white);
     white-space: nowrap;
+    backdrop-filter: blur(10px);
 }
 
 .nav-link:hover {
-    background: var(--primary-pastel);
+    background: rgba(255, 255, 255, 0.35);
     transform: translateY(-2px);
-    border-color: var(--primary-pastel);
-    box-shadow: 0 4px 12px rgba(154, 208, 194, 0.3);
-    color: var(--text-darker);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .nav-link.active {
-    background: var(--primary-pastel);
-    border-color: var(--primary-pastel);
-    box-shadow: 0 4px 15px rgba(154, 208, 194, 0.4);
-    color: var(--text-darker);
+    background: rgba(255, 255, 255, 0.4);
+    border-color: var(--text-white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* HERO SECTION - COLOR PASTEL */
@@ -229,7 +231,7 @@ body {
     box-shadow: 0 6px 20px rgba(255, 214, 165, 0.4);
 }
 
-/* FILTROS - SIN FLECHAS, CON SCROLLBAR FINA */
+/* FILTROS - CARRUSEL HORIZONTAL */
 .bird-type-filters, .community-filters {
     background: white;
     border-radius: var(--border-radius-md);
@@ -259,7 +261,7 @@ body {
     border-radius: 50%;
 }
 
-/* CONTENEDOR DE CARRUSEL PARA FILTROS - SIN FLECHAS */
+/* CONTENEDOR DE CARRUSEL PARA FILTROS */
 .filter-carousel-container, .community-carousel-container {
     width: 100%;
     position: relative;
@@ -270,39 +272,16 @@ body {
 .filter-carousel-track, .community-carousel-track {
     display: flex;
     gap: 12px;
-    padding: 8px 8px 16px 8px;
+    padding: 8px;
     overflow-x: auto;
     scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
 }
 
-/* SCROLLBAR FINA PARA FILTROS */
 .filter-carousel-track::-webkit-scrollbar,
 .community-carousel-track::-webkit-scrollbar {
-    height: 4px;
-}
-
-.filter-carousel-track::-webkit-scrollbar-track,
-.community-carousel-track::-webkit-scrollbar-track {
-    background: var(--border-light);
-    border-radius: 2px;
-}
-
-.filter-carousel-track::-webkit-scrollbar-thumb,
-.community-carousel-track::-webkit-scrollbar-thumb {
-    background: var(--primary-pastel);
-    border-radius: 2px;
-}
-
-.filter-carousel-track::-webkit-scrollbar-thumb:hover,
-.community-carousel-track::-webkit-scrollbar-thumb:hover {
-    background: #7DB8A8;
-}
-
-/* Firefox */
-.filter-carousel-track,
-.community-carousel-track {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-pastel) var(--border-light);
+    display: none; /* Chrome/Safari/Opera */
 }
 
 /* BOTONES DE FILTRO EN CARRUSEL */
@@ -342,6 +321,42 @@ body {
     color: var(--text-white);
     border-color: var(--accent-pastel);
     box-shadow: 0 6px 20px rgba(189, 178, 255, 0.3);
+}
+
+/* BOTONES DE NAVEGACIÓN DEL CARRUSEL */
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: var(--shadow-md);
+}
+
+.carousel-nav-btn:hover {
+    background: var(--primary-pastel);
+    color: white;
+    border-color: var(--primary-pastel);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-btn.prev {
+    left: -25px;
+}
+
+.carousel-nav-btn.next {
+    right: -25px;
 }
 
 /* CRIADORES SECTION */
@@ -556,7 +571,7 @@ body {
     background: rgba(189, 178, 255, 0.15);
 }
 
-/* SISTEMA DE RAZAS - CARRUSEL DE PESTAÑAS */
+/* ========== SISTEMA DE RAZAS - CARRUSEL DE PESTAÑAS ========== */
 .breeds-section {
     margin-top: 25px;
     padding-top: 25px;
@@ -586,34 +601,35 @@ body {
     background: linear-gradient(90deg, var(--primary-pastel), transparent);
 }
 
+/* CONTENEDOR PRINCIPAL PARA LOS TABS - CON CARRUSEL */
 .breeds-tabs-container {
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
+/* PISTA DEL CARRUSEL PARA TABS */
 .breeds-tabs {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
     overflow-x: auto;
-    padding: 8px 8px 16px 8px;
+    padding: 8px;
     scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
 }
 
 .breeds-tabs::-webkit-scrollbar {
-    height: 4px;
+    display: none;
 }
 
-.breeds-tabs::-webkit-scrollbar-track {
-    background: var(--border-light);
-    border-radius: 2px;
+/* BOTONES DE NAVEGACIÓN PARA TABS EN PC */
+.breeds-tabs-nav {
+    display: none;
 }
 
-.breeds-tabs::-webkit-scrollbar-thumb {
-    background: var(--primary-pastel);
-    border-radius: 2px;
-}
-
+/* BOTONES INDIVIDUALES DE TABS */
 .breed-tab {
     padding: 12px 20px;
     background: white;
@@ -644,6 +660,7 @@ body {
     box-shadow: 0 6px 20px rgba(154, 208, 194, 0.3);
 }
 
+/* CONTENIDO DE LOS TABS */
 .breeds-tab-content {
     display: none;
 }
@@ -1312,7 +1329,7 @@ footer {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* RESPONSIVE DESIGN */
+/* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
     .container {
         padding: 0 15px;
@@ -1322,7 +1339,6 @@ footer {
         flex-direction: column;
         padding: 15px;
         gap: 12px;
-        margin: 15px auto 25px;
     }
     
     .nav-brand {
@@ -1331,7 +1347,7 @@ footer {
     }
     
     .nav-brand h1 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
     
     .nav-links {
@@ -1366,9 +1382,13 @@ footer {
     }
     
     /* FILTROS RESPONSIVE */
+    .carousel-nav-btn {
+        display: none;
+    }
+    
     .filter-carousel-track,
     .community-carousel-track {
-        padding: 5px 5px 12px 5px;
+        padding: 5px;
     }
     
     .filter-btn, .community-btn {
@@ -1544,6 +1564,123 @@ footer {
     }
 }
 
+/* ========== PARA PANTALLAS GRANDES (PC) ========== */
+@media (min-width: 769px) {
+    /* MOSTRAR FLECHAS DE NAVEGACIÓN EN CARRUSELES DE FILTROS */
+    .carousel-nav-btn {
+        display: flex;
+    }
+    
+    .carousel-nav-btn.prev {
+        left: -30px;
+    }
+    
+    .carousel-nav-btn.next {
+        right: -30px;
+    }
+    
+    .modal-body {
+        max-width: 1000px;
+    }
+    
+    /* CARRUSEL PARA LOS TABS DE RAZAS EN PC */
+    .breeds-tabs-container {
+        position: relative;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    
+    .breeds-tabs {
+        position: relative;
+        overflow-x: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-pastel) #f1f1f1;
+        padding: 10px 5px;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    
+    .breeds-tabs::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .breeds-tabs::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    
+    .breeds-tabs::-webkit-scrollbar-thumb {
+        background: var(--primary-pastel);
+        border-radius: 10px;
+    }
+    
+    .breeds-tabs::-webkit-scrollbar-thumb:hover {
+        background: #7DB8A8;
+    }
+    
+    /* BOTONES DE NAVEGACIÓN PARA LOS TABS */
+    .breeds-tabs-nav {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+    
+    .breeds-tabs-nav.prev-tab {
+        left: 0;
+    }
+    
+    .breeds-tabs-nav.next-tab {
+        right: 0;
+    }
+    
+    .breeds-tabs-nav-btn {
+        width: 40px;
+        height: 40px;
+        background: white;
+        border: 2px solid var(--border-light);
+        border-radius: 50%;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-sm);
+    }
+    
+    .breeds-tabs-nav-btn:hover {
+        background: var(--primary-pastel);
+        color: white;
+        border-color: var(--primary-pastel);
+        transform: scale(1.1);
+    }
+    
+    .breeds-tabs-nav-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    .breeds-tabs-nav-btn:disabled:hover {
+        background: white;
+        color: var(--text-dark);
+        border-color: var(--border-light);
+    }
+    
+    /* Para asegurar que los tabs no se salgan del contenedor */
+    .breeds-tabs {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+    
+    .breed-tab {
+        flex-shrink: 0;
+    }
+}
+
 /* Para pantallas muy grandes */
 @media (min-width: 1400px) {
     .breeders-grid {
@@ -1569,23 +1706,39 @@ footer {
     .modal-body {
         padding: 35px 30px;
     }
+    
+    /* En tablets, los tabs ya tienen scroll horizontal automático */
+    .breeds-tabs-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .breeds-tabs-nav {
+        display: none; /* En tablets, ocultamos las flechas para tabs */
+    }
+}
+
+/* Ocultar flechas cuando no hay scroll */
+.filter-carousel-track:not(.scrollable) ~ .carousel-nav-btn,
+.community-carousel-track:not(.scrollable) ~ .carousel-nav-btn {
+    display: none;
 }
 </style>
 </head>
 <body>
 <div class="container">
-<!-- NAVEGACIÓN - NO FIJA, SOLO 2 BOTONES -->
+<!-- NAVEGACIÓN - SOLO 2 BOTONES -->
 <nav class="main-nav">
-    <a href="/" class="nav-brand">
+    <a href="#" class="nav-brand">
         <i class="fas fa-egg"></i>
-        <h4>Criadores de Aves España</h4>
+        <h1>Criadores de Aves España</h1>
     </a>
     <div class="nav-links">
-        <button class="nav-link active" onclick="location.href='/'">
+        <button class="nav-link active">
             <i class="fas fa-home"></i> Inicio
         </button>
         <button class="nav-link" id="publishAdBtn">
-            <i class="fas fa-plus"></i> Publicar
+            <i class="fas fa-plus-circle"></i> Publique su Anuncio
         </button>
     </div>
 </nav>
@@ -1604,115 +1757,127 @@ footer {
     </div>
 </section>
 
-<!-- FILTROS POR TIPO DE AVE - SIN FLECHAS, CON SCROLLBAR -->
+<!-- FILTROS POR TIPO DE AVE - CARRUSEL -->
 <section class="bird-type-filters">
     <h2 class="filters-title">
         <i class="fas fa-feather"></i> Filtrar por Tipo de Ave
     </h2>
     <div class="filter-carousel-container">
+        <button class="carousel-nav-btn prev" data-carousel="bird-type">
+            <i class="fas fa-chevron-left"></i>
+        </button>
         <div class="filter-carousel-track" id="bird-type-carousel">
             <button class="filter-btn active" data-filter="all">
-                <i class="fas fa-egg"></i> Todos
+                <i class="fas fa-layer-group"></i> Todos
             </button>
             <button class="filter-btn" data-filter="gallinas">
                 <i class="fas fa-egg"></i> Gallinas
             </button>
             <button class="filter-btn" data-filter="patos">
-                <i class="fas fa-feather"></i> Patos
+                <i class="fas fa-water"></i> Patos
             </button>
             <button class="filter-btn" data-filter="pavos">
-                <i class="fas fa-feather"></i> Pavos
+                <i class="fas fa-feather-alt"></i> Pavos
             </button>
             <button class="filter-btn" data-filter="faisanes">
-                <i class="fas fa-feather"></i> Faisanes
+                <i class="fas fa-crow"></i> Faisanes
             </button>
             <button class="filter-btn" data-filter="codornices">
-                <i class="fas fa-egg"></i> Codornices
+                <i class="fas fa-dove"></i> Codornices
             </button>
             <button class="filter-btn" data-filter="ocas">
-                <i class="fas fa-feather"></i> Ocas/Gansos
+                <i class="fas fa-kiwi-bird"></i> Ocas/Gansos
             </button>
             <button class="filter-btn" data-filter="perdices">
-                <i class="fas fa-feather"></i> Perdices
+                <i class="fas fa-bird"></i> Perdices
             </button>
             <button class="filter-btn" data-filter="gallinas_ornamentales">
-                <i class="fas fa-feather"></i> Ornamentales
+                <i class="fas fa-crown"></i> Ornamentales
             </button>
             <button class="filter-btn" data-filter="avestruces">
-                <i class="fas fa-feather"></i> Avestruces
+                <i class="fas fa-otter"></i> Avestruces
             </button>
         </div>
+        <button class="carousel-nav-btn next" data-carousel="bird-type">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 </section>
 
-<!-- FILTROS POR COMUNIDAD AUTÓNOMA - SIN FLECHAS, CON SCROLLBAR -->
+<!-- FILTROS POR COMUNIDAD AUTÓNOMA - CARRUSEL -->
 <section class="community-filters">
     <h2 class="community-title">
-        <i class="fas fa-flag"></i> Filtrar por Comunidad Autónoma
+        <i class="fas fa-map-marked-alt"></i> Filtrar por Comunidad Autónoma
     </h2>
     <div class="community-carousel-container">
+        <button class="carousel-nav-btn prev" data-carousel="community">
+            <i class="fas fa-chevron-left"></i>
+        </button>
         <div class="community-carousel-track" id="community-carousel">
             <button class="community-btn active" data-community="all">
-                <i class="fas fa-flag"></i> Todas España
+                <span class="flag-icon">🇪🇸</span> Todas España
             </button>
             <button class="community-btn" data-community="andalucia">
-                <i class="fas fa-flag"></i> Andalucía
+                <span class="flag-icon">🏖️</span> Andalucía
             </button>
             <button class="community-btn" data-community="cataluna">
-                <i class="fas fa-flag"></i> Cataluña
+                <span class="flag-icon">🏰</span> Cataluña
             </button>
             <button class="community-btn" data-community="madrid">
-                <i class="fas fa-flag"></i> Madrid
+                <span class="flag-icon">👑</span> Madrid
             </button>
             <button class="community-btn" data-community="valencia">
-                <i class="fas fa-flag"></i> Valencia
+                <span class="flag-icon">🍊</span> Valencia
             </button>
             <button class="community-btn" data-community="galicia">
-                <i class="fas fa-flag"></i> Galicia
+                <span class="flag-icon">🌊</span> Galicia
             </button>
             <button class="community-btn" data-community="castilla_leon">
-                <i class="fas fa-flag"></i> Castilla y León
+                <span class="flag-icon">🏞️</span> Castilla y León
             </button>
             <button class="community-btn" data-community="castilla_mancha">
-                <i class="fas fa-flag"></i> Castilla-La Mancha
+                <span class="flag-icon">🌾</span> Castilla-La Mancha
             </button>
             <button class="community-btn" data-community="pais_vasco">
-                <i class="fas fa-flag"></i> País Vasco
+                <span class="flag-icon">⛰️</span> País Vasco
             </button>
             <button class="community-btn" data-community="aragon">
-                <i class="fas fa-flag"></i> Aragón
+                <span class="flag-icon">🏔️</span> Aragón
             </button>
             <button class="community-btn" data-community="murcia">
-                <i class="fas fa-flag"></i> Murcia
+                <span class="flag-icon">☀️</span> Murcia
             </button>
             <button class="community-btn" data-community="extremadura">
-                <i class="fas fa-flag"></i> Extremadura
+                <span class="flag-icon">🐗</span> Extremadura
             </button>
             <button class="community-btn" data-community="navarra">
-                <i class="fas fa-flag"></i> Navarra
+                <span class="flag-icon">🏰</span> Navarra
             </button>
             <button class="community-btn" data-community="asturias">
-                <i class="fas fa-flag"></i> Asturias
+                <span class="flag-icon">🌲</span> Asturias
             </button>
             <button class="community-btn" data-community="cantabria">
-                <i class="fas fa-flag"></i> Cantabria
+                <span class="flag-icon">⛵</span> Cantabria
             </button>
             <button class="community-btn" data-community="rioja">
-                <i class="fas fa-flag"></i> La Rioja
+                <span class="flag-icon">🍷</span> La Rioja
             </button>
             <button class="community-btn" data-community="islas_baleares">
-                <i class="fas fa-flag"></i> Baleares
+                <span class="flag-icon">🏝️</span> Baleares
             </button>
             <button class="community-btn" data-community="islas_canarias">
-                <i class="fas fa-flag"></i> Canarias
+                <span class="flag-icon">🌴</span> Canarias
             </button>
             <button class="community-btn" data-community="ceuta">
-                <i class="fas fa-flag"></i> Ceuta
+                <span class="flag-icon">🧱</span> Ceuta
             </button>
             <button class="community-btn" data-community="melilla">
-                <i class="fas fa-flag"></i> Melilla
+                <span class="flag-icon">🧱</span> Melilla
             </button>
         </div>
+        <button class="carousel-nav-btn next" data-carousel="community">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 </section>
 
@@ -1759,6 +1924,11 @@ footer {
             <div class="breeds-section">
                 <h3 class="breeds-title">Razas Disponibles</h3>
                 <div class="breeds-tabs-container">
+                    <div class="breeds-tabs-nav prev-tab">
+                        <button class="breeds-tabs-nav-btn prev-tab-btn" data-tabs="tabs-1">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
                     <div class="breeds-tabs" id="tabs-1">
                         <button class="breed-tab active" data-target="breed-1-1">
                             <i class="fas fa-egg"></i> Leghorn Blanca
@@ -1768,6 +1938,17 @@ footer {
                         </button>
                         <button class="breed-tab" data-target="breed-1-3">
                             <i class="fas fa-feather"></i> Sussex
+                        </button>
+                        <button class="breed-tab" data-target="breed-1-4">
+                            <i class="fas fa-crown"></i> Orpington
+                        </button>
+                        <button class="breed-tab" data-target="breed-1-5">
+                            <i class="fas fa-star"></i> Wyandotte
+                        </button>
+                    </div>
+                    <div class="breeds-tabs-nav next-tab">
+                        <button class="breeds-tabs-nav-btn next-tab-btn" data-tabs="tabs-1">
+                            <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
                     
@@ -1893,6 +2074,88 @@ footer {
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="breeds-tab-content" id="breed-1-4">
+                        <div class="breed-detail">
+                            <div class="breed-title-container">
+                                <h3 class="breed-title">Orpington</h3>
+                                <span class="breed-product-tag chicks">
+                                    <i class="fas fa-baby"></i> Solo Crías
+                                </span>
+                            </div>
+                            <div class="breed-image-container">
+                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
+                                     alt="Gallina Orpington"
+                                     class="breed-image"
+                                     data-breed="Orpington"
+                                     data-breeder="Criadero Gallinas Felices"
+                                     data-products="chicks">
+                            </div>
+                            <div class="breed-info">
+                                <div class="info-item">
+                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
+                                    <p>Raza inglesa de gran tamaño y temperamento muy tranquilo. Ideal para familias con niños.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
+                                    <p>180-220 huevos/año | Peso adulto: 4-5 kg | Madurez sexual: 7-8 meses</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-tag"></i> Precios</h4>
+                                    <p>Pollitos: 12-18€ según edad | Disponibles en varios colores</p>
+                                </div>
+                            </div>
+                            <div class="breed-actions">
+                                <button class="breed-btn info-btn" data-breed="Orpington" data-breeder="Criadero Gallinas Felices" data-products="chicks">
+                                    <i class="fas fa-info-circle"></i> Más info
+                                </button>
+                                <button class="breed-btn buy-btn" data-breed="Orpington" data-breeder="Criadero Gallinas Felices" data-products="chicks">
+                                    <i class="fas fa-shopping-cart"></i> Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="breeds-tab-content" id="breed-1-5">
+                        <div class="breed-detail">
+                            <div class="breed-title-container">
+                                <h3 class="breed-title">Wyandotte</h3>
+                                <span class="breed-product-tag both">
+                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
+                                </span>
+                            </div>
+                            <div class="breed-image-container">
+                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
+                                     alt="Gallina Wyandotte"
+                                     class="breed-image"
+                                     data-breed="Wyandotte"
+                                     data-breeder="Criadero Gallinas Felices"
+                                     data-products="both">
+                            </div>
+                            <div class="breed-info">
+                                <div class="info-item">
+                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
+                                    <p>Raza americana muy apreciada por su belleza y buena producción. Plumaje vistoso y lacio.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
+                                    <p>200-240 huevos/año | Peso adulto: 3-3.5 kg | Madurez sexual: 6-7 meses</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-tag"></i> Precios</h4>
+                                    <p>Huevos fértiles: 3.20€/unidad | Pollitos: 11-16€ según edad</p>
+                                </div>
+                            </div>
+                            <div class="breed-actions">
+                                <button class="breed-btn info-btn" data-breed="Wyandotte" data-breeder="Criadero Gallinas Felices" data-products="both">
+                                    <i class="fas fa-info-circle"></i> Más info
+                                </button>
+                                <button class="breed-btn buy-btn" data-breed="Wyandotte" data-breeder="Criadero Gallinas Felices" data-products="both">
+                                    <i class="fas fa-shopping-cart"></i> Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1934,6 +2197,11 @@ footer {
             <div class="breeds-section">
                 <h3 class="breeds-title">Razas Disponibles</h3>
                 <div class="breeds-tabs-container">
+                    <div class="breeds-tabs-nav prev-tab">
+                        <button class="breeds-tabs-nav-btn prev-tab-btn" data-tabs="tabs-2">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
                     <div class="breeds-tabs" id="tabs-2">
                         <button class="breed-tab active" data-target="breed-2-1">
                             <i class="fas fa-egg"></i> Castellana Negra
@@ -1943,6 +2211,17 @@ footer {
                         </button>
                         <button class="breed-tab" data-target="breed-2-3">
                             <i class="fas fa-feather"></i> Utrerana
+                        </button>
+                        <button class="breed-tab" data-target="breed-2-4">
+                            <i class="fas fa-star"></i> Vasca
+                        </button>
+                        <button class="breed-tab" data-target="breed-2-5">
+                            <i class="fas fa-crown"></i> Menorca
+                        </button>
+                    </div>
+                    <div class="breeds-tabs-nav next-tab">
+                        <button class="breeds-tabs-nav-btn next-tab-btn" data-tabs="tabs-2">
+                            <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
                     
@@ -2068,6 +2347,88 @@ footer {
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="breeds-tab-content" id="breed-2-4">
+                        <div class="breed-detail">
+                            <div class="breed-title-container">
+                                <h3 class="breed-title">Vasca</h3>
+                                <span class="breed-product-tag both">
+                                    <i class="fas fa-egg"></i> Huevos | <i class="fas fa-baby"></i> Crías
+                                </span>
+                            </div>
+                            <div class="breed-image-container">
+                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
+                                     alt="Gallina Vasca"
+                                     class="breed-image"
+                                     data-breed="Vasca"
+                                     data-breeder="Granja Avícola Levante"
+                                     data-products="both">
+                            </div>
+                            <div class="breed-info">
+                                <div class="info-item">
+                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
+                                    <p>Raza autóctona del País Vasco. Muy rústica y adaptada a climas húmedos. Doble aptitud.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
+                                    <p>200-240 huevos/año | Peso: 3-3.5 kg | Huevos: color crema</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-tag"></i> Precios</h4>
+                                    <p>Huevos: 3.10€ | Pollitos: 10-14€ | Variedad leonada y negra</p>
+                                </div>
+                            </div>
+                            <div class="breed-actions">
+                                <button class="breed-btn info-btn" data-breed="Vasca" data-breeder="Granja Avícola Levante" data-products="both">
+                                    <i class="fas fa-info-circle"></i> Más info
+                                </button>
+                                <button class="breed-btn buy-btn" data-breed="Vasca" data-breeder="Granja Avícola Levante" data-products="both">
+                                    <i class="fas fa-shopping-cart"></i> Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="breeds-tab-content" id="breed-2-5">
+                        <div class="breed-detail">
+                            <div class="breed-title-container">
+                                <h3 class="breed-title">Menorca</h3>
+                                <span class="breed-product-tag eggs">
+                                    <i class="fas fa-egg"></i> Solo Huevos
+                                </span>
+                            </div>
+                            <div class="breed-image-container">
+                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
+                                     alt="Gallina Menorca"
+                                     class="breed-image"
+                                     data-breed="Menorca"
+                                     data-breeder="Granja Avícola Levante"
+                                     data-products="eggs">
+                            </div>
+                            <div class="breed-info">
+                                <div class="info-item">
+                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
+                                    <p>Raza mediterránea de las Islas Baleares. Elegante, activa y excelente ponedora de huevos blancos.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
+                                    <p>240-280 huevos/año | Peso: 2.5-3 kg | Huevos: grandes y blancos</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-tag"></i> Precios</h4>
+                                    <p>Huevos fértiles: 3.30€/unidad | Mínimo: 6 unidades | Fertilidad garantizada</p>
+                                </div>
+                            </div>
+                            <div class="breed-actions">
+                                <button class="breed-btn info-btn" data-breed="Menorca" data-breeder="Granja Avícola Levante" data-products="eggs">
+                                    <i class="fas fa-info-circle"></i> Más info
+                                </button>
+                                <button class="breed-btn buy-btn" data-breed="Menorca" data-breeder="Granja Avícola Levante" data-products="eggs">
+                                    <i class="fas fa-shopping-cart"></i> Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2106,6 +2467,11 @@ footer {
             <div class="breeds-section">
                 <h3 class="breeds-title">Razas de Montaña</h3>
                 <div class="breeds-tabs-container">
+                    <div class="breeds-tabs-nav prev-tab">
+                        <button class="breeds-tabs-nav-btn prev-tab-btn" data-tabs="tabs-3">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
                     <div class="breeds-tabs" id="tabs-3">
                         <button class="breed-tab active" data-target="breed-3-1">
                             <i class="fas fa-egg"></i> Pita Pinta
@@ -2115,6 +2481,17 @@ footer {
                         </button>
                         <button class="breed-tab" data-target="breed-3-3">
                             <i class="fas fa-egg"></i> Penedesenca
+                        </button>
+                        <button class="breed-tab" data-target="breed-3-4">
+                            <i class="fas fa-egg"></i> Marans
+                        </button>
+                        <button class="breed-tab" data-target="breed-3-5">
+                            <i class="fas fa-egg"></i> Empordanesa
+                        </button>
+                    </div>
+                    <div class="breeds-tabs-nav next-tab">
+                        <button class="breeds-tabs-nav-btn next-tab-btn" data-tabs="tabs-3">
+                            <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
                     
@@ -2235,6 +2612,88 @@ footer {
                                     <i class="fas fa-info-circle"></i> Más info
                                 </button>
                                 <button class="breed-btn buy-btn" data-breed="Penedesenca" data-breeder="Avícola Pirenaica" data-products="eggs">
+                                    <i class="fas fa-shopping-cart"></i> Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="breeds-tab-content" id="breed-3-4">
+                        <div class="breed-detail">
+                            <div class="breed-title-container">
+                                <h3 class="breed-title">Marans</h3>
+                                <span class="breed-product-tag eggs">
+                                    <i class="fas fa-egg"></i> Huevos Fértiles
+                                </span>
+                            </div>
+                            <div class="breed-image-container">
+                                <img src="https://images.unsplash.com/photo-1573316364757-3b4c8f6b4e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
+                                     alt="Gallina Marans"
+                                     class="breed-image"
+                                     data-breed="Marans"
+                                     data-breeder="Avícola Pirenaica"
+                                     data-products="eggs">
+                            </div>
+                            <div class="breed-info">
+                                <div class="info-item">
+                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
+                                    <p>Raza francesa famosa por sus huevos color chocolate oscuro. Excelente calidad de carne.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
+                                    <p>150-180 huevos/año | Huevos: chocolate oscuro | Peso: 3-3.5 kg</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-tag"></i> Precios</h4>
+                                    <p>Huevos fértiles: 4.20€/unidad | Raza pura francesa | Certificado incluido</p>
+                                </div>
+                            </div>
+                            <div class="breed-actions">
+                                <button class="breed-btn info-btn" data-breed="Marans" data-breeder="Avícola Pirenaica" data-products="eggs">
+                                    <i class="fas fa-info-circle"></i> Más info
+                                </button>
+                                <button class="breed-btn buy-btn" data-breed="Marans" data-breeder="Avícola Pirenaica" data-products="eggs">
+                                    <i class="fas fa-shopping-cart"></i> Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="breeds-tab-content" id="breed-3-5">
+                        <div class="breed-detail">
+                            <div class="breed-title-container">
+                                <h3 class="breed-title">Empordanesa</h3>
+                                <span class="breed-product-tag eggs">
+                                    <i class="fas fa-egg"></i> Huevos Fértiles
+                                </span>
+                            </div>
+                            <div class="breed-image-container">
+                                <img src="https://images.unsplash.com/photo-1563298725-53eebfa6d8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"
+                                     alt="Gallina Empordanesa"
+                                     class="breed-image"
+                                     data-breed="Empordanesa"
+                                     data-breeder="Avícola Pirenaica"
+                                     data-products="eggs">
+                            </div>
+                            <div class="breed-info">
+                                <div class="info-item">
+                                    <h4><i class="fas fa-info-circle"></i> Descripción</h4>
+                                    <p>Raza autóctona de Girona. Muy resistente y adaptada a climas mediterráneos secos.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-chart-line"></i> Producción</h4>
+                                    <p>200-230 huevos/año | Huevos: color crema | Peso: 2.8-3.2 kg</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4><i class="fas fa-tag"></i> Precios</h4>
+                                    <p>Huevos fértiles: 3.60€/unidad | Variedad roja y negra | Envío especial</p>
+                                </div>
+                            </div>
+                            <div class="breed-actions">
+                                <button class="breed-btn info-btn" data-breed="Empordanesa" data-breeder="Avícola Pirenaica" data-products="eggs">
+                                    <i class="fas fa-info-circle"></i> Más info
+                                </button>
+                                <button class="breed-btn buy-btn" data-breed="Empordanesa" data-breeder="Avícola Pirenaica" data-products="eggs">
                                     <i class="fas fa-shopping-cart"></i> Comprar
                                 </button>
                             </div>
@@ -2385,7 +2844,7 @@ footer {
     </div>
     <div class="footer-nav">
         <a href="#"><i class="fas fa-home"></i> Inicio</a>
-        <a href="#" id="footerPublishBtn"><i class="fas fa-plus"></i> Publicar</a>
+        <a href="#" id="footerPublishBtn"><i class="fas fa-plus-circle"></i> Publique su Anuncio</a>
         <a href="#"><i class="fas fa-egg"></i> Tipos de Aves</a>
         <a href="#"><i class="fas fa-info-circle"></i> Sobre Nosotros</a>
         <a href="#"><i class="fas fa-phone"></i> Contacto</a>
@@ -2396,33 +2855,138 @@ footer {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Botón "Publicar"
-    const publishAdBtn = document.getElementById('publishAdBtn');
-    const footerPublishBtn = document.getElementById('footerPublishBtn');
-    
-    function showPublishMessage() {
-        alert('¡Próximamente! Estamos preparando el formulario para que puedas publicar tu anuncio de criador. Mientras tanto, puedes contactarnos en info@criadoresaves.es');
+    // SISTEMA DE CARRUSELES PARA FILTROS
+    function setupCarousel(carouselId, prevBtnSelector, nextBtnSelector) {
+        const track = document.getElementById(carouselId);
+        const prevBtn = document.querySelector(prevBtnSelector);
+        const nextBtn = document.querySelector(nextBtnSelector);
+        
+        if (!track || !prevBtn || !nextBtn) return;
+        
+        // Función para verificar si hay scroll disponible
+        function updateNavButtons() {
+            const isScrollable = track.scrollWidth > track.clientWidth;
+            
+            if (isScrollable) {
+                track.classList.add('scrollable');
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+                
+                // Verificar posición del scroll
+                prevBtn.style.opacity = track.scrollLeft <= 10 ? '0.5' : '1';
+                nextBtn.style.opacity = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10 ? '0.5' : '1';
+            } else {
+                track.classList.remove('scrollable');
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+        }
+        
+        // Navegación
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+        
+        // Actualizar botones al hacer scroll
+        track.addEventListener('scroll', () => {
+            updateNavButtons();
+        });
+        
+        // Actualizar al cargar y al redimensionar
+        window.addEventListener('resize', updateNavButtons);
+        updateNavButtons();
     }
     
-    if (publishAdBtn) publishAdBtn.addEventListener('click', showPublishMessage);
-    if (footerPublishBtn) footerPublishBtn.addEventListener('click', showPublishMessage);
+    // Inicializar carruseles de filtros
+    setupCarousel('bird-type-carousel', '[data-carousel="bird-type"].prev', '[data-carousel="bird-type"].next');
+    setupCarousel('community-carousel', '[data-carousel="community"].prev', '[data-carousel="community"].next');
     
-    // SISTEMA DE PESTAÑAS PARA RAZAS
-    document.querySelectorAll('.breeds-tabs-container').forEach(container => {
-        const tabs = container.querySelectorAll('.breed-tab');
+    // ========== SISTEMA DE CARRUSEL PARA TABS DE RAZAS EN PC ==========
+    function setupTabsCarousel(container) {
+        const tabs = container.querySelector('.breeds-tabs');
+        const prevBtn = container.querySelector('.prev-tab-btn');
+        const nextBtn = container.querySelector('.next-tab-btn');
         const tabContents = container.querySelectorAll('.breeds-tab-content');
+        const tabButtons = container.querySelectorAll('.breed-tab');
         
-        tabs.forEach(tab => {
+        if (!tabs || !prevBtn || !nextBtn) return;
+        
+        // Función para actualizar estado de botones
+        function updateTabNavButtons() {
+            const isScrollable = tabs.scrollWidth > tabs.clientWidth;
+            
+            if (isScrollable) {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+                
+                // Verificar posición del scroll
+                prevBtn.disabled = tabs.scrollLeft <= 10;
+                nextBtn.disabled = tabs.scrollLeft + tabs.clientWidth >= tabs.scrollWidth - 10;
+                
+                if (prevBtn.disabled) {
+                    prevBtn.style.opacity = '0.5';
+                    prevBtn.style.cursor = 'not-allowed';
+                } else {
+                    prevBtn.style.opacity = '1';
+                    prevBtn.style.cursor = 'pointer';
+                }
+                
+                if (nextBtn.disabled) {
+                    nextBtn.style.opacity = '0.5';
+                    nextBtn.style.cursor = 'not-allowed';
+                } else {
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.cursor = 'pointer';
+                }
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+        }
+        
+        // Navegación de tabs
+        prevBtn.addEventListener('click', () => {
+            if (!prevBtn.disabled) {
+                tabs.scrollBy({ left: -150, behavior: 'smooth' });
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (!nextBtn.disabled) {
+                tabs.scrollBy({ left: 150, behavior: 'smooth' });
+            }
+        });
+        
+        // Actualizar botones al hacer scroll
+        tabs.addEventListener('scroll', () => {
+            updateTabNavButtons();
+        });
+        
+        // Sistema de pestañas
+        tabButtons.forEach(tab => {
             tab.addEventListener('click', () => {
                 const targetId = tab.getAttribute('data-target');
                 
-                tabs.forEach(t => t.classList.remove('active'));
+                tabButtons.forEach(t => t.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 
                 tab.classList.add('active');
                 document.getElementById(targetId).classList.add('active');
             });
         });
+        
+        // Actualizar al cargar y al redimensionar
+        window.addEventListener('resize', updateTabNavButtons);
+        updateTabNavButtons();
+    }
+    
+    // Inicializar carruseles para tabs de razas
+    document.querySelectorAll('.breeds-tabs-container').forEach(container => {
+        setupTabsCarousel(container);
     });
     
     // Variables para el modal
@@ -2754,6 +3318,17 @@ ${name}`;
         const whatsappUrl = `https://wa.me/${breederWhatsApp}?text=${encodedMessage}`;
         window.open(whatsappUrl, '_blank');
     });
+    
+    // Botón "Publique su Anuncio"
+    const publishAdBtn = document.getElementById('publishAdBtn');
+    const footerPublishBtn = document.getElementById('footerPublishBtn');
+    
+    function showPublishMessage() {
+        alert('¡Próximamente! Estamos preparando el formulario para que puedas publicar tu anuncio de criador. Mientras tanto, puedes contactarnos en info@criadoresaves.es');
+    }
+    
+    if (publishAdBtn) publishAdBtn.addEventListener('click', showPublishMessage);
+    if (footerPublishBtn) footerPublishBtn.addEventListener('click', showPublishMessage);
     
     // FILTROS - SISTEMA DE FILTRADO
     const birdTypeButtons = document.querySelectorAll('#bird-type-carousel .filter-btn');
