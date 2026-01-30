@@ -375,6 +375,7 @@
             color: var(--blue-600);
         }
 
+        /* CARRUSELES CENTRADOS EN PC - CAMBIO PRINCIPAL */
         .carousel {
             display: flex;
             overflow-x: auto;
@@ -384,6 +385,8 @@
             -ms-overflow-style: none;
             margin-bottom: 2rem;
             scroll-snap-type: x mandatory;
+            /* Centrado por defecto en móviles */
+            justify-content: flex-start;
         }
 
         .carousel::-webkit-scrollbar {
@@ -399,6 +402,20 @@
         @media (min-width: 640px) {
             .carousel-item {
                 width: 7rem;
+            }
+        }
+
+        /* Centrado en pantallas grandes donde todos los elementos caben */
+        @media (min-width: 1024px) {
+            .carousel {
+                padding: 0.75rem 0;
+                justify-content: center;
+                overflow-x: hidden; /* Ocultar scrollbar cuando no es necesario */
+            }
+            
+            /* Asegurar que los elementos no se contraigan */
+            .carousel-item {
+                flex-shrink: 0;
             }
         }
 
@@ -1598,6 +1615,20 @@
                 font-size: 1.5rem;
             }
         }
+        
+        /* Asegurar que los carruseles se centren correctamente en pantallas grandes */
+        @media (min-width: 1024px) {
+            .carousel-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .carousel {
+                width: auto;
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1634,7 +1665,7 @@
         <div class="view home-view active">
             <!-- Hero Section -->
             <section class="hero">
-                <h2>Directorio de Grupos</h2>
+                <h1>Directorio de Comunidades de Bandadas</h1>
                 <p>Conecta con grupos de ornitología y avicultura en España. Explora por categorías, regiones y encuentra tu comunidad perfecta.</p>
                 
                 <!-- Promotional Banner -->
@@ -1652,12 +1683,12 @@
                                     </svg>
                                 </div>
                                 <div class="promo-desc">
-                                    <p>¿Eres criador? <span class="hidden-sm">Obtén tu</span> carné federativo y anillas homologadas oficialmente federadas.Federa tus aves online</p>
-                                    <p class="text-xs"></p>
+                                    <p>¿Eres criador? <span class="hidden-sm">Obtén tu</span> carné federativo y anillas oficiales</p>
+                                    <p class="text-xs">Federación online con la Asociación Titulí - Proceso 100% digital</p>
                                 </div>
                             </div>
                             <a href="https://asociaciontituli.org/federacion" target="_blank" rel="noopener noreferrer" class="promo-link">
-                                Federarse
+                                Federarse ahora
                             </a>
                         </div>
                     </div>
@@ -1684,8 +1715,10 @@
                     </svg>
                     Categorías Principales
                 </h2>
-                <div class="carousel" id="main-categories">
-                    <!-- Categories will be inserted here by JavaScript -->
+                <div class="carousel-container">
+                    <div class="carousel" id="main-categories">
+                        <!-- Categories will be inserted here by JavaScript -->
+                    </div>
                 </div>
             </section>
             
@@ -1697,8 +1730,10 @@
                     </svg>
                     <span id="subcategory-category-name">Categoría</span> - Subcategorías
                 </h2>
-                <div class="carousel" id="subcategories">
-                    <!-- Subcategories will be inserted here by JavaScript -->
+                <div class="carousel-container">
+                    <div class="carousel" id="subcategories">
+                        <!-- Subcategories will be inserted here by JavaScript -->
+                    </div>
                 </div>
             </section>
             
