@@ -8,574 +8,524 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root {
-    --green-50: #f0fdf4;
-    --green-100: #dcfce7;
-    --green-500: #22c55e;
-    --green-600: #16a34a;
-    --green-700: #15803d;
-    --blue-50: #eff6ff;
-    --blue-600: #2563eb;
-    --blue-700: #1d4ed8;
-    --blue-800: #1e40af;
-    --yellow-300: #fde047;
-    --yellow-400: #facc15;
-    --yellow-500: #eab308;
-    --orange-500: #f97316;
-    --orange-600: #ea580c;
-    --amber-50: #fffbeb;
-    --amber-100: #fef3c7;
-    --amber-200: #fde68a;
-    --amber-500: #f59e0b;
-    --amber-600: #d97706;
-    --rose-600: #e11d48;
-    --emerald-50: #ecfdf5;
-    --emerald-600: #059669;
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
-    --gray-900: #111827;
-    --white: #ffffff;
-    --black: #000000;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    --border-radius: 0.75rem;
-    --border-radius-lg: 1rem;
-    --border-radius-xl: 1.25rem;
-    --border-radius-2xl: 1.5rem;
-    /* Colores oficiales de plataformas */
-    --telegram: #0088cc;
-    --whatsapp: #25D366;
-    --discord: #5865F2;
-    --viber: #7360f2;
-    --facebook: #1877F2;
+--green-50: #f0fdf4;
+--green-100: #dcfce7;
+--green-500: #22c55e;
+--green-600: #16a34a;
+--green-700: #15803d;
+--blue-50: #eff6ff;
+--blue-600: #2563eb;
+--blue-700: #1d4ed8;
+--blue-800: #1e40af;
+--yellow-300: #fde047;
+--yellow-400: #facc15;
+--yellow-500: #eab308;
+--orange-500: #f97316;
+--orange-600: #ea580c;
+--amber-50: #fffbeb;
+--amber-100: #fef3c7;
+--amber-200: #fde68a;
+--amber-500: #f59e0b;
+--amber-600: #d97706;
+--rose-600: #e11d48;
+--emerald-50: #ecfdf5;
+--emerald-600: #059669;
+--gray-50: #f9fafb;
+--gray-100: #f3f4f6;
+--gray-200: #e5e7eb;
+--gray-300: #d1d5db;
+--gray-500: #6b7280;
+--gray-600: #4b5563;
+--gray-700: #374151;
+--gray-800: #1f2937;
+--gray-900: #111827;
+--white: #ffffff;
+--black: #000000;
+--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+--shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+--transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+--border-radius: 0.75rem;
+--border-radius-lg: 1rem;
+--border-radius-xl: 1.25rem;
+--border-radius-2xl: 1.5rem;
+/* Colores oficiales de plataformas */
+--telegram: #0088cc;
+--whatsapp: #25D366;
+--discord: #5865F2;
+--viber: #7360f2;
+--facebook: #1877F2;
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: linear-gradient(to bottom right, var(--green-50), var(--blue-50));
-    color: var(--gray-900);
-    line-height: 1.5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+background: linear-gradient(to bottom right, var(--green-50), var(--blue-50));
+color: var(--gray-900);
+line-height: 1.5;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
 }
 /* HEADER MEJORADO */
 .header {
-    background: linear-gradient(to right, var(--green-700), var(--blue-800));
-    color: var(--white);
-    box-shadow: var(--shadow-lg);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
+background: linear-gradient(to right, var(--green-700), var(--blue-800));
+color: var(--white);
+box-shadow: var(--shadow-lg);
+position: sticky;
+top: 0;
+z-index: 1000;
+height: 3.5rem;
+display: flex;
+align-items: center;
 }
 .header-container {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+max-width: 80rem;
+margin: 0 auto;
+padding: 0 1.5rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
 }
 .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
+display: flex;
+align-items: center;
+gap: 0.75rem;
+text-decoration: none;
 }
 .logo-icon {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-    border-radius: 0.5rem;
-    padding: 0.375rem;
-    box-shadow: var(--shadow-md);
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+background: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(4px);
+border-radius: 0.5rem;
+padding: 0.375rem;
+box-shadow: var(--shadow-md);
+width: 2.5rem;
+height: 2.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
 }
 .logo-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
+width: 100%;
+height: 100%;
+object-fit: contain;
+filter: brightness(0) invert(1);
 }
 .logo-text h1 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    white-space: nowrap;
-    margin: 0;
-    line-height: 1;
-    color: var(--white);
+font-size: 1.25rem;
+font-weight: 700;
+white-space: nowrap;
+margin: 0;
+line-height: 1;
+color: var(--white);
 }
 .nav-buttons {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+display: flex;
+align-items: center;
+gap: 0.5rem;
 }
 .nav-btn {
-    font-weight: 500;
-    font-size: 0.875rem;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.9);
-    cursor: pointer;
-    transition: var(--transition);
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.5rem;
-    height: 2.25rem;
+font-weight: 500;
+font-size: 0.875rem;
+background: none;
+border: none;
+color: rgba(255, 255, 255, 0.9);
+cursor: pointer;
+transition: var(--transition);
+padding: 0.375rem 0.75rem;
+border-radius: 0.5rem;
+height: 2.25rem;
 }
 .nav-btn:hover {
-    color: var(--yellow-300);
-    background: rgba(255, 255, 255, 0.1);
+color: var(--yellow-300);
+background: rgba(255, 255, 255, 0.1);
 }
 .nav-btn.active {
-    color: var(--yellow-300);
-    background: rgba(255, 255, 255, 0.15);
-    font-weight: 600;
+color: var(--yellow-300);
+background: rgba(255, 255, 255, 0.15);
+font-weight: 600;
 }
 .add-btn {
-    background: linear-gradient(to right, var(--yellow-400), var(--orange-500));
-    color: var(--white);
-    font-weight: 600;
-    font-size: 0.875rem;
-    padding: 0.375rem 1rem;
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-    height: 2.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
+background: linear-gradient(to right, var(--yellow-400), var(--orange-500));
+color: var(--white);
+font-weight: 600;
+font-size: 0.875rem;
+padding: 0.375rem 1rem;
+border-radius: 0.5rem;
+box-shadow: var(--shadow);
+transition: var(--transition);
+border: none;
+cursor: pointer;
+height: 2.25rem;
+display: flex;
+align-items: center;
+gap: 0.375rem;
 }
 .add-btn:hover {
-    box-shadow: var(--shadow-md);
-    opacity: 0.9;
+box-shadow: var(--shadow-md);
+opacity: 0.9;
 }
 .add-btn i {
-    font-size: 1rem;
+font-size: 1rem;
 }
 /* CONTENIDO PRINCIPAL */
 .main-container {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 1.5rem;
-    flex-grow: 1;
-    width: 100%;
+max-width: 80rem;
+margin: 0 auto;
+padding: 1.5rem;
+flex-grow: 1;
+width: 100%;
 }
-/* HERO SECTION */
+/* HERO SECTION - SIN BANNER NARANJA */
 .hero {
-    text-align: center;
-    margin-bottom: 2.5rem;
+text-align: center;
+margin-bottom: 2.5rem;
 }
 .hero h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(to right, var(--green-600), var(--blue-700));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    padding: 0 0.5rem;
+font-size: 2.25rem;
+font-weight: 700;
+margin-bottom: 1.5rem;
+background: linear-gradient(to right, var(--green-600), var(--blue-700));
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+padding: 0 0.5rem;
 }
 .hero p {
-    font-size: 1.125rem;
-    color: var(--gray-700);
-    max-width: 48rem;
-    margin: 0 auto 1.5rem;
-    padding: 0 0.5rem;
-}
-/* BANNER PROMOCIONAL */
-.promo-banner {
-    max-width: 48rem;
-    margin: 0 auto 2rem;
-    padding: 1rem;
-}
-.promo-content {
-    background: linear-gradient(to right, var(--amber-50), var(--amber-100));
-    border: 1px solid var(--amber-200);
-    border-radius: var(--border-radius-xl);
-    padding: 1.25rem;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-}
-.promo-content:hover {
-    box-shadow: var(--shadow-md);
-}
-.promo-content-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-@media (min-width: 640px) {
-    .promo-content-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-}
-.promo-text {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-}
-.promo-icon {
-    flex-shrink: 0;
-    margin-top: 0.25rem;
-}
-.promo-icon i {
-    font-size: 1.5rem;
-    color: var(--amber-600);
-}
-.promo-desc h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--amber-900);
-}
-.promo-desc p {
-    font-size: 0.875rem;
-    color: var(--amber-800);
-    margin-top: 0.25rem;
-}
-.promo-link {
-    background: linear-gradient(to right, var(--amber-500), var(--orange-600));
-    color: var(--white);
-    font-weight: 700;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.75rem;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-}
-@media (min-width: 640px) {
-    .promo-link {
-        width: auto;
-    }
-}
-.promo-link:hover {
-    box-shadow: var(--shadow-lg);
-    opacity: 0.9;
+font-size: 1.125rem;
+color: var(--gray-700);
+max-width: 48rem;
+margin: 0 auto 1.5rem;
+padding: 0 0.5rem;
 }
 /* BÚSQUEDA */
 .search-container {
-    max-width: 48rem;
-    margin: 0 auto 2rem;
-    padding: 0 0.5rem;
+max-width: 48rem;
+margin: 0 auto 2rem;
+padding: 0 0.5rem;
 }
 .search-box {
-    position: relative;
+position: relative;
 }
 .search-input {
-    width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
-    border: 1px solid var(--gray-300);
-    border-radius: var(--border-radius-xl);
-    font-size: 1rem;
-    transition: var(--transition);
+width: 100%;
+padding: 1rem 1rem 1rem 3rem;
+border: 1px solid var(--gray-300);
+border-radius: var(--border-radius-xl);
+font-size: 1rem;
+transition: var(--transition);
 }
 .search-input:focus {
-    outline: none;
-    border-color: var(--green-500);
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+outline: none;
+border-color: var(--green-500);
+box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 .search-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--gray-400);
-    font-size: 1.25rem;
+position: absolute;
+left: 1rem;
+top: 50%;
+transform: translateY(-50%);
+color: var(--gray-400);
+font-size: 1.25rem;
 }
 /* SECCIONES */
 .section-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    margin: 1.5rem 0 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.5rem;
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--gray-900);
+margin: 1.5rem 0 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0 0.5rem;
 }
 .section-title i {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
+font-size: 1.5rem;
+margin-right: 0.5rem;
 }
 .section-title.green i {
-    color: var(--green-600);
+color: var(--green-600);
 }
 .section-title.blue i {
-    color: var(--blue-600);
+color: var(--blue-600);
 }
-/* CARRUSEL MEJORADO - FUNCIONA EN PC Y MÓVIL */
+/* CARRUSEL CORREGIDO - FUNCIONA PERFECTO EN PC Y MÓVIL */
 .carousel-container {
-    width: 100%;
-    position: relative;
-    margin-bottom: 2rem;
-    padding: 0 0.5rem;
+width: 100%;
+position: relative;
+margin-bottom: 2rem;
+padding: 0 0.5rem;
 }
 .carousel {
-    display: flex;
-    overflow-x: auto;
-    padding: 1rem 0.5rem;
-    gap: 1rem;
-    scroll-behavior: smooth;
-    /* Scrollbar visible en todas las pantallas */
-    scrollbar-width: thin;
-    scrollbar-color: var(--green-500) var(--gray-200);
-    -webkit-overflow-scrolling: touch;
+display: flex;
+overflow-x: auto;
+padding: 1rem 0.5rem;
+gap: 1rem;
+scroll-behavior: smooth;
+/* Scrollbar visible en todas las pantallas */
+scrollbar-width: thin;
+scrollbar-color: var(--green-500) var(--gray-200);
+-webkit-overflow-scrolling: touch;
 }
 .carousel::-webkit-scrollbar {
-    display: block;
-    height: 8px;
+display: block;
+height: 8px;
 }
 .carousel::-webkit-scrollbar-track {
-    background: var(--gray-200);
-    border-radius: 10px;
+background: var(--gray-200);
+border-radius: 10px;
 }
 .carousel::-webkit-scrollbar-thumb {
-    background: var(--green-500);
-    border-radius: 10px;
+background: var(--green-500);
+border-radius: 10px;
 }
 .carousel::-webkit-scrollbar-thumb:hover {
-    background: var(--green-600);
+background: var(--green-600);
 }
 .carousel-item {
-    flex-shrink: 0;
-    width: 8.5rem;
+flex-shrink: 0;
+width: 8.5rem;
 }
 @media (min-width: 640px) {
-    .carousel-item {
-        width: 9.5rem;
-    }
+.carousel-item {
+width: 9.5rem;
+}
 }
 @media (min-width: 1024px) {
-    .carousel {
-        padding: 1rem 1.5rem;
-    }
-    .carousel-item {
-        width: 10.5rem;
-    }
+.carousel {
+padding: 1rem 1.5rem;
 }
-/* BOTONES DE CATEGORÍA MEJORADOS - CENTRADOS */
+.carousel-item {
+width: 10.5rem;
+}
+}
+/* BOTONES DE CATEGORÍA MEJORADOS */
 .category-btn {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1rem;
-    border-radius: var(--border-radius-xl);
-    transition: var(--transition);
-    border: 2px solid transparent;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    cursor: pointer;
-    text-align: center;
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0.75rem;
+padding: 1rem;
+border-radius: var(--border-radius-xl);
+transition: var(--transition);
+border: 2px solid transparent;
+background: rgba(255, 255, 255, 0.9);
+backdrop-filter: blur(8px);
+cursor: pointer;
+text-align: center;
 }
 .category-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--green-200);
+transform: translateY(-4px);
+box-shadow: var(--shadow-lg);
+border-color: var(--green-200);
 }
 .category-btn.active {
-    background: linear-gradient(135deg, var(--green-500), var(--blue-600));
-    color: var(--white);
-    box-shadow: var(--shadow-md);
-    border-color: transparent;
+background: linear-gradient(135deg, var(--green-500), var(--blue-600));
+color: var(--white);
+box-shadow: var(--shadow-md);
+border-color: transparent;
 }
 .category-img {
-    width: 5rem;
-    height: 5rem;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    border: 3px solid var(--white);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-sm);
+width: 5rem;
+height: 5rem;
+border-radius: var(--border-radius);
+overflow: hidden;
+border: 3px solid var(--white);
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: var(--shadow-sm);
 }
 .category-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+width: 100%;
+height: 100%;
+object-fit: cover;
 }
 .category-name {
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-align: center;
-    min-height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.25rem;
+font-size: 0.875rem;
+font-weight: 600;
+text-align: center;
+min-height: 2.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0 0.25rem;
 }
-/* FILTROS */
+/* FILTROS CON ICONOS OFICIALES */
 .filters-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    padding: 0 0.5rem;
+display: grid;
+grid-template-columns: 1fr;
+gap: 1rem;
+margin-bottom: 2.5rem;
+padding: 0 0.5rem;
 }
 @media (min-width: 768px) {
-    .filters-container {
-        grid-template-columns: 1fr 1fr;
-    }
+.filters-container {
+grid-template-columns: 1fr 1fr;
+}
 }
 .filter-group label {
-    display: flex;
-    align-items: center;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--gray-700);
-    margin-bottom: 0.5rem;
+display: flex;
+align-items: center;
+font-size: 0.875rem;
+font-weight: 600;
+color: var(--gray-700);
+margin-bottom: 0.5rem;
+gap: 0.5rem;
 }
 .filter-group i {
-    font-size: 1rem;
-    margin-right: 0.375rem;
+font-size: 1.125rem;
+min-width: 1.25rem;
+text-align: center;
 }
 .filter-group.green i {
-    color: var(--green-600);
+color: var(--green-600);
 }
 .filter-group.blue i {
-    color: var(--blue-600);
+color: var(--blue-600);
+}
+/* Icono de bandera española personalizado */
+.spain-flag {
+display: inline-block;
+width: 1.25rem;
+height: 0.875rem;
+background: linear-gradient(to bottom, 
+  #aa151b 33%, 
+  #f1bf00 33%, 66%, 
+  #aa151b 66%);
+border-radius: 2px;
+position: relative;
+}
+.spain-flag::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: radial-gradient(circle at 50% 50%, transparent 40%, #aa151b 41%);
+border-radius: 2px;
+opacity: 0.2;
 }
 .filter-select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid var(--gray-300);
-    border-radius: var(--border-radius-xl);
-    font-size: 0.875rem;
-    transition: var(--transition);
-    background: var(--white);
-    cursor: pointer;
+width: 100%;
+padding: 0.75rem;
+border: 2px solid var(--gray-300);
+border-radius: var(--border-radius-xl);
+font-size: 0.875rem;
+transition: var(--transition);
+background: var(--white);
+cursor: pointer;
 }
 .filter-select:focus {
-    outline: none;
-    border-color: var(--green-500);
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+outline: none;
+border-color: var(--green-500);
+box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 /* INFORMACIÓN DE RESULTADOS */
 .results-info {
-    text-align: center;
-    margin-bottom: 1rem;
-    padding: 0 0.5rem;
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: var(--gray-700);
+text-align: center;
+margin-bottom: 2rem;
+padding: 0 0.5rem;
+font-size: 1.125rem;
+font-weight: 500;
+color: var(--gray-700);
 }
 .results-info span {
-    font-weight: 700;
-    color: var(--green-600);
+font-weight: 700;
+color: var(--green-600);
 }
-/* GRID DE GRUPOS MEJORADO - TODO CENTRADO CORREGIDO */
+/* GRID DE GRUPOS MEJORADO - TODO CENTRADO */
 .groups-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0 0.5rem;
-    justify-items: center;
+display: grid;
+grid-template-columns: 1fr;
+gap: 1.5rem;
+padding: 0 0.5rem;
+justify-items: center;
 }
 @media (min-width: 640px) {
-    .groups-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.groups-grid {
+grid-template-columns: repeat(2, 1fr);
+}
 }
 @media (min-width: 1024px) {
-    .groups-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.groups-grid {
+grid-template-columns: repeat(3, 1fr);
+}
 }
 .group-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--gray-200);
-    transition: var(--transition);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(8px);
+border-radius: var(--border-radius-xl);
+box-shadow: var(--shadow-sm);
+border: 1px solid var(--gray-200);
+transition: var(--transition);
+overflow: hidden;
+display: flex;
+flex-direction: column;
+margin: 0 auto;
+width: 100%;
+max-width: 400px;
+text-align: center;
 }
 .group-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+box-shadow: var(--shadow-lg);
+transform: translateY(-4px);
 }
 .group-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    flex-grow: 1;
+padding: 1.5rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+flex-grow: 1;
 }
 .group-img {
-    width: 6rem;
-    height: 6rem;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    border: 3px solid var(--white);
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 0.5rem;
-    flex-shrink: 0;
+width: 6rem;
+height: 6rem;
+border-radius: var(--border-radius);
+overflow: hidden;
+border: 3px solid var(--white);
+box-shadow: var(--shadow-sm);
+margin-bottom: 0.5rem;
+flex-shrink: 0;
 }
 .group-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+width: 100%;
+height: 100%;
+object-fit: cover;
 }
 .group-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0.5rem;
+margin-bottom: 0.75rem;
 }
-/* BADGES MEJORADOS CON ICONOS OFICIALES - AÑADIDO FACEBOOK */
+/* BADGES MEJORADOS CON ICONOS OFICIALES */
 .badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.375rem;
-    padding: 0.375rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    white-space: nowrap;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.375rem;
+padding: 0.375rem 0.75rem;
+border-radius: 9999px;
+font-size: 0.75rem;
+font-weight: 600;
+white-space: nowrap;
 }
 .badge.platform {
-    color: var(--white);
-    font-weight: 700;
+color: var(--white);
+font-weight: 700;
 }
 .badge.platform.telegram { background: var(--telegram); }
 .badge.platform.whatsapp { background: var(--whatsapp); }
@@ -583,1659 +533,1481 @@ body {
 .badge.platform.viber { background: var(--viber); }
 .badge.platform.facebook { background: var(--facebook); }
 .badge-icon {
-    font-size: 0.875rem;
-    width: 1rem;
-    height: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+font-size: 0.875rem;
+width: 1rem;
+height: 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 .badge.members {
-    background: var(--gray-100);
-    color: var(--gray-700);
-    font-weight: 500;
+background: var(--gray-100);
+color: var(--gray-700);
+font-weight: 500;
 }
 .badge.category {
-    background: var(--green-100);
-    color: var(--green-700);
+background: var(--green-100);
+color: var(--green-700);
 }
 .badge.subcategory {
-    background: var(--blue-100);
-    color: var(--blue-700);
+background: var(--blue-100);
+color: var(--blue-700);
 }
 .badge.region {
-    background: var(--amber-100);
-    color: var(--amber-700);
+background: var(--amber-100);
+color: var(--amber-700);
 }
 .group-name {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    margin: 0.5rem 0;
-    line-height: 1.3;
-    text-align: center;
-    width: 100%;
+font-size: 1.25rem;
+font-weight: 700;
+color: var(--gray-900);
+margin: 0.5rem 0;
+line-height: 1.3;
 }
 .group-name-btn {
-    background: none;
-    border: none;
-    color: var(--green-700);
-    font-size: inherit;
-    font-weight: inherit;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    text-decoration: none;
-    padding: 0;
-    transition: color 0.2s;
+background: none;
+border: none;
+color: var(--green-700);
+font-size: inherit;
+font-weight: inherit;
+text-align: center;
+cursor: pointer;
+width: 100%;
+text-decoration: none;
+padding: 0;
+transition: color 0.2s;
 }
 .group-name-btn:hover {
-    color: var(--green-900);
-    text-decoration: underline;
+color: var(--green-900);
+text-decoration: underline;
 }
 .group-desc {
-    color: var(--gray-600);
-    font-size: 0.875rem;
-    line-height: 1.5;
-    margin: 0.5rem 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    min-height: 4.125rem;
-    width: 100%;
-    text-align: center;
+color: var(--gray-600);
+font-size: 0.875rem;
+line-height: 1.5;
+margin: 0.5rem 0;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+min-height: 4.125rem;
+width: 100%;
 }
-/* FOOTER CENTRADO CORREGIDO */
 .group-footer {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    align-items: center; /* Esto centra todo verticalmente */
-    justify-content: center; /* Esto centra todo horizontalmente */
+margin-top: auto;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+width: 100%;
+align-items: center;
 }
-
-@media (min-width: 640px) {
-    .group-footer {
-        flex-direction: row;
-        justify-content: center; /* Centrado en desktop también */
-        align-items: center;
-        width: 100%;
-        gap: 1.5rem;
-    }
-}
-
 .group-meta {
-    display: flex;
-    gap: 0.75rem;
-    font-size: 0.75rem;
-    color: var(--gray-500);
-    flex-wrap: wrap;
-    justify-content: center; /* Centra los meta items */
-    align-items: center;
+display: flex;
+gap: 0.75rem;
+font-size: 0.75rem;
+color: var(--gray-500);
+flex-wrap: wrap;
+justify-content: center;
 }
-
-/* BOTÓN CENTRADO CORREGIDO */
 .group-btn {
-    background: linear-gradient(to right, var(--green-500), var(--blue-600));
-    color: var(--white);
-    font-weight: 700;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius-xl);
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centra el texto dentro del botón */
-    gap: 0.5rem;
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto; /* Esto centra el botón */
+background: linear-gradient(to right, var(--green-500), var(--blue-600));
+color: var(--white);
+font-weight: 700;
+padding: 0.75rem 1.5rem;
+border-radius: var(--border-radius-xl);
+border: none;
+cursor: pointer;
+transition: var(--transition);
+box-shadow: var(--shadow);
+white-space: nowrap;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+flex-shrink: 0;
+width: 100%;
+max-width: 200px;
+margin: 0 auto;
 }
-
 .group-btn:hover {
-    opacity: 0.9;
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+opacity: 0.9;
+box-shadow: var(--shadow-lg);
+transform: translateY(-2px);
 }
-
 .group-btn i {
-    font-size: 1.25rem;
+font-size: 1.25rem;
 }
-
 /* BOTÓN CARGAR MÁS */
 .load-more-container {
-    text-align: center;
-    margin: 2.5rem 0;
-    padding: 0 0.5rem;
+text-align: center;
+margin: 2.5rem 0;
+padding: 0 0.5rem;
 }
-
 .load-more-btn {
-    background: linear-gradient(to right, var(--green-500), var(--blue-600));
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 0.875rem 2rem;
-    border-radius: var(--border-radius-xl);
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: var(--shadow-lg);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    min-width: 200px;
+background: linear-gradient(to right, var(--green-500), var(--blue-600));
+color: var(--white);
+font-weight: 700;
+padding: 0.875rem 2rem;
+border-radius: var(--border-radius-xl);
+border: none;
+cursor: pointer;
+transition: var(--transition);
+box-shadow: var(--shadow-lg);
+font-size: 1.125rem;
+display: inline-flex;
+align-items: center;
+gap: 0.75rem;
 }
-
-.load-more-btn:hover:not(:disabled) {
-    opacity: 0.9;
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-2px);
+.load-more-btn:hover {
+opacity: 0.9;
+box-shadow: var(--shadow-xl);
+transform: translateY(-2px);
 }
-
-.load-more-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .load-more-btn i {
-    font-size: 1.25rem;
+font-size: 1.25rem;
 }
-
-.loading-spinner {
-    display: inline-block;
-    width: 1.25rem;
-    height: 1.25rem;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: var(--white);
-    animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
 /* ESTADO VACÍO */
 .empty-state {
-    text-align: center;
-    padding: 3rem 1.5rem;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-md);
-    border: 2px dashed var(--gray-300);
-    max-width: 48rem;
-    margin: 2rem auto;
+text-align: center;
+padding: 3rem 1.5rem;
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(8px);
+border-radius: var(--border-radius-xl);
+box-shadow: var(--shadow-md);
+border: 2px dashed var(--gray-300);
+max-width: 48rem;
+margin: 2rem auto;
 }
 .empty-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+font-size: 3rem;
+margin-bottom: 1rem;
 }
 .empty-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gray-800);
-    margin-bottom: 0.5rem;
-    padding: 0 1rem;
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--gray-800);
+margin-bottom: 0.5rem;
+padding: 0 1rem;
 }
 .empty-desc {
-    color: var(--gray-600);
-    max-width: 32rem;
-    margin: 0 auto 1.5rem;
-    font-size: 0.875rem;
+color: var(--gray-600);
+max-width: 32rem;
+margin: 0 auto 1.5rem;
+font-size: 0.875rem;
 }
 @media (min-width: 640px) {
-    .empty-desc {
-        font-size: 1rem;
-    }
+.empty-desc {
+font-size: 1rem;
+}
 }
 .empty-btn {
-    background: linear-gradient(to right, var(--green-500), var(--blue-600));
-    color: var(--white);
-    font-weight: 700;
-    padding: 0.75rem 2rem;
-    border-radius: var(--border-radius-xl);
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: var(--shadow-lg);
-    font-size: 1rem;
+background: linear-gradient(to right, var(--green-500), var(--blue-600));
+color: var(--white);
+font-weight: 700;
+padding: 0.75rem 2rem;
+border-radius: var(--border-radius-xl);
+border: none;
+cursor: pointer;
+transition: var(--transition);
+box-shadow: var(--shadow-lg);
+font-size: 1rem;
 }
 .empty-btn:hover {
-    opacity: 0.9;
-    box-shadow: var(--shadow-xl);
+opacity: 0.9;
+box-shadow: var(--shadow-xl);
 }
 /* ESTADÍSTICAS */
 .stats-section {
-    margin-top: 3rem;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-md);
-    padding: 2rem;
-    text-align: center;
-    border: 1px solid var(--gray-200);
-    max-width: 64rem;
-    margin-left: auto;
-    margin-right: auto;
+margin-top: 3rem;
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(8px);
+border-radius: var(--border-radius-xl);
+box-shadow: var(--shadow-md);
+padding: 2rem;
+text-align: center;
+border: 1px solid var(--gray-200);
+max-width: 64rem;
+margin-left: auto;
+margin-right: auto;
 }
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1.5rem;
+margin-top: 1.5rem;
 }
 @media (min-width: 640px) {
-    .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-    }
+.stats-grid {
+grid-template-columns: repeat(4, 1fr);
+gap: 2rem;
+}
 }
 .stat-item {
-    padding: 1rem;
+padding: 1rem;
 }
 .stat-value {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+font-size: 2rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
 }
 @media (min-width: 768px) {
-    .stat-value {
-        font-size: 2.5rem;
-    }
+.stat-value {
+font-size: 2.5rem;
+}
 }
 .stat-value.green { color: var(--green-600); }
 .stat-value.blue { color: var(--blue-600); }
 .stat-value.yellow { color: var(--yellow-500); }
 .stat-value.rose { color: var(--rose-600); }
 .stat-label {
-    font-size: 0.875rem;
-    color: var(--gray-600);
-    font-weight: 500;
+font-size: 0.875rem;
+color: var(--gray-600);
+font-weight: 500;
 }
 /* PROMOCIÓN ASOCIACIÓN */
 .association-promo {
-    margin-top: 3rem;
-    max-width: 56rem;
-    margin-left: auto;
-    margin-right: auto;
-    background: linear-gradient(to right, var(--green-50), var(--emerald-50));
-    border-radius: var(--border-radius-2xl);
-    padding: 2rem;
-    border: 2px solid var(--green-200);
-    box-shadow: var(--shadow-lg);
+margin-top: 3rem;
+max-width: 56rem;
+margin-left: auto;
+margin-right: auto;
+background: linear-gradient(to right, var(--green-50), var(--emerald-50));
+border-radius: var(--border-radius-2xl);
+padding: 2rem;
+border: 2px solid var(--green-200);
+box-shadow: var(--shadow-lg);
 }
 .association-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+gap: 1.5rem;
 }
 @media (min-width: 640px) {
-    .association-content {
-        flex-direction: row;
-        text-align: left;
-        align-items: center;
-    }
+.association-content {
+flex-direction: row;
+text-align: left;
+align-items: center;
+}
 }
 .association-icon {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--green-500), var(--emerald-600));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    box-shadow: var(--shadow-md);
+width: 5rem;
+height: 5rem;
+border-radius: 50%;
+background: linear-gradient(135deg, var(--green-500), var(--emerald-600));
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+box-shadow: var(--shadow-md);
 }
 .association-icon i {
-    font-size: 2rem;
-    color: var(--white);
+font-size: 2rem;
+color: var(--white);
 }
 .association-text {
-    flex: 1;
+flex: 1;
 }
 .association-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    margin-bottom: 0.75rem;
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--gray-900);
+margin-bottom: 0.75rem;
 }
 @media (min-width: 640px) {
-    .association-title {
-        font-size: 1.75rem;
-    }
+.association-title {
+font-size: 1.75rem;
+}
 }
 .association-desc {
-    color: var(--gray-700);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    font-size: 1rem;
+color: var(--gray-700);
+margin-bottom: 1.5rem;
+line-height: 1.6;
+font-size: 1rem;
 }
 .association-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+align-items: center;
 }
 @media (min-width: 640px) {
-    .association-buttons {
-        flex-direction: row;
-        align-items: center;
-        gap: 1.5rem;
-    }
+.association-buttons {
+flex-direction: row;
+align-items: center;
+gap: 1.5rem;
+}
 }
 .association-btn {
-    background: linear-gradient(to right, var(--green-500), var(--emerald-600));
-    color: var(--white);
-    font-weight: 700;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-lg);
-    transition: var(--transition);
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    border: none;
-    cursor: pointer;
+background: linear-gradient(to right, var(--green-500), var(--emerald-600));
+color: var(--white);
+font-weight: 700;
+padding: 0.75rem 1.5rem;
+border-radius: var(--border-radius-xl);
+box-shadow: var(--shadow-lg);
+transition: var(--transition);
+text-decoration: none;
+display: inline-block;
+text-align: center;
+border: none;
+cursor: pointer;
 }
 .association-btn:hover {
-    opacity: 0.9;
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-2px);
+opacity: 0.9;
+box-shadow: var(--shadow-xl);
+transform: translateY(-2px);
 }
 .association-link {
-    color: var(--green-700);
-    font-weight: 600;
-    text-decoration: none;
-    transition: var(--transition);
-    font-size: 0.875rem;
+color: var(--green-700);
+font-weight: 600;
+text-decoration: none;
+transition: var(--transition);
+font-size: 0.875rem;
 }
 .association-link:hover {
-    color: var(--green-900);
-    text-decoration: underline;
+color: var(--green-900);
+text-decoration: underline;
 }
 /* VISTA AÑADIR GRUPO */
 .add-view {
-    max-width: 48rem;
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 0.5rem;
+max-width: 48rem;
+margin: 0 auto;
+width: 100%;
+padding: 0 0.5rem;
 }
 .add-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 0.75rem;
+display: flex;
+align-items: center;
+margin-bottom: 2rem;
+gap: 0.75rem;
 }
 .back-btn {
-    background: none;
-    border: none;
-    color: var(--gray-600);
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 0.5rem;
+background: none;
+border: none;
+color: var(--gray-600);
+cursor: pointer;
+transition: var(--transition);
+display: flex;
+align-items: center;
+justify-content: center;
+width: 2.5rem;
+height: 2.5rem;
+border-radius: 0.5rem;
 }
 .back-btn:hover {
-    color: var(--green-600);
-    background: var(--gray-100);
+color: var(--green-600);
+background: var(--gray-100);
 }
 .back-btn i {
-    font-size: 1.25rem;
+font-size: 1.25rem;
 }
 .add-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: var(--gray-900);
+font-size: 1.875rem;
+font-weight: 700;
+color: var(--gray-900);
 }
 .add-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--gray-200);
-    overflow: hidden;
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(8px);
+border-radius: var(--border-radius-xl);
+box-shadow: var(--shadow-md);
+border: 1px solid var(--gray-200);
+overflow: hidden;
 }
 .add-header-bg {
-    background: linear-gradient(to right, var(--green-500), var(--blue-600));
-    padding: 1.5rem;
-    text-align: center;
-    color: var(--white);
+background: linear-gradient(to right, var(--green-500), var(--blue-600));
+padding: 1.5rem;
+text-align: center;
+color: var(--white);
 }
 .add-header-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
 }
 .add-header-desc {
-    font-size: 0.875rem;
-    opacity: 0.9;
+font-size: 0.875rem;
+opacity: 0.9;
 }
 .add-form {
-    padding: 1.5rem;
-    display: grid;
-    gap: 1.25rem;
+padding: 1.5rem;
+display: grid;
+gap: 1.25rem;
 }
 .form-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+display: grid;
+grid-template-columns: 1fr;
+gap: 1.25rem;
 }
 @media (min-width: 640px) {
-    .form-row {
-        grid-template-columns: 1fr 1fr;
-    }
+.form-row {
+grid-template-columns: 1fr 1fr;
+}
 }
 .form-group label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--gray-700);
-    margin-bottom: 0.5rem;
+display: block;
+font-size: 0.875rem;
+font-weight: 600;
+color: var(--gray-700);
+margin-bottom: 0.5rem;
 }
 .form-control {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid var(--gray-300);
-    border-radius: 0.75rem;
-    font-size: 0.875rem;
-    transition: var(--transition);
-    background: var(--white);
+width: 100%;
+padding: 0.75rem;
+border: 2px solid var(--gray-300);
+border-radius: 0.75rem;
+font-size: 0.875rem;
+transition: var(--transition);
+background: var(--white);
 }
 .form-control:focus {
-    outline: none;
-    border-color: var(--green-500);
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+outline: none;
+border-color: var(--green-500);
+box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 .form-textarea {
-    resize: vertical;
-    min-height: 6rem;
+resize: vertical;
+min-height: 6rem;
 }
 .form-hint {
-    font-size: 0.75rem;
-    color: var(--gray-500);
-    margin-top: 0.375rem;
+font-size: 0.75rem;
+color: var(--gray-500);
+margin-top: 0.375rem;
 }
 .form-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--gray-200);
+display: flex;
+flex-direction: column;
+gap: 1rem;
+margin-top: 1rem;
+padding-top: 1rem;
+border-top: 1px solid var(--gray-200);
 }
 @media (min-width: 640px) {
-    .form-actions {
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 1rem;
-    }
+.form-actions {
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+gap: 1rem;
+}
 }
 .cancel-btn {
-    background: var(--gray-200);
-    color: var(--gray-800);
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius-xl);
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    width: 100%;
+background: var(--gray-200);
+color: var(--gray-800);
+font-weight: 600;
+padding: 0.75rem 1.5rem;
+border-radius: var(--border-radius-xl);
+border: none;
+cursor: pointer;
+transition: var(--transition);
+width: 100%;
 }
 @media (min-width: 640px) {
-    .cancel-btn {
-        width: auto;
-    }
+.cancel-btn {
+width: auto;
+}
 }
 .cancel-btn:hover {
-    background: var(--gray-300);
+background: var(--gray-300);
 }
 .submit-btn {
-    background: linear-gradient(to right, var(--green-500), var(--blue-600));
-    color: var(--white);
-    font-weight: 700;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-lg);
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-    width: 100%;
+background: linear-gradient(to right, var(--green-500), var(--blue-600));
+color: var(--white);
+font-weight: 700;
+padding: 0.75rem 1.5rem;
+border-radius: var(--border-radius-xl);
+box-shadow: var(--shadow-lg);
+transition: var(--transition);
+border: none;
+cursor: pointer;
+width: 100%;
 }
 @media (min-width: 640px) {
-    .submit-btn {
-        width: auto;
-    }
+.submit-btn {
+width: auto;
+}
 }
 .submit-btn:hover {
-    opacity: 0.9;
-    box-shadow: var(--shadow-xl);
+opacity: 0.9;
+box-shadow: var(--shadow-xl);
 }
 /* MODAL MEJORADO */
 .modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(4px);
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.85);
+backdrop-filter: blur(4px);
+z-index: 9999;
+opacity: 0;
+visibility: hidden;
+transition: var(--transition);
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 1rem;
 }
 .modal-backdrop.show {
-    opacity: 1;
-    visibility: visible;
+opacity: 1;
+visibility: visible;
 }
 .modal-content {
-    background: linear-gradient(to bottom right, var(--green-50), var(--blue-50));
-    border-radius: var(--border-radius-2xl);
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    opacity: 0;
-    max-width: 56rem;
-    width: 100%;
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
-    box-shadow: var(--shadow-2xl);
-    max-height: 90vh;
-    overflow-y: auto;
+background: linear-gradient(to bottom right, var(--green-50), var(--blue-50));
+border-radius: var(--border-radius-2xl);
+transform: translateY(20px) scale(0.95);
+transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+opacity: 0;
+max-width: 56rem;
+width: 100%;
+position: relative;
+margin: 0 auto;
+overflow: hidden;
+box-shadow: var(--shadow-2xl);
+max-height: 90vh;
+overflow-y: auto;
 }
 .modal-content.show {
-    transform: translateY(0) scale(1);
-    opacity: 1;
+transform: translateY(0) scale(1);
+opacity: 1;
 }
 /* BOTÓN DE CIERRE */
 .modal-close {
-    position: absolute !important;
-    top: 1rem !important;
-    right: 1rem !important;
-    z-index: 10000 !important;
-    width: 3rem !important;
-    height: 3rem !important;
-    border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border: 2px solid #ef4444 !important;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    padding: 0 !important;
-    margin: 0 !important;
+position: absolute !important;
+top: 1rem !important;
+right: 1rem !important;
+z-index: 10000 !important;
+width: 3rem !important;
+height: 3rem !important;
+border-radius: 50% !important;
+background: rgba(255, 255, 255, 0.95) !important;
+backdrop-filter: blur(10px) !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+border: 2px solid #ef4444 !important;
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+cursor: pointer !important;
+transition: all 0.3s ease !important;
+padding: 0 !important;
+margin: 0 !important;
 }
 .modal-close:hover {
-    background: #ef4444 !important;
-    transform: rotate(90deg) scale(1.1) !important;
+background: #ef4444 !important;
+transform: rotate(90deg) scale(1.1) !important;
 }
 .modal-close i {
-    font-size: 1.5rem;
-    color: #dc2626;
+font-size: 1.5rem;
+color: #dc2626;
 }
 .modal-close:hover i {
-    color: white;
+color: white;
 }
 .modal-header-img {
-    height: 16rem;
-    background: linear-gradient(to right, var(--green-600), var(--blue-700));
-    position: relative;
+height: 16rem;
+background: linear-gradient(to right, var(--green-600), var(--blue-700));
+position: relative;
 }
 @media (min-width: 640px) {
-    .modal-header-img {
-        height: 18rem;
-    }
+.modal-header-img {
+height: 18rem;
+}
 }
 .modal-profile {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) translateY(50%);
-    width: 8rem;
-    height: 8rem;
-    border-radius: var(--border-radius-2xl);
-    overflow: hidden;
-    border: 4px solid var(--white);
-    box-shadow: var(--shadow-2xl);
-    background: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%) translateY(50%);
+width: 8rem;
+height: 8rem;
+border-radius: var(--border-radius-2xl);
+overflow: hidden;
+border: 4px solid var(--white);
+box-shadow: var(--shadow-2xl);
+background: var(--white);
+display: flex;
+align-items: center;
+justify-content: center;
 }
 @media (min-width: 640px) {
-    .modal-profile {
-        width: 10rem;
-        height: 10rem;
-    }
+.modal-profile {
+width: 10rem;
+height: 10rem;
+}
 }
 .modal-profile img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+width: 100%;
+height: 100%;
+object-fit: cover;
 }
 .modal-body {
-    padding: 1rem;
-    padding-top: 5rem;
+padding: 1rem;
+padding-top: 5rem;
 }
 @media (min-width: 640px) {
-    .modal-body {
-        padding: 2rem;
-        padding-top: 6rem;
-    }
+.modal-body {
+padding: 2rem;
+padding-top: 6rem;
+}
 }
 .modal-title {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+text-align: center;
+font-size: 2rem;
+font-weight: 700;
+color: var(--gray-900);
+margin-top: 1rem;
+margin-bottom: 1.5rem;
 }
 .modal-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0.75rem;
+margin-bottom: 2rem;
 }
 .modal-badge {
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+padding: 0.5rem 1rem;
+border-radius: 9999px;
+font-size: 0.875rem;
+font-weight: 600;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
 }
 .modal-badge i {
-    font-size: 1rem;
+font-size: 1rem;
 }
 .modal-section {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(4px);
-    border-radius: var(--border-radius-xl);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--green-100);
+background: rgba(255, 255, 255, 0.9);
+backdrop-filter: blur(4px);
+border-radius: var(--border-radius-xl);
+padding: 1.5rem;
+margin-bottom: 1.5rem;
+border: 1px solid var(--green-100);
 }
 .modal-section.yellow {
-    border-color: var(--yellow-100);
+border-color: var(--yellow-100);
 }
 .modal-section-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+font-size: 1.25rem;
+font-weight: 700;
+color: var(--gray-900);
+margin-bottom: 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
 }
 .modal-section-title i {
-    font-size: 1.25rem;
+font-size: 1.25rem;
 }
 .modal-section-title.green i {
-    color: var(--green-600);
+color: var(--green-600);
 }
 .modal-section-title.amber i {
-    color: var(--amber-600);
+color: var(--amber-600);
 }
 .modal-section-content {
-    color: var(--gray-700);
-    line-height: 1.6;
-    white-space: pre-line;
-    text-align: center;
+color: var(--gray-700);
+line-height: 1.6;
+white-space: pre-line;
+text-align: center;
 }
 .modal-promo {
-    background: linear-gradient(to right, var(--amber-50), var(--amber-100));
-    border: 2px solid var(--amber-200);
-    border-radius: var(--border-radius-xl);
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
+background: linear-gradient(to right, var(--amber-50), var(--amber-100));
+border: 2px solid var(--amber-200);
+border-radius: var(--border-radius-xl);
+padding: 1.25rem;
+margin-bottom: 1.5rem;
 }
 .modal-promo-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+gap: 1rem;
 }
 @media (min-width: 640px) {
-    .modal-promo-content {
-        flex-direction: row;
-        text-align: left;
-        align-items: flex-start;
-    }
+.modal-promo-content {
+flex-direction: row;
+text-align: left;
+align-items: flex-start;
+}
 }
 .modal-promo-icon {
-    flex-shrink: 0;
+flex-shrink: 0;
 }
 .modal-promo-icon i {
-    font-size: 1.5rem;
-    color: var(--amber-600);
+font-size: 1.5rem;
+color: var(--amber-600);
 }
 .modal-promo-text p {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--amber-900);
-    margin-bottom: 0.5rem;
+font-size: 0.875rem;
+font-weight: 600;
+color: var(--amber-900);
+margin-bottom: 0.5rem;
 }
 .modal-promo-link {
-    display: inline-block;
-    background: linear-gradient(to right, var(--amber-500), var(--orange-600));
-    color: var(--white);
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 0.75rem;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    font-size: 0.75rem;
-    text-decoration: none;
-    margin-top: 0.25rem;
+display: inline-block;
+background: linear-gradient(to right, var(--amber-500), var(--orange-600));
+color: var(--white);
+font-weight: 700;
+padding: 0.5rem 1rem;
+border-radius: 0.75rem;
+box-shadow: var(--shadow);
+transition: var(--transition);
+font-size: 0.75rem;
+text-decoration: none;
+margin-top: 0.25rem;
 }
 .modal-promo-link:hover {
-    opacity: 0.9;
-    box-shadow: var(--shadow-md);
+opacity: 0.9;
+box-shadow: var(--shadow-md);
 }
 .modal-join-btn {
-    background: linear-gradient(to right, var(--green-500), var(--blue-600));
-    color: var(--white);
-    font-weight: 700;
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-lg);
-    transition: var(--transition);
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+background: linear-gradient(to right, var(--green-500), var(--blue-600));
+color: var(--white);
+font-weight: 700;
+padding: 1rem 2rem;
+border-radius: var(--border-radius-xl);
+box-shadow: var(--shadow-lg);
+transition: var(--transition);
+text-decoration: none;
+display: block;
+text-align: center;
+font-size: 1.125rem;
+margin-bottom: 1rem;
+width: 100%;
+max-width: 300px;
+margin-left: auto;
+margin-right: auto;
 }
 .modal-join-btn:hover {
-    opacity: 0.9;
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-2px);
+opacity: 0.9;
+box-shadow: var(--shadow-xl);
+transform: translateY(-2px);
 }
 .modal-join-btn i {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
+font-size: 1.5rem;
+margin-right: 0.5rem;
 }
 .modal-join-hint {
-    font-size: 0.75rem;
-    color: var(--gray-500);
-    text-align: center;
-    margin-bottom: 2rem;
+font-size: 0.75rem;
+color: var(--gray-500);
+text-align: center;
+margin-bottom: 2rem;
 }
 .modal-footer {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--gray-200);
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--gray-600);
+margin-top: 2rem;
+padding-top: 1.5rem;
+border-top: 1px solid var(--gray-200);
+text-align: center;
+font-size: 0.875rem;
+color: var(--gray-600);
 }
 .modal-footer-title {
-    font-weight: 700;
-    color: var(--green-700);
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+font-weight: 700;
+color: var(--green-700);
+margin-bottom: 0.5rem;
+font-size: 1rem;
 }
 .modal-footer a {
-    color: var(--green-700);
-    font-weight: 500;
-    text-decoration: none;
-    transition: var(--transition);
+color: var(--green-700);
+font-weight: 500;
+text-decoration: none;
+transition: var(--transition);
 }
 .modal-footer a:hover {
-    color: var(--green-900);
-    text-decoration: underline;
+color: var(--green-900);
+text-decoration: underline;
 }
 /* FOOTER */
 .footer {
-    background: linear-gradient(to right, var(--green-700), var(--blue-800));
-    color: var(--white);
-    padding: 1.5rem;
-    margin-top: auto;
+background: linear-gradient(to right, var(--green-700), var(--blue-800));
+color: var(--white);
+padding: 1.5rem;
+margin-top: auto;
 }
 .footer-container {
-    max-width: 80rem;
-    margin: 0 auto;
-    text-align: center;
-    padding: 0 1rem;
+max-width: 80rem;
+margin: 0 auto;
+text-align: center;
+padding: 0 1rem;
 }
 .footer-logo {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-    border-radius: var(--border-radius-xl);
-    padding: 0.75rem;
-    display: inline-block;
-    margin-bottom: 1rem;
-    box-shadow: var(--shadow-md);
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
+background: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(4px);
+border-radius: var(--border-radius-xl);
+padding: 0.75rem;
+display: inline-block;
+margin-bottom: 1rem;
+box-shadow: var(--shadow-md);
+width: 4rem;
+height: 4rem;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 1rem;
 }
 .footer-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
+width: 100%;
+height: 100%;
+object-fit: contain;
+filter: brightness(0) invert(1);
 }
 .footer-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
+font-size: 1.25rem;
+font-weight: 700;
+margin-bottom: 0.25rem;
 }
 .footer-subtitle {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin-bottom: 1rem;
+font-size: 1rem;
+opacity: 0.9;
+margin-bottom: 1rem;
 }
 .footer-promo {
-    margin: 1rem 0;
+margin: 1rem 0;
 }
 .footer-promo-link {
-    display: inline-flex;
-    align-items: center;
-    background: linear-gradient(to right, var(--amber-400), var(--orange-500));
-    color: var(--white);
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    box-shadow: var(--shadow-lg);
-    transition: var(--transition);
-    font-size: 0.75rem;
-    text-decoration: none;
+display: inline-flex;
+align-items: center;
+background: linear-gradient(to right, var(--amber-400), var(--orange-500));
+color: var(--white);
+font-weight: 700;
+padding: 0.5rem 1rem;
+border-radius: 9999px;
+box-shadow: var(--shadow-lg);
+transition: var(--transition);
+font-size: 0.75rem;
+text-decoration: none;
 }
 .footer-promo-link:hover {
-    opacity: 0.9;
-    box-shadow: var(--shadow-xl);
+opacity: 0.9;
+box-shadow: var(--shadow-xl);
 }
 .footer-promo-link i {
-    font-size: 0.875rem;
-    margin-right: 0.5rem;
+font-size: 0.875rem;
+margin-right: 0.5rem;
 }
 .footer-tagline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.875rem;
-    opacity: 0.8;
-    margin: 0.75rem 0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.875rem;
+opacity: 0.8;
+margin: 0.75rem 0;
 }
 .footer-tagline i {
-    font-size: 1.125rem;
-    margin-right: 0.375rem;
+font-size: 1.125rem;
+margin-right: 0.375rem;
 }
 .footer-desc {
-    font-size: 0.75rem;
-    opacity: 0.75;
-    margin: 0.25rem 0;
+font-size: 0.75rem;
+opacity: 0.75;
+margin: 0.25rem 0;
 }
 .footer-copyright {
-    font-size: 0.75rem;
-    opacity: 0.75;
-    margin-top: 1rem;
+font-size: 0.75rem;
+opacity: 0.75;
+margin-top: 1rem;
 }
 /* RESPONSIVE MEJORADO */
 @media (max-width: 767px) {
-    .nav-buttons {
-        gap: 0.25rem;
-    }
-    .nav-btn {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-    }
-    .add-btn {
-        padding: 0.25rem 0.75rem;
-        font-size: 0.75rem;
-    }
-    .add-btn span {
-        display: none;
-    }
-    .logo-text h1 {
-        font-size: 1.125rem;
-    }
-    .modal-backdrop {
-        padding: 0.5rem;
-    }
-    .modal-close {
-        top: 0.5rem !important;
-        right: 0.5rem !important;
-        width: 2.5rem !important;
-        height: 2.5rem !important;
-    }
-    .group-footer {
-        flex-direction: column;
-        align-items: center; /* Centrado en móvil también */
-        gap: 1rem;
-    }
-    .group-btn {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    /* Ajustes específicos para móviles */
-    .header-container {
-        padding: 0 1rem;
-    }
-    .main-container {
-        padding: 1rem;
-    }
-    .section-title {
-        font-size: 1.25rem;
-    }
-    .carousel-container {
-        padding: 0 0.25rem;
-    }
-    .carousel {
-        padding: 0.75rem 0.25rem;
-        gap: 0.75rem;
-    }
-    .carousel-item {
-        width: 8rem;
-    }
-    .group-img {
-        width: 5.5rem;
-        height: 5.5rem;
-    }
-    .load-more-btn {
-        width: 100%;
-        max-width: 100%;
-    }
+.nav-buttons {
+gap: 0.25rem;
+}
+.nav-btn {
+padding: 0.25rem 0.5rem;
+font-size: 0.75rem;
+}
+.add-btn {
+padding: 0.25rem 0.75rem;
+font-size: 0.75rem;
+}
+.add-btn span {
+display: none;
+}
+.logo-text h1 {
+font-size: 1.125rem;
+}
+.modal-backdrop {
+padding: 0.5rem;
+}
+.modal-close {
+top: 0.5rem !important;
+right: 0.5rem !important;
+width: 2.5rem !important;
+height: 2.5rem !important;
+}
+.header-container {
+padding: 0 1rem;
+}
+.main-container {
+padding: 1rem;
+}
+.section-title {
+font-size: 1.25rem;
+}
+.carousel-container {
+padding: 0 0.25rem;
+}
+.carousel {
+padding: 0.75rem 0.25rem;
+gap: 0.75rem;
+}
+.carousel-item {
+width: 8rem;
+}
+.group-img {
+width: 5.5rem;
+height: 5.5rem;
+}
 }
 @media (min-width: 768px) {
-    .header-container {
-        padding: 0 2rem;
-    }
-    .logo-text h1 {
-        font-size: 1.5rem;
-    }
-    .modal-body {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
+.header-container {
+padding: 0 2rem;
+}
+.logo-text h1 {
+font-size: 1.5rem;
+}
+.modal-body {
+padding-left: 2rem;
+padding-right: 2rem;
+}
 }
 /* ANIMACIONES ADICIONALES */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+from {
+opacity: 0;
+transform: translateY(10px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
 }
 .group-card {
-    animation: fadeIn 0.5s ease-out;
+animation: fadeIn 0.5s ease-out;
 }
 .category-btn {
-    animation: fadeIn 0.3s ease-out;
+animation: fadeIn 0.3s ease-out;
 }
 .carousel-item {
-    animation: fadeIn 0.3s ease-out;
+animation: fadeIn 0.3s ease-out;
 }
 /* PARA GARANTIZAR QUE EL SCROLL FUNCIONE */
 html {
-    overflow-y: scroll;
+overflow-y: scroll;
 }
 body {
-    overflow-x: hidden;
+overflow-x: hidden;
 }
 /* Mejoras de accesibilidad y usabilidad */
 button:focus, 
 input:focus, 
 select:focus {
-    outline: 2px solid var(--green-500);
-    outline-offset: 2px;
+outline: 2px solid var(--green-500);
+outline-offset: 2px;
 }
 /* Efecto de carga suave */
 .view {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+opacity: 0;
+transform: translateY(10px);
+transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .view.active {
-    opacity: 1;
-    transform: translateY(0);
+opacity: 1;
+transform: translateY(0);
 }
 </style>
 </head>
 <body>
 <header class="header">
-    <div class="header-container">
-        <a href="#" class="logo-container" onclick="setView('home'); return false;">
-            <div class="logo-icon">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHT5KmAtwPnlvbIRmj7F0h038g0lzFBHMDl8hS0gMuAEDLqBPBbXiKDkdGLUZiMmrHRuUFl5djHGdS6O6-6bmHOZwiphnqoIayRrU4z7Tlhb6v-RhD_EQv6FMmT5-r32Ib4kj_f4lTCuJPoyLeJDxJHwkOG_dT8pwnZEdE8xT82-xSyJL5mrRzuOixdck/s1440/nebhula%20(77).png" alt="Bandadas.net Logo">
-            </div>
-            <div class="logo-text">
-                <h1>Bandadas.net</h1>
-            </div>
-        </a>
-        <div class="nav-buttons">
-            <button class="nav-btn active" data-view="home">Inicio</button>
-            <button class="add-btn" data-view="add">
-                <i class="fas fa-plus"></i>
-                <span>Añadir grupo</span>
-            </button>
-        </div>
-    </div>
+<div class="header-container">
+<a href="#" class="logo-container" onclick="setView('home'); return false;">
+<div class="logo-icon">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHT5KmAtwPnlvbIRmj7F0h038g0lzFBHMDl8hS0gMuAEDLqBPBbXiKDkdGLUZiMmrHRuUFl5djHGdS6O6-6bmHOZwiphnqoIayRrU4z7Tlhb6v-RhD_EQv6FMmT5-r32Ib4kj_f4lTCuJPoyLeJDxJHwkOG_dT8pwnZEdE8xT82-xSyJL5mrRzuOixdck/s1440/nebhula%20(77).png" alt="Bandadas.net Logo">
+</div>
+<div class="logo-text">
+<h1>Bandadas.net</h1>
+</div>
+</a>
+<div class="nav-buttons">
+<button class="nav-btn active" data-view="home">Inicio</button>
+<button class="add-btn" data-view="add">
+<i class="fas fa-plus"></i>
+<span>Añadir grupo</span>
+</button>
+</div>
+</div>
 </header>
 <main class="main-container">
-    <!-- VISTA INICIO -->
-    <div class="view home-view active">
-        <section class="hero">
-            <h1>Directorio de Grupos de Aves</h1>
-            <p>Conecta con grupos de ornitología y avicultura en España. Explora por categorías, regiones y encuentra tu comunidad perfecta.</p>
-            <div class="promo-banner">
-                <div class="promo-content">
-                    <div class="promo-content-inner">
-                        <div class="promo-text">
-                            <div class="promo-icon">
-                                <i class="fas fa-file-certificate"></i>
-                            </div>
-                            <div class="promo-desc">
-                                <h3>¿Eres criador?</h3>
-                                <p>Obtén tu carné federativo y anillas oficiales</p>
-                                <p class="text-xs">Federación online con la Asociación SOCNAS - Proceso 100% digital</p>
-                            </div>
-                        </div>
-                        <a href="https://www.ejemplo.com/federacion" target="_blank" rel="noopener noreferrer" class="promo-link">
-                            Federarse ahora
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="search-container">
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" id="search-input" placeholder="Buscar grupos por nombre, región o categoría...">
-            </div>
-            <div class="search-result" id="search-result"></div>
-        </div>
-        <section>
-            <h2 class="section-title green">
-                <i class="fas fa-layer-group"></i>
-                Categorías Principales
-            </h2>
-            <div class="carousel-container">
-                <div class="carousel" id="main-categories">
-                    <!-- Las categorías se generarán con JavaScript -->
-                </div>
-            </div>
-        </section>
-        <section id="subcategories-section" style="display: none;">
-            <h2 class="section-title blue" id="subcategories-title">
-                <i class="fas fa-chevron-right"></i>
-                <span id="subcategory-category-name">Categoría</span> - Subcategorías
-            </h2>
-            <div class="carousel-container">
-                <div class="carousel" id="subcategories">
-                    <!-- Las subcategorías se generarán con JavaScript -->
-                </div>
-            </div>
-        </section>
-        <section class="filters-section">
-            <div class="filters-container">
-                <div class="filter-group">
-                    <label class="green">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Filtrar por Comunidad Autónoma
-                    </label>
-                    <select class="filter-select" id="region-filter">
-                        <option value="">Todas</option>
-                        <option>Andalucía</option>
-                        <option>Aragón</option>
-                        <option>Asturias</option>
-                        <option>Baleares</option>
-                        <option>Canarias</option>
-                        <option>Cantabria</option>
-                        <option>Castilla-La Mancha</option>
-                        <option>Castilla y León</option>
-                        <option>Cataluña</option>
-                        <option>Comunidad Valenciana</option>
-                        <option>Extremadura</option>
-                        <option>Galicia</option>
-                        <option>Madrid</option>
-                        <option>Murcia</option>
-                        <option>Navarra</option>
-                        <option>País Vasco</option>
-                        <option>La Rioja</option>
-                        <option>Ceuta</option>
-                        <option>Melilla</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label class="blue">
-                        <i class="fas fa-comments"></i>
-                        Filtrar por Plataforma
-                    </label>
-                    <select class="filter-select" id="platform-filter">
-                        <option value="">Todas</option>
-                        <option>Telegram</option>
-                        <option>WhatsApp</option>
-                        <option>Discord</option>
-                        <option>Viber</option>
-                        <option>Facebook</option>
-                    </select>
-                </div>
-            </div>
-        </section>
-        <div class="results-info" id="results-info">
-            Mostrando <span id="results-count">0</span> de <span id="total-results">0</span> comunidades
-        </div>
-        <div class="groups-grid" id="groups-grid">
-            <!-- Los grupos se generarán con JavaScript -->
-        </div>
-        
-        <!-- BOTÓN CARGAR MÁS -->
-        <div class="load-more-container" id="load-more-container" style="display: none;">
-            <button class="load-more-btn" id="load-more-btn">
-                <i class="fas fa-chevron-down"></i>
-                Cargar más grupos
-            </button>
-        </div>
-        
-        <div class="empty-state" id="empty-state" style="display: none;">
-            <div class="empty-icon"><i class="fas fa-dove"></i></div>
-            <h3 class="empty-title">No se encontraron comunidades</h3>
-            <p class="empty-desc" id="empty-desc">No hay comunidades en el directorio todavía</p>
-            <button class="empty-btn" id="reset-filters">Ver todas las comunidades</button>
-        </div>
-        <section class="stats-section">
-            <h3 class="section-title"><i class="fas fa-chart-bar"></i> Estadísticas de la Comunidad</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value green" id="total-communities">0</div>
-                    <div class="stat-label">Comunidades</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value blue" id="total-categories">8</div>
-                    <div class="stat-label">Categorías</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value yellow" id="total-platforms">5</div>
-                    <div class="stat-label">Plataformas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value rose" id="total-members">0</div>
-                    <div class="stat-label">Miembros</div>
-                </div>
-            </div>
-        </section>
-        <section class="association-promo">
-            <div class="association-content">
-                <div class="association-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <div class="association-text">
-                    <h3 class="association-title">¿Eres criador de aves?</h3>
-                    <p class="association-desc">Únete a la Asociación Titulí y obtén beneficios exclusivos: carné federativo oficial, anillas numeradas para tus aves, seguros especiales y acceso a concursos oficiales. Todo el proceso 100% online.</p>
-                    <div class="association-buttons">
-                        <a href="https://www.ejemplo.com/federacion" target="_blank" rel="noopener noreferrer" class="association-btn">
-                            Federarse ahora
-                        </a>
-                        <a href="https://www.ejemplo.com/informacion" target="_blank" rel="noopener noreferrer" class="association-link">
-                            Más información <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <!-- VISTA AÑADIR GRUPO -->
-    <div class="view add-view" style="display: none;">
-        <div class="add-header">
-            <button class="back-btn" id="back-to-home">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <h1 class="add-title">Añadir Nueva Comunidad de Aves</h1>
-        </div>
-        <div class="add-card">
-            <div class="add-header-bg">
-                <h2 class="add-header-title">Formulario de Registro</h2>
-                <p class="add-header-desc">Completa los datos para añadir tu comunidad al directorio de Bandadas.net</p>
-            </div>
-            <form class="add-form" id="add-group-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="platform">Plataforma *</label>
-                        <select class="form-control" id="platform" name="platform" required>
-                            <option value="" disabled selected>Selecciona una plataforma</option>
-                            <option>Telegram</option>
-                            <option>WhatsApp</option>
-                            <option>Discord</option>
-                            <option>Viber</option>
-                            <option>Facebook</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="region">Región (Comunidad Autónoma) *</label>
-                        <select class="form-control" id="region" name="region" required>
-                            <option value="" disabled selected>Selecciona una región</option>
-                            <option>Andalucía</option>
-                            <option>Aragón</option>
-                            <option>Asturias</option>
-                            <option>Baleares</option>
-                            <option>Canarias</option>
-                            <option>Cantabria</option>
-                            <option>Castilla-La Mancha</option>
-                            <option>Castilla y León</option>
-                            <option>Cataluña</option>
-                            <option>Comunidad Valenciana</option>
-                            <option>Extremadura</option>
-                            <option>Galicia</option>
-                            <option>Madrid</option>
-                            <option>Murcia</option>
-                            <option>Navarra</option>
-                            <option>País Vasco</option>
-                            <option>La Rioja</option>
-                            <option>Ceuta</option>
-                            <option>Melilla</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="main-category">Categoría Principal *</label>
-                        <select class="form-control" id="main-category" name="main-category" required>
-                            <option value="" disabled selected>Selecciona una categoría</option>
-                            <option value="cetaceas">Psitácidas</option>
-                            <option value="canaricultura">Canaricultura</option>
-                            <option value="silvestres">Silvestres</option>
-                            <option value="exoticos">Exóticos</option>
-                            <option value="avicultura">Avicultura</option>
-                            <option value="colombicultura">Colombicultura</option>
-                            <option value="rapaces">Rapaces</option>
-                            <option value="ecologia">Ecología</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="sub-category">Subcategoría *</label>
-                        <select class="form-control" id="sub-category" name="sub-category" required>
-                            <option value="" disabled selected>Primero selecciona una categoría principal</option>
-                        </select>
-                        <p class="form-hint">Selecciona la subcategoría más específica para tu grupo</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="group-name">Nombre del Grupo *</label>
-                    <input type="text" class="form-control" id="group-name" name="group-name" required placeholder="Ej: Criadores de Agapornis Andalucía">
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="group-link">Enlace del Grupo *</label>
-                        <input type="url" class="form-control" id="group-link" name="group-link" required placeholder="https://t.me/tu_grupo">
-                    </div>
-                    <div class="form-group">
-                        <label for="group-members">Número de Miembros (opcional)</label>
-                        <input type="text" class="form-control" id="group-members" name="group-members" placeholder="Ej: 1.5k">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="group-image">URL de la Imagen (opcional)</label>
-                    <input type="url" class="form-control" id="group-image" name="group-image" placeholder="https://ejemplo.com/imagen.jpg">
-                    <p class="form-hint">Si no proporcionas imagen, se usará una predeterminada según la categoría</p>
-                </div>
-                <div class="form-group">
-                    <label for="group-description">Descripción Corta *</label>
-                    <textarea class="form-control form-textarea" id="group-description" name="group-description" required rows="2" placeholder="Breve descripción que se mostrará en el listado principal..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="group-long-description">Descripción Larga (opcional)</label>
-                    <textarea class="form-control form-textarea" id="group-long-description" name="group-long-description" rows="3" placeholder="Describe en detalle el propósito del grupo, actividades, beneficios para los miembros..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="group-rules">Normas del Grupo (opcional)</label>
-                    <textarea class="form-control form-textarea" id="group-rules" name="group-rules" rows="3" placeholder="Escribe las normas principales del grupo, una por línea. Ejemplo:
+<!-- VISTA INICIO -->
+<div class="view home-view active">
+<section class="hero">
+<h1>Directorio de Grupos de Aves</h1>
+<p>Conecta con grupos de ornitología y avicultura en España. Explora por categorías, regiones y encuentra tu comunidad perfecta.</p>
+</section>
+<div class="search-container">
+<div class="search-box">
+<i class="fas fa-search search-icon"></i>
+<input type="text" class="search-input" id="search-input" placeholder="Buscar grupos por nombre, región o categoría...">
+</div>
+<div class="search-result" id="search-result"></div>
+</div>
+<section>
+<h2 class="section-title green">
+<i class="fas fa-layer-group"></i>
+Categorías Principales
+</h2>
+<div class="carousel-container">
+<div class="carousel" id="main-categories">
+<!-- Las categorías se generarán con JavaScript -->
+</div>
+</div>
+</section>
+<section id="subcategories-section" style="display: none;">
+<h2 class="section-title blue" id="subcategories-title">
+<i class="fas fa-chevron-right"></i>
+<span id="subcategory-category-name">Categoría</span> - Subcategorías
+</h2>
+<div class="carousel-container">
+<div class="carousel" id="subcategories">
+<!-- Las subcategorías se generarán con JavaScript -->
+</div>
+</div>
+</section>
+<section class="filters-section">
+<div class="filters-container">
+<div class="filter-group">
+<label class="green">
+<span class="spain-flag"></span>
+Filtrar por Comunidad Autónoma
+</label>
+<select class="filter-select" id="region-filter">
+<option value="">Todas</option>
+<option>Andalucía</option>
+<option>Aragón</option>
+<option>Asturias</option>
+<option>Baleares</option>
+<option>Canarias</option>
+<option>Cantabria</option>
+<option>Castilla-La Mancha</option>
+<option>Castilla y León</option>
+<option>Cataluña</option>
+<option>Comunidad Valenciana</option>
+<option>Extremadura</option>
+<option>Galicia</option>
+<option>Madrid</option>
+<option>Murcia</option>
+<option>Navarra</option>
+<option>País Vasco</option>
+<option>La Rioja</option>
+<option>Ceuta</option>
+<option>Melilla</option>
+</select>
+</div>
+<div class="filter-group">
+<label class="blue">
+<i class="fas fa-layer-group"></i>
+Filtrar por Plataforma
+</label>
+<select class="filter-select" id="platform-filter">
+<option value="">Todas</option>
+<option>Telegram</option>
+<option>WhatsApp</option>
+<option>Discord</option>
+<option>Viber</option>
+<option>Facebook</option>
+</select>
+</div>
+</div>
+</section>
+<div class="results-info" id="results-info">
+Mostrando <span id="results-count">0</span> comunidades
+</div>
+<div class="groups-grid" id="groups-grid">
+<!-- Los grupos se generarán con JavaScript -->
+</div>
+<div class="load-more-container" id="load-more-container" style="display: none;">
+<button class="load-more-btn" id="load-more-btn">
+<i class="fas fa-sync-alt"></i>
+Cargar más grupos
+</button>
+</div>
+<div class="empty-state" id="empty-state" style="display: none;">
+<div class="empty-icon"><i class="fas fa-dove"></i></div>
+<h3 class="empty-title">No se encontraron comunidades</h3>
+<p class="empty-desc" id="empty-desc">No hay comunidades en el directorio todavía</p>
+<button class="empty-btn" id="reset-filters">Ver todas las comunidades</button>
+</div>
+<section class="stats-section">
+<h3 class="section-title"><i class="fas fa-chart-bar"></i> Estadísticas de la Comunidad</h3>
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-value green" id="total-communities">0</div>
+<div class="stat-label">Comunidades</div>
+</div>
+<div class="stat-item">
+<div class="stat-value blue" id="total-categories">7</div>
+<div class="stat-label">Categorías</div>
+</div>
+<div class="stat-item">
+<div class="stat-value yellow" id="total-platforms">5</div>
+<div class="stat-label">Plataformas</div>
+</div>
+<div class="stat-item">
+<div class="stat-value rose" id="total-members">0</div>
+<div class="stat-label">Miembros</div>
+</div>
+</div>
+</section>
+<section class="association-promo">
+<div class="association-content">
+<div class="association-icon">
+<i class="fas fa-certificate"></i>
+</div>
+<div class="association-text">
+<h3 class="association-title">¿Eres criador de aves?</h3>
+<p class="association-desc">Únete a la Asociación Titulí y obtén beneficios exclusivos: carné federativo oficial, anillas numeradas para tus aves, seguros especiales y acceso a concursos oficiales. Todo el proceso 100% online.</p>
+<div class="association-buttons">
+<a href="https://www.ejemplo.com/federacion" target="_blank" rel="noopener noreferrer" class="association-btn">
+Federarse ahora
+</a>
+<a href="https://www.ejemplo.com/informacion" target="_blank" rel="noopener noreferrer" class="association-link">
+Más información <i class="fas fa-arrow-right"></i>
+</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- VISTA AÑADIR GRUPO -->
+<div class="view add-view" style="display: none;">
+<div class="add-header">
+<button class="back-btn" id="back-to-home">
+<i class="fas fa-arrow-left"></i>
+</button>
+<h1 class="add-title">Añadir Nueva Comunidad de Aves</h1>
+</div>
+<div class="add-card">
+<div class="add-header-bg">
+<h2 class="add-header-title">Formulario de Registro</h2>
+<p class="add-header-desc">Completa los datos para añadir tu comunidad al directorio de Bandadas.net</p>
+</div>
+<form class="add-form" id="add-group-form">
+<div class="form-row">
+<div class="form-group">
+<label for="platform">Plataforma *</label>
+<select class="form-control" id="platform" name="platform" required>
+<option value="" disabled selected>Selecciona una plataforma</option>
+<option>Telegram</option>
+<option>WhatsApp</option>
+<option>Discord</option>
+<option>Viber</option>
+<option>Facebook</option>
+</select>
+</div>
+<div class="form-group">
+<label for="region">Región (Comunidad Autónoma) *</label>
+<select class="form-control" id="region" name="region" required>
+<option value="" disabled selected>Selecciona una región</option>
+<option>Andalucía</option>
+<option>Aragón</option>
+<option>Asturias</option>
+<option>Baleares</option>
+<option>Canarias</option>
+<option>Cantabria</option>
+<option>Castilla-La Mancha</option>
+<option>Castilla y León</option>
+<option>Cataluña</option>
+<option>Comunidad Valenciana</option>
+<option>Extremadura</option>
+<option>Galicia</option>
+<option>Madrid</option>
+<option>Murcia</option>
+<option>Navarra</option>
+<option>País Vasco</option>
+<option>La Rioja</option>
+<option>Ceuta</option>
+<option>Melilla</option>
+</select>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="main-category">Categoría Principal *</label>
+<select class="form-control" id="main-category" name="main-category" required>
+<option value="" disabled selected>Selecciona una categoría</option>
+<option value="cetaceas">Psitácidas</option>
+<option value="canaricultura">Canaricultura</option>
+<option value="silvestres">Silvestres</option>
+<option value="exoticos">Exóticos</option>
+<option value="avicultura">Avicultura</option>
+<option value="colombicultura">Colombicultura</option>
+<option value="rapaces">Rapaces</option>
+</select>
+</div>
+<div class="form-group">
+<label for="sub-category">Subcategoría *</label>
+<select class="form-control" id="sub-category" name="sub-category" required>
+<option value="" disabled selected>Primero selecciona una categoría principal</option>
+</select>
+<p class="form-hint">Selecciona la subcategoría más específica para tu grupo</p>
+</div>
+</div>
+<div class="form-group">
+<label for="group-name">Nombre del Grupo *</label>
+<input type="text" class="form-control" id="group-name" name="group-name" required placeholder="Ej: Criadores de Agapornis Andalucía">
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="group-link">Enlace del Grupo *</label>
+<input type="url" class="form-control" id="group-link" name="group-link" required placeholder="https://t.me/tu_grupo">
+</div>
+<div class="form-group">
+<label for="group-members">Número de Miembros (opcional)</label>
+<input type="text" class="form-control" id="group-members" name="group-members" placeholder="Ej: 1.5k">
+</div>
+</div>
+<div class="form-group">
+<label for="group-image">URL de la Imagen (opcional)</label>
+<input type="url" class="form-control" id="group-image" name="group-image" placeholder="https://ejemplo.com/imagen.jpg">
+<p class="form-hint">Si no proporcionas imagen, se usará una predeterminada según la categoría</p>
+</div>
+<div class="form-group">
+<label for="group-description">Descripción Corta *</label>
+<textarea class="form-control form-textarea" id="group-description" name="group-description" required rows="2" placeholder="Breve descripción que se mostrará en el listado principal..."></textarea>
+</div>
+<div class="form-group">
+<label for="group-long-description">Descripción Larga (opcional)</label>
+<textarea class="form-control form-textarea" id="group-long-description" name="group-long-description" rows="3" placeholder="Describe en detalle el propósito del grupo, actividades, beneficios para los miembros..."></textarea>
+</div>
+<div class="form-group">
+<label for="group-rules">Normas del Grupo (opcional)</label>
+<textarea class="form-control form-textarea" id="group-rules" name="group-rules" rows="3" placeholder="Escribe las normas principales del grupo, una por línea. Ejemplo:
 1. Respeto absoluto a las aves
 2. Prohibido el comercio ilegal
 3. Compartir siempre fuentes..."></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="cancel-btn" id="cancel-add">Cancelar</button>
-                    <button type="submit" class="submit-btn">Añadir al Directorio</button>
-                </div>
-            </form>
-        </div>
-    </div>
+</div>
+<div class="form-actions">
+<button type="button" class="cancel-btn" id="cancel-add">Cancelar</button>
+<button type="submit" class="submit-btn">Añadir al Directorio</button>
+</div>
+</form>
+</div>
+</div>
 </main>
 <!-- MODAL DETALLES GRUPO -->
 <div class="modal-backdrop" id="modal-backdrop">
-    <div class="modal-content" id="modal-content">
-        <button class="modal-close" id="modal-close">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="modal-header-img">
-            <div class="modal-profile">
-                <img src="" alt="Grupo" id="modal-profile-img">
-            </div>
-        </div>
-        <div class="modal-body">
-            <h2 class="modal-title" id="modal-title">Nombre del Grupo</h2>
-            <div class="modal-badges" id="modal-badges">
-                <!-- Los badges se generarán con JavaScript -->
-            </div>
-            <div class="modal-section">
-                <h3 class="modal-section-title green">
-                    <i class="fas fa-info-circle"></i>
-                    Sobre esta comunidad
-                </h3>
-                <p class="modal-section-content" id="modal-description"></p>
-            </div>
-            <div class="modal-section yellow" id="modal-rules-section" style="display: none;">
-                <h3 class="modal-section-title amber">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    Normas de la comunidad
-                </h3>
-                <p class="modal-section-content" id="modal-rules"></p>
-            </div>
-            <div class="modal-promo">
-                <div class="modal-promo-content">
-                    <div class="modal-promo-icon">
-                        <i class="fas fa-file-certificate"></i>
-                    </div>
-                    <div class="modal-promo-text">
-                        <p>¿Eres criador de <span id="modal-bird-type">aves</span>? Obtén tu carné federativo y anillas oficiales</p>
-                        <a href="https://www.ejemplo.com/federacion-modal" target="_blank" rel="noopener noreferrer" class="modal-promo-link">
-                            Federarse con la Asociación Titulí
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="modal-join-btn" id="modal-join-btn">
-                <i class="fas fa-external-link-alt"></i>
-                Unirse a la comunidad
-            </a>
-            <p class="modal-join-hint">Al unirte, aceptas las normas establecidas por los administradores del grupo y comprometes con el bienestar de las aves</p>
-            <div class="modal-footer">
-                <div class="modal-footer-title">Bandadas.net</div>
-                <p>Dirección: Calle del Pájaro 123, 28001 Madrid</p>
-                <p>Email: contacto@bandadas.net | Tel: +34 912 345 678</p>
-                <p class="mt-2">
-                    <a href="https://www.ejemplo.com/asociacion" target="_blank" rel="noopener noreferrer">
-                        Asociación Titulí - Federación de Criadores
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
+<div class="modal-content" id="modal-content">
+<button class="modal-close" id="modal-close">
+<i class="fas fa-times"></i>
+</button>
+<div class="modal-header-img">
+<div class="modal-profile">
+<img src="" alt="Grupo" id="modal-profile-img">
+</div>
+</div>
+<div class="modal-body">
+<h2 class="modal-title" id="modal-title">Nombre del Grupo</h2>
+<div class="modal-badges" id="modal-badges">
+<!-- Los badges se generarán con JavaScript -->
+</div>
+<div class="modal-section">
+<h3 class="modal-section-title green">
+<i class="fas fa-info-circle"></i>
+Sobre esta comunidad
+</h3>
+<p class="modal-section-content" id="modal-description"></p>
+</div>
+<div class="modal-section yellow" id="modal-rules-section" style="display: none;">
+<h3 class="modal-section-title amber">
+<i class="fas fa-exclamation-triangle"></i>
+Normas de la comunidad
+</h3>
+<p class="modal-section-content" id="modal-rules"></p>
+</div>
+<div class="modal-promo">
+<div class="modal-promo-content">
+<div class="modal-promo-icon">
+<i class="fas fa-file-certificate"></i>
+</div>
+<div class="modal-promo-text">
+<p>¿Eres criador de <span id="modal-bird-type">aves</span>? Obtén tu carné federativo y anillas oficiales</p>
+<a href="https://www.ejemplo.com/federacion-modal" target="_blank" rel="noopener noreferrer" class="modal-promo-link">
+Federarse con la Asociación Titulí
+</a>
+</div>
+</div>
+</div>
+<a href="#" target="_blank" rel="noopener noreferrer" class="modal-join-btn" id="modal-join-btn">
+<i class="fas fa-external-link-alt"></i>
+Unirse a la comunidad
+</a>
+<p class="modal-join-hint">Al unirte, aceptas las normas establecidas por los administradores del grupo y comprometes con el bienestar de las aves</p>
+<div class="modal-footer">
+<div class="modal-footer-title">Bandadas.net</div>
+<p>Dirección: Calle del Pájaro 123, 28001 Madrid</p>
+<p>Email: contacto@bandadas.net | Tel: +34 912 345 678</p>
+<p class="mt-2">
+<a href="https://www.ejemplo.com/asociacion" target="_blank" rel="noopener noreferrer">
+Asociación Titulí - Federación de Criadores
+</a>
+</p>
+</div>
+</div>
+</div>
 </div>
 <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-logo">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHT5KmAtwPnlvbIRmj7F0h038g0lzFBHMDl8hS0gMuAEDLqBPBbXiKDkdGLUZiMmrHRuUFl5djHGdS6O6-6bmHOZwiphnqoIayRrU4z7Tlhb6v-RhD_EQv6FMmT5-r32Ib4kj_f4lTCuJPoyLeJDxJHwkOG_dT8pwnZEdE8xT82-xSyJL5mrRzuOixdck/s1440/nebhula%20(77).png" alt="Bandadas.net Logo">
-        </div>
-        <p class="footer-title">Bandadas.net</p>
-        <p class="footer-subtitle">Grupos de Ornitología y Avicultura • España</p>
-        <div class="footer-promo">
-            <a href="https://www.ejemplo.com/federacion-footer" target="_blank" rel="noopener noreferrer" class="footer-promo-link">
-                <i class="fas fa-file-certificate"></i>
-                Federación Online para Criadores
-            </a>
-        </div>
-        <p class="footer-tagline">
-            <i class="fas fa-dove"></i>
-            Directorio de comunidades de aves
-        </p>
-        <p class="footer-desc">Proyecto de la Asociación Titulí para fomentar la ornitología y avicultura responsable</p>
-        <p class="footer-copyright">© <span id="current-year"></span> Bandadas.net. Todos los derechos reservados.</p>
-    </div>
+<div class="footer-container">
+<div class="footer-logo">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHT5KmAtwPnlvbIRmj7F0h038g0lzFBHMDl8hS0gMuAEDLqBPBbXiKDkdGLUZiMmrHRuUFl5djHGdS6O6-6bmHOZwiphnqoIayRrU4z7Tlhb6v-RhD_EQv6FMmT5-r32Ib4kj_f4lTCuJPoyLeJDxJHwkOG_dT8pwnZEdE8xT82-xSyJL5mrRzuOixdck/s1440/nebhula%20(77).png" alt="Bandadas.net Logo">
+</div>
+<p class="footer-title">Bandadas.net</p>
+<p class="footer-subtitle">Grupos de Ornitología y Avicultura • España</p>
+<div class="footer-promo">
+<a href="https://www.ejemplo.com/federacion-footer" target="_blank" rel="noopener noreferrer" class="footer-promo-link">
+<i class="fas fa-file-certificate"></i>
+Federación Online para Criadores
+</a>
+</div>
+<p class="footer-tagline">
+<i class="fas fa-dove"></i>
+Directorio de comunidades de aves
+</p>
+<p class="footer-desc">Proyecto de la Asociación Titulí para fomentar la ornitología y avicultura responsable</p>
+<p class="footer-copyright">© <span id="current-year"></span> Bandadas.net. Todos los derechos reservados.</p>
+</div>
 </footer>
 <script>
-// ICONOS OFICIALES DE PLATAFORMA CON FONT AWESOME - AÑADIDO FACEBOOK
+// ICONOS OFICIALES DE PLATAFORMA CON FONT AWESOME
 const platformIcons = {
-    Telegram: '<i class="fab fa-telegram"></i>',
-    WhatsApp: '<i class="fab fa-whatsapp"></i>',
-    Discord: '<i class="fab fa-discord"></i>',
-    Viber: '<i class="fab fa-viber"></i>',
-    Facebook: '<i class="fab fa-facebook"></i>'
+Telegram: '<i class="fab fa-telegram"></i>',
+WhatsApp: '<i class="fab fa-whatsapp"></i>',
+Discord: '<i class="fab fa-discord"></i>',
+Viber: '<i class="fab fa-viber"></i>',
+Facebook: '<i class="fab fa-facebook"></i>'
 };
-
-// CATEGORÍAS COMPLETAS Y AMPLIADAS
+// FUNCIÓN PARA CREAR BADGE CON ICONO OFICIAL
+function createPlatformBadge(platform) {
+return `<span class="badge platform ${platform.toLowerCase()}">
+<span class="badge-icon">${platformIcons[platform] || ''}</span>
+${platform}
+</span>`;
+}
+// CATEGORÍAS AMPLIADAS SEGÚN SOLICITUD - SIN CAMBIOS
 const categoryTree = {
-    todas: {name: "Todas las Aves", image: "https://placehold.co/150x150/3498db/ffffff?text=Todas+aves", subcategories: []},
-    
-    cetaceas: {name: "Psitácidas", image: "https://placehold.co/150x150/e74c3c/ffffff?text=🦜+Psitácidas", subcategories: [
-        {id: 'agapornis', name: 'Agapornis', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=🦜+Agapornis'},
-        {id: 'periquitos', name: 'Periquitos', image: 'https://placehold.co/100x100/3498db/ffffff?text=🦜+Periquitos'},
-        {id: 'ninfas', name: 'Ninfas', image: 'https://placehold.co/100x100/d35400/ffffff?text=🦜+Ninfas'},
-        {id: 'cacatuas', name: 'Cacatúas', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🦜+Cacatúas'},
-        {id: 'guacamayos', name: 'Guacamayos', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🦜+Guacamayos'},
-        {id: 'loros', name: 'Loros', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🦜+Loros'},
-        {id: 'amazonas', name: 'Amazonas', image: 'https://placehold.co/100x100/16a085/ffffff?text=🦜+Amazonas'},
-        {id: 'forpus', name: 'Forpus', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🦜+Forpus'},
-        {id: 'eclectus', name: 'Eclectus', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🦜+Eclectus'},
-        {id: 'conuros', name: 'Conuros', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🦜+Conuros'},
-        {id: 'cotorras', name: 'Cotorras', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🦜+Cotorras'},
-        {id: 'aratingas', name: 'Aratingas', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🦜+Aratingas'},
-        {id: 'piriquitus', name: 'Piriquitus', image: 'https://placehold.co/100x100/34495e/ffffff?text=🦜+Piriquitus'},
-        {id: 'rosellas', name: 'Rosellas', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=🦜+Rosellas'},
-        {id: 'kakarikis', name: 'Kakarikis', image: 'https://placehold.co/100x100/f1c40f/ffffff?text=🦜+Kakarikis'},
-        {id: 'pionus', name: 'Pionus', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🦜+Pionus'},
-        {id: 'poicephalus', name: 'Poicephalus', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🦜+Poicephalus'}
-    ]},
-    
-    canaricultura: {name: "Canaricultura", image: "https://placehold.co/150x150/f1c40f/ffffff?text=🐦+Canarios", subcategories: [
-        {id: 'color', name: 'Canarios de Color', image: 'https://placehold.co/100x100/f1c40f/ffffff?text=🎨+Color'},
-        {id: 'canto', name: 'Canarios de Canto', image: 'https://placehold.co/100x100/3498db/ffffff?text=🎵+Canto'},
-        {id: 'postura', name: 'Canarios de Postura', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🏆+Postura'},
-        {id: 'hibridos', name: 'Canarios Híbridos', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🧬+Híbridos'},
-        {id: 'rizados', name: 'Canarios Rizados', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🌀+Rizados'},
-        {id: 'moñudos', name: 'Canarios Moñudos', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=👑+Moñudos'},
-        {id: 'bordes', name: 'Canarios de Bordes', image: 'https://placehold.co/100x100/16a085/ffffff?text=🎭+Bordes'},
-        {id: 'gloster', name: 'Canarios Gloster', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🐦+Gloster'},
-        {id: 'yorkshire', name: 'Canarios Yorkshire', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🐦+Yorkshire'}
-    ]},
-    
-    silvestres: {name: "Silvestres", image: "https://placehold.co/150x150/27ae60/ffffff?text=🦅+Silvestres", subcategories: [
-        {id: 'jilgueros_parvas', name: 'Jilgueros Parvas', image: 'https://placehold.co/100x100/f1c40f/ffffff?text=🐦+Parvas'},
-        {id: 'jilgueros_parvas_mut', name: 'Jilgueros Parvas Mutaciones', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🌈+Parvas+Mut'},
-        {id: 'jilgueros_mayor', name: 'Jilgueros Mayor', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🐦+Mayor'},
-        {id: 'jilgueros_mayor_mut', name: 'Jilgueros Mayor Mutaciones', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🌈+Mayor+Mut'},
-        {id: 'otros_jilgueros', name: 'Otros Jilgueros', image: 'https://placehold.co/100x100/d35400/ffffff?text=🐦+Otros+Jilg'},
-        {id: 'verdones', name: 'Verdones', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🐦+Verdones'},
-        {id: 'verdones_mutados', name: 'Verdones Mutados', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🌈+Verdones+Mut'},
-        {id: 'pardillos', name: 'Pardillos', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=🐦+Pardillos'},
-        {id: 'pardillos_mut', name: 'Pardillos Mutaciones', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🌈+Pardillos+Mut'},
-        {id: 'verdecillos', name: 'Verdecillos', image: 'https://placehold.co/100x100/2ecc71/ffffff?text=🐦+Verdecillos'},
-        {id: 'verdecillos_mut', name: 'Verdecillos Mutaciones', image: 'https://placehold.co/100x100/16a085/ffffff?text=🌈+Verdecillos+Mut'},
-        {id: 'luganos', name: 'Luganos', image: 'https://placehold.co/100x100/3498db/ffffff?text=🐦+Luganos'},
-        {id: 'luganos_mut', name: 'Luganos Mutaciones', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🌈+Luganos+Mut'},
-        {id: 'picogordos', name: 'Picogordos', image: 'https://placehold.co/100x100/34495e/ffffff?text=🐦+Picogordos'},
-        {id: 'pinzones', name: 'Pinzones', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🐦+Pinzones'},
-        {id: 'camachuelos', name: 'Camachuelos', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🐦+Camachuelos'},
-        {id: 'carboneros', name: 'Carboneros', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🐦+Carboneros'},
-        {id: 'herrerillos', name: 'Herrerillos', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🐦+Herrerillos'}
-    ]},
-    
-    exoticos: {name: "Exóticos", image: "https://placehold.co/150x150/e67e22/ffffff?text=🦜+Exóticos", subcategories: [
-        {id: 'diamantes', name: 'Diamantes', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=💎+Diamantes'},
-        {id: 'diamantes_mandarin', name: 'Diamantes Mandarín', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=🐦+Mandarin'},
-        {id: 'diamantes_gould', name: 'Diamantes de Gould', image: 'https://placehold.co/100x100/3498db/ffffff?text=🐦+Gould'},
-        {id: 'cardinales', name: 'Cardenales', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🐦+Cardenales'},
-        {id: 'estrildidos', name: 'Estrildidos', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🐦+Estrildidos'},
-        {id: 'tejedores', name: 'Tejedores', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🐦+Tejedores'},
-        {id: 'capuchinos', name: 'Capuchinos', image: 'https://placehold.co/100x100/8c7b6b/ffffff?text=🐦+Capuchinos'},
-        {id: 'amarantas', name: 'Amarantas', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=🐦+Amarantas'},
-        {id: 'viuditas', name: 'Viuditas', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🐦+Viuditas'},
-        {id: 'picos_de_plata', name: 'Picos de Plata', image: 'https://placehold.co/100x100/95a5a6/ffffff?text=🐦+Picos+Plata'},
-        {id: 'picos_de_coral', name: 'Picos de Coral', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🐦+Picos+Coral'},
-        {id: 'azulitos', name: 'Azulitos', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🐦+Azulitos'},
-        {id: 'amarillos_africanos', name: 'Amarillos Africanos', image: 'https://placehold.co/100x100/f1c40f/ffffff?text=🐦+Amarillos'},
-        {id: 'amarillos_senegal', name: 'Amarillos Senegal', image: 'https://placehold.co/100x100/e6b22d/ffffff?text=🐦+Senegal'},
-        {id: 'pintassilgos', name: 'Pintassilgos', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🐦+Pintassilgos'}
-    ]},
-    
-    avicultura: {name: "Avicultura", image: "https://placehold.co/150x150/16a085/ffffff?text=🐔+Avicultura", subcategories: [
-        {id: 'gallinas', name: 'Gallinas', image: 'https://placehold.co/100x100/16a085/ffffff?text=🐔+Gallinas'},
-        {id: 'gallos', name: 'Gallos', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🐓+Gallos'},
-        {id: 'pavos', name: 'Pavos', image: 'https://placehold.co/100x100/8c7b6b/ffffff?text=🦃+Pavos'},
-        {id: 'patos', name: 'Patos', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🦆+Patos'},
-        {id: 'codornices', name: 'Codornices', image: 'https://placehold.co/100x100/d35400/ffffff?text=🐦+Codornices'},
-        {id: 'faisanes', name: 'Faisanes', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🦚+Faisanes'},
-        {id: 'perdices', name: 'Perdices', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🐦+Perdices'},
-        {id: 'ocas', name: 'Ocas', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🦢+Ocas'},
-        {id: 'pintadas', name: 'Pintadas', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🐦+Pintadas'},
-        {id: 'gansos', name: 'Gansos', image: 'https://placehold.co/100x100/95a5a6/ffffff?text=🦆+Gansos'},
-        {id: 'avestruces', name: 'Avestruces', image: 'https://placehold.co/100x100/34495e/ffffff?text=🐦+Avestruces'},
-        {id: 'ñandues', name: 'Ñandúes', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🐦+Ñandúes'},
-        {id: 'emus', name: 'Emús', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🐦+Emús'},
-        {id: 'kivis', name: 'Kivis', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🐦+Kivis'}
-    ]},
-    
-    colombicultura: {name: "Colombicultura", image: "https://placehold.co/150x150/7f8c8d/ffffff?text=🕊️+Palomas", subcategories: [
-        {id: 'buchon', name: 'Palomo Buchón', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🕊️+Buchón'},
-        {id: 'mensajeras', name: 'Palomas Mensajeras', image: 'https://placehold.co/100x100/3498db/ffffff?text=✉️+Mensajeras'},
-        {id: 'bucaros', name: 'Palomos Bucaros', image: 'https://placehold.co/100x100/8c7b6b/ffffff?text=🕊️+Bucaros'},
-        {id: 'deportivas', name: 'Palomas Deportivas', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=🏆+Deportivas'},
-        {id: 'valencianos', name: 'Palomos Valencianos', image: 'https://placehold.co/100x100/2ecc71/ffffff?text=🕊️+Valencianos'},
-        {id: 'girones', name: 'Palomos Girones', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🕊️+Girones'},
-        {id: 'marcheneros', name: 'Palomos Marcheneros', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🕊️+Marcheneros'},
-        {id: 'ladiadores', name: 'Palomos Ladiadores', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🕊️+Ladiadores'},
-        {id: 'murcianos', name: 'Palomos Murcianos', image: 'https://placehold.co/100x100/34495e/ffffff?text=🕊️+Murcianos'},
-        {id: 'agüileños', name: 'Palomos Agüileños', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🕊️+Agüileños'},
-        {id: 'colipavos', name: 'Palomos Colipavos', image: 'https://placehold.co/100x100/16a085/ffffff?text=🕊️+Colipavos'},
-        {id: 'razas_ornamentales', name: 'Razas Ornamentales', image: 'https://placehold.co/100x100/f1c40f/ffffff?text=🎨+Ornamentales'},
-        {id: 'razas_carrera', name: 'Razas de Carrera', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🏃+Carrera'},
-        {id: 'exposicion', name: 'Palomas de Exposición', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🏆+Exposición'}
-    ]},
-    
-    rapaces: {name: "Rapaces", image: "https://placehold.co/150x150/2c3e50/ffffff?text=🦅+Rapaces", subcategories: [
-        {id: 'halcon', name: 'Halcones', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🦅+Halcones'},
-        {id: 'aguilas', name: 'Águilas', image: 'https://placehold.co/100x100/8c7b6b/ffffff?text=🦅+Águilas'},
-        {id: 'cetreria', name: 'Cetrería', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🦅+Cetrería'},
-        {id: 'azor', name: 'Azores', image: 'https://placehold.co/100x100/34495e/ffffff?text=🦅+Azores'},
-        {id: 'gavilan', name: 'Gavilanes', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🦅+Gavilanes'},
-        {id: 'busardo', name: 'Busardos', image: 'https://placehold.co/100x100/95a5a6/ffffff?text=🦅+Busardos'},
-        {id: 'cernicalo', name: 'Cernícalos', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🦅+Cernícalos'},
-        {id: 'milano', name: 'Milanos', image: 'https://placehold.co/100x100/d35400/ffffff?text=🦅+Milanos'},
-        {id: 'buhos', name: 'Búhos', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🦉+Búhos'},
-        {id: 'lechuzas', name: 'Lechuzas', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🦉+Lechuzas'},
-        {id: 'autillo', name: 'Autillos', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🦉+Autillos'},
-        {id: 'moquillo', name: 'Moquillos', image: 'https://placehold.co/100x100/16a085/ffffff?text=🦅+Moquillos'},
-        {id: 'alcotan', name: 'Alcotanes', image: 'https://placehold.co/100x100/3498db/ffffff?text=🦅+Alcotanes'},
-        {id: 'aguilucho', name: 'Aguiluchos', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🦅+Aguiluchos'},
-        {id: 'ratonero', name: 'Ratoneros', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🦅+Ratoneros'},
-        {id: 'elanus', name: 'Elanus', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🦅+Elanus'}
-    ]},
-    
-    ecologia: {name: "Ecología", image: "https://placehold.co/150x150/27ae60/ffffff?text=🌿+Ecología", subcategories: [
-        {id: 'conservacion', name: 'Conservación', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🌿+Conservación'},
-        {id: 'habitat', name: 'Hábitat', image: 'https://placehold.co/100x100/2ecc71/ffffff?text=🌳+Hábitat'},
-        {id: 'alimentacion', name: 'Alimentación', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🌾+Alimentación'},
-        {id: 'cria_responsable', name: 'Cría Responsable', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🐣+Cría'},
-        {id: 'aves_salvajes', name: 'Aves Salvajes', image: 'https://placehold.co/100x100/3498db/ffffff?text=🐦+Salvajes'},
-        {id: 'aves_migratorias', name: 'Aves Migratorias', image: 'https://placehold.co/100x100/2980b9/ffffff?text=✈️+Migratorias'},
-        {id: 'aves_acuaticas', name: 'Aves Acuáticas', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🦆+Acuáticas'},
-        {id: 'aves_marinas', name: 'Aves Marinas', image: 'https://placehold.co/100x100/34495e/ffffff?text=🌊+Marinas'},
-        {id: 'aves_urbanas', name: 'Aves Urbanas', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🏙️+Urbanas'}
-    ]}
+todas: {name: "Todas las Aves", image: "https://placehold.co/150x150/3498db/ffffff?text=Todas+aves", subcategories: []},
+cetaceas: {name: "Psitácidas", image: "https://placehold.co/150x150/e74c3c/ffffff?text=🦜+Psitácidas", subcategories: [
+{id: 'agapornis', name: 'Agapornis', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=🦜+Agapornis'},
+{id: 'periquitos', name: 'Periquitos', image: 'https://placehold.co/100x100/3498db/ffffff?text=🦜+Periquitos'},
+{id: 'ninfas', name: 'Ninfas', image: 'https://placehold.co/100x100/d35400/ffffff?text=🦜+Ninfas'},
+{id: 'cacatuas', name: 'Cacatúas', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🦜+Cacatúas'},
+{id: 'guacamayos', name: 'Guacamayos', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🦜+Guacamayos'},
+{id: 'loros', name: 'Loros', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🦜+Loros'},
+{id: 'amazonas', name: 'Amazonas', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🦜+Amazonas'},
+{id: 'forpus', name: 'Forpus', image: 'https://placehold.co/100x100/16a085/ffffff?text=🦜+Forpus'},
+{id: 'caiques', name: 'Caiques', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🦜+Caiques'},
+{id: 'conuros', name: 'Conuros', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🦜+Conuros'},
+{id: 'kakarikis', name: 'Kakarikis', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🦜+Kakarikis'},
+{id: 'psitaculas', name: 'Psitaculas', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🦜+Psitaculas'}
+]},
+canaricultura: {name: "Canaricultura", image: "https://placehold.co/150x150/f1c40f/ffffff?text=🐦+Canarios", subcategories: [
+{id: 'canarios_color', name: 'Canarios de Color', image: 'https://placehold.co/100x100/f1c40f/ffffff?text=🐦+Color'},
+{id: 'canarios_canto', name: 'Canarios de Canto', image: 'https://placehold.co/100x100/d35400/ffffff?text=🐦+Canto'},
+{id: 'canarios_postura', name: 'Canarios de Postura', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🐦+Postura'}
+]},
+silvestres: {name: "Silvestres", image: "https://placehold.co/150x150/27ae60/ffffff?text=🦅+Silvestres", subcategories: [
+{id: 'jilgueros_parvas', name: 'Jilgueros Parvas', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🐦+Parvas'},
+{id: 'jilgueros_parvas_mutaciones', name: 'Jilgueros Parvas Mutaciones', image: 'https://placehold.co/100x100/3498db/ffffff?text=🐦+Parvas+Mut'},
+{id: 'jilgueros_mayor', name: 'Jilgueros Mayor', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🐦+Mayor'},
+{id: 'jilgueros_mayor_mutaciones', name: 'Jilgueros Mayor Mutaciones', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🐦+Mayor+Mut'},
+{id: 'otros_jilgueros', name: 'Otros Jilgueros', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🐦+Otros'},
+{id: 'verdones', name: 'Verdones', image: 'https://placehold.co/100x100/16a085/ffffff?text=🐦+Verdones'},
+{id: 'verdones_mutados', name: 'Verdones Mutados', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🐦+Verdones+Mut'},
+{id: 'pardillos', name: 'Pardillos y Mutaciones', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🐦+Pardillos'},
+{id: 'verdecillos', name: 'Verdecillos y Mutaciones', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🐦+Verdecillos'},
+{id: 'luganos', name: 'Luganos y Mutaciones', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🐦+Luganos'},
+{id: 'serines', name: 'Serines', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=🐦+Serines'},
+{id: 'verderones', name: 'Verderones', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🐦+Verderones'}
+]},
+exoticos: {name: "Exóticos", image: "https://placehold.co/150x150/e67e22/ffffff?text=🦜+Exóticos", subcategories: [
+{id: 'diamantes', name: 'Diamantes', image: 'https://placehold.co/100x100/e67e22/ffffff?text=💎+Diamantes'},
+{id: 'diamantes_mandarines', name: 'Diamantes Mandarines', image: 'https://placehold.co/100x100/c0392b/ffffff?text=💎+Mandarines'},
+{id: 'diamantes_gould', name: 'Diamantes de Gould', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=💎+Gould'},
+{id: 'astrildos', name: 'Astrildos', image: 'https://placehold.co/100x100/2980b9/ffffff?text=💎+Astrildos'},
+{id: 'negrillos', name: 'Negrillos', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=💎+Negrillos'},
+{id: 'tejedores', name: 'Tejedores', image: 'https://placehold.co/100x100/16a085/ffffff?text=💎+Tejedores'},
+{id: 'pinzones_java', name: 'Pinzones de Java', image: 'https://placehold.co/100x100/27ae60/ffffff?text=💎+Java'},
+{id: 'cordon_azul', name: 'Cordon Azul', image: 'https://placehold.co/100x100/3498db/ffffff?text=💎+Cordon+Azul'},
+{id: 'gusarapos', name: 'Gusarapos', image: 'https://placehold.co/100x100/9b59b6/ffffff?text=💎+Gusarapos'},
+{id: 'capuchinos', name: 'Capuchinos', image: 'https://placehold.co/100x100/f39c12/ffffff?text=💎+Capuchinos'}
+]},
+avicultura: {name: "Avicultura", image: "https://placehold.co/150x150/16a085/ffffff?text=🐔+Avicultura", subcategories: [
+{id: 'gallinas', name: 'Gallinas', image: 'https://placehold.co/100x100/16a085/ffffff?text=🐔+Gallinas'},
+{id: 'gallos', name: 'Gallos', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🐔+Gallos'},
+{id: 'pavos', name: 'Pavos', image: 'https://placehold.co/100x100/8c7b6b/ffffff?text=🦃+Pavos'},
+{id: 'patos', name: 'Patos', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🦆+Patos'},
+{id: 'codornices', name: 'Codornices', image: 'https://placehold.co/100x100/d35400/ffffff?text=🐔+Codornices'},
+{id: 'faisanes', name: 'Faisanes', image: 'https://placehold.co/100x100/d35400/ffffff?text=🦚+Faisanes'},
+{id: 'perdices', name: 'Perdices', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🐔+Perdices'},
+{id: 'pavos_reales', name: 'Pavos Reales', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🦚+Reales'},
+{id: 'ocas', name: 'Ocas', image: 'https://placehold.co/100x100/34495e/ffffff?text=🦢+Ocas'},
+{id: 'gansos', name: 'Gansos', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🦢+Gansos'},
+{id: 'pintadas', name: 'Pintadas', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🐔+Pintadas'}
+]},
+colombicultura: {name: "Colombicultura", image: "https://placehold.co/150x150/7f8c8d/ffffff?text=🕊️+Palomas", subcategories: [
+{id: 'palomo_buchon', name: 'Palomo Buchón', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🕊️+Buchón'},
+{id: 'palomo_mensajero', name: 'Palomo Mensajero', image: 'https://placehold.co/100x100/95a5a6/ffffff?text=🕊️+Mensajero'},
+{id: 'palomo_buho', name: 'Palomo Búho', image: 'https://placehold.co/100x100/34495e/ffffff?text=🕊️+Búho'},
+{id: 'palomo_rafeño', name: 'Palomo Rafeño', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🕊️+Rafeño'},
+{id: 'palomo_turbit', name: 'Palomo Turbit', image: 'https://placehold.co/100x100/1abc9c/ffffff?text=🕊️+Turbit'},
+{id: 'palomo_volatinera', name: 'Palomo Volatinera', image: 'https://placehold.co/100x100/27ae60/ffffff?text=🕊️+Volatinera'},
+{id: 'palomo_cabezudo', name: 'Palomo Cabezudo', image: 'https://placehold.co/100x100/e67e22/ffffff?text=🕊️+Cabezudo'},
+{id: 'palomo_giroscopo', name: 'Palomo Giroscopo', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🕊️+Giroscopo'},
+{id: 'palomo_exposicion', name: 'Palomo de Exposición', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🏆+Exposición'},
+{id: 'palomo_carnicero', name: 'Palomo Carnicero', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🕊️+Carnicero'}
+]},
+rapaces: {name: "Rapaces", image: "https://placehold.co/150x150/2c3e50/ffffff?text=🦅+Rapaces", subcategories: [
+{id: 'halcones', name: 'Halcones', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🦅+Halcones'},
+{id: 'azor', name: 'Azor', image: 'https://placehold.co/100x100/34495e/ffffff?text=🦅+Azor'},
+{id: 'aguilas', name: 'Águilas', image: 'https://placehold.co/100x100/c0392b/ffffff?text=🦅+Águilas'},
+{id: 'buitres', name: 'Buitres', image: 'https://placehold.co/100x100/7f8c8d/ffffff?text=🦅+Buitres'},
+{id: 'buhos_lechuzas', name: 'Búhos y Lechuzas', image: 'https://placehold.co/100x100/2c3e50/ffffff?text=🦉+Búhos'},
+{id: 'cernicalos', name: 'Cernícalos', image: 'https://placehold.co/100x100/2980b9/ffffff?text=🦅+Cernícalos'},
+{id: 'milanos', name: 'Milanos', image: 'https://placehold.co/100x100/e74c3c/ffffff?text=🦅+Milanos'},
+{id: 'cetreria', name: 'Cetrería', image: 'https://placehold.co/100x100/8e44ad/ffffff?text=🦅+Cetrería'},
+{id: 'moceños', name: 'Moceños', image: 'https://placehold.co/100x100/16a085/ffffff?text=🦅+Moceños'},
+{id: 'alcotanes', name: 'Alcotanes', image: 'https://placehold.co/100x100/f39c12/ffffff?text=🦅+Alcotanes'}
+]}
 };
-
 const spainRegions = ["Todas","Andalucía","Aragón","Asturias","Baleares","Canarias","Cantabria","Castilla-La Mancha","Castilla y León","Cataluña","Comunidad Valenciana","Extremadura","Galicia","Madrid","Murcia","Navarra","País Vasco","La Rioja","Ceuta","Melilla"];
 const platforms = ["Todas","Telegram","WhatsApp","Discord","Viber","Facebook"];
 const platformColors = {
-    "Telegram": "#0088cc",
-    "WhatsApp": "#25D366",
-    "Discord": "#5865F2",
-    "Viber": "#7360f2",
-    "Facebook": "#1877F2"
+"Telegram": "#0088cc",
+"WhatsApp": "#25D366",
+"Discord": "#5865F2",
+"Viber": "#7360f2",
+"Facebook": "#1877F2"
 };
-
-// FUNCIÓN PARA CREAR GRUPOS INICIALES - AÑADIDO FACEBOOK
+// FUNCIÓN PARA CREAR GRUPOS INICIALES CON FACEBOOK
 function createInitialGroups() {
-    const groups = [];
-    let idCounter = 1;
-    const platformsList = ["Telegram", "WhatsApp", "Discord", "Viber", "Facebook"];
-    
-    // Ejemplos de grupos de Facebook específicos
-    const facebookGroups = [
-        {
-            name: "Criadores de Agapornis España",
-            description: "Grupo de Facebook para criadores de agapornis en toda España. Comparte tus experiencias y fotos.",
-            region: "España"
-        },
-        {
-            name: "Canaricultura Tradicional",
-            description: "Grupo dedicado a la canaricultura tradicional española. Concursos, cuidados y genética.",
-            region: "Madrid"
-        },
-        {
-            name: "Aves Silvestres Ibéricas",
-            description: "Observación y conservación de aves silvestres en la península ibérica.",
-            region: "Andalucía"
-        },
-        {
-            name: "Avicultura Familiar",
-            description: "Para los que tienen gallinas, patos y otras aves de corral en su hogar.",
-            region: "Galicia"
-        },
-        {
-            name: "Cetrería y Rapaces",
-            description: "Amantes de las aves rapaces y la cetrería tradicional.",
-            region: "Castilla y León"
-        }
-    ];
-    
-    Object.entries(categoryTree).forEach(([mainCatId, mainCatData]) => {
-        if (mainCatId === 'todas') return;
-        
-        mainCatData.subcategories.forEach((subcat, subcatIndex) => {
-            for (let i = 0; i < 3; i++) {
-                const platform = platformsList[(subcatIndex + i) % platformsList.length];
-                const regionIndex = (subcatIndex + i) % spainRegions.length;
-                const region = spainRegions[regionIndex === 0 ? 1 : regionIndex];
-                const members = `${Math.floor(Math.random() * 5) + 1}.${Math.floor(Math.random() * 9)}k`;
-                
-                // Para grupos de Facebook, usar nombres más específicos
-                let groupName = `${subcat.name} ${region}`;
-                let description = `Comunidad activa de ${subcat.name.toLowerCase()} en ${region}. Compartimos experiencias, consejos y organizamos eventos.`;
-                
-                if (platform === "Facebook" && subcatIndex < facebookGroups.length) {
-                    groupName = facebookGroups[subcatIndex].name;
-                    description = facebookGroups[subcatIndex].description;
-                }
-                
-                groups.push({
-                    id: idCounter++,
-                    platform,
-                    name: groupName,
-                    link: platform === "Facebook" 
-                        ? `https://facebook.com/groups/${mainCatId}_${subcat.id}_${i}`
-                        : `https://${platform.toLowerCase()}.com/${mainCatId}_${subcat.id}_${i}`,
-                    description: description,
-                    longDescription: `¡Bienvenidos a la comunidad de ${subcat.name} ${region}!
+const groups = [];
+let idCounter = 1;
+const platformsList = ["Telegram", "WhatsApp", "Discord", "Viber", "Facebook"];
+Object.entries(categoryTree).forEach(([mainCatId, mainCatData]) => {
+if (mainCatId === 'todas') return;
+mainCatData.subcategories.forEach((subcat, subcatIndex) => {
+for (let i = 0; i < 3; i++) {
+const platform = platformsList[(subcatIndex + i) % platformsList.length];
+const regionIndex = (subcatIndex + i) % spainRegions.length;
+const region = spainRegions[regionIndex === 0 ? 1 : regionIndex];
+const members = `${Math.floor(Math.random() * 5) + 1}.${Math.floor(Math.random() * 9)}k`;
+groups.push({
+id: idCounter++,
+platform,
+name: `${subcat.name} ${region}`,
+link: `https://${platform.toLowerCase()}.com/${mainCatId}_${subcat.id}_${i}`,
+description: `Comunidad activa de ${subcat.name.toLowerCase()} en ${region}. Compartimos experiencias, consejos y organizamos eventos.`,
+longDescription: `¡Bienvenidos a la comunidad de ${subcat.name} ${region}!
 Aquí encontrarás:
 - Consejos especializados de criadores experimentados
 - Solución de problemas de salud y comportamiento
@@ -2243,49 +2015,37 @@ Aquí encontrarás:
 - Recomendaciones de veterinarios especializados
 - Organización de quedadas y exposiciones regionales
 - Alertas sobre enfermedades y cuidados específicos`,
-                    rules: `1. Respeto absoluto a todas las aves y criadores
+rules: `1. Respeto absoluto a todas las aves y criadores
 2. Prohibido el comercio ilegal de especies
 3. Compartir siempre fuentes de información verificadas
 4. No difundir rumores sin contrastar
 5. Mantener un ambiente de ayuda mutua y colaboración`,
-                    members,
-                    mainCategory: mainCatId,
-                    subCategory: subcat.id,
-                    image: subcat.image,
-                    region,
-                    country: "España"
-                });
-            }
-        });
-    });
-    
-    return groups;
+members,
+mainCategory: mainCatId,
+subCategory: subcat.id,
+image: subcat.image,
+region,
+country: "España"
+});
 }
-
-// FUNCIÓN PARA CREAR BADGE CON ICONO OFICIAL - AÑADIDO FACEBOOK
-function createPlatformBadge(platform) {
-    return `<span class="badge platform ${platform.toLowerCase()}">
-        <span class="badge-icon">${platformIcons[platform] || ''}</span>
-        ${platform}
-    </span>`;
+});
+});
+return groups;
 }
-
 // ESTADO DE LA APLICACIÓN CON PAGINACIÓN
 let state = {
-    view: 'home',
-    selectedMainCategory: 'todas',
-    selectedSubCategory: null,
-    selectedPlatform: 'Todas',
-    selectedRegion: 'Todas',
-    selectedCountry: 'ES',
-    searchTerm: '',
-    selectedGroup: null,
-    groups: createInitialGroups(),
-    currentPage: 1,
-    itemsPerPage: 9, // Mostrar 9 grupos inicialmente
-    isLoading: false
+view: 'home',
+selectedMainCategory: 'todas',
+selectedSubCategory: null,
+selectedPlatform: 'Todas',
+selectedRegion: 'Todas',
+selectedCountry: 'ES',
+searchTerm: '',
+selectedGroup: null,
+groups: createInitialGroups(),
+displayedGroupsCount: 9, // Número inicial de grupos a mostrar
+groupsPerPage: 9 // Grupos a añadir cada vez que se carga más
 };
-
 // ELEMENTOS DEL DOM
 const mainCategoriesContainer = document.getElementById('main-categories');
 const subcategoriesContainer = document.getElementById('subcategories');
@@ -2298,8 +2058,9 @@ const searchInput = document.getElementById('search-input');
 const searchResult = document.getElementById('search-result');
 const resultsInfo = document.getElementById('results-info');
 const resultsCount = document.getElementById('results-count');
-const totalResults = document.getElementById('total-results');
 const groupsGrid = document.getElementById('groups-grid');
+const loadMoreContainer = document.getElementById('load-more-container');
+const loadMoreBtn = document.getElementById('load-more-btn');
 const emptyState = document.getElementById('empty-state');
 const emptyDesc = document.getElementById('empty-desc');
 const resetFiltersBtn = document.getElementById('reset-filters');
@@ -2326,551 +2087,439 @@ const modalRules = document.getElementById('modal-rules');
 const modalBirdType = document.getElementById('modal-bird-type');
 const modalJoinBtn = document.getElementById('modal-join-btn');
 const currentYearEl = document.getElementById('current-year');
-const loadMoreContainer = document.getElementById('load-more-container');
-const loadMoreBtn = document.getElementById('load-more-btn');
-
-// FUNCIÓN PARA OBTENER GRUPOS PAGINADOS
-function getPaginatedGroups() {
-    const filteredGroups = filterGroups();
-    const startIndex = 0;
-    const endIndex = state.currentPage * state.itemsPerPage;
-    
-    return {
-        groups: filteredGroups.slice(startIndex, endIndex),
-        total: filteredGroups.length,
-        hasMore: endIndex < filteredGroups.length
-    };
-}
-
-// FUNCIÓN PARA RENDERIZAR GRUPOS CON PAGINACIÓN
+// FUNCIÓN PARA RENDERIZAR GRUPOS CON PAGINACIÓN Y CENTRADO
 function renderGroups() {
-    const { groups: paginatedGroups, total, hasMore } = getPaginatedGroups();
-    
-    resultsCount.textContent = paginatedGroups.length;
-    totalResults.textContent = total;
-    
-    let infoText = `Mostrando <span class="text-green-600 font-bold">${paginatedGroups.length}</span> de <span class="text-green-600 font-bold">${total}</span> comunidades`;
-    if (state.selectedMainCategory !== 'todas') {
-        infoText += ` en ${categoryTree[state.selectedMainCategory].name}`;
-    }
-    if (state.selectedSubCategory) {
-        const subcat = categoryTree[state.selectedMainCategory].subcategories.find(s => s.id === state.selectedSubCategory);
-        if (subcat) infoText += ` - ${subcat.name}`;
-    }
-    if (state.selectedRegion !== 'Todas') infoText += ` en ${state.selectedRegion}`;
-    if (state.selectedPlatform !== 'Todas') infoText += ` para ${state.selectedPlatform}`;
-    
-    resultsInfo.innerHTML = infoText;
-    
-    // Mostrar/ocultar botón "Cargar más"
-    if (hasMore && paginatedGroups.length > 0) {
-        loadMoreContainer.style.display = 'block';
-        loadMoreBtn.disabled = false;
-        loadMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> Cargar más grupos';
-    } else {
-        loadMoreContainer.style.display = 'none';
-    }
-    
-    if (paginatedGroups.length === 0) {
-        emptyState.style.display = 'block';
-        loadMoreContainer.style.display = 'none';
-        
-        if (state.selectedSubCategory) {
-            const subcat = categoryTree[state.selectedMainCategory].subcategories.find(s => s.id === state.selectedSubCategory);
-            emptyDesc.textContent = `No hay comunidades para ${subcat.name} en este momento`;
-        } else if (state.selectedMainCategory !== 'todas') {
-            emptyDesc.textContent = `No hay comunidades para ${categoryTree[state.selectedMainCategory].name} en este momento`;
-        } else {
-            emptyDesc.textContent = 'No hay comunidades en el directorio todavía';
-        }
-        groupsGrid.style.display = 'none';
-    } else {
-        emptyState.style.display = 'none';
-        groupsGrid.style.display = 'grid';
-        
-        // Si es la primera página, limpiar el grid
-        if (state.currentPage === 1) {
-            groupsGrid.innerHTML = '';
-        }
-        
-        paginatedGroups.forEach(group => {
-            const category = categoryTree[group.mainCategory];
-            const subcategory = category.subcategories.find(s => s.id === group.subCategory);
-            
-            const groupCard = document.createElement('div');
-            groupCard.className = 'group-card';
-            groupCard.innerHTML = `
-                <div class="group-content">
-                    <div class="group-img">
-                        <img src="${group.image}" alt="${group.name}" onerror="this.src='https://placehold.co/100x100/${platformColors[group.platform].replace('#', '')}/ffffff?text=${group.subCategory.charAt(0)}'">
-                    </div>
-                    <div class="group-badges">
-                        ${createPlatformBadge(group.platform)}
-                        <span class="badge members">
-                            <i class="fas fa-users"></i>
-                            ${group.members} miembros
-                        </span>
-                        <span class="badge category">${category.name}</span>
-                        <span class="badge subcategory">${subcategory.name}</span>
-                        <span class="badge region">${group.region}</span>
-                    </div>
-                    <h3 class="group-name">
-                        <button class="group-name-btn" data-group-id="${group.id}">
-                            ${group.name}
-                        </button>
-                    </h3>
-                    <p class="group-desc">${group.description}</p>
-                    <div class="group-footer">
-                        <div class="group-meta">
-                            <span><i class="fas fa-map-marker-alt"></i> ${group.region}</span>
-                            <span>•</span>
-                            <span><i class="fas fa-tag"></i> ${subcategory.name}</span>
-                        </div>
-                        <button class="group-btn" data-group-id="${group.id}">
-                            <i class="fas fa-external-link-alt"></i>
-                            Ver detalles
-                        </button>
-                    </div>
-                </div>
-            `;
-            groupsGrid.appendChild(groupCard);
-        });
-    }
+const filteredGroups = filterGroups();
+const totalGroups = filteredGroups.length;
+resultsCount.textContent = totalGroups;
+// Actualizar texto de resultados
+let infoText = `Mostrando <span class="text-green-600 font-bold">${Math.min(state.displayedGroupsCount, totalGroups)}</span> de <span class="text-green-600 font-bold">${totalGroups}</span> comunidades`;
+if (state.selectedMainCategory !== 'todas') {
+infoText += ` en ${categoryTree[state.selectedMainCategory].name}`;
 }
-
-// FUNCIÓN PARA CARGAR MÁS GRUPOS
-function loadMoreGroups() {
-    if (state.isLoading) return;
-    
-    state.isLoading = true;
-    loadMoreBtn.disabled = true;
-    loadMoreBtn.innerHTML = '<div class="loading-spinner"></div> Cargando...';
-    
-    // Simular carga asíncrona
-    setTimeout(() => {
-        state.currentPage++;
-        renderGroups();
-        state.isLoading = false;
-        
-        // Desplazar suavemente hacia abajo para mostrar los nuevos grupos
-        const newGroups = document.querySelectorAll('.group-card');
-        if (newGroups.length > 0) {
-            const lastGroup = newGroups[newGroups.length - 1];
-            lastGroup.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-    }, 800);
+if (state.selectedSubCategory) {
+const subcat = categoryTree[state.selectedMainCategory].subcategories.find(s => s.id === state.selectedSubCategory);
+if (subcat) infoText += ` - ${subcat.name}`;
 }
-
-// FUNCIÓN PARA MOSTRAR MODAL CON ICONOS OFICIALES - AÑADIDO FACEBOOK
+if (state.selectedRegion !== 'Todas') infoText += ` en ${state.selectedRegion}`;
+if (state.selectedPlatform !== 'Todas') infoText += ` para ${state.selectedPlatform}`;
+resultsInfo.innerHTML = infoText;
+// Mostrar/ocultar botón "Cargar más"
+if (totalGroups > state.displayedGroupsCount) {
+loadMoreContainer.style.display = 'block';
+} else {
+loadMoreContainer.style.display = 'none';
+}
+// Grupos a mostrar (con paginación)
+const groupsToShow = filteredGroups.slice(0, state.displayedGroupsCount);
+if (groupsToShow.length === 0) {
+emptyState.style.display = 'block';
+if (state.selectedSubCategory) {
+const subcat = categoryTree[state.selectedMainCategory].subcategories.find(s => s.id === state.selectedSubCategory);
+emptyDesc.textContent = `No hay comunidades para ${subcat.name} en este momento`;
+} else if (state.selectedMainCategory !== 'todas') {
+emptyDesc.textContent = `No hay comunidades para ${categoryTree[state.selectedMainCategory].name} en este momento`;
+} else {
+emptyDesc.textContent = 'No hay comunidades en el directorio todavía';
+}
+groupsGrid.style.display = 'none';
+} else {
+emptyState.style.display = 'none';
+groupsGrid.style.display = 'grid';
+groupsGrid.innerHTML = '';
+groupsToShow.forEach(group => {
+const category = categoryTree[group.mainCategory];
+const subcategory = category.subcategories.find(s => s.id === group.subCategory);
+const groupCard = document.createElement('div');
+groupCard.className = 'group-card';
+groupCard.innerHTML = `
+<div class="group-content">
+<div class="group-img">
+<img src="${group.image}" alt="${group.name}" onerror="this.src='https://placehold.co/100x100/${platformColors[group.platform].replace('#', '')}/ffffff?text=${group.subCategory.charAt(0)}'">
+</div>
+<div class="group-badges">
+${createPlatformBadge(group.platform)}
+<span class="badge members">
+<i class="fas fa-users"></i>
+${group.members} miembros
+</span>
+<span class="badge category">${category.name}</span>
+<span class="badge subcategory">${subcategory.name}</span>
+<span class="badge region">${group.region}</span>
+</div>
+<h3 class="group-name">
+<button class="group-name-btn" data-group-id="${group.id}">
+${group.name}
+</button>
+</h3>
+<p class="group-desc">${group.description}</p>
+<div class="group-footer">
+<div class="group-meta">
+<span><i class="fas fa-map-marker-alt"></i> ${group.region}</span>
+<span>•</span>
+<span><i class="fas fa-tag"></i> ${subcategory.name}</span>
+</div>
+<button class="group-btn" data-group-id="${group.id}">
+<i class="fas fa-external-link-alt"></i>
+Ver detalles
+</button>
+</div>
+</div>
+`;
+groupsGrid.appendChild(groupCard);
+});
+}
+}
+// FUNCIÓN PARA MOSTRAR MODAL CON ICONOS OFICIALES
 function showGroupModal(group) {
-    state.selectedGroup = group;
-    
-    // Configurar imagen
-    modalProfileImg.src = group.image;
-    modalProfileImg.onerror = () => {
-        modalProfileImg.src = `https://placehold.co/100x100/${platformColors[group.platform].replace('#', '')}/ffffff?text=${group.subCategory.charAt(0)}`;
-    };
-    
-    modalTitle.textContent = group.name;
-    const category = categoryTree[group.mainCategory];
-    const subcategory = category.subcategories.find(s => s.id === group.subCategory);
-    
-    // Crear badges con iconos oficiales
-    modalBadges.innerHTML = `
-        <span class="modal-badge" style="background-color: ${platformColors[group.platform]}; color: white;">
-            <span class="badge-icon">${platformIcons[group.platform] || ''}</span>
-            ${group.platform}
-        </span>
-        <span class="modal-badge">
-            <i class="fas fa-users"></i>
-            ${group.members} miembros
-        </span>
-        <span class="modal-badge" style="background-color: #22c55e; color: white;">${category.name}</span>
-        <span class="modal-badge" style="background-color: #3b82f6; color: white;">${subcategory.name}</span>
-        <span class="modal-badge" style="background-color: #f59e0b; color: white;">${group.region}</span>
-    `;
-    
-    modalDescription.textContent = group.longDescription || group.description;
-    
-    if (group.rules) {
-        modalRulesSection.style.display = 'block';
-        modalRules.textContent = group.rules;
-    } else {
-        modalRulesSection.style.display = 'none';
-    }
-    
-    modalBirdType.textContent = subcategory.name.toLowerCase();
-    modalJoinBtn.href = group.link;
-    
-    modalBackdrop.classList.add('show');
-    setTimeout(() => {
-        modalContent.classList.add('show');
-    }, 10);
-    document.body.style.overflow = 'hidden';
+state.selectedGroup = group;
+// Configurar imagen
+modalProfileImg.src = group.image;
+modalProfileImg.onerror = () => {
+modalProfileImg.src = `https://placehold.co/100x100/${platformColors[group.platform].replace('#', '')}/ffffff?text=${group.subCategory.charAt(0)}`;
+};
+modalTitle.textContent = group.name;
+const category = categoryTree[group.mainCategory];
+const subcategory = category.subcategories.find(s => s.id === group.subCategory);
+// Crear badges con iconos oficiales
+modalBadges.innerHTML = `
+<span class="modal-badge" style="background-color: ${platformColors[group.platform]}; color: white;">
+<span class="badge-icon">${platformIcons[group.platform] || ''}</span>
+${group.platform}
+</span>
+<span class="modal-badge">
+<i class="fas fa-users"></i>
+${group.members} miembros
+</span>
+<span class="modal-badge" style="background-color: #22c55e; color: white;">${category.name}</span>
+<span class="modal-badge" style="background-color: #3b82f6; color: white;">${subcategory.name}</span>
+<span class="modal-badge" style="background-color: #f59e0b; color: white;">${group.region}</span>
+`;
+modalDescription.textContent = group.longDescription || group.description;
+if (group.rules) {
+modalRulesSection.style.display = 'block';
+modalRules.textContent = group.rules;
+} else {
+modalRulesSection.style.display = 'none';
 }
-
+modalBirdType.textContent = subcategory.name.toLowerCase();
+modalJoinBtn.href = group.link;
+modalBackdrop.classList.add('show');
+setTimeout(() => {
+modalContent.classList.add('show');
+}, 10);
+document.body.style.overflow = 'hidden';
+}
 // FUNCIÓN PARA RENDERIZAR CATEGORÍAS PRINCIPALES
 function renderMainCategories() {
-    mainCategoriesContainer.innerHTML = '';
-    
-    Object.entries(categoryTree).forEach(([categoryId, category]) => {
-        const isActive = state.selectedMainCategory === categoryId;
-        const categoryEl = document.createElement('div');
-        categoryEl.className = 'carousel-item';
-        categoryEl.innerHTML = `
-            <button class="category-btn ${isActive ? 'active' : ''}" data-category="${categoryId}">
-                <div class="category-img">
-                    <img src="${category.image}" alt="${category.name}" onerror="this.src='https://placehold.co/150x150/9ca3af/ffffff?text=Error'">
-                </div>
-                <span class="category-name">${category.name}</span>
-            </button>
-        `;
-        mainCategoriesContainer.appendChild(categoryEl);
-    });
+mainCategoriesContainer.innerHTML = '';
+Object.entries(categoryTree).forEach(([categoryId, category]) => {
+const isActive = state.selectedMainCategory === categoryId;
+const categoryEl = document.createElement('div');
+categoryEl.className = 'carousel-item';
+categoryEl.innerHTML = `
+<button class="category-btn ${isActive ? 'active' : ''}" data-category="${categoryId}">
+<div class="category-img">
+<img src="${category.image}" alt="${category.name}" onerror="this.src='https://placehold.co/150x150/9ca3af/ffffff?text=Error'">
+</div>
+<span class="category-name">${category.name}</span>
+</button>
+`;
+mainCategoriesContainer.appendChild(categoryEl);
+});
 }
-
 // FUNCIÓN PARA ACTUALIZAR SUBCATEGORÍAS
 function updateSubcategories() {
-    if (state.selectedMainCategory === 'todas') {
-        subcategoriesSection.style.display = 'none';
-        return;
-    }
-    
-    subcategoriesSection.style.display = 'block';
-    subcategoryCategoryName.textContent = categoryTree[state.selectedMainCategory].name;
-    
-    const subcategories = categoryTree[state.selectedMainCategory].subcategories;
-    subcategoriesContainer.innerHTML = '';
-    
-    subcategories.forEach(subcat => {
-        const isActive = state.selectedSubCategory === subcat.id;
-        const subcatEl = document.createElement('div');
-        subcatEl.className = 'carousel-item';
-        subcatEl.innerHTML = `
-            <button class="category-btn ${isActive ? 'active' : ''}" data-subcategory="${subcat.id}">
-                <div class="category-img">
-                    <img src="${subcat.image}" alt="${subcat.name}" onerror="this.src='https://placehold.co/150x150/9ca3af/ffffff?text=Error'">
-                </div>
-                <span class="category-name">${subcat.name}</span>
-            </button>
-        `;
-        subcategoriesContainer.appendChild(subcatEl);
-    });
+if (state.selectedMainCategory === 'todas') {
+subcategoriesSection.style.display = 'none';
+return;
 }
-
+subcategoriesSection.style.display = 'block';
+subcategoryCategoryName.textContent = categoryTree[state.selectedMainCategory].name;
+const subcategories = categoryTree[state.selectedMainCategory].subcategories;
+subcategoriesContainer.innerHTML = '';
+subcategories.forEach(subcat => {
+const isActive = state.selectedSubCategory === subcat.id;
+const subcatEl = document.createElement('div');
+subcatEl.className = 'carousel-item';
+subcatEl.innerHTML = `
+<button class="category-btn ${isActive ? 'active' : ''}" data-subcategory="${subcat.id}">
+<div class="category-img">
+<img src="${subcat.image}" alt="${subcat.name}" onerror="this.src='https://placehold.co/150x150/9ca3af/ffffff?text=Error'">
+</div>
+<span class="category-name">${subcat.name}</span>
+</button>
+`;
+subcategoriesContainer.appendChild(subcatEl);
+});
+}
 // FUNCIÓN PARA ACTUALIZAR SUBCATEGORÍAS EN FORMULARIO
 function updateSubcategoriesDropdown(mainCategoryId) {
-    const subcategories = categoryTree[mainCategoryId].subcategories;
-    subCategorySelect.innerHTML = '<option value="" disabled selected>Selecciona una subcategoría</option>';
-    subcategories.forEach(subcat => {
-        const option = document.createElement('option');
-        option.value = subcat.id;
-        option.textContent = subcat.name;
-        subCategorySelect.appendChild(option);
-    });
+const subcategories = categoryTree[mainCategoryId].subcategories;
+subCategorySelect.innerHTML = '<option value="" disabled selected>Selecciona una subcategoría</option>';
+subcategories.forEach(subcat => {
+const option = document.createElement('option');
+option.value = subcat.id;
+option.textContent = subcat.name;
+subCategorySelect.appendChild(option);
+});
 }
-
 // FUNCIÓN PARA FILTRAR GRUPOS
 function filterGroups() {
-    return state.groups.filter(group => {
-        if (state.selectedCountry !== 'ES' && group.country !== state.selectedCountry) return false;
-        
-        const platformMatch = state.selectedPlatform === 'Todas' || group.platform === state.selectedPlatform;
-        const regionMatch = state.selectedRegion === 'Todas' || group.region === state.selectedRegion;
-        
-        if (state.selectedMainCategory === 'todas') return platformMatch && regionMatch;
-        
-        const mainCategoryMatch = group.mainCategory === state.selectedMainCategory;
-        if (state.selectedSubCategory) {
-            return platformMatch && regionMatch && mainCategoryMatch && group.subCategory === state.selectedSubCategory;
-        }
-        
-        const searchMatch = state.searchTerm === '' ||
-            group.name.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
-            group.description.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
-            group.region.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
-            categoryTree[group.mainCategory].name.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
-            (categoryTree[group.mainCategory].subcategories.find(s => s.id === group.subCategory)?.name.toLowerCase() || '').includes(state.searchTerm.toLowerCase());
-        
-        return platformMatch && regionMatch && mainCategoryMatch && searchMatch;
-    });
+return state.groups.filter(group => {
+if (state.selectedCountry !== 'ES' && group.country !== state.selectedCountry) return false;
+const platformMatch = state.selectedPlatform === 'Todas' || group.platform === state.selectedPlatform;
+const regionMatch = state.selectedRegion === 'Todas' || group.region === state.selectedRegion;
+if (state.selectedMainCategory === 'todas') return platformMatch && regionMatch;
+const mainCategoryMatch = group.mainCategory === state.selectedMainCategory;
+if (state.selectedSubCategory) {
+return platformMatch && regionMatch && mainCategoryMatch && group.subCategory === state.selectedSubCategory;
 }
-
+const searchMatch = state.searchTerm === '' ||
+group.name.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
+group.description.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
+group.region.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
+categoryTree[group.mainCategory].name.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
+(categoryTree[group.mainCategory].subcategories.find(s => s.id === group.subCategory)?.name.toLowerCase() || '').includes(state.searchTerm.toLowerCase());
+return platformMatch && regionMatch && mainCategoryMatch && searchMatch;
+});
+}
 // FUNCIÓN PARA CALCULAR MIEMBROS TOTALES
 function parseMemberCount(membersStr) {
-    if (typeof membersStr !== 'string') return 0;
-    if (membersStr.includes('k')) {
-        const num = parseFloat(membersStr.replace('k', ''));
-        return isNaN(num) ? 0 : num * 1000;
-    }
-    return parseInt(membersStr) || 0;
+if (typeof membersStr !== 'string') return 0;
+if (membersStr.includes('k')) {
+const num = parseFloat(membersStr.replace('k', ''));
+return isNaN(num) ? 0 : num * 1000;
 }
-
+return parseInt(membersStr) || 0;
+}
 function calculateTotalMembers() {
-    return state.groups.reduce((total, group) => total + parseMemberCount(group.members), 0);
+return state.groups.reduce((total, group) => total + parseMemberCount(group.members), 0);
 }
-
 // FUNCIÓN PARA ACTUALIZAR ESTADÍSTICAS
 function updateStats() {
-    totalCommunitiesEl.textContent = state.groups.length;
-    totalMembersEl.textContent = calculateTotalMembers().toLocaleString('es-ES');
+totalCommunitiesEl.textContent = state.groups.length;
+totalMembersEl.textContent = calculateTotalMembers().toLocaleString('es-ES');
 }
-
 // FUNCIÓN PARA RESETEAR PAGINACIÓN
 function resetPagination() {
-    state.currentPage = 1;
-    state.isLoading = false;
+state.displayedGroupsCount = state.groupsPerPage;
 }
-
 // MANEJADORES DE EVENTOS
 function handleMainCategoryClick(categoryId) {
-    state.selectedMainCategory = categoryId;
-    state.selectedSubCategory = null;
-    
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    const activeBtn = document.querySelector(`.category-btn[data-category="${categoryId}"]`);
-    if (activeBtn) activeBtn.classList.add('active');
-    
-    updateSubcategories();
-    resetPagination();
-    renderGroups();
+state.selectedMainCategory = categoryId;
+state.selectedSubCategory = null;
+resetPagination();
+document.querySelectorAll('.category-btn').forEach(btn => {
+btn.classList.remove('active');
+});
+const activeBtn = document.querySelector(`.category-btn[data-category="${categoryId}"]`);
+if (activeBtn) activeBtn.classList.add('active');
+updateSubcategories();
+renderGroups();
 }
-
 function handleSubCategoryClick(subcategoryId) {
-    state.selectedSubCategory = state.selectedSubCategory === subcategoryId ? null : subcategoryId;
-    
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    if (state.selectedSubCategory) {
-        const activeBtn = document.querySelector(`.category-btn[data-subcategory="${subcategoryId}"]`);
-        if (activeBtn) activeBtn.classList.add('active');
-    }
-    
-    resetPagination();
-    renderGroups();
+state.selectedSubCategory = state.selectedSubCategory === subcategoryId ? null : subcategoryId;
+resetPagination();
+document.querySelectorAll('.category-btn').forEach(btn => {
+btn.classList.remove('active');
+});
+if (state.selectedSubCategory) {
+const activeBtn = document.querySelector(`.category-btn[data-subcategory="${subcategoryId}"]`);
+if (activeBtn) activeBtn.classList.add('active');
 }
-
+renderGroups();
+}
 function setView(viewName) {
-    state.view = viewName;
-    
-    if (viewName === 'home') {
-        homeView.classList.add('active');
-        homeView.style.display = 'block';
-        addView.style.display = 'none';
-        
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            if (btn.dataset.view === 'home') btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-    } else {
-        homeView.classList.remove('active');
-        homeView.style.display = 'none';
-        addView.style.display = 'block';
-        
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-    }
+state.view = viewName;
+if (viewName === 'home') {
+homeView.classList.add('active');
+homeView.style.display = 'block';
+addView.style.display = 'none';
+document.querySelectorAll('.nav-btn').forEach(btn => {
+if (btn.dataset.view === 'home') btn.classList.add('active');
+else btn.classList.remove('active');
+});
+} else {
+homeView.classList.remove('active');
+homeView.style.display = 'none';
+addView.style.display = 'block';
+document.querySelectorAll('.nav-btn').forEach(btn => {
+btn.classList.remove('active');
+});
 }
-
+}
 function closeModal() {
-    state.selectedGroup = null;
-    modalContent.classList.remove('show');
-    setTimeout(() => {
-        modalBackdrop.classList.remove('show');
-    }, 300);
-    document.body.style.overflow = '';
+state.selectedGroup = null;
+modalContent.classList.remove('show');
+setTimeout(() => {
+modalBackdrop.classList.remove('show');
+}, 300);
+document.body.style.overflow = '';
 }
-
 // CONFIGURAR EVENT LISTENERS
 function setupEventListeners() {
-    mainCategoriesContainer.addEventListener('click', (e) => {
-        if (e.target.closest('.category-btn')) {
-            const categoryId = e.target.closest('.category-btn').dataset.category;
-            handleMainCategoryClick(categoryId);
-        }
-    });
-    
-    subcategoriesContainer.addEventListener('click', (e) => {
-        if (e.target.closest('.category-btn')) {
-            const subcategoryId = e.target.closest('.category-btn').dataset.subcategory;
-            handleSubCategoryClick(subcategoryId);
-        }
-    });
-    
-    regionFilter.addEventListener('change', (e) => {
-        state.selectedRegion = e.target.value || 'Todas';
-        resetPagination();
-        renderGroups();
-    });
-    
-    platformFilter.addEventListener('change', (e) => {
-        state.selectedPlatform = e.target.value || 'Todas';
-        resetPagination();
-        renderGroups();
-    });
-    
-    searchInput.addEventListener('input', (e) => {
-        state.searchTerm = e.target.value;
-        if (state.searchTerm) {
-            searchResult.innerHTML = `Mostrando resultados para: <span class="font-medium text-green-600">"${state.searchTerm}"</span>`;
-        } else {
-            searchResult.innerHTML = '';
-        }
-        resetPagination();
-        renderGroups();
-    });
-    
-    resetFiltersBtn.addEventListener('click', () => {
-        state.selectedMainCategory = 'todas';
-        state.selectedSubCategory = null;
-        state.selectedPlatform = 'Todas';
-        state.selectedRegion = 'Todas';
-        state.searchTerm = '';
-        searchInput.value = '';
-        searchResult.innerHTML = '';
-        regionFilter.value = '';
-        platformFilter.value = '';
-        
-        resetPagination();
-        renderMainCategories();
-        updateSubcategories();
-        renderGroups();
-    });
-    
-    loadMoreBtn.addEventListener('click', loadMoreGroups);
-    
-    navBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (btn.dataset.view === 'home') setView('home');
-        });
-    });
-    
-    addBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            setView('add');
-        });
-    });
-    
-    backToHomeBtn.addEventListener('click', () => {
-        setView('home');
-    });
-    
-    cancelAddBtn.addEventListener('click', () => {
-        setView('home');
-    });
-    
-    addGroupForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const platform = document.getElementById('platform').value;
-        const region = document.getElementById('region').value;
-        const mainCategory = document.getElementById('main-category').value;
-        const subCategory = document.getElementById('sub-category').value;
-        const name = document.getElementById('group-name').value.trim();
-        const link = document.getElementById('group-link').value.trim();
-        const image = document.getElementById('group-image').value.trim() || categoryTree[mainCategory].subcategories.find(s => s.id === subCategory).image;
-        const members = document.getElementById('group-members').value.trim() || "0";
-        const description = document.getElementById('group-description').value.trim();
-        const longDescription = document.getElementById('group-long-description').value.trim();
-        const rules = document.getElementById('group-rules').value.trim();
-        
-        if (!name || !link) {
-            alert("Por favor completa el nombre y el enlace del grupo");
-            return;
-        }
-        
-        const newGroup = {
-            id: Date.now(),
-            platform,
-            name,
-            link,
-            description,
-            longDescription,
-            rules,
-            members,
-            mainCategory,
-            subCategory,
-            image,
-            region,
-            country: "España"
-        };
-        
-        state.groups.unshift(newGroup);
-        setView('home');
-        addGroupForm.reset();
-        document.getElementById('region').value = '';
-        document.getElementById('main-category').value = '';
-        updateSubcategoriesDropdown('');
-        
-        state.selectedMainCategory = 'todas';
-        state.selectedSubCategory = null;
-        state.selectedPlatform = 'Todas';
-        state.selectedRegion = 'Todas';
-        state.searchTerm = '';
-        searchInput.value = '';
-        searchResult.innerHTML = '';
-        regionFilter.value = '';
-        platformFilter.value = '';
-        
-        resetPagination();
-        renderMainCategories();
-        updateSubcategories();
-        renderGroups();
-        updateStats();
-    });
-    
-    mainCategorySelect.addEventListener('change', function(e) {
-        updateSubcategoriesDropdown(e.target.value);
-    });
-    
-    groupsGrid.addEventListener('click', (e) => {
-        if (e.target.closest('.group-name-btn') || e.target.closest('.group-btn')) {
-            const groupId = e.target.closest('[data-group-id]').dataset.groupId;
-            const group = state.groups.find(g => g.id == groupId);
-            if (group) showGroupModal(group);
-        }
-    });
-    
-    modalCloseBtn.addEventListener('click', closeModal);
-    modalBackdrop.addEventListener('click', (e) => {
-        if (e.target === modalBackdrop) closeModal();
-    });
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && state.selectedGroup) closeModal();
-    });
+mainCategoriesContainer.addEventListener('click', (e) => {
+if (e.target.closest('.category-btn')) {
+const categoryId = e.target.closest('.category-btn').dataset.category;
+handleMainCategoryClick(categoryId);
 }
-
+});
+subcategoriesContainer.addEventListener('click', (e) => {
+if (e.target.closest('.category-btn')) {
+const subcategoryId = e.target.closest('.category-btn').dataset.subcategory;
+handleSubCategoryClick(subcategoryId);
+}
+});
+regionFilter.addEventListener('change', (e) => {
+state.selectedRegion = e.target.value || 'Todas';
+resetPagination();
+renderGroups();
+});
+platformFilter.addEventListener('change', (e) => {
+state.selectedPlatform = e.target.value || 'Todas';
+resetPagination();
+renderGroups();
+});
+searchInput.addEventListener('input', (e) => {
+state.searchTerm = e.target.value;
+resetPagination();
+if (state.searchTerm) {
+searchResult.innerHTML = `Mostrando resultados para: <span class="font-medium text-green-600">"${state.searchTerm}"</span>`;
+} else {
+searchResult.innerHTML = '';
+}
+renderGroups();
+});
+resetFiltersBtn.addEventListener('click', () => {
+state.selectedMainCategory = 'todas';
+state.selectedSubCategory = null;
+state.selectedPlatform = 'Todas';
+state.selectedRegion = 'Todas';
+state.searchTerm = '';
+resetPagination();
+searchInput.value = '';
+searchResult.innerHTML = '';
+regionFilter.value = '';
+platformFilter.value = '';
+renderMainCategories();
+updateSubcategories();
+renderGroups();
+});
+navBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+if (btn.dataset.view === 'home') setView('home');
+});
+});
+addBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+setView('add');
+});
+});
+backToHomeBtn.addEventListener('click', () => {
+setView('home');
+});
+cancelAddBtn.addEventListener('click', () => {
+setView('home');
+});
+addGroupForm.addEventListener('submit', (e) => {
+e.preventDefault();
+const platform = document.getElementById('platform').value;
+const region = document.getElementById('region').value;
+const mainCategory = document.getElementById('main-category').value;
+const subCategory = document.getElementById('sub-category').value;
+const name = document.getElementById('group-name').value.trim();
+const link = document.getElementById('group-link').value.trim();
+const image = document.getElementById('group-image').value.trim() || categoryTree[mainCategory].subcategories.find(s => s.id === subCategory).image;
+const members = document.getElementById('group-members').value.trim() || "0";
+const description = document.getElementById('group-description').value.trim();
+const longDescription = document.getElementById('group-long-description').value.trim();
+const rules = document.getElementById('group-rules').value.trim();
+if (!name || !link) {
+alert("Por favor completa el nombre y el enlace del grupo");
+return;
+}
+const newGroup = {
+id: Date.now(),
+platform,
+name,
+link,
+description,
+longDescription,
+rules,
+members,
+mainCategory,
+subCategory,
+image,
+region,
+country: "España"
+};
+state.groups.unshift(newGroup);
+setView('home');
+addGroupForm.reset();
+document.getElementById('region').value = '';
+document.getElementById('main-category').value = '';
+updateSubcategoriesDropdown('');
+state.selectedMainCategory = 'todas';
+state.selectedSubCategory = null;
+state.selectedPlatform = 'Todas';
+state.selectedRegion = 'Todas';
+state.searchTerm = '';
+resetPagination();
+searchInput.value = '';
+searchResult.innerHTML = '';
+regionFilter.value = '';
+platformFilter.value = '';
+renderMainCategories();
+updateSubcategories();
+renderGroups();
+updateStats();
+});
+mainCategorySelect.addEventListener('change', function(e) {
+updateSubcategoriesDropdown(e.target.value);
+});
+groupsGrid.addEventListener('click', (e) => {
+if (e.target.closest('.group-name-btn') || e.target.closest('.group-btn')) {
+const groupId = e.target.closest('[data-group-id]').dataset.groupId;
+const group = state.groups.find(g => g.id == groupId);
+if (group) showGroupModal(group);
+}
+});
+modalCloseBtn.addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', (e) => {
+if (e.target === modalBackdrop) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && state.selectedGroup) closeModal();
+});
+// BOTÓN CARGAR MÁS
+loadMoreBtn.addEventListener('click', () => {
+state.displayedGroupsCount += state.groupsPerPage;
+renderGroups();
+});
+}
 // INICIALIZACIÓN
 function init() {
-    currentYearEl.textContent = new Date().getFullYear();
-    renderMainCategories();
-    renderGroups();
-    updateStats();
-    setupEventListeners();
-    updateSubcategories();
-    
-    // Inicializar subcategorías si hay una categoría seleccionada
-    if (mainCategorySelect.value) {
-        updateSubcategoriesDropdown(mainCategorySelect.value);
-    }
-    
-    // Añadir transición suave al cambiar de vista
-    setTimeout(() => {
-        document.querySelectorAll('.view').forEach(view => {
-            view.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        });
-    }, 100);
+currentYearEl.textContent = new Date().getFullYear();
+renderMainCategories();
+renderGroups();
+updateStats();
+setupEventListeners();
+updateSubcategories();
+// Inicializar subcategorías si hay una categoría seleccionada
+if (mainCategorySelect.value) {
+updateSubcategoriesDropdown(mainCategorySelect.value);
 }
-
+// Añadir transición suave al cambiar de vista
+setTimeout(() => {
+document.querySelectorAll('.view').forEach(view => {
+view.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+});
+}, 100);
+}
 // EJECUTAR AL CARGAR LA PÁGINA
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
+
