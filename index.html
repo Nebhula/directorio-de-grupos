@@ -56,6 +56,7 @@
     --whatsapp: #25D366;
     --discord: #5865F2;
     --viber: #7360f2;
+    --facebook: #1877F2;
 }
 * {
     margin: 0;
@@ -493,7 +494,7 @@ body {
     font-weight: 700;
     color: var(--green-600);
 }
-/* GRID DE GRUPOS MEJORADO - TODO CENTRADO */
+/* GRID DE GRUPOS MEJORADO - TODO CENTRADO CORREGIDO */
 .groups-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -560,7 +561,7 @@ body {
     gap: 0.5rem;
     margin-bottom: 0.75rem;
 }
-/* BADGES MEJORADOS CON ICONOS OFICIALES */
+/* BADGES MEJORADOS CON ICONOS OFICIALES - AÑADIDO FACEBOOK */
 .badge {
     display: inline-flex;
     align-items: center;
@@ -580,6 +581,7 @@ body {
 .badge.platform.whatsapp { background: var(--whatsapp); }
 .badge.platform.discord { background: var(--discord); }
 .badge.platform.viber { background: var(--viber); }
+.badge.platform.facebook { background: var(--facebook); }
 .badge-icon {
     font-size: 0.875rem;
     width: 1rem;
@@ -611,6 +613,8 @@ body {
     color: var(--gray-900);
     margin: 0.5rem 0;
     line-height: 1.3;
+    text-align: center;
+    width: 100%;
 }
 .group-name-btn {
     background: none;
@@ -640,31 +644,40 @@ body {
     overflow: hidden;
     min-height: 4.125rem;
     width: 100%;
+    text-align: center;
 }
+/* FOOTER CENTRADO CORREGIDO */
 .group-footer {
     margin-top: auto;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-    align-items: center;
+    align-items: center; /* Esto centra todo verticalmente */
+    justify-content: center; /* Esto centra todo horizontalmente */
 }
+
 @media (min-width: 640px) {
     .group-footer {
         flex-direction: row;
-        justify-content: center;
+        justify-content: center; /* Centrado en desktop también */
         align-items: center;
         width: 100%;
+        gap: 1.5rem;
     }
 }
+
 .group-meta {
     display: flex;
     gap: 0.75rem;
     font-size: 0.75rem;
     color: var(--gray-500);
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; /* Centra los meta items */
+    align-items: center;
 }
+
+/* BOTÓN CENTRADO CORREGIDO */
 .group-btn {
     background: linear-gradient(to right, var(--green-500), var(--blue-600));
     color: var(--white);
@@ -678,17 +691,20 @@ body {
     white-space: nowrap;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Centra el texto dentro del botón */
     gap: 0.5rem;
     flex-shrink: 0;
     width: 100%;
     max-width: 200px;
+    margin: 0 auto; /* Esto centra el botón */
 }
+
 .group-btn:hover {
     opacity: 0.9;
     box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
 }
+
 .group-btn i {
     font-size: 1.25rem;
 }
@@ -1464,10 +1480,13 @@ body {
     }
     .group-footer {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center; /* Centrado en móvil también */
+        gap: 1rem;
     }
     .group-btn {
         width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
     }
     /* Ajustes específicos para móviles */
     .header-container {
@@ -1668,6 +1687,7 @@ select:focus {
                         <option>WhatsApp</option>
                         <option>Discord</option>
                         <option>Viber</option>
+                        <option>Facebook</option>
                     </select>
                 </div>
             </div>
@@ -1696,7 +1716,7 @@ select:focus {
                     <div class="stat-label">Categorías</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value yellow" id="total-platforms">4</div>
+                    <div class="stat-value yellow" id="total-platforms">5</div>
                     <div class="stat-label">Plataformas</div>
                 </div>
                 <div class="stat-item">
@@ -1748,6 +1768,7 @@ select:focus {
                             <option>WhatsApp</option>
                             <option>Discord</option>
                             <option>Viber</option>
+                            <option>Facebook</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -1924,12 +1945,13 @@ select:focus {
     </div>
 </footer>
 <script>
-// ICONOS OFICIALES DE PLATAFORMA CON FONT AWESOME
+// ICONOS OFICIALES DE PLATAFORMA CON FONT AWESOME - AÑADIDO FACEBOOK
 const platformIcons = {
     Telegram: '<i class="fab fa-telegram"></i>',
     WhatsApp: '<i class="fab fa-whatsapp"></i>',
     Discord: '<i class="fab fa-discord"></i>',
-    Viber: '<i class="fab fa-viber"></i>'
+    Viber: '<i class="fab fa-viber"></i>',
+    Facebook: '<i class="fab fa-facebook"></i>'
 };
 
 // CATEGORÍAS COMPLETAS Y AMPLIADAS
@@ -2074,19 +2096,49 @@ const categoryTree = {
 };
 
 const spainRegions = ["Todas","Andalucía","Aragón","Asturias","Baleares","Canarias","Cantabria","Castilla-La Mancha","Castilla y León","Cataluña","Comunidad Valenciana","Extremadura","Galicia","Madrid","Murcia","Navarra","País Vasco","La Rioja","Ceuta","Melilla"];
-const platforms = ["Todas","Telegram","WhatsApp","Discord","Viber"];
+const platforms = ["Todas","Telegram","WhatsApp","Discord","Viber","Facebook"];
 const platformColors = {
     "Telegram": "#0088cc",
     "WhatsApp": "#25D366",
     "Discord": "#5865F2",
-    "Viber": "#7360f2"
+    "Viber": "#7360f2",
+    "Facebook": "#1877F2"
 };
 
-// FUNCIÓN PARA CREAR GRUPOS INICIALES
+// FUNCIÓN PARA CREAR GRUPOS INICIALES - AÑADIDO FACEBOOK
 function createInitialGroups() {
     const groups = [];
     let idCounter = 1;
-    const platformsList = ["Telegram", "WhatsApp", "Discord", "Viber"];
+    const platformsList = ["Telegram", "WhatsApp", "Discord", "Viber", "Facebook"];
+    
+    // Ejemplos de grupos de Facebook específicos
+    const facebookGroups = [
+        {
+            name: "Criadores de Agapornis España",
+            description: "Grupo de Facebook para criadores de agapornis en toda España. Comparte tus experiencias y fotos.",
+            region: "España"
+        },
+        {
+            name: "Canaricultura Tradicional",
+            description: "Grupo dedicado a la canaricultura tradicional española. Concursos, cuidados y genética.",
+            region: "Madrid"
+        },
+        {
+            name: "Aves Silvestres Ibéricas",
+            description: "Observación y conservación de aves silvestres en la península ibérica.",
+            region: "Andalucía"
+        },
+        {
+            name: "Avicultura Familiar",
+            description: "Para los que tienen gallinas, patos y otras aves de corral en su hogar.",
+            region: "Galicia"
+        },
+        {
+            name: "Cetrería y Rapaces",
+            description: "Amantes de las aves rapaces y la cetrería tradicional.",
+            region: "Castilla y León"
+        }
+    ];
     
     Object.entries(categoryTree).forEach(([mainCatId, mainCatData]) => {
         if (mainCatId === 'todas') return;
@@ -2098,12 +2150,23 @@ function createInitialGroups() {
                 const region = spainRegions[regionIndex === 0 ? 1 : regionIndex];
                 const members = `${Math.floor(Math.random() * 5) + 1}.${Math.floor(Math.random() * 9)}k`;
                 
+                // Para grupos de Facebook, usar nombres más específicos
+                let groupName = `${subcat.name} ${region}`;
+                let description = `Comunidad activa de ${subcat.name.toLowerCase()} en ${region}. Compartimos experiencias, consejos y organizamos eventos.`;
+                
+                if (platform === "Facebook" && subcatIndex < facebookGroups.length) {
+                    groupName = facebookGroups[subcatIndex].name;
+                    description = facebookGroups[subcatIndex].description;
+                }
+                
                 groups.push({
                     id: idCounter++,
                     platform,
-                    name: `${subcat.name} ${region}`,
-                    link: `https://${platform.toLowerCase()}.com/${mainCatId}_${subcat.id}_${i}`,
-                    description: `Comunidad activa de ${subcat.name.toLowerCase()} en ${region}. Compartimos experiencias, consejos y organizamos eventos.`,
+                    name: groupName,
+                    link: platform === "Facebook" 
+                        ? `https://facebook.com/groups/${mainCatId}_${subcat.id}_${i}`
+                        : `https://${platform.toLowerCase()}.com/${mainCatId}_${subcat.id}_${i}`,
+                    description: description,
                     longDescription: `¡Bienvenidos a la comunidad de ${subcat.name} ${region}!
 Aquí encontrarás:
 - Consejos especializados de criadores experimentados
@@ -2131,7 +2194,7 @@ Aquí encontrarás:
     return groups;
 }
 
-// FUNCIÓN PARA CREAR BADGE CON ICONO OFICIAL
+// FUNCIÓN PARA CREAR BADGE CON ICONO OFICIAL - AÑADIDO FACEBOOK
 function createPlatformBadge(platform) {
     return `<span class="badge platform ${platform.toLowerCase()}">
         <span class="badge-icon">${platformIcons[platform] || ''}</span>
@@ -2271,7 +2334,7 @@ function renderGroups() {
     }
 }
 
-// FUNCIÓN PARA MOSTRAR MODAL CON ICONOS OFICIALES
+// FUNCIÓN PARA MOSTRAR MODAL CON ICONOS OFICIALES - AÑADIDO FACEBOOK
 function showGroupModal(group) {
     state.selectedGroup = group;
     
