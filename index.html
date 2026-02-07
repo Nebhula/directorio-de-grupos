@@ -2322,7 +2322,51 @@ transition: opacity 0.3s ease, transform 0.3s ease;
 opacity: 1;
 transform: translateY(0);
 }
+
+
+
+
+
+
+/* Asegurar que el body ocupe toda la altura de la ventana */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Asegurar que el contenedor principal ocupe el espacio restante */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-container {
+    flex: 1 0 auto; /* Esto hace que el contenido principal ocupe el espacio disponible */
+    width: 100%;
+}
+
+.footer {
+    flex-shrink: 0; /* Evita que el footer se encoja */
+}
+
+
+
+
+
+
+
+
+    
 </style>
+
+
+
+
+
+
+    
 </head>
 <body>
 <header class="header">
