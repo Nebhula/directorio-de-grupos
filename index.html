@@ -41,6 +41,11 @@
 --gray-900: #111827;
 --white: #ffffff;
 --black: #000000;
+--purple-500: #8b5cf6;
+--purple-600: #7c3aed;
+--purple-700: #6d28d9;
+--pink-500: #ec4899;
+--pink-600: #db2777;
 --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -152,6 +157,29 @@ color: var(--yellow-300);
 background: rgba(255, 255, 255, 0.15);
 font-weight: 600;
 }
+.highlight-btn {
+    background: linear-gradient(to right, var(--purple-600), var(--pink-600));
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.375rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+.highlight-btn:hover {
+    box-shadow: var(--shadow-md);
+    opacity: 0.9;
+}
+.highlight-btn i {
+    font-size: 1rem;
+}
 .add-btn {
 background: linear-gradient(to right, var(--yellow-400), var(--orange-500));
 color: var(--white);
@@ -255,6 +283,9 @@ color: var(--green-600);
 }
 .section-title.blue i {
 color: var(--blue-600);
+}
+.section-title.purple i {
+    color: var(--purple-600);
 }
 /* CARRUSEL CORREGIDO - FUNCIONA PERFECTO EN PC Y MÓVIL */
 .carousel-container {
@@ -903,6 +934,7 @@ font-size: 2.5rem;
 .stat-value.blue { color: var(--blue-600); }
 .stat-value.yellow { color: var(--yellow-500); }
 .stat-value.rose { color: var(--rose-600); }
+.stat-value.purple { color: var(--purple-600); }
 .stat-label {
 font-size: 0.875rem;
 color: var(--gray-600);
@@ -1013,6 +1045,316 @@ color: var(--green-900);
 text-decoration: underline;
 }
 
+/* =========================================== */
+/* PÁGINA DESTACA TU GRUPO */
+/* =========================================== */
+.highlight-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, var(--purple-500), var(--pink-600));
+    border-radius: var(--border-radius-2xl);
+    color: white;
+    box-shadow: var(--shadow-xl);
+}
+.highlight-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+.highlight-hero p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+.highlight-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0 3rem;
+}
+@media (min-width: 640px) {
+    .highlight-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.highlight-stat {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-xl);
+    backdrop-filter: blur(10px);
+}
+.highlight-stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: white;
+}
+.highlight-stat-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+.plans-container {
+    max-width: 64rem;
+    margin: 0 auto 3rem;
+}
+.plans-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+@media (min-width: 768px) {
+    .plans-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.plan-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: var(--border-radius-2xl);
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--gray-200);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+.plan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-2xl);
+}
+.plan-card.popular {
+    border-color: var(--purple-500);
+    position: relative;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+}
+.plan-card.popular::before {
+    content: "MÁS POPULAR";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to right, var(--purple-600), var(--pink-600));
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0 0 1rem 1rem;
+    letter-spacing: 1px;
+}
+.plan-header {
+    padding: 2rem;
+    text-align: center;
+    background: linear-gradient(to right, var(--purple-50), var(--pink-50));
+    border-bottom: 2px solid var(--gray-200);
+}
+.plan-card.popular .plan-header {
+    background: linear-gradient(to right, var(--purple-100), var(--pink-100));
+}
+.plan-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+}
+.plan-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--purple-600);
+    margin-bottom: 0.25rem;
+}
+.plan-period {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    font-weight: 500;
+}
+.plan-body {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.plan-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+.plan-features li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--gray-700);
+}
+.plan-features li i {
+    color: var(--green-500);
+    font-size: 1.125rem;
+}
+.plan-features li.disabled {
+    color: var(--gray-400);
+}
+.plan-features li.disabled i {
+    color: var(--gray-400);
+}
+.plan-btn {
+    background: linear-gradient(to right, var(--purple-500), var(--pink-600));
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: var(--border-radius-xl);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-top: auto;
+}
+.plan-btn:hover {
+    opacity: 0.9;
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-2px);
+}
+.plan-card.popular .plan-btn {
+    background: linear-gradient(to right, var(--purple-600), var(--pink-700));
+}
+.benefits-section {
+    background: linear-gradient(to right, var(--purple-50), var(--pink-50));
+    border-radius: var(--border-radius-2xl);
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+}
+.benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+@media (min-width: 768px) {
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.benefit-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+.benefit-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-500), var(--pink-600));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.benefit-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+.benefit-content h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+}
+.benefit-content p {
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+.faq-section {
+    max-width: 64rem;
+    margin: 3rem auto;
+}
+.faq-item {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+}
+.faq-question {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--gray-900);
+    transition: var(--transition);
+}
+.faq-question:hover {
+    background: var(--gray-50);
+}
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+.faq-question.active i {
+    transform: rotate(180deg);
+}
+.faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+.faq-answer.active {
+    padding: 0 1.5rem 1.5rem;
+    max-height: 500px;
+}
+.cta-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--purple-500), var(--pink-600));
+    border-radius: var(--border-radius-2xl);
+    color: white;
+    margin: 3rem 0;
+    box-shadow: var(--shadow-xl);
+}
+.cta-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+.cta-section p {
+    font-size: 1.125rem;
+    opacity: 0.95;
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+}
+.cta-btn {
+    background: white;
+    color: var(--purple-600);
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: var(--border-radius-xl);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+    font-size: 1.125rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-2xl);
+}
 /* =========================================== */
 /* FORMULARIO DE AÑADIR GRUPO - EN LA MISMA PÁGINA */
 /* =========================================== */
@@ -1728,6 +2070,13 @@ gap: 0.25rem;
 padding: 0.25rem 0.5rem;
 font-size: 0.75rem;
 }
+.highlight-btn {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+}
+.highlight-btn span {
+    display: none;
+}
 .add-btn {
 padding: 0.25rem 0.75rem;
 font-size: 0.75rem;
@@ -1842,6 +2191,11 @@ transform: translateY(0);
 </a>
 <div class="nav-buttons">
 <button class="nav-btn active" onclick="showHome()">Inicio</button>
+<button class="nav-btn" onclick="showHighlightPage()">Destaca tu grupo</button>
+<button class="highlight-btn" onclick="showHighlightPage()">
+    <i class="fas fa-crown"></i>
+    <span>Destacar</span>
+</button>
 <button class="add-btn" onclick="showAddForm()">
 <i class="fas fa-plus"></i>
 <span>Añadir grupo</span>
@@ -2003,6 +2357,256 @@ Más información <i class="fas fa-arrow-right"></i>
 </section>
 </div>
 
+<!-- PÁGINA DESTACA TU GRUPO -->
+<div class="view highlight-view" id="highlight-view">
+    <section class="highlight-hero">
+        <h1>Destaca Tu Grupo en Bandadas.net</h1>
+        <p>Consigue más visibilidad, más miembros y haz crecer tu comunidad de aves con nuestros planes de destacado</p>
+        <div class="highlight-stats">
+            <div class="highlight-stat">
+                <div class="highlight-stat-value">+300%</div>
+                <div class="highlight-stat-label">Más Visibilidad</div>
+            </div>
+            <div class="highlight-stat">
+                <div class="highlight-stat-value">+150%</div>
+                <div class="highlight-stat-label">Crecimiento Miembros</div>
+            </div>
+            <div class="highlight-stat">
+                <div class="highlight-stat-value">24/7</div>
+                <div class="highlight-stat-label">Promoción Continua</div>
+            </div>
+            <div class="highlight-stat">
+                <div class="highlight-stat-value">500+</div>
+                <div class="highlight-stat-label">Grupos Destacados</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="plans-container">
+        <h2 class="section-title purple">
+            <i class="fas fa-gem"></i>
+            Planes de Destacado
+        </h2>
+        <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Elige el plan perfecto para hacer crecer tu comunidad. Todos incluyen visibilidad garantizada en el carrusel principal.</p>
+        
+        <div class="plans-grid">
+            <!-- PLAN BÁSICO -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h3 class="plan-name">Básico</h3>
+                    <div class="plan-price">9€</div>
+                    <div class="plan-period">/mes</div>
+                </div>
+                <div class="plan-body">
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Posición en carrusel destacado</li>
+                        <li><i class="fas fa-check"></i> Destacado por 30 días</li>
+                        <li><i class="fas fa-check"></i> Badge "Destacado" en ficha</li>
+                        <li><i class="fas fa-check"></i> Visibilidad en página principal</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Prioridad en búsquedas</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Estadísticas avanzadas</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Promoción en redes</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Soporte prioritario</li>
+                    </ul>
+                    <button class="plan-btn" onclick="selectPlan('básico')">
+                        <i class="fas fa-rocket"></i> Destacar Ahora
+                    </button>
+                </div>
+            </div>
+
+            <!-- PLAN PROFESIONAL (POPULAR) -->
+            <div class="plan-card popular">
+                <div class="plan-header">
+                    <h3 class="plan-name">Profesional</h3>
+                    <div class="plan-price">19€</div>
+                    <div class="plan-period">/mes</div>
+                </div>
+                <div class="plan-body">
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Posición PRIME en carrusel</li>
+                        <li><i class="fas fa-check"></i> Destacado por 60 días</li>
+                        <li><i class="fas fa-check"></i> Badge "PRO" en ficha</li>
+                        <li><i class="fas fa-check"></i> Visibilidad máxima</li>
+                        <li><i class="fas fa-check"></i> Prioridad en búsquedas (x2)</li>
+                        <li><i class="fas fa-check"></i> Estadísticas de visitas</li>
+                        <li><i class="fas fa-check"></i> Promoción semanal en redes</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Campaña personalizada</li>
+                    </ul>
+                    <button class="plan-btn" onclick="selectPlan('profesional')">
+                        <i class="fas fa-crown"></i> Elegir Plan
+                    </button>
+                </div>
+            </div>
+
+            <!-- PLAN PREMIUM -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h3 class="plan-name">Premium</h3>
+                    <div class="plan-price">39€</div>
+                    <div class="plan-period">/mes</div>
+                </div>
+                <div class="plan-body">
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Posición TOP en carrusel</li>
+                        <li><i class="fas fa-check"></i> Destacado por 90 días</li>
+                        <li><i class="fas fa-check"></i> Badge "PREMIUM" dorado</li>
+                        <li><i class="fas fa-check"></i> Visibilidad 24/7 máxima</li>
+                        <li><i class="fas fa-check"></i> Prioridad en búsquedas (x3)</li>
+                        <li><i class="fas fa-check"></i> Estadísticas completas</li>
+                        <li><i class="fas fa-check"></i> Promoción diaria en redes</li>
+                        <li><i class="fas fa-check"></i> Campaña personalizada</li>
+                    </ul>
+                    <button class="plan-btn" onclick="selectPlan('premium')">
+                        <i class="fas fa-medal"></i> Máxima Visibilidad
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="benefits-section">
+        <div class="text-center mb-8">
+            <h2 class="section-title purple">
+                <i class="fas fa-bolt"></i>
+                Beneficios Exclusivos
+            </h2>
+            <p class="text-gray-700 max-w-2xl mx-auto">Descubre todo lo que conseguirás al destacar tu grupo en Bandadas.net</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="benefit-content">
+                    <h4>Visibilidad Máxima</h4>
+                    <p>Tu grupo aparecerá en el carrusel principal, siendo lo primero que ven los miles de usuarios que visitan Bandadas.net cada día.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="benefit-content">
+                    <h4>Crecimiento Garantizado</h4>
+                    <p>Los grupos destacados experimentan un crecimiento promedio del 150% en nuevos miembros durante el primer mes.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="benefit-content">
+                    <h4>Estadísticas Detalladas</h4>
+                    <p>Accede a datos precisos sobre visitas, clics y crecimiento de tu comunidad para optimizar tu estrategia.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <div class="benefit-content">
+                    <h4>Promoción en Redes</h4>
+                    <p>Compartimos tus grupos en nuestras redes sociales con miles de seguidores interesados en ornitología y avicultura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title purple">
+            <i class="fas fa-question-circle"></i>
+            Preguntas Frecuentes
+        </h2>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Cómo funciona el destacado de grupos?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Al destacar tu grupo, este aparece en una posición privilegiada en el carrusel de grupos destacados de la página principal. Además, recibe un badge especial y prioridad en los resultados de búsqueda.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Puedo cancelar en cualquier momento?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sí, todos los planes son mensuales y puedes cancelar cuando quieras. Tu grupo permanecerá destacado hasta el final del período pagado.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Qué métodos de pago aceptan?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Aceptamos tarjetas de crédito/débito (Visa, Mastercard), PayPal y transferencia bancaria. Todo el proceso es 100% seguro.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Cuánto tarda en aparecer mi grupo destacado?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Una vez confirmado el pago, tu grupo aparece destacado en menos de 24 horas. Normalmente el proceso es instantáneo.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Hay descuentos por grupos grandes?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sí, ofrecemos descuentos especiales para criaderos profesionales, asociaciones y grupos con más de 500 miembros activos. Contáctanos para más información.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>¿Listo para hacer crecer tu comunidad?</h2>
+        <p>Únete a los más de 500 grupos que ya han multiplicado sus miembros con nuestros planes de destacado.</p>
+        <button class="cta-btn" onclick="showHighlightPlans()">
+            <i class="fas fa-gem"></i>
+            Ver Planes y Precios
+        </button>
+    </section>
+
+    <div class="association-promo">
+        <div class="association-content">
+            <div class="association-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <div class="association-text">
+                <h3 class="association-title">¿Eres una asociación o criadero profesional?</h3>
+                <p class="association-desc">Contáctanos para planes personalizados con descuentos especiales, promoción cruzada y beneficios exclusivos para profesionales del sector.</p>
+                <div class="association-buttons">
+                    <button class="association-btn" onclick="contactProfessional()">
+                        <i class="fas fa-envelope"></i>
+                        Contacto Profesional
+                    </button>
+                    <a href="tel:+34912345678" class="association-link">
+                        <i class="fas fa-phone"></i>
+                        Llámanos: +34 912 345 678
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- FORMULARIO DE AÑADIR GRUPO (EN LA MISMA PÁGINA) -->
 <div class="form-section" id="add-form-section">
 <div class="form-header">
@@ -2147,6 +2751,83 @@ Abrir WhatsApp para enviar
 </div>
 </div>
 
+<!-- MODAL SELECCIÓN DE PLAN -->
+<div class="modal-backdrop" id="plan-modal-backdrop">
+    <div class="modal-content" id="plan-modal-content">
+        <button class="modal-close" id="plan-modal-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-header-img" style="background: linear-gradient(to right, var(--purple-600), var(--pink-600));">
+            <div class="modal-profile" style="background: white;">
+                <i class="fas fa-gem" style="font-size: 3rem; color: var(--purple-600);"></i>
+            </div>
+        </div>
+        <div class="modal-body">
+            <h2 class="modal-title" id="plan-modal-title">Destacar Grupo</h2>
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title purple">
+                    <i class="fas fa-crown"></i>
+                    Plan Seleccionado: <span id="selected-plan-name">Profesional</span>
+                </h3>
+                <div class="text-center mb-4">
+                    <div class="text-3xl font-bold text-purple-600" id="selected-plan-price">19€</div>
+                    <div class="text-gray-500">/mes</div>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label for="group-select">Selecciona tu grupo para destacar</label>
+                    <select class="form-control" id="group-select">
+                        <option value="" disabled selected>Elige un grupo de tu propiedad</option>
+                        <!-- Se llenará con JavaScript -->
+                    </select>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label for="duration-select">Duración del destacado</label>
+                    <select class="form-control" id="duration-select">
+                        <option value="1">1 mes</option>
+                        <option value="3" selected>3 meses (10% descuento)</option>
+                        <option value="6">6 meses (15% descuento)</option>
+                        <option value="12">12 meses (25% descuento)</option>
+                    </select>
+                </div>
+                
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-medium">Subtotal:</span>
+                        <span class="font-bold" id="subtotal-price">19€</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-medium">Descuento:</span>
+                        <span class="font-bold text-green-600" id="discount-amount">0€</span>
+                    </div>
+                    <div class="flex justify-between items-center text-lg font-bold border-t border-purple-300 pt-2">
+                        <span>Total a pagar:</span>
+                        <span id="total-price">19€</span>
+                    </div>
+                </div>
+                
+                <button class="plan-btn" onclick="proceedToPayment()" style="width: 100%;">
+                    <i class="fas fa-credit-card"></i>
+                    Proceder al Pago
+                </button>
+            </div>
+            
+            <div class="modal-promo">
+                <div class="modal-promo-content">
+                    <div class="modal-promo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="modal-promo-text">
+                        <p>Pago 100% seguro garantizado. Tus datos están protegidos con encriptación SSL de alta seguridad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- MODAL DETALLES GRUPO -->
 <div class="modal-backdrop" id="modal-backdrop">
 <div class="modal-content" id="modal-content">
@@ -2216,9 +2897,9 @@ Asociación Titulí - Federación de Criadores
 <p class="footer-title">Bandadas.net</p>
 <p class="footer-subtitle">Grupos de Ornitología y Avicultura • España</p>
 <div class="footer-promo">
-<a href="https://www.ejemplo.com/federacion-footer" target="_blank" rel="noopener noreferrer" class="footer-promo-link">
-<i class="fas fa-file-certificate"></i>
-Federación Online para Criadores
+<a href="#" onclick="showHighlightPage(); return false;" class="footer-promo-link">
+<i class="fas fa-crown"></i>
+Destaca Tu Grupo
 </a>
 </div>
 <p class="footer-tagline">
@@ -2339,6 +3020,31 @@ const platformColors = {
 "Discord": "#5865F2",
 "Viber": "#7360f2",
 "Facebook": "#1877F2"
+};
+// PLANES DE DESTACADO
+const highlightPlans = {
+    'básico': {
+        name: 'Básico',
+        price: 9,
+        features: ['Posición en carrusel', '30 días destacado', 'Badge "Destacado"', 'Visibilidad principal']
+    },
+    'profesional': {
+        name: 'Profesional',
+        price: 19,
+        features: ['Posición PRIME', '60 días destacado', 'Badge "PRO"', 'Visibilidad máxima', 'Prioridad x2', 'Estadísticas', 'Promoción semanal']
+    },
+    'premium': {
+        name: 'Premium',
+        price: 39,
+        features: ['Posición TOP', '90 días destacado', 'Badge "PREMIUM" dorado', 'Visibilidad 24/7', 'Prioridad x3', 'Estadísticas completas', 'Promoción diaria', 'Campaña personalizada']
+    }
+};
+// DESCUENTOS POR DURACIÓN
+const durationDiscounts = {
+    1: 0,
+    3: 0.10,
+    6: 0.15,
+    12: 0.25
 };
 // FUNCIÓN PARA CREAR GRUPOS INICIALES CON FACEBOOK
 function createInitialGroups() {
@@ -2475,6 +3181,7 @@ selectedRegion: 'Todas',
 selectedCountry: 'ES',
 searchTerm: '',
 selectedGroup: null,
+selectedPlan: null,
 groups: createInitialGroups(),
 displayedGroupsCount: 9, // Número inicial de grupos a mostrar
 groupsPerPage: 9 // Grupos a añadir cada vez que se carga más
@@ -2500,6 +3207,7 @@ const resetFiltersBtn = document.getElementById('reset-filters');
 const totalCommunitiesEl = document.getElementById('total-communities');
 const totalMembersEl = document.getElementById('total-members');
 const homeView = document.querySelector('.home-view');
+const highlightView = document.getElementById('highlight-view');
 const addFormSection = document.getElementById('add-form-section');
 const addGroupForm = document.getElementById('add-group-form');
 const modalBackdrop = document.getElementById('modal-backdrop');
@@ -2516,24 +3224,45 @@ const modalJoinBtn = document.getElementById('modal-join-btn');
 const whatsappModal = document.getElementById('whatsapp-modal');
 const whatsappModalClose = document.getElementById('whatsapp-modal-close');
 const whatsappSendLink = document.getElementById('whatsapp-send-link');
+const planModalBackdrop = document.getElementById('plan-modal-backdrop');
+const planModalContent = document.getElementById('plan-modal-content');
+const planModalClose = document.getElementById('plan-modal-close');
 const currentYearEl = document.getElementById('current-year');
 
 // FUNCIONES PARA MOSTRAR/OCULTAR VISTAS
 function showHome() {
 homeView.classList.add('active');
 homeView.style.display = 'block';
+highlightView.classList.remove('active');
+highlightView.style.display = 'none';
 addFormSection.classList.remove('active');
 addFormSection.style.display = 'none';
 document.querySelectorAll('.nav-btn').forEach(btn => {
-btn.classList.add('active');
+btn.classList.remove('active');
 });
+document.querySelector('.nav-btn:first-child').classList.add('active');
 // Actualizar grupos destacados al volver al inicio
     renderFeaturedGroups();
+}
+
+function showHighlightPage() {
+homeView.classList.remove('active');
+homeView.style.display = 'none';
+highlightView.classList.add('active');
+highlightView.style.display = 'block';
+addFormSection.classList.remove('active');
+addFormSection.style.display = 'none';
+document.querySelectorAll('.nav-btn').forEach(btn => {
+btn.classList.remove('active');
+});
+document.querySelectorAll('.nav-btn')[1].classList.add('active');
 }
 
 function showAddForm() {
 homeView.classList.remove('active');
 homeView.style.display = 'none';
+highlightView.classList.remove('active');
+highlightView.style.display = 'none';
 addFormSection.classList.add('active');
 addFormSection.style.display = 'block';
 document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -2544,7 +3273,146 @@ setTimeout(() => {
 document.getElementById('platform').focus();
 }, 100);
 }
-
+// FUNCIÓN PARA TOGGLE FAQ
+function toggleFAQ(element) {
+    const answer = element.nextElementSibling;
+    const isActive = answer.classList.contains('active');
+    
+    // Cerrar todas las FAQs
+    document.querySelectorAll('.faq-answer').forEach(faq => {
+        faq.classList.remove('active');
+    });
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.classList.remove('active');
+    });
+    
+    // Abrir la FAQ clickeada si no estaba activa
+    if (!isActive) {
+        element.classList.add('active');
+        answer.classList.add('active');
+    }
+}
+// FUNCIÓN PARA SELECCIONAR PLAN
+function selectPlan(planType) {
+    state.selectedPlan = planType;
+    const plan = highlightPlans[planType];
+    
+    // Actualizar modal
+    document.getElementById('selected-plan-name').textContent = plan.name;
+    document.getElementById('selected-plan-price').textContent = plan.price + '€';
+    
+    // Actualizar precio inicial
+    updatePlanPrice();
+    
+    // Llenar select de grupos
+    const groupSelect = document.getElementById('group-select');
+    groupSelect.innerHTML = '<option value="" disabled selected>Elige un grupo de tu propiedad</option>';
+    
+    // En un caso real, esto vendría de una base de datos
+    // Por ahora, mostramos algunos grupos de ejemplo
+    const exampleGroups = [
+        { id: 1, name: 'Mi Grupo de Agapornis' },
+        { id: 2, name: 'Criadores de Canarios Madrid' },
+        { id: 3, name: 'Avicultura Familiar' }
+    ];
+    
+    exampleGroups.forEach(group => {
+        const option = document.createElement('option');
+        option.value = group.id;
+        option.textContent = group.name;
+        groupSelect.appendChild(option);
+    });
+    
+    // Mostrar modal
+    planModalBackdrop.classList.add('show');
+    setTimeout(() => {
+        planModalContent.classList.add('show');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+}
+// FUNCIÓN PARA ACTUALIZAR PRECIO DEL PLAN
+function updatePlanPrice() {
+    const plan = highlightPlans[state.selectedPlan];
+    const duration = parseInt(document.getElementById('duration-select').value);
+    const discount = durationDiscounts[duration];
+    
+    const subtotal = plan.price * duration;
+    const discountAmount = subtotal * discount;
+    const total = subtotal - discountAmount;
+    
+    document.getElementById('subtotal-price').textContent = subtotal + '€';
+    document.getElementById('discount-amount').textContent = discountAmount.toFixed(2) + '€';
+    document.getElementById('total-price').textContent = total.toFixed(2) + '€';
+}
+// FUNCIÓN PARA PROCEDER AL PAGO
+function proceedToPayment() {
+    const groupSelect = document.getElementById('group-select');
+    const duration = document.getElementById('duration-select').value;
+    
+    if (!groupSelect.value) {
+        alert('Por favor, selecciona un grupo para destacar');
+        return;
+    }
+    
+    const plan = highlightPlans[state.selectedPlan];
+    const discount = durationDiscounts[duration];
+    const subtotal = plan.price * duration;
+    const total = subtotal - (subtotal * discount);
+    
+    // Generar mensaje de WhatsApp para pago
+    const message = `*SOLICITUD DESTACADO GRUPO - BANDADAS.NET*%0A%0A` +
+                   `*🏷️ Plan Seleccionado:* ${plan.name}%0A` +
+                   `*💰 Precio/mes:* ${plan.price}€%0A` +
+                   `*📅 Duración:* ${duration} meses%0A` +
+                   `*🎯 Descuento:* ${(discount * 100)}%25%0A` +
+                   `*💵 Total a pagar:* ${total.toFixed(2)}€%0A%0A` +
+                   `*📋 Grupo a destacar:* ${groupSelect.options[groupSelect.selectedIndex].text}%0A` +
+                   `*⏰ Fecha:* ${new Date().toLocaleDateString('es-ES')}%0A` +
+                   `*🕒 Hora:* ${new Date().toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'})}%0A%0A` +
+                   `*💳 Métodos de pago disponibles:*%0A` +
+                   `- Transferencia bancaria%0A` +
+                   `- PayPal%0A` +
+                   `- Tarjeta de crédito/débito`;
+    
+    const whatsappNumber = "34677163664";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    
+    // Cerrar modal
+    closePlanModal();
+    
+    // Abrir WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Mostrar confirmación
+    setTimeout(() => {
+        alert('Se ha abierto WhatsApp con los detalles del plan. Un administrador contactará contigo para finalizar el proceso de pago y activación del destacado.');
+    }, 1000);
+}
+// FUNCIÓN PARA CERRAR MODAL DE PLAN
+function closePlanModal() {
+    planModalContent.classList.remove('show');
+    setTimeout(() => {
+        planModalBackdrop.classList.remove('show');
+    }, 300);
+    document.body.style.overflow = '';
+}
+// FUNCIÓN PARA CONTACTO PROFESIONAL
+function contactProfessional() {
+    const message = `*CONTACTO PROFESIONAL - PLANES PERSONALIZADOS*%0A%0A` +
+                   `Hola, estoy interesado en un plan personalizado para mi asociación/criadero profesional.%0A` +
+                   `Por favor, contactad conmigo para más información.%0A%0A` +
+                   `*⏰ Fecha:* ${new Date().toLocaleDateString('es-ES')}`;
+    
+    const whatsappNumber = "34677163664";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    
+    window.open(whatsappUrl, '_blank');
+}
+// FUNCIÓN PARA MOSTRAR PLANES DESDE CTA
+function showHighlightPlans() {
+    const plansSection = document.querySelector('.plans-container');
+    plansSection.scrollIntoView({ behavior: 'smooth' });
+}
 // FUNCIÓN PARA GENERAR EL MENSAJE DE WHATSAPP
 function generateWhatsAppMessage(formData) {
 const message = `*NUEVO GRUPO PARA BANDADAS.NET*%0A%0A` +
@@ -2925,8 +3793,15 @@ modalCloseBtn.addEventListener('click', closeModal);
 modalBackdrop.addEventListener('click', (e) => {
 if (e.target === modalBackdrop) closeModal();
 });
+planModalClose.addEventListener('click', closePlanModal);
+planModalBackdrop.addEventListener('click', (e) => {
+if (e.target === planModalBackdrop) closePlanModal();
+});
+// LISTENERS PARA PLANES
+document.getElementById('duration-select').addEventListener('change', updatePlanPrice);
 document.addEventListener('keydown', (e) => {
 if (e.key === 'Escape' && state.selectedGroup) closeModal();
+if (e.key === 'Escape' && state.selectedPlan) closePlanModal();
 });
 // BOTÓN CARGAR MÁS
 loadMoreBtn.addEventListener('click', () => {
