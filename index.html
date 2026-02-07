@@ -4,9 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bandadas.net - Directorio de Comunidades de Aves</title>
-<!-- Font Awesome para iconos oficiales -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+/* SOLUCIÓN DEFINITIVA - AÑADE AL PRINCIPIO */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 :root {
 --green-50: #f0fdf4;
 --green-100: #dcfce7;
@@ -59,7 +71,6 @@
 --border-radius-lg: 1rem;
 --border-radius-xl: 1.25rem;
 --border-radius-2xl: 1.5rem;
-/* Colores oficiales de plataformas */
 --telegram: #0088cc;
 --whatsapp: #25D366;
 --discord: #5865F2;
@@ -76,11 +87,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 background: linear-gradient(to bottom right, var(--green-50), var(--blue-50));
 color: var(--gray-900);
 line-height: 1.5;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
 }
-/* HEADER MEJORADO */
 .header {
 background: linear-gradient(to right, var(--green-700), var(--blue-800));
 color: var(--white);
@@ -202,9 +209,9 @@ font-weight: 600;
     cursor: pointer;
     height: 2.25rem;
     display: flex;
-    align-items: center;
-    gap: 0.375rem;
-    text-decoration: none;
+align-items: center;
+gap: 0.375rem;
+text-decoration: none;
 }
 .socnas-btn:hover {
     box-shadow: var(--shadow-md);
@@ -237,15 +244,36 @@ opacity: 0.9;
 .add-btn i {
 font-size: 1rem;
 }
-/* CONTENIDO PRINCIPAL */
+/* CONTENIDO PRINCIPAL - CLAVE */
 .main-container {
 max-width: 80rem;
 margin: 0 auto;
 padding: 1.5rem;
 width: 100%;
-    flex: 1 0 auto; /* Cambia de "flex: 1" a esto */
+flex: 1 0 auto;
+min-height: 0;
 }
-/* HERO SECTION - SIN BANNER NARANJA */
+/* VISTAS - SOLUCIÓN DEFINITIVA */
+.home-view,
+.highlight-view,
+.form-section {
+    display: none;
+    width: 100%;
+}
+
+.home-view.active,
+.highlight-view.active,
+.form-section.active {
+    display: block;
+}
+
+/* Asegurar que las vistas no ocupen espacio cuando están ocultas */
+.view:not(.active),
+.form-section:not(.active) {
+    height: 0;
+    min-height: 0;
+    overflow: hidden;
+}
 .hero {
 text-align: center;
 margin-bottom: 2.5rem;
@@ -267,7 +295,6 @@ max-width: 48rem;
 margin: 0 auto 1.5rem;
 padding: 0 0.5rem;
 }
-/* BÚSQUEDA */
 .search-container {
 max-width: 48rem;
 margin: 0 auto 2rem;
@@ -297,7 +324,6 @@ transform: translateY(-50%);
 color: var(--gray-400);
 font-size: 1.25rem;
 }
-/* SECCIONES */
 .section-title {
 font-size: 1.5rem;
 font-weight: 700;
@@ -324,7 +350,6 @@ color: var(--blue-600);
 .section-title.gold i {
     color: var(--gold-600);
 }
-/* CARRUSEL CORREGIDO - FUNCIONA PERFECTO EN PC Y MÓVIL */
 .carousel-container {
 width: 100%;
 position: relative;
@@ -337,7 +362,6 @@ overflow-x: auto;
 padding: 1rem 0.5rem;
 gap: 1rem;
 scroll-behavior: smooth;
-/* Scrollbar visible en todas las pantallas */
 scrollbar-width: thin;
 scrollbar-color: var(--green-500) var(--gray-200);
 -webkit-overflow-scrolling: touch;
@@ -374,7 +398,6 @@ padding: 1rem 1.5rem;
 width: 10.5rem;
 }
 }
-/* BOTONES DE CATEGORÍA MEJORADOS */
 .category-btn {
 width: 100%;
 display: flex;
@@ -428,7 +451,6 @@ align-items: center;
 justify-content: center;
 padding: 0 0.25rem;
 }
-/* CARRUSEL DE GRUPOS DESTACADOS - MISMO ESTILO QUE CATEGORÍAS */
 .groups-carousel-container {
     width: 100%;
     position: relative;
@@ -572,7 +594,6 @@ padding: 0 0.25rem;
         width: 12.5rem;
     }
 }
-/* FILTROS CON ICONOS OFICIALES */
 .filters-container {
 display: grid;
 grid-template-columns: 1fr;
@@ -605,7 +626,6 @@ color: var(--green-600);
 .filter-group.blue i {
 color: var(--blue-600);
 }
-/* Icono de bandera española personalizado */
 .spain-flag {
 display: inline-block;
 width: 1.25rem;
@@ -643,7 +663,6 @@ outline: none;
 border-color: var(--green-500);
 box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
-/* INFORMACIÓN DE RESULTADOS */
 .results-info {
 text-align: center;
 margin-bottom: 2rem;
@@ -656,7 +675,6 @@ color: var(--gray-700);
 font-weight: 700;
 color: var(--green-600);
 }
-/* GRID DE GRUPOS MEJORADO - TODO CENTRADO */
 .groups-grid {
 display: grid;
 grid-template-columns: 1fr;
@@ -723,7 +741,6 @@ justify-content: center;
 gap: 0.5rem;
 margin-bottom: 0.75rem;
 }
-/* BADGES MEJORADOS CON ICONOS OFICIALES */
 .badge {
 display: inline-flex;
 align-items: center;
@@ -849,7 +866,6 @@ transform: translateY(-2px);
 .group-btn i {
 font-size: 1.25rem;
 }
-/* BOTÓN CARGAR MÁS */
 .load-more-container {
 text-align: center;
 margin: 2.5rem 0;
@@ -878,7 +894,6 @@ transform: translateY(-2px);
 .load-more-btn i {
 font-size: 1.25rem;
 }
-/* ESTADO VACÍO */
 .empty-state {
 text-align: center;
 padding: 3rem 1.5rem;
@@ -928,7 +943,6 @@ font-size: 1rem;
 opacity: 0.9;
 box-shadow: var(--shadow-xl);
 }
-/* ESTADÍSTICAS */
 .stats-section {
 margin-top: 2rem;
 margin-bottom: 1rem;
@@ -979,7 +993,6 @@ font-size: 0.875rem;
 color: var(--gray-600);
 font-weight: 500;
 }
-/* SECCIÓN SOCNAS EN HOME */
 .socnas-promo-home {
     margin: 2rem 0;
     background: linear-gradient(to right, var(--gold-50), var(--amber-50));
@@ -1086,9 +1099,6 @@ font-weight: 500;
     color: var(--gold-900);
     text-decoration: underline;
 }
-/* =========================================== */
-/* PÁGINA DESTACA TU GRUPO */
-/* =========================================== */
 .highlight-hero {
     text-align: center;
     margin-bottom: 3rem;
@@ -1396,9 +1406,6 @@ font-weight: 500;
     transform: translateY(-2px);
     box-shadow: var(--shadow-2xl);
 }
-/* =========================================== */
-/* FORMULARIO DE AÑADIR GRUPO - EN LA MISMA PÁGINA */
-/* =========================================== */
 .form-section {
 display: none;
 max-width: 48rem;
@@ -1606,7 +1613,6 @@ font-size: 1rem;
 color: var(--gray-700);
 font-size: 0.875rem;
 }
-/* MODAL DE CONFIRMACIÓN WHATSAPP */
 .whatsapp-modal-backdrop {
 position: fixed;
 inset: 0;
@@ -1720,11 +1726,9 @@ margin-top: 1rem;
 font-size: 0.875rem;
 color: var(--gray-500);
 }
-/* VISTA AÑADIR GRUPO - OCULTA */
 .add-view {
 display: none;
 }
-/* MODAL DETALLES GRUPO - DEL DIRECTORIO */
 .modal-backdrop {
 position: fixed;
 inset: 0;
@@ -1762,7 +1766,6 @@ overflow-y: auto;
 transform: translateY(0) scale(1);
 opacity: 1;
 }
-/* BOTÓN DE CIERRE */
 .modal-close {
 position: absolute !important;
 top: 1rem !important;
@@ -2012,16 +2015,14 @@ transition: var(--transition);
 color: var(--green-900);
 text-decoration: underline;
 }
-/* FOOTER */
+/* FOOTER - ESTO ES LO CLAVE */
 .footer {
-background: linear-gradient(to right, var(--green-700), var(--blue-800));
-color: var(--white);
-padding: 1.5rem;
-width: 100%;
-margin-top: auto; /* ESTA ES LA LÍNEA CLAVE QUE FALTA */
-    flex-shrink: 0; /* Y ESTA TAMBIÉN */
-
-    
+    background: linear-gradient(to right, var(--green-700), var(--blue-800));
+    color: var(--white);
+    padding: 1.5rem;
+    width: 100%;
+    margin-top: auto; /* ¡¡¡ESTO ES LO QUE FALTA!!! */
+    flex-shrink: 0;
 }
 .footer-container {
 max-width: 80rem;
@@ -2106,7 +2107,6 @@ font-size: 0.75rem;
 opacity: 0.75;
 margin-top: 1rem;
 }
-/* RESPONSIVE MEJORADO */
 @media (max-width: 767px) {
     .nav-btn-text {
         display: none;
@@ -2190,7 +2190,6 @@ padding-left: 2rem;
 padding-right: 2rem;
 }
 }
-/* ANIMACIONES ADICIONALES */
 @keyframes fadeIn {
 from {
 opacity: 0;
@@ -2210,21 +2209,18 @@ animation: fadeIn 0.3s ease-out;
 .carousel-item {
 animation: fadeIn 0.3s ease-out;
 }
-/* PARA GARANTIZAR QUE EL SCROLL FUNCIONE */
 html {
 overflow-y: scroll;
 }
 body {
 overflow-x: hidden;
 }
-/* Mejoras de accesibilidad y usabilidad */
 button:focus, 
 input:focus, 
 select:focus {
 outline: 2px solid var(--green-500);
 outline-offset: 2px;
 }
-/* Efecto de carga suave */
 .view {
 opacity: 0;
 transform: translateY(10px);
@@ -2252,7 +2248,6 @@ transform: translateY(0);
     <i class="fas fa-home"></i>
     <span class="nav-btn-text">Inicio</span>
 </button>
-
 <button class="highlight-btn" onclick="showHighlightPage()">
     <i class="fas fa-crown"></i>
     <span>Destacar</span>
@@ -2269,7 +2264,6 @@ transform: translateY(0);
 </div>
 </header>
 <main class="main-container">
-<!-- VISTA INICIO (DIRECTORIO) -->
 <div class="view home-view active">
 <section class="hero">
 <h1>Directorio de Grupos de Aves</h1>
@@ -2289,7 +2283,6 @@ Categorías Principales
 </h2>
 <div class="carousel-container">
 <div class="carousel" id="main-categories">
-<!-- Las categorías se generarán con JavaScript -->
 </div>
 </div>
 </section>
@@ -2300,11 +2293,9 @@ Categorías Principales
 </h2>
 <div class="carousel-container">
 <div class="carousel" id="subcategories">
-<!-- Las subcategorías se generarán con JavaScript -->
 </div>
 </div>
 </section>
-<!-- CARRUSEL DE GRUPOS DESTACADOS - NUEVO -->
 <section id="featured-groups-section">
     <h2 class="section-title blue">
         <i class="fas fa-star"></i>
@@ -2312,12 +2303,9 @@ Categorías Principales
     </h2>
     <div class="groups-carousel-container">
         <div class="groups-carousel" id="featured-groups-carousel">
-            <!-- Los grupos destacados se generarán con JavaScript -->
         </div>
     </div>
 </section>
-
-<!-- SECCIÓN SOCNAS EN HOME -->
 <section class="socnas-promo-home">
     <div class="socnas-promo-content">
         <div class="socnas-promo-icon">
@@ -2338,7 +2326,6 @@ Categorías Principales
         </div>
     </div>
 </section>
-
 <section class="filters-section">
 <div class="filters-container">
 <div class="filter-group">
@@ -2389,7 +2376,6 @@ Filtrar por Plataforma
 Mostrando <span id="results-count">0</span> comunidades
 </div>
 <div class="groups-grid" id="groups-grid">
-<!-- Los grupos se generarán con JavaScript -->
 </div>
 <div class="load-more-container" id="load-more-container" style="display: none;">
 <button class="load-more-btn" id="load-more-btn">
@@ -2446,12 +2432,10 @@ Cargar más grupos
     </div>
 </section>
 </div>
-
-<!-- PÁGINA DESTACA TU GRUPO -->
 <div class="view highlight-view" id="highlight-view">
     <section class="highlight-hero">
         <h1>Destaca Tu Grupo en Bandadas.net</h1>
-        <p>Consigue más visibilidad, más miembros y haz crecer tu comunidad de aves con nuestros planes de destacado</p>
+        <p>Consigue más visibilidad, más miembros y hace crecer tu comunidad de aves con nuestros planes de destacado</p>
         <div class="highlight-stats">
             <div class="highlight-stat">
                 <div class="highlight-stat-value">+300%</div>
@@ -2471,16 +2455,13 @@ Cargar más grupos
             </div>
         </div>
     </section>
-
     <div class="plans-container">
         <h2 class="section-title purple">
             <i class="fas fa-gem"></i>
             Planes de Destacado
         </h2>
         <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Elige el plan perfecto para hacer crecer tu comunidad. Todos incluyen visibilidad garantizada en el carrusel principal.</p>
-        
         <div class="plans-grid">
-            <!-- PLAN BÁSICO -->
             <div class="plan-card">
                 <div class="plan-header">
                     <h3 class="plan-name">Básico</h3>
@@ -2503,8 +2484,6 @@ Cargar más grupos
                     </button>
                 </div>
             </div>
-
-            <!-- PLAN PROFESIONAL (POPULAR) -->
             <div class="plan-card popular">
                 <div class="plan-header">
                     <h3 class="plan-name">Profesional</h3>
@@ -2527,8 +2506,6 @@ Cargar más grupos
                     </button>
                 </div>
             </div>
-
-            <!-- PLAN PREMIUM -->
             <div class="plan-card">
                 <div class="plan-header">
                     <h3 class="plan-name">Premium</h3>
@@ -2553,7 +2530,6 @@ Cargar más grupos
             </div>
         </div>
     </div>
-
     <section class="benefits-section">
         <div class="text-center mb-8">
             <h2 class="section-title purple">
@@ -2562,7 +2538,6 @@ Cargar más grupos
             </h2>
             <p class="text-gray-700 max-w-2xl mx-auto">Descubre todo lo que conseguirás al destacar tu grupo en Bandadas.net</p>
         </div>
-        
         <div class="benefits-grid">
             <div class="benefit-item">
                 <div class="benefit-icon">
@@ -2573,7 +2548,6 @@ Cargar más grupos
                     <p>Tu grupo aparecerá en el carrusel principal, siendo lo primero que ven los miles de usuarios que visitan Bandadas.net cada día.</p>
                 </div>
             </div>
-            
             <div class="benefit-item">
                 <div class="benefit-icon">
                     <i class="fas fa-users"></i>
@@ -2583,7 +2557,6 @@ Cargar más grupos
                     <p>Los grupos destacados experimentan un crecimiento promedio del 150% en nuevos miembros durante el primer mes.</p>
                 </div>
             </div>
-            
             <div class="benefit-item">
                 <div class="benefit-icon">
                     <i class="fas fa-chart-line"></i>
@@ -2593,7 +2566,6 @@ Cargar más grupos
                     <p>Accede a datos precisos sobre visitas, clics y crecimiento de tu comunidad para optimizar tu estrategia.</p>
                 </div>
             </div>
-            
             <div class="benefit-item">
                 <div class="benefit-icon">
                     <i class="fas fa-share-alt"></i>
@@ -2605,13 +2577,11 @@ Cargar más grupos
             </div>
         </div>
     </section>
-
     <section class="faq-section">
         <h2 class="section-title purple">
             <i class="fas fa-question-circle"></i>
             Preguntas Frecuentes
         </h2>
-        
         <div class="faq-list">
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
@@ -2622,7 +2592,6 @@ Cargar más grupos
                     <p>Al destacar tu grupo, este aparece en una posición privilegiada en el carrusel de grupos destacados de la página principal. Además, recibe un badge especial y prioridad en los resultados de búsqueda.</p>
                 </div>
             </div>
-            
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>¿Puedo cancelar en cualquier momento?</span>
@@ -2632,7 +2601,6 @@ Cargar más grupos
                     <p>Sí, todos los planes son mensuales y puedes cancelar cuando quieras. Tu grupo permanecerá destacado hasta el final del período pagado.</p>
                 </div>
             </div>
-            
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>¿Qué métodos de pago aceptan?</span>
@@ -2642,7 +2610,6 @@ Cargar más grupos
                     <p>Aceptamos tarjetas de crédito/débito (Visa, Mastercard), PayPal y transferencia bancaria. Todo el proceso es 100% seguro.</p>
                 </div>
             </div>
-            
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>¿Cuánto tarda en aparecer mi grupo destacado?</span>
@@ -2652,7 +2619,6 @@ Cargar más grupos
                     <p>Una vez confirmado el pago, tu grupo aparece destacado en menos de 24 horas. Normalmente el proceso es instantáneo.</p>
                 </div>
             </div>
-            
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>¿Hay descuentos por grupos grandes?</span>
@@ -2664,7 +2630,6 @@ Cargar más grupos
             </div>
         </div>
     </section>
-
     <section class="cta-section">
         <h2>¿Listo para hacer crecer tu comunidad?</h2>
         <p>Únete a los más de 500 grupos que ya han multiplicado sus miembros con nuestros planes de destacado.</p>
@@ -2673,8 +2638,6 @@ Cargar más grupos
             Ver Planes y Precios
         </button>
     </section>
-
-    <!-- SECCIÓN SOCNAS EN PÁGINA DE DESTACADOS -->
     <section class="socnas-promo-home" style="margin-top: 3rem;">
         <div class="socnas-promo-content">
             <div class="socnas-promo-icon">
@@ -2697,8 +2660,6 @@ Cargar más grupos
         </div>
     </section>
 </div>
-
-<!-- FORMULARIO DE AÑADIR GRUPO (EN LA MISMA PÁGINA) -->
 <div class="form-section" id="add-form-section">
 <div class="form-header">
 <button class="back-form-btn" onclick="showHome()">
@@ -2819,8 +2780,6 @@ Enviar por WhatsApp
 </div>
 </div>
 </main>
-
-<!-- MODAL WHATSAPP DE CONFIRMACIÓN -->
 <div class="whatsapp-modal-backdrop" id="whatsapp-modal">
 <div class="whatsapp-modal-content">
 <button class="whatsapp-modal-close" id="whatsapp-modal-close">
@@ -2841,8 +2800,6 @@ Abrir WhatsApp para enviar
 </div>
 </div>
 </div>
-
-<!-- MODAL SELECCIÓN DE PLAN -->
 <div class="modal-backdrop" id="plan-modal-backdrop">
     <div class="modal-content" id="plan-modal-content">
         <button class="modal-close" id="plan-modal-close">
@@ -2855,7 +2812,6 @@ Abrir WhatsApp para enviar
         </div>
         <div class="modal-body">
             <h2 class="modal-title" id="plan-modal-title">Destacar Grupo</h2>
-            
             <div class="modal-section">
                 <h3 class="modal-section-title purple">
                     <i class="fas fa-crown"></i>
@@ -2865,15 +2821,12 @@ Abrir WhatsApp para enviar
                     <div class="text-3xl font-bold text-purple-600" id="selected-plan-price">19€</div>
                     <div class="text-gray-500">/mes</div>
                 </div>
-                
                 <div class="form-group mb-4">
                     <label for="group-select">Selecciona tu grupo para destacar</label>
                     <select class="form-control" id="group-select">
                         <option value="" disabled selected>Elige un grupo de tu propiedad</option>
-                        <!-- Se llenará con JavaScript -->
                     </select>
                 </div>
-                
                 <div class="form-group mb-4">
                     <label for="duration-select">Duración del destacado</label>
                     <select class="form-control" id="duration-select">
@@ -2883,7 +2836,6 @@ Abrir WhatsApp para enviar
                         <option value="12">12 meses (25% descuento)</option>
                     </select>
                 </div>
-                
                 <div class="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-4">
                     <div class="flex justify-between items-center mb-2">
                         <span class="font-medium">Subtotal:</span>
@@ -2898,13 +2850,11 @@ Abrir WhatsApp para enviar
                         <span id="total-price">19€</span>
                     </div>
                 </div>
-                
                 <button class="plan-btn" onclick="proceedToPayment()" style="width: 100%;">
                     <i class="fas fa-credit-card"></i>
                     Proceder al Pago
                 </button>
             </div>
-            
             <div class="modal-promo">
                 <div class="modal-promo-content">
                     <div class="modal-promo-icon">
@@ -2918,8 +2868,6 @@ Abrir WhatsApp para enviar
         </div>
     </div>
 </div>
-
-<!-- MODAL DETALLES GRUPO -->
 <div class="modal-backdrop" id="modal-backdrop">
 <div class="modal-content" id="modal-content">
 <button class="modal-close" id="modal-close">
@@ -2933,7 +2881,6 @@ Abrir WhatsApp para enviar
 <div class="modal-body">
 <h2 class="modal-title" id="modal-title">Nombre del Grupo</h2>
 <div class="modal-badges" id="modal-badges">
-<!-- Los badges se generarán con JavaScript -->
 </div>
 <div class="modal-section">
 <h3 class="modal-section-title green">
@@ -3002,7 +2949,7 @@ Directorio de comunidades de aves
 </div>
 </footer>
 <script>
-// ICONOS OFICIALES DE PLATAFORMA CON FONT AWESOME
+// SOLUCIÓN DEFINITIVA - CODIGO JAVASCRIPT MODIFICADO
 const platformIcons = {
 Telegram: '<i class="fab fa-telegram"></i>',
 WhatsApp: '<i class="fab fa-whatsapp"></i>',
@@ -3010,14 +2957,12 @@ Discord: '<i class="fab fa-discord"></i>',
 Viber: '<i class="fab fa-viber"></i>',
 Facebook: '<i class="fab fa-facebook"></i>'
 };
-// FUNCIÓN PARA CREAR BADGE CON ICONO OFICIAL
 function createPlatformBadge(platform) {
 return `<span class="badge platform ${platform.toLowerCase()}">
 <span class="badge-icon">${platformIcons[platform] || ''}</span>
 ${platform}
 </span>`;
 }
-// CATEGORÍAS AMPLIADAS SEGÚN SOLICITUD - SIN CAMBIOS
 const categoryTree = {
 todas: {name: "Todas las Aves", image: "https://placehold.co/150x150/3498db/ffffff?text=Todas+aves", subcategories: []},
 cetaceas: {name: "Psitácidas", image: "https://placehold.co/150x150/e74c3c/ffffff?text=🦜+Psitácidas", subcategories: [
@@ -3112,7 +3057,6 @@ const platformColors = {
 "Viber": "#7360f2",
 "Facebook": "#1877F2"
 };
-// PLANES DE DESTACADO
 const highlightPlans = {
     'básico': {
         name: 'Básico',
@@ -3130,14 +3074,12 @@ const highlightPlans = {
         features: ['Posición TOP', '90 días destacado', 'Badge "PREMIUM" dorado', 'Visibilidad 24/7', 'Prioridad x3', 'Estadísticas completas', 'Promoción diaria', 'Campaña personalizada']
     }
 };
-// DESCUENTOS POR DURACIÓN
 const durationDiscounts = {
     1: 0,
     3: 0.10,
     6: 0.15,
     12: 0.25
 };
-// FUNCIÓN PARA CREAR GRUPOS INICIALES CON FACEBOOK
 function createInitialGroups() {
 const groups = [];
 let idCounter = 1;
@@ -3181,13 +3123,10 @@ country: "España"
 });
 return groups;
 }
-// FUNCIÓN PARA CREAR GRUPOS DESTACADOS (EJEMPLOS CON MEJORES DESCRIPCIONES)
 function createFeaturedGroups() {
     const featuredGroups = [];
-    
-    // Seleccionar algunos grupos existentes como destacados
     const allGroups = state.groups;
-    const featuredIndices = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]; // Ejemplos variados
+    const featuredIndices = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27];
     
     featuredIndices.forEach(index => {
         if (index < allGroups.length) {
@@ -3210,7 +3149,6 @@ function createFeaturedGroups() {
     return featuredGroups;
 }
 
-// FUNCIÓN PARA RENDERIZAR GRUPOS DESTACADOS
 function renderFeaturedGroups() {
     const featuredGroups = createFeaturedGroups();
     const carousel = document.getElementById('featured-groups-carousel');
@@ -3251,7 +3189,6 @@ function renderFeaturedGroups() {
         carousel.appendChild(groupItem);
     });
     
-    // Añadir event listeners a los grupos destacados
     document.querySelectorAll('.featured-group-item').forEach(item => {
         item.addEventListener('click', function() {
             const groupId = this.dataset.groupId;
@@ -3262,7 +3199,6 @@ function renderFeaturedGroups() {
         });
     });
 }
-// ESTADO DE LA APLICACIÓN CON PAGINACIÓN
 let state = {
 view: 'home',
 selectedMainCategory: 'todas',
@@ -3274,10 +3210,9 @@ searchTerm: '',
 selectedGroup: null,
 selectedPlan: null,
 groups: createInitialGroups(),
-displayedGroupsCount: 9, // Número inicial de grupos a mostrar
-groupsPerPage: 9 // Grupos a añadir cada vez que se carga más
+displayedGroupsCount: 9,
+groupsPerPage: 9
 };
-// ELEMENTOS DEL DOM
 const mainCategoriesContainer = document.getElementById('main-categories');
 const subcategoriesContainer = document.getElementById('subcategories');
 const subcategoriesSection = document.getElementById('subcategories-section');
@@ -3320,56 +3255,93 @@ const planModalContent = document.getElementById('plan-modal-content');
 const planModalClose = document.getElementById('plan-modal-close');
 const currentYearEl = document.getElementById('current-year');
 
-// FUNCIONES PARA MOSTRAR/OCULTAR VISTAS
+// SOLUCIÓN DEFINITIVA - FUNCIONES MODIFICADAS
 function showHome() {
-homeView.classList.add('active');
-homeView.style.display = 'block';
-highlightView.classList.remove('active');
-highlightView.style.display = 'none';
-addFormSection.classList.remove('active');
-addFormSection.style.display = 'none';
-document.querySelectorAll('.nav-btn').forEach(btn => {
-btn.classList.remove('active');
-});
-document.querySelector('.nav-btn:first-child').classList.add('active');
-// Actualizar grupos destacados al volver al inicio
+    // Primero, asegurar que todas las vistas estén correctamente ocultas
+    highlightView.style.display = 'none';
+    highlightView.classList.remove('active');
+    addFormSection.style.display = 'none';
+    addFormSection.classList.remove('active');
+    
+    // Mostrar home
+    homeView.style.display = 'block';
+    homeView.classList.add('active');
+    
+    // Navegación
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector('.nav-btn:first-child').classList.add('active');
+    
+    // Forzar recálculo del layout
+    forceLayoutRecalculation();
+    
+    // Actualizar grupos destacados
     renderFeaturedGroups();
 }
 
 function showHighlightPage() {
-homeView.classList.remove('active');
-homeView.style.display = 'none';
-highlightView.classList.add('active');
-highlightView.style.display = 'block';
-addFormSection.classList.remove('active');
-addFormSection.style.display = 'none';
-document.querySelectorAll('.nav-btn').forEach(btn => {
-btn.classList.remove('active');
-});
-document.querySelectorAll('.nav-btn')[1].classList.add('active');
+    // Ocultar todo
+    homeView.style.display = 'none';
+    homeView.classList.remove('active');
+    addFormSection.style.display = 'none';
+    addFormSection.classList.remove('active');
+    
+    // Mostrar highlight
+    highlightView.style.display = 'block';
+    highlightView.classList.add('active');
+    
+    // Navegación
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelectorAll('.nav-btn')[1].classList.add('active');
+    
+    // Forzar recálculo del layout
+    forceLayoutRecalculation();
 }
 
 function showAddForm() {
-homeView.classList.remove('active');
-homeView.style.display = 'none';
-highlightView.classList.remove('active');
-highlightView.style.display = 'none';
-addFormSection.classList.add('active');
-addFormSection.style.display = 'block';
-document.querySelectorAll('.nav-btn').forEach(btn => {
-btn.classList.remove('active');
-});
-// Enfocar el primer campo
-setTimeout(() => {
-document.getElementById('platform').focus();
-}, 100);
+    // Ocultar todo
+    homeView.style.display = 'none';
+    homeView.classList.remove('active');
+    highlightView.style.display = 'none';
+    highlightView.classList.remove('active');
+    
+    // Mostrar formulario
+    addFormSection.style.display = 'block';
+    addFormSection.classList.add('active');
+    
+    // Navegación
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Enfocar el primer campo
+    setTimeout(() => {
+        document.getElementById('platform').focus();
+    }, 100);
+    
+    // Forzar recálculo del layout
+    forceLayoutRecalculation();
 }
-// FUNCIÓN PARA TOGGLE FAQ
+
+function forceLayoutRecalculation() {
+    // Truco para forzar al navegador a recalcular el layout
+    setTimeout(() => {
+        document.body.style.display = 'none';
+        void document.body.offsetHeight; // Esto fuerza el reflow
+        document.body.style.display = 'flex';
+        
+        // Pequeño scroll para resetear
+        window.scrollTo(0, 0);
+    }, 10);
+}
+
 function toggleFAQ(element) {
     const answer = element.nextElementSibling;
     const isActive = answer.classList.contains('active');
     
-    // Cerrar todas las FAQs
     document.querySelectorAll('.faq-answer').forEach(faq => {
         faq.classList.remove('active');
     });
@@ -3377,30 +3349,24 @@ function toggleFAQ(element) {
         question.classList.remove('active');
     });
     
-    // Abrir la FAQ clickeada si no estaba activa
     if (!isActive) {
         element.classList.add('active');
         answer.classList.add('active');
     }
 }
-// FUNCIÓN PARA SELECCIONAR PLAN
+
 function selectPlan(planType) {
     state.selectedPlan = planType;
     const plan = highlightPlans[planType];
     
-    // Actualizar modal
     document.getElementById('selected-plan-name').textContent = plan.name;
     document.getElementById('selected-plan-price').textContent = plan.price + '€';
     
-    // Actualizar precio inicial
     updatePlanPrice();
     
-    // Llenar select de grupos
     const groupSelect = document.getElementById('group-select');
     groupSelect.innerHTML = '<option value="" disabled selected>Elige un grupo de tu propiedad</option>';
     
-    // En un caso real, esto vendría de una base de datos
-    // Por ahora, mostramos algunos grupos de ejemplo
     const exampleGroups = [
         { id: 1, name: 'Mi Grupo de Agapornis' },
         { id: 2, name: 'Criadores de Canarios Madrid' },
@@ -3414,14 +3380,13 @@ function selectPlan(planType) {
         groupSelect.appendChild(option);
     });
     
-    // Mostrar modal
     planModalBackdrop.classList.add('show');
     setTimeout(() => {
         planModalContent.classList.add('show');
     }, 10);
     document.body.style.overflow = 'hidden';
 }
-// FUNCIÓN PARA ACTUALIZAR PRECIO DEL PLAN
+
 function updatePlanPrice() {
     const plan = highlightPlans[state.selectedPlan];
     const duration = parseInt(document.getElementById('duration-select').value);
@@ -3435,7 +3400,7 @@ function updatePlanPrice() {
     document.getElementById('discount-amount').textContent = discountAmount.toFixed(2) + '€';
     document.getElementById('total-price').textContent = total.toFixed(2) + '€';
 }
-// FUNCIÓN PARA PROCEDER AL PAGO
+
 function proceedToPayment() {
     const groupSelect = document.getElementById('group-select');
     const duration = document.getElementById('duration-select').value;
@@ -3450,7 +3415,6 @@ function proceedToPayment() {
     const subtotal = plan.price * duration;
     const total = subtotal - (subtotal * discount);
     
-    // Generar mensaje de WhatsApp para pago
     const message = `*SOLICITUD DESTACADO GRUPO - BANDADAS.NET*%0A%0A` +
                    `*🏷️ Plan Seleccionado:* ${plan.name}%0A` +
                    `*💰 Precio/mes:* ${plan.price}€%0A` +
@@ -3468,18 +3432,15 @@ function proceedToPayment() {
     const whatsappNumber = "34677163664";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
     
-    // Cerrar modal
     closePlanModal();
     
-    // Abrir WhatsApp
     window.open(whatsappUrl, '_blank');
     
-    // Mostrar confirmación
     setTimeout(() => {
         alert('Se ha abierto WhatsApp con los detalles del plan. Un administrador contactará contigo para finalizar el proceso de pago y activación del destacado.');
     }, 1000);
 }
-// FUNCIÓN PARA CERRAR MODAL DE PLAN
+
 function closePlanModal() {
     planModalContent.classList.remove('show');
     setTimeout(() => {
@@ -3487,7 +3448,7 @@ function closePlanModal() {
     }, 300);
     document.body.style.overflow = '';
 }
-// FUNCIÓN PARA CONTACTO PROFESIONAL
+
 function contactProfessional() {
     const message = `*CONTACTO PROFESIONAL - PLANES PERSONALIZADOS*%0A%0A` +
                    `Hola, estoy interesado en un plan personalizado para mi asociación/criadero profesional.%0A` +
@@ -3499,12 +3460,12 @@ function contactProfessional() {
     
     window.open(whatsappUrl, '_blank');
 }
-// FUNCIÓN PARA MOSTRAR PLANES DESDE CTA
+
 function showHighlightPlans() {
     const plansSection = document.querySelector('.plans-container');
     plansSection.scrollIntoView({ behavior: 'smooth' });
 }
-// FUNCIÓN PARA GENERAR EL MENSAJE DE WHATSAPP
+
 function generateWhatsAppMessage(formData) {
 const message = `*NUEVO GRUPO PARA BANDADAS.NET*%0A%0A` +
 `*📱 Plataforma:* ${formData.platform}%0A` +
@@ -3522,12 +3483,10 @@ const message = `*NUEVO GRUPO PARA BANDADAS.NET*%0A%0A` +
 return message;
 }
 
-// FUNCIÓN PARA RENDERIZAR GRUPOS CON PAGINACIÓN Y CENTRADO
 function renderGroups() {
 const filteredGroups = filterGroups();
 const totalGroups = filteredGroups.length;
 resultsCount.textContent = totalGroups;
-// Actualizar texto de resultados
 let infoText = `Mostrando <span class="text-green-600 font-bold">${Math.min(state.displayedGroupsCount, totalGroups)}</span> de <span class="text-green-600 font-bold">${totalGroups}</span> comunidades`;
 if (state.selectedMainCategory !== 'todas') {
 infoText += ` en ${categoryTree[state.selectedMainCategory].name}`;
@@ -3539,13 +3498,11 @@ if (subcat) infoText += ` - ${subcat.name}`;
 if (state.selectedRegion !== 'Todas') infoText += ` en ${state.selectedRegion}`;
 if (state.selectedPlatform !== 'Todas') infoText += ` para ${state.selectedPlatform}`;
 resultsInfo.innerHTML = infoText;
-// Mostrar/ocultar botón "Cargar más"
 if (totalGroups > state.displayedGroupsCount) {
 loadMoreContainer.style.display = 'block';
 } else {
 loadMoreContainer.style.display = 'none';
 }
-// Grupos a mostrar (con paginación)
 const groupsToShow = filteredGroups.slice(0, state.displayedGroupsCount);
 if (groupsToShow.length === 0) {
 emptyState.style.display = 'block';
@@ -3605,10 +3562,9 @@ groupsGrid.appendChild(groupCard);
 });
 }
 }
-// FUNCIÓN PARA MOSTRAR MODAL CON ICONOS OFICIALES
+
 function showGroupModal(group) {
 state.selectedGroup = group;
-// Configurar imagen
 modalProfileImg.src = group.image;
 modalProfileImg.onerror = () => {
 modalProfileImg.src = `https://placehold.co/100x100/${platformColors[group.platform].replace('#', '')}/ffffff?text=${group.subCategory.charAt(0)}`;
@@ -3616,7 +3572,6 @@ modalProfileImg.src = `https://placehold.co/100x100/${platformColors[group.platf
 modalTitle.textContent = group.name;
 const category = categoryTree[group.mainCategory];
 const subcategory = category.subcategories.find(s => s.id === group.subCategory);
-// Crear badges con iconos oficiales
 modalBadges.innerHTML = `
 <span class="modal-badge" style="background-color: ${platformColors[group.platform]}; color: white;">
 <span class="badge-icon">${platformIcons[group.platform] || ''}</span>
@@ -3645,7 +3600,7 @@ modalContent.classList.add('show');
 }, 10);
 document.body.style.overflow = 'hidden';
 }
-// FUNCIÓN PARA RENDERIZAR CATEGORÍAS PRINCIPALES
+
 function renderMainCategories() {
 mainCategoriesContainer.innerHTML = '';
 Object.entries(categoryTree).forEach(([categoryId, category]) => {
@@ -3663,7 +3618,7 @@ categoryEl.innerHTML = `
 mainCategoriesContainer.appendChild(categoryEl);
 });
 }
-// FUNCIÓN PARA ACTUALIZAR SUBCATEGORÍAS
+
 function updateSubcategories() {
 if (state.selectedMainCategory === 'todas') {
 subcategoriesSection.style.display = 'none';
@@ -3688,7 +3643,7 @@ subcatEl.innerHTML = `
 subcategoriesContainer.appendChild(subcatEl);
 });
 }
-// FUNCIÓN PARA FILTRAR GRUPOS
+
 function filterGroups() {
 return state.groups.filter(group => {
 if (state.selectedCountry !== 'ES' && group.country !== state.selectedCountry) return false;
@@ -3708,7 +3663,7 @@ categoryTree[group.mainCategory].name.toLowerCase().includes(state.searchTerm.to
 return platformMatch && regionMatch && mainCategoryMatch && searchMatch;
 });
 }
-// FUNCIÓN PARA CALCULAR MIEMBROS TOTALES
+
 function parseMemberCount(membersStr) {
 if (typeof membersStr !== 'string') return 0;
 if (membersStr.includes('k')) {
@@ -3720,16 +3675,16 @@ return parseInt(membersStr) || 0;
 function calculateTotalMembers() {
 return state.groups.reduce((total, group) => total + parseMemberCount(group.members), 0);
 }
-// FUNCIÓN PARA ACTUALIZAR ESTADÍSTICAS
+
 function updateStats() {
 totalCommunitiesEl.textContent = state.groups.length;
 totalMembersEl.textContent = calculateTotalMembers().toLocaleString('es-ES');
 }
-// FUNCIÓN PARA RESETEAR PAGINACIÓN
+
 function resetPagination() {
 state.displayedGroupsCount = state.groupsPerPage;
 }
-// MANEJADORES DE EVENTOS
+
 function handleMainCategoryClick(categoryId) {
 state.selectedMainCategory = categoryId;
 state.selectedSubCategory = null;
@@ -3742,6 +3697,7 @@ if (activeBtn) activeBtn.classList.add('active');
 updateSubcategories();
 renderGroups();
 }
+
 function handleSubCategoryClick(subcategoryId) {
 state.selectedSubCategory = state.selectedSubCategory === subcategoryId ? null : subcategoryId;
 resetPagination();
@@ -3754,6 +3710,7 @@ if (activeBtn) activeBtn.classList.add('active');
 }
 renderGroups();
 }
+
 function closeModal() {
 state.selectedGroup = null;
 modalContent.classList.remove('show');
@@ -3762,7 +3719,7 @@ modalBackdrop.classList.remove('show');
 }, 300);
 document.body.style.overflow = '';
 }
-// CONFIGURAR EVENT LISTENERS
+
 function setupEventListeners() {
 mainCategoriesContainer.addEventListener('click', (e) => {
 if (e.target.closest('.category-btn')) {
@@ -3811,7 +3768,7 @@ renderMainCategories();
 updateSubcategories();
 renderGroups();
 });
-// FORMULARIO WHATSAPP
+
 addGroupForm.addEventListener('submit', (e) => {
 e.preventDefault();
 const platform = document.getElementById('platform').value;
@@ -3846,21 +3803,17 @@ description,
 contact
 };
 
-// GENERAR MENSAJE WHATSAPP
 const whatsappMessage = generateWhatsAppMessage(formData);
 const whatsappNumber = "34677163664";
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
-// ACTUALIZAR ENLACE Y MOSTRAR MODAL
 whatsappSendLink.href = whatsappUrl;
 whatsappModal.classList.add('show');
 document.querySelector('.whatsapp-modal-content').classList.add('show');
 
-// RESETEAR FORMULARIO
 addGroupForm.reset();
 });
 
-// CERRAR MODAL WHATSAPP
 whatsappModalClose.addEventListener('click', () => {
 whatsappModal.classList.remove('show');
 document.querySelector('.whatsapp-modal-content').classList.remove('show');
@@ -3888,19 +3841,17 @@ planModalClose.addEventListener('click', closePlanModal);
 planModalBackdrop.addEventListener('click', (e) => {
 if (e.target === planModalBackdrop) closePlanModal();
 });
-// LISTENERS PARA PLANES
 document.getElementById('duration-select').addEventListener('change', updatePlanPrice);
 document.addEventListener('keydown', (e) => {
 if (e.key === 'Escape' && state.selectedGroup) closeModal();
 if (e.key === 'Escape' && state.selectedPlan) closePlanModal();
 });
-// BOTÓN CARGAR MÁS
 loadMoreBtn.addEventListener('click', () => {
 state.displayedGroupsCount += state.groupsPerPage;
 renderGroups();
 });
 }
-// INICIALIZACIÓN
+
 function init() {
 currentYearEl.textContent = new Date().getFullYear();
 renderMainCategories();
@@ -3909,9 +3860,43 @@ renderFeaturedGroups();
 updateStats();
 setupEventListeners();
 updateSubcategories();
+    
+    // SOLUCIÓN DEFINITIVA - Asegurar que al inicio solo se muestre la vista activa
+    document.querySelectorAll('.view, .form-section').forEach(el => {
+        if (!el.classList.contains('active')) {
+            el.style.display = 'none';
+        }
+    });
+    
+    // Forzar un recálculo del layout después de cargar todo
+    setTimeout(() => {
+        forceLayoutRecalculation();
+    }, 100);
 }
-// EJECUTAR AL CARGAR LA PÁGINA
-document.addEventListener('DOMContentLoaded', init);
+
+// EJECUTAR CON LA SOLUCIÓN DEFINITIVA
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+    
+    // Truco final para eliminar cualquier espacio residual
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            // Asegurar que el body tenga la altura correcta
+            document.body.style.minHeight = '100vh';
+            document.body.style.height = 'auto';
+            
+            // Forzar un reflow completo
+            void document.body.offsetHeight;
+            
+            // Restaurar
+            document.body.style.minHeight = '';
+            document.body.style.height = '';
+            
+            // Scroll microscópico para resetear cualquier cálculo erróneo
+            window.scrollTo(0, 0);
+        }, 200);
+    });
+});
 </script>
 </body>
 </html>
